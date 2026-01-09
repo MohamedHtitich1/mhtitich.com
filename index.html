@@ -1,0 +1,2189 @@
+<!DOCTYPE html>
+<!-- saved from url=(0057)file:///C:/Users/mahti/Downloads/portfolio_website_1.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohamed Htitich • Research</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+    <link href="./index_files/css2" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0a0a0c;
+            --bg-secondary: rgba(17, 17, 21, 0.8);
+            --bg-card: rgba(22, 22, 26, 0.7);
+            --bg-glass: rgba(124, 152, 133, 0.08);
+            --text-primary: #f5f5f7;
+            --text-secondary: #a1a1a6;
+            --text-muted: #6e6e73;
+            --accent: #7c9885;
+            --accent-hover: #9ab8a3;
+            --accent-dim: rgba(124, 152, 133, 0.3);
+            --accent-glow: rgba(124, 152, 133, 0.15);
+            --border: rgba(255, 255, 255, 0.1);
+            --border-accent: rgba(124, 152, 133, 0.3);
+            --serif: 'EB Garamond', Georgia, serif;
+            --sans: 'IBM Plex Sans', -apple-system, sans-serif;
+            --mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--sans);
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+            font-weight: 300;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        /* Animated Background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+            background: var(--bg-primary);
+        }
+
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px);
+            animation: float 20s ease-in-out infinite;
+            will-change: transform;
+        }
+
+        .orb-1 {
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(124, 152, 133, 0.5) 0%, rgba(124, 152, 133, 0.2) 40%, transparent 70%);
+            top: -20%;
+            left: -15%;
+            animation: float1 25s ease-in-out infinite;
+        }
+
+        .orb-2 {
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle, rgba(80, 140, 110, 0.45) 0%, rgba(80, 140, 110, 0.15) 40%, transparent 70%);
+            top: 40%;
+            right: -20%;
+            animation: float2 30s ease-in-out infinite;
+        }
+
+        .orb-3 {
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(100, 180, 140, 0.4) 0%, rgba(100, 180, 140, 0.1) 40%, transparent 70%);
+            bottom: -15%;
+            left: 20%;
+            animation: float3 22s ease-in-out infinite;
+        }
+
+        .orb-4 {
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(60, 120, 90, 0.5) 0%, rgba(60, 120, 90, 0.15) 40%, transparent 70%);
+            top: 20%;
+            left: 40%;
+            animation: float4 28s ease-in-out infinite;
+        }
+
+        .orb-5 {
+            width: 650px;
+            height: 650px;
+            background: radial-gradient(circle, rgba(140, 200, 170, 0.35) 0%, rgba(140, 200, 170, 0.1) 40%, transparent 70%);
+            top: 60%;
+            left: -10%;
+            animation: float5 35s ease-in-out infinite;
+        }
+
+        .orb-6 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(90, 160, 130, 0.45) 0%, rgba(90, 160, 130, 0.1) 40%, transparent 70%);
+            top: 10%;
+            right: 15%;
+            animation: float6 24s ease-in-out infinite;
+        }
+
+        @keyframes float1 {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(80px, 50px) scale(1.1); }
+            50% { transform: translate(40px, -60px) scale(0.95); }
+            75% { transform: translate(-50px, 30px) scale(1.05); }
+        }
+
+        @keyframes float2 {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(-70px, -80px) scale(1.08); }
+            50% { transform: translate(60px, 40px) scale(0.92); }
+            75% { transform: translate(-40px, 70px) scale(1.03); }
+        }
+
+        @keyframes float3 {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(100px, -40px) scale(1.12); }
+            50% { transform: translate(-60px, -80px) scale(0.9); }
+            75% { transform: translate(50px, 50px) scale(1.06); }
+        }
+
+        @keyframes float4 {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(-90px, 60px) scale(0.95); }
+            50% { transform: translate(70px, -50px) scale(1.1); }
+            75% { transform: translate(-30px, -70px) scale(1.02); }
+        }
+
+        @keyframes float5 {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(60px, -90px) scale(1.05); }
+            50% { transform: translate(-80px, 40px) scale(0.93); }
+            75% { transform: translate(40px, 80px) scale(1.08); }
+        }
+
+        @keyframes float6 {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(-50px, 70px) scale(1.1); }
+            50% { transform: translate(90px, -30px) scale(0.95); }
+            75% { transform: translate(-70px, -50px) scale(1.04); }
+        }
+
+        /* Mesh gradient layer */
+        .mesh-gradient {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: 
+                radial-gradient(ellipse at 30% 20%, rgba(124, 152, 133, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 80%, rgba(80, 120, 100, 0.08) 0%, transparent 50%);
+            animation: meshMove 40s ease-in-out infinite;
+        }
+
+        @keyframes meshMove {
+            0%, 100% { transform: rotate(0deg) scale(1); }
+            50% { transform: rotate(180deg) scale(1.1); }
+        }
+
+        /* Grain overlay */
+        .grain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+            opacity: 0.025;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 1.5rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(10, 10, 12, 0.5);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .logo {
+            font-family: var(--serif);
+            font-size: 1.3rem;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.85rem;
+            padding: 0.5rem 1rem;
+            transition: color 0.3s;
+            font-weight: 400;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-separator {
+            color: var(--text-muted);
+            opacity: 0.3;
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 8rem 3rem 4rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .hero-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+
+        .hero h1 {
+            font-family: var(--serif);
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 400;
+            line-height: 1.15;
+            margin-bottom: 2rem;
+            max-width: 900px;
+        }
+
+        .hero h1 em {
+            font-style: italic;
+            color: var(--accent);
+        }
+
+        .hero-description {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin-bottom: 3rem;
+            line-height: 1.8;
+        }
+
+        .hero-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .hero-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .dot {
+            width: 6px;
+            height: 6px;
+            background: var(--accent);
+            border-radius: 50%;
+        }
+
+        /* Sections */
+        section {
+            padding: 6rem 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 3rem;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 1rem;
+        }
+
+        .section-title {
+            font-family: var(--serif);
+            font-size: 2rem;
+            font-weight: 400;
+        }
+
+        .section-count {
+            font-size: 0.75rem;
+            letter-spacing: 0.15em;
+            color: var(--text-muted);
+        }
+
+        /* Research Cards */
+        .research-grid {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .research-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2.5rem;
+            transition: border-color 0.3s, transform 0.3s;
+        }
+
+        .research-card:hover {
+            border-color: var(--accent-dim);
+            transform: translateY(-2px);
+        }
+
+        .research-number {
+            font-family: var(--mono);
+            font-size: 0.75rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            letter-spacing: 0.1em;
+        }
+
+        .research-card h3 {
+            font-family: var(--serif);
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .research-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .research-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tag {
+            font-size: 0.75rem;
+            padding: 0.35rem 0.75rem;
+            background: rgba(124, 152, 133, 0.1);
+            border: 1px solid var(--border-accent);
+            border-radius: 100px;
+            color: var(--accent);
+        }
+
+        /* Publications */
+        .publications-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .publication-item {
+            display: grid;
+            grid-template-columns: 60px 1fr auto;
+            gap: 2rem;
+            align-items: start;
+            padding: 1.5rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .pub-year {
+            font-family: var(--mono);
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .pub-content h4 {
+            font-family: var(--serif);
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .pub-content p {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        .pub-journal {
+            color: var(--accent);
+            font-style: italic;
+        }
+
+        .pub-status {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            padding: 0.35rem 0.75rem;
+            border-radius: 100px;
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-muted);
+            white-space: nowrap;
+        }
+
+        .pub-status.published {
+            background: rgba(124, 152, 133, 0.15);
+            color: var(--accent);
+        }
+
+        /* ==================== INDICES SECTION ==================== */
+        .indices-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .index-card {
+            background: rgba(10, 10, 12, 0.6);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--border-accent);
+            border-radius: 16px;
+            padding: 2rem;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .index-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, var(--accent-glow) 0%, transparent 60%);
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .index-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(124, 152, 133, 0.15);
+        }
+
+        .index-card:hover::before {
+            opacity: 1;
+        }
+
+        .index-card-inner {
+            position: relative;
+            z-index: 1;
+        }
+
+        .index-abbr {
+            font-family: var(--mono);
+            font-size: 2rem;
+            font-weight: 500;
+            color: var(--accent);
+            margin-bottom: 0.75rem;
+            letter-spacing: -0.02em;
+        }
+
+        .index-name {
+            font-family: var(--serif);
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+        }
+
+        .index-stat {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .index-expand-hint {
+            margin-top: 1rem;
+            font-size: 0.75rem;
+            color: var(--accent);
+            opacity: 0;
+            transform: translateY(5px);
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .index-card:hover .index-expand-hint {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Index Detail Modal */
+        .index-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 2rem;
+        }
+
+        .index-modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .index-modal {
+            background: linear-gradient(145deg, rgba(22, 22, 26, 0.95), rgba(10, 10, 12, 0.98));
+            border: 1px solid var(--border-accent);
+            border-radius: 24px;
+            max-width: 900px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            transform: scale(0.9) translateY(20px);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .index-modal-overlay.active .index-modal {
+            transform: scale(1) translateY(0);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            width: 40px;
+            height: 40px;
+            border: 1px solid var(--border);
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-secondary);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+            z-index: 10;
+        }
+
+        .modal-close:hover {
+            background: var(--accent);
+            color: var(--bg-primary);
+            border-color: var(--accent);
+        }
+
+        .modal-header {
+            padding: 3rem 3rem 2rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .modal-abbr {
+            font-family: var(--mono);
+            font-size: 3.5rem;
+            font-weight: 500;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .modal-title {
+            font-family: var(--serif);
+            font-size: 1.8rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .modal-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .modal-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .modal-meta-icon {
+            width: 18px;
+            height: 18px;
+            border-radius: 4px;
+            background: var(--accent-glow);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            color: var(--accent);
+        }
+
+        .modal-body {
+            padding: 2.5rem 3rem 3rem;
+        }
+
+        .modal-section {
+            margin-bottom: 2.5rem;
+        }
+
+        .modal-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .modal-section-title {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .modal-section p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            font-size: 0.95rem;
+        }
+
+        /* Modal Visualization */
+        .modal-visualization {
+            background: rgba(124, 152, 133, 0.05);
+            border: 1px solid var(--border-accent);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 1.5rem 0;
+            backdrop-filter: blur(20px);
+        }
+
+        .viz-chart {
+            height: 200px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-around;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .viz-bar {
+            flex: 1;
+            max-width: 60px;
+            background: linear-gradient(to top, var(--accent), var(--accent-hover));
+            border-radius: 8px 8px 0 0;
+            position: relative;
+            transition: all 0.3s;
+            opacity: 0.7;
+        }
+
+        .viz-bar:hover {
+            opacity: 1;
+            transform: scaleY(1.05);
+            transform-origin: bottom;
+        }
+
+        .viz-bar-label {
+            position: absolute;
+            bottom: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.65rem;
+            color: var(--text-muted);
+            white-space: nowrap;
+        }
+
+        .viz-bar-value {
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.75rem;
+            font-family: var(--mono);
+            color: var(--accent);
+        }
+
+        .policy-relevance {
+            background: linear-gradient(135deg, rgba(124, 152, 133, 0.1), rgba(124, 152, 133, 0.05));
+            border-left: 3px solid var(--accent);
+            padding: 1.5rem;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .policy-relevance p {
+            color: var(--text-primary);
+            font-size: 0.9rem;
+        }
+
+        /* ==================== TOOLS SECTION ==================== */
+        #tools {
+            padding-bottom: 3rem;
+        }
+
+        .tools-intro {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            max-width: 800px;
+            margin-bottom: 3rem;
+            line-height: 1.8;
+        }
+
+        /* R Package Section */
+        .package-section {
+            margin-bottom: 5rem;
+        }
+
+        .package-header {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .package-logo {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--accent), rgba(124, 152, 133, 0.5));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--mono);
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--bg-primary);
+        }
+
+        .package-info h3 {
+            font-family: var(--serif);
+            font-size: 1.8rem;
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+        }
+
+        .package-tagline {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .package-badges {
+            display: flex;
+            gap: 0.75rem;
+            margin-top: 0.5rem;
+        }
+
+        .package-badge {
+            font-size: 0.7rem;
+            padding: 0.3rem 0.6rem;
+            background: rgba(124, 152, 133, 0.15);
+            border: 1px solid var(--border-accent);
+            border-radius: 6px;
+            color: var(--accent);
+            font-family: var(--mono);
+        }
+
+        .package-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .package-description {
+            background: var(--bg-card);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+        }
+
+        .package-description p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .package-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+        }
+
+        .package-stat {
+            text-align: center;
+            padding: 1rem;
+            background: rgba(124, 152, 133, 0.05);
+            border-radius: 12px;
+        }
+
+        .package-stat-value {
+            font-family: var(--mono);
+            font-size: 1.5rem;
+            color: var(--accent);
+            font-weight: 500;
+        }
+
+        .package-stat-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-top: 0.25rem;
+        }
+
+        .package-modules {
+            background: var(--bg-card);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+        }
+
+        .module-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .module-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.75rem 1rem;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+
+        .module-item:hover {
+            background: rgba(124, 152, 133, 0.1);
+        }
+
+        .module-icon {
+            width: 32px;
+            height: 32px;
+            background: var(--accent-glow);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--mono);
+            font-size: 0.8rem;
+            color: var(--accent);
+        }
+
+        .module-name {
+            font-family: var(--mono);
+            font-size: 0.85rem;
+            color: var(--text-primary);
+        }
+
+        .module-desc {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-left: auto;
+        }
+
+        /* ==================== TECHNIQUES SECTION ==================== */
+        #techniques {
+            padding-top: 2rem;
+        }
+
+        .techniques-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .technique-card {
+            background: rgba(10, 10, 12, 0.6);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+            cursor: pointer;
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .technique-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent), transparent);
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .technique-card:hover {
+            border-color: var(--accent-dim);
+            transform: translateY(-3px);
+        }
+
+        .technique-card:hover::before {
+            opacity: 1;
+        }
+
+        .technique-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--accent-glow);
+            border: 1px solid var(--border-accent);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--serif);
+            font-size: 1.5rem;
+            color: var(--accent);
+            margin-bottom: 1.25rem;
+        }
+
+        .technique-name {
+            font-family: var(--serif);
+            font-size: 1.25rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .technique-brief {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .technique-expand {
+            margin-top: 1rem;
+            font-size: 0.75rem;
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .technique-card:hover .technique-expand {
+            opacity: 1;
+        }
+
+        /* Technique Modal */
+        .technique-modal {
+            background: linear-gradient(145deg, rgba(22, 22, 26, 0.95), rgba(10, 10, 12, 0.98));
+            border: 1px solid var(--border-accent);
+            border-radius: 24px;
+            max-width: 950px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            transform: scale(0.9) translateY(20px);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .index-modal-overlay.active .technique-modal {
+            transform: scale(1) translateY(0);
+        }
+
+        .technique-modal-header {
+            padding: 3rem;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: flex-start;
+            gap: 2rem;
+        }
+
+        .technique-modal-icon {
+            width: 72px;
+            height: 72px;
+            background: linear-gradient(135deg, var(--accent), rgba(124, 152, 133, 0.5));
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--serif);
+            font-size: 2rem;
+            color: var(--bg-primary);
+            flex-shrink: 0;
+        }
+
+        .technique-modal-info h2 {
+            font-family: var(--serif);
+            font-size: 2rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .technique-modal-info p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .technique-modal-body {
+            padding: 2.5rem 3rem 3rem;
+        }
+
+        /* Formula Display */
+        .formula-container {
+            background: rgba(124, 152, 133, 0.05);
+            border: 1px solid var(--border-accent);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 1.5rem 0;
+            text-align: center;
+            backdrop-filter: blur(20px);
+        }
+
+        .formula-title {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+        }
+
+        .formula {
+            font-family: var(--serif);
+            font-size: 1.4rem;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            line-height: 2;
+        }
+
+        .formula-vars {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .formula-var {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .formula-var span {
+            font-family: var(--serif);
+            font-style: italic;
+            color: var(--accent);
+        }
+
+        /* Technique Visualization */
+        .technique-viz {
+            background: rgba(124, 152, 133, 0.05);
+            border: 1px solid var(--border-accent);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 1.5rem 0;
+            backdrop-filter: blur(20px);
+        }
+
+        .technique-viz-title {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        /* Convergence Lines Visualization */
+        .convergence-viz {
+            height: 180px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .convergence-line {
+            position: absolute;
+            height: 3px;
+            border-radius: 2px;
+            left: 0;
+            animation: converge 4s ease-in-out infinite;
+        }
+
+        .convergence-line:nth-child(1) {
+            width: 100%;
+            background: linear-gradient(90deg, rgba(124, 152, 133, 0.8), var(--accent));
+            top: 30%;
+            animation-delay: 0s;
+        }
+
+        .convergence-line:nth-child(2) {
+            width: 100%;
+            background: linear-gradient(90deg, rgba(100, 140, 120, 0.7), rgba(100, 140, 120, 1));
+            top: 70%;
+            animation-delay: 0.3s;
+        }
+
+        .convergence-line:nth-child(3) {
+            width: 100%;
+            background: linear-gradient(90deg, rgba(80, 120, 100, 0.6), rgba(80, 120, 100, 0.9));
+            top: 50%;
+            animation-delay: 0.6s;
+        }
+
+        @keyframes converge {
+            0%, 100% { 
+                transform: scaleX(0.3) translateX(-100%);
+                opacity: 0.3;
+            }
+            50% { 
+                transform: scaleX(1) translateX(0);
+                opacity: 1;
+            }
+        }
+
+        /* Entropy Bars Visualization */
+        .entropy-viz {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            align-items: flex-end;
+            height: 160px;
+        }
+
+        .entropy-bar-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .entropy-bar-pair {
+            display: flex;
+            align-items: flex-end;
+            gap: 0.5rem;
+            height: 120px;
+        }
+
+        .entropy-bar {
+            width: 24px;
+            border-radius: 6px 6px 0 0;
+            transition: all 0.5s ease;
+        }
+
+        .entropy-bar.before {
+            background: linear-gradient(to top, rgba(124, 152, 133, 0.3), rgba(124, 152, 133, 0.6));
+        }
+
+        .entropy-bar.after {
+            background: linear-gradient(to top, var(--accent), var(--accent-hover));
+        }
+
+        .entropy-label {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+        }
+
+        /* About Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 4rem;
+        }
+
+        .about-text p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .about-text strong {
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        .about-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .sidebar-block h4 {
+            font-family: var(--serif);
+            font-size: 1rem;
+            font-weight: 500;
+            margin-bottom: 0.75rem;
+            color: var(--accent);
+        }
+
+        .sidebar-block p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .sidebar-block a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .sidebar-block a:hover {
+            color: var(--accent);
+        }
+
+        /* Footer */
+        footer {
+            padding: 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid var(--border);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-left {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .footer-links a {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        /* Responsive */
+        @media (max-width: 1000px) {
+            .indices-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .techniques-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .package-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem 1.5rem;
+            }
+            
+            .hero, section {
+                padding-left: 1.5rem;
+                padding-right: 1.5rem;
+            }
+            
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .publication-item {
+                grid-template-columns: 1fr;
+                gap: 0.5rem;
+            }
+            
+            .pub-status {
+                justify-self: start;
+            }
+            
+            .modal-header, .modal-body {
+                padding: 2rem;
+            }
+            
+            .technique-modal-header {
+                flex-direction: column;
+                padding: 2rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .nav-links {
+                display: none;
+            }
+            
+            footer {
+                flex-direction: column;
+                gap: 1.5rem;
+                text-align: center;
+            }
+            
+            .package-stats {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-label, .hero h1, .hero-description, .hero-meta {
+            animation: fadeInUp 0.8s ease forwards;
+            opacity: 0;
+        }
+
+        .hero h1 { animation-delay: 0.1s; }
+        .hero-description { animation-delay: 0.2s; }
+        .hero-meta { animation-delay: 0.3s; }
+    </style>
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="bg-animation">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+        <div class="orb orb-4"></div>
+        <div class="orb orb-5"></div>
+        <div class="orb orb-6"></div>
+    </div>
+    <div class="mesh-gradient"></div>
+    <div class="grain"></div>
+
+    <nav>
+        <div class="logo">Mohamed Htitich</div>
+        <div class="nav-links">
+            <a href="file:///C:/Users/mahti/Downloads/portfolio_website_1.html#research">Research</a>
+            <span class="nav-separator">•</span>
+            <a href="file:///C:/Users/mahti/Downloads/portfolio_website_1.html#publications">Publications</a>
+            <span class="nav-separator">•</span>
+            <a href="file:///C:/Users/mahti/Downloads/portfolio_website_1.html#indices">Indices</a>
+            <span class="nav-separator">•</span>
+            <a href="file:///C:/Users/mahti/Downloads/portfolio_website_1.html#tools">Tools</a>
+            <span class="nav-separator">•</span>
+            <a href="file:///C:/Users/mahti/Downloads/portfolio_website_1.html#techniques">Methods</a>
+            <span class="nav-separator">•</span>
+            <a href="file:///C:/Users/mahti/Downloads/portfolio_website_1.html#about">About</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-label">Sustainable Development Research</div>
+        <h1>Measuring what matters for <em>human progress</em> and <em>planetary boundaries</em></h1>
+        <p class="hero-description">
+            Developing composite indicators and analytical frameworks that bridge environmental science with policy—quantifying how societies can advance well-being within ecological limits.
+        </p>
+        <div class="hero-meta">
+            <span><span class="dot"></span>PhD Environmental &amp; Development Studies</span>
+            <span><span class="dot"></span>Social Progress Imperative</span>
+            <span><span class="dot"></span>Prague, Czechia</span>
+        </div>
+    </header>
+
+    <section id="research">
+        <div class="section-header">
+            <h2 class="section-title">Research Themes</h2>
+            <span class="section-count">03 PILLARS</span>
+        </div>
+        <div class="research-grid">
+            <div class="research-card">
+                <div class="research-number">01</div>
+                <h3>Composite Well-being Measurement</h3>
+                <p>Advancing beyond-GDP metrics through the Social Progress Index framework. Developing time-varying weighting schemes and non-compensatory aggregation techniques to capture multidimensional societal development across 170+ countries over three decades.</p>
+                <div class="research-tags">
+                    <span class="tag">Social Progress Index</span>
+                    <span class="tag">Entropy Weighting</span>
+                    <span class="tag">Panel Data</span>
+                </div>
+            </div>
+            <div class="research-card">
+                <div class="research-number">02</div>
+                <h3>Environmental Efficiency of Well-being</h3>
+                <p>Investigating how nations achieve social progress while minimizing environmental impact. Creating metrics like the Just Transition Score and Carbon Efficiency of Social Progress to assess sustainability performance and convergence dynamics.</p>
+                <div class="research-tags">
+                    <span class="tag">Just Transition</span>
+                    <span class="tag">Carbon Efficiency</span>
+                    <span class="tag">Convergence Analysis</span>
+                </div>
+            </div>
+            <div class="research-card">
+                <div class="research-number">03</div>
+                <h3>Climate Change Perception</h3>
+                <p>Analyzing public attitudes toward climate risks across 100+ countries using large-scale survey data. Constructing latent variable models to understand awareness, worry, and action readiness—linking perception to policy effectiveness.</p>
+                <div class="research-tags">
+                    <span class="tag">Climate Perceptions Index</span>
+                    <span class="tag">Latent Variables</span>
+                    <span class="tag">Random Forest</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="publications">
+        <div class="section-header">
+            <h2 class="section-title">Publications</h2>
+            <span class="section-count">07 PAPERS</span>
+        </div>
+        <div class="publications-list">
+            <div class="publication-item">
+                <span class="pub-year">2025</span>
+                <div class="pub-content">
+                    <h4>The Evolving "Importance" of Social and Governance Measures Over Time</h4>
+                    <p>Htitich, M., Harmáček, J., &amp; Krylova, P. <span class="pub-journal">Global Policy</span>, 16, 1021-1038</p>
+                </div>
+                <span class="pub-status published">Published</span>
+            </div>
+            <div class="publication-item">
+                <span class="pub-year">2025</span>
+                <div class="pub-content">
+                    <h4>Social Progress Index 1990–2020: Measuring Societal Wellbeing Over 31 Years</h4>
+                    <p>Krylova, P., Harmáček, J., &amp; Htitich, M. <span class="pub-journal">International Journal of Social Research Methodology</span></p>
+                </div>
+                <span class="pub-status published">Published</span>
+            </div>
+            <div class="publication-item">
+                <span class="pub-year">2025</span>
+                <div class="pub-content">
+                    <h4>Multidimensional Cross-Country Measurement of Climate Change Perceptions</h4>
+                    <p>Htitich, M., Harmáček, J., Lisney, J., &amp; Krylova, P. <span class="pub-journal">Measurement: Interdisciplinary Research and Perspectives</span>, 23(4)</p>
+                </div>
+                <span class="pub-status published">Published</span>
+            </div>
+            <div class="publication-item">
+                <span class="pub-year">2025</span>
+                <div class="pub-content">
+                    <h4>SDG10: Inequalities Beyond Income—A Longitudinal Perspective Through the Social Progress Index</h4>
+                    <p>Krylova, P., Peiró-Palomino, J., Htitich, M., &amp; Harmáček, J. <span class="pub-journal">The Elgar Companion to SDG Indicators</span></p>
+                </div>
+                <span class="pub-status published">Accepted</span>
+            </div>
+            <div class="publication-item">
+                <span class="pub-year">2024</span>
+                <div class="pub-content">
+                    <h4>Just Transition Score: Measuring the Relative Sustainability of Social Progress</h4>
+                    <p>Htitich, M., Krylová, P., &amp; Harmáček, J. <span class="pub-journal">Environmental and Sustainability Indicators</span>, 23, 100440</p>
+                </div>
+                <span class="pub-status published">Published</span>
+            </div>
+            <div class="publication-item">
+                <span class="pub-year">2025</span>
+                <div class="pub-content">
+                    <h4>Achieving Just Transition Through Convergence in the Carbon Efficiency of Social Progress</h4>
+                    <p>Htitich, M., Harmáček, J., &amp; Krylova, P. <span class="pub-journal">Geography and Sustainability</span></p>
+                </div>
+                <span class="pub-status">Under Revision</span>
+            </div>
+            <div class="publication-item">
+                <span class="pub-year">2025</span>
+                <div class="pub-content">
+                    <h4>Dissimilarities in the Socio-economic Predictors of Climate Change Worry and Action</h4>
+                    <p>Htitich, M., et al. <span class="pub-journal">Computational Social Science</span></p>
+                </div>
+                <span class="pub-status">Submitted</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="indices">
+        <div class="section-header">
+            <h2 class="section-title">Composite Indices</h2>
+            <span class="section-count">03 METRICS</span>
+        </div>
+        <div class="indices-grid">
+            <div class="index-card" onclick="openIndexModal(&#39;jts&#39;)">
+                <div class="index-card-inner">
+                    <div class="index-abbr">JTS</div>
+                    <div class="index-name">Just Transition Score</div>
+                    <div class="index-stat">Material &amp; Carbon Efficiency</div>
+                    <div class="index-expand-hint">
+                        <span>→</span> View methodology &amp; policy relevance
+                    </div>
+                </div>
+            </div>
+            <div class="index-card" onclick="openIndexModal(&#39;cesp&#39;)">
+                <div class="index-card-inner">
+                    <div class="index-abbr">CESP</div>
+                    <div class="index-name">Carbon Efficiency of Social Progress</div>
+                    <div class="index-stat">Convergence Analysis</div>
+                    <div class="index-expand-hint">
+                        <span>→</span> View methodology &amp; policy relevance
+                    </div>
+                </div>
+            </div>
+            <div class="index-card" onclick="openIndexModal(&#39;cpi&#39;)">
+                <div class="index-card-inner">
+                    <div class="index-abbr">CPI</div>
+                    <div class="index-name">Climate Perceptions Index</div>
+                    <div class="index-stat">100k+ Survey Responses</div>
+                    <div class="index-expand-hint">
+                        <span>→</span> View methodology &amp; policy relevance
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Index Modals -->
+    <div class="index-modal-overlay" id="jts-modal" onclick="closeIndexModal(event, &#39;jts&#39;)">
+        <div class="index-modal" onclick="event.stopPropagation()">
+            <button class="modal-close" onclick="closeIndexModal(event, &#39;jts&#39;)">×</button>
+            <div class="modal-header">
+                <div class="modal-abbr">JTS</div>
+                <div class="modal-title">Just Transition Score</div>
+                <div class="modal-meta">
+                    <div class="modal-meta-item">
+                        <div class="modal-meta-icon">📊</div>
+                        <span>170+ Countries</span>
+                    </div>
+                    <div class="modal-meta-item">
+                        <div class="modal-meta-icon">📅</div>
+                        <span>1990–2020</span>
+                    </div>
+                    <div class="modal-meta-item">
+                        <div class="modal-meta-icon">📄</div>
+                        <span>Environmental and Sustainability Indicators (2024)</span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="modal-section">
+                    <div class="modal-section-title">Scope &amp; Aim</div>
+                    <p>The Just Transition Score measures how efficiently countries achieve social progress relative to their environmental footprint. It integrates two efficiency dimensions: <strong>material footprint efficiency</strong> (SPI per ton of material consumption) and <strong>carbon footprint efficiency</strong> (SPI per ton of CO₂ emissions).</p>
+                    <p style="margin-top: 1rem;">This dual-efficiency framework captures the "safe and just space" concept from Raworth's Doughnut Economics—identifying countries that deliver high well-being outcomes while staying within planetary boundaries.</p>
+                </div>
+                
+                <div class="modal-visualization">
+                    <div class="technique-viz-title">Efficiency Framework</div>
+                    <div class="viz-chart">
+                        <div class="viz-bar" style="height: 45%;">
+                            <span class="viz-bar-value">45</span>
+                            <span class="viz-bar-label">Low JTS</span>
+                        </div>
+                        <div class="viz-bar" style="height: 65%;">
+                            <span class="viz-bar-value">65</span>
+                            <span class="viz-bar-label">Mid JTS</span>
+                        </div>
+                        <div class="viz-bar" style="height: 85%;">
+                            <span class="viz-bar-value">85</span>
+                            <span class="viz-bar-label">High JTS</span>
+                        </div>
+                        <div class="viz-bar" style="height: 92%;">
+                            <span class="viz-bar-value">92</span>
+                            <span class="viz-bar-label">Leaders</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="modal-section">
+                    <div class="modal-section-title">Policy Relevance</div>
+                    <div class="policy-relevance">
+                        <p>The JTS informs climate policy by identifying which development pathways achieve human flourishing without exceeding environmental limits. It helps policymakers benchmark national performance against global leaders, prioritize investments in decoupling strategies, and track progress toward the Paris Agreement's equity principles—ensuring that climate action does not compromise development goals.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="index-modal-overlay" id="cesp-modal" onclick="closeIndexModal(event, &#39;cesp&#39;)">
+        <div class="index-modal" onclick="event.stopPropagation()">
+            <button class="modal-close" onclick="closeIndexModal(event, &#39;cesp&#39;)">×</button>
+            <div class="modal-header">
+                <div class="modal-abbr">CESP</div>
+                <div class="modal-title">Carbon Efficiency of Social Progress</div>
+                <div class="modal-meta">
+                    <div class="modal-meta-item">
+                        <div class="modal-meta-icon">📊</div>
+                        <span>170+ Countries</span>
+                    </div>
+                    <div class="modal-meta-item">
+                        <div class="modal-meta-icon">📅</div>
+                        <span>1990–2020</span>
+                    </div>
+                    <div class="modal-meta-item">
+                        <div class="modal-meta-icon">📄</div>
+                        <span>Geography and Sustainability (Under Revision)</span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="modal-section">
+                    <div class="modal-section-title">Scope &amp; Aim</div>
+                    <p>CESP measures how efficiently countries convert carbon emissions into social progress, calculated as the ratio of Social Progress Index to per capita CO₂ emissions. Unlike absolute metrics, CESP captures the <strong>efficiency of emissions</strong> in delivering well-being outcomes.</p>
+                    <p style="margin-top: 1rem;">The study applies Phillips-Sul club convergence analysis to examine whether countries are converging toward sustainable efficiency levels or diverging into distinct performance clusters—revealing the structural barriers and enabling conditions for just transitions.</p>
+                </div>
+                
+                <div class="modal-visualization">
+                    <div class="technique-viz-title">Convergence Trajectories</div>
+                    <div class="convergence-viz">
+                        <div class="convergence-line"></div>
+                        <div class="convergence-line"></div>
+                        <div class="convergence-line"></div>
+                    </div>
+                </div>
+                
+                <div class="modal-section">
+                    <div class="modal-section-title">Policy Relevance</div>
+                    <div class="policy-relevance">
+                        <p>CESP provides critical insights for climate negotiations and technology transfer policies. By identifying convergence clubs, it reveals which country groups share common challenges and could benefit from targeted cooperation. The metric supports the Paris Agreement's differentiated responsibilities framework by quantifying emission efficiency gaps between developed and developing nations—informing equitable burden-sharing mechanisms.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="index-modal-overlay" id="cpi-modal" onclick="closeIndexModal(event, &#39;cpi&#39;)">
+        <div class="index-modal" onclick="event.stopPropagation()">
+            <button class="modal-close" onclick="closeIndexModal(event, &#39;cpi&#39;)">×</button>
+            <div class="modal-header">
+                <div class="modal-abbr">CPI</div>
+                <div class="modal-title">Climate Perceptions Index</div>
+                <div class="modal-meta">
+                    <div class="modal-meta-item">
+                        <div class="modal-meta-icon">📊</div>
+                        <span>100+ Countries</span>
+                    </div>
+                    <div class="modal-meta-item">
+                        <div class="modal-meta-icon">👥</div>
+                        <span>100k+ Survey Responses</span>
+                    </div>
+                    <div class="modal-meta-item">
+                        <div class="modal-meta-icon">📄</div>
+                        <span>Measurement (2025)</span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="modal-section">
+                    <div class="modal-section-title">Scope &amp; Aim</div>
+                    <p>The Climate Perceptions Index captures public attitudes toward climate change across three latent dimensions: <strong>awareness</strong> (knowledge of climate change causes), <strong>risk perception</strong> (perceived threat level), and <strong>willingness to act</strong> (support for policy interventions).</p>
+                    <p style="margin-top: 1rem;">Using Bayesian confirmatory factor analysis on data from the Lloyd's Register Foundation World Risk Poll, the CPI reveals how climate attitudes cluster across populations and identifies the socio-economic predictors that explain cross-country variation.</p>
+                </div>
+                
+                <div class="modal-visualization">
+                    <div class="technique-viz-title">Three Dimensions of Climate Perception</div>
+                    <div class="entropy-viz">
+                        <div class="entropy-bar-group">
+                            <div class="entropy-bar-pair">
+                                <div class="entropy-bar before" style="height: 60px;"></div>
+                                <div class="entropy-bar after" style="height: 95px;"></div>
+                            </div>
+                            <span class="entropy-label">Awareness</span>
+                        </div>
+                        <div class="entropy-bar-group">
+                            <div class="entropy-bar-pair">
+                                <div class="entropy-bar before" style="height: 50px;"></div>
+                                <div class="entropy-bar after" style="height: 80px;"></div>
+                            </div>
+                            <span class="entropy-label">Risk</span>
+                        </div>
+                        <div class="entropy-bar-group">
+                            <div class="entropy-bar-pair">
+                                <div class="entropy-bar before" style="height: 40px;"></div>
+                                <div class="entropy-bar after" style="height: 70px;"></div>
+                            </div>
+                            <span class="entropy-label">Action</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="modal-section">
+                    <div class="modal-section-title">Policy Relevance</div>
+                    <div class="policy-relevance">
+                        <p>The CPI helps governments understand where public opinion enables or constrains climate policy ambition. By decomposing perception into distinct dimensions, it reveals whether low policy support stems from awareness gaps (requiring education), risk perception deficits (requiring communication strategies), or action readiness barriers (requiring economic incentives). This granular understanding enables targeted interventions that build genuine climate constituencies.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section id="tools">
+        <div class="section-header">
+            <h2 class="section-title">R Package</h2>
+            <span class="section-count">w2m</span>
+        </div>
+        
+        <div class="package-section">
+            <div class="package-header">
+                <div class="package-logo">w2m</div>
+                <div class="package-info">
+                    <h3>What to Measure</h3>
+                    <div class="package-tagline">A comprehensive R toolkit for sustainability research</div>
+                    <div class="package-badges">
+                        <span class="package-badge">R ≥ 4.0</span>
+                        <span class="package-badge">MIT License</span>
+                        <span class="package-badge">v1.0.0</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="package-content">
+                <div class="package-description">
+                    <p>The <strong>w2m</strong> package provides a unified framework for constructing, analyzing, and visualizing composite indicators. It implements the methodological innovations from my dissertation research—including modified entropy weighting with temporal decay, convergence testing, and ML-based variable importance ranking.</p>
+                    <p>Designed for researchers working with cross-country panel data, w2m streamlines the entire workflow from data preprocessing to publication-ready outputs.</p>
+                    
+                    <div class="package-stats">
+                        <div class="package-stat">
+                            <div class="package-stat-value">2,246+</div>
+                            <div class="package-stat-label">Lines of Code</div>
+                        </div>
+                        <div class="package-stat">
+                            <div class="package-stat-value">10</div>
+                            <div class="package-stat-label">Modules</div>
+                        </div>
+                        <div class="package-stat">
+                            <div class="package-stat-value">40+</div>
+                            <div class="package-stat-label">Functions</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="package-modules">
+                    <div class="module-list">
+                        <div class="module-item">
+                            <div class="module-icon">λ</div>
+                            <span class="module-name">entropy_weights.R</span>
+                            <span class="module-desc">Modified entropy with decay</span>
+                        </div>
+                        <div class="module-item">
+                            <div class="module-icon">β</div>
+                            <span class="module-name">convergence.R</span>
+                            <span class="module-desc">Phillips-Sul &amp; σ-tests</span>
+                        </div>
+                        <div class="module-item">
+                            <div class="module-icon">∇</div>
+                            <span class="module-name">importance.R</span>
+                            <span class="module-desc">RF variable ranking</span>
+                        </div>
+                        <div class="module-item">
+                            <div class="module-icon">◈</div>
+                            <span class="module-name">spatial_viz.R</span>
+                            <span class="module-desc">Choropleth maps</span>
+                        </div>
+                        <div class="module-item">
+                            <div class="module-icon">Σ</div>
+                            <span class="module-name">aggregation.R</span>
+                            <span class="module-desc">Index construction</span>
+                        </div>
+                        <div class="module-item">
+                            <div class="module-icon">θ</div>
+                            <span class="module-name">normalization.R</span>
+                            <span class="module-desc">Min-max &amp; z-score</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="techniques">
+        <div class="section-header">
+            <h2 class="section-title">Technical Methods</h2>
+            <span class="section-count">04 TECHNIQUES</span>
+        </div>
+        
+        <div class="techniques-grid">
+            <div class="technique-card" onclick="openTechniqueModal(&#39;entropy&#39;)">
+                <div class="technique-icon">λ</div>
+                <div class="technique-name">Modified Entropy Weighting</div>
+                <div class="technique-brief">Time-varying weights with temporal decay parameters to track evolving indicator importance in longitudinal data.</div>
+                <div class="technique-expand">
+                    <span>→</span> View formula &amp; methodology
+                </div>
+            </div>
+            
+            <div class="technique-card" onclick="openTechniqueModal(&#39;convergence&#39;)">
+                <div class="technique-icon">β</div>
+                <div class="technique-name">Convergence Analysis</div>
+                <div class="technique-brief">Phillips-Sul club convergence and σ-convergence tests for identifying clusters and trajectories in panel data.</div>
+                <div class="technique-expand">
+                    <span>→</span> View formula &amp; methodology
+                </div>
+            </div>
+            
+            <div class="technique-card" onclick="openTechniqueModal(&#39;importance&#39;)">
+                <div class="technique-icon">∇</div>
+                <div class="technique-name">Variable Importance</div>
+                <div class="technique-brief">Random forest and permutation-based feature ranking with cross-validated importance scores.</div>
+                <div class="technique-expand">
+                    <span>→</span> View formula &amp; methodology
+                </div>
+            </div>
+            
+            <div class="technique-card" onclick="openTechniqueModal(&#39;bayesian&#39;)">
+                <div class="technique-icon">ψ</div>
+                <div class="technique-name">Bayesian Latent Variables</div>
+                <div class="technique-brief">Confirmatory factor analysis using MCMC estimation to extract scores for unobservable constructs.</div>
+                <div class="technique-expand">
+                    <span>→</span> View formula &amp; methodology
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technique Modals -->
+    <div class="index-modal-overlay" id="entropy-modal" onclick="closeIndexModal(event, &#39;entropy&#39;)">
+        <div class="technique-modal" onclick="event.stopPropagation()">
+            <button class="modal-close" onclick="closeIndexModal(event, &#39;entropy&#39;)">×</button>
+            <div class="technique-modal-header">
+                <div class="technique-modal-icon">λ</div>
+                <div class="technique-modal-info">
+                    <h2>Modified Entropy Weighting</h2>
+                    <p>Time-varying weights with temporal decay for longitudinal composite indicators</p>
+                </div>
+            </div>
+            <div class="technique-modal-body">
+                <div class="modal-section">
+                    <div class="modal-section-title">Methodology</div>
+                    <p>Traditional entropy weighting assigns static weights based on cross-sectional variance. The modified approach introduces a <strong>temporal decay factor</strong> that gives greater influence to recent observations while still incorporating historical patterns—essential for tracking how indicator "importance" evolves over multi-decade panels.</p>
+                </div>
+                
+                <div class="formula-container">
+                    <div class="formula-title">Core Formulas</div>
+                    <div class="formula">
+                        p<sub>ij</sub><sup>(t)</sup> = X<sub>ij</sub><sup>(t)</sup> / Σ<sub>i</sub> X<sub>ij</sub><sup>(t)</sup>
+                    </div>
+                    <div class="formula">
+                        p̃<sub>ij</sub><sup>(t)</sup> = α<sup>(T−t)</sup> · p<sub>ij</sub><sup>(t)</sup>
+                    </div>
+                    <div class="formula">
+                        H<sub>j</sub><sup>(t)</sup> = −k Σ<sub>i</sub> p̃<sub>ij</sub><sup>(t)</sup> log(p̃<sub>ij</sub><sup>(t)</sup>)
+                    </div>
+                    <div class="formula">
+                        w<sub>j</sub><sup>(t)</sup> = (1 − H<sub>j</sub><sup>(t)</sup>) / Σ<sub>j</sub>(1 − H<sub>j</sub><sup>(t)</sup>)
+                    </div>
+                    <div class="formula-vars">
+                        <div class="formula-var"><span>α</span> = decay factor (≈ e<sup>−0.0001</sup>)</div>
+                        <div class="formula-var"><span>T</span> = most recent time point</div>
+                        <div class="formula-var"><span>k</span> = 1/log(n) for standardization</div>
+                    </div>
+                </div>
+                
+                <div class="technique-viz">
+                    <div class="technique-viz-title">Evolution of Entropy Weights (1990–2020)</div>
+                    <div class="entropy-viz">
+                        <div class="entropy-bar-group">
+                            <div class="entropy-bar-pair">
+                                <div class="entropy-bar before" style="height: 100px;"></div>
+                                <div class="entropy-bar after" style="height: 60px;"></div>
+                            </div>
+                            <span class="entropy-label">Basic Needs</span>
+                        </div>
+                        <div class="entropy-bar-group">
+                            <div class="entropy-bar-pair">
+                                <div class="entropy-bar before" style="height: 90px;"></div>
+                                <div class="entropy-bar after" style="height: 70px;"></div>
+                            </div>
+                            <span class="entropy-label">Wellbeing</span>
+                        </div>
+                        <div class="entropy-bar-group">
+                            <div class="entropy-bar-pair">
+                                <div class="entropy-bar before" style="height: 55px;"></div>
+                                <div class="entropy-bar after" style="height: 95px;"></div>
+                            </div>
+                            <span class="entropy-label">State Cap.</span>
+                        </div>
+                        <div class="entropy-bar-group">
+                            <div class="entropy-bar-pair">
+                                <div class="entropy-bar before" style="height: 80px;"></div>
+                                <div class="entropy-bar after" style="height: 110px;"></div>
+                            </div>
+                            <span class="entropy-label">Democracy</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="index-modal-overlay" id="convergence-modal" onclick="closeIndexModal(event, &#39;convergence&#39;)">
+        <div class="technique-modal" onclick="event.stopPropagation()">
+            <button class="modal-close" onclick="closeIndexModal(event, &#39;convergence&#39;)">×</button>
+            <div class="technique-modal-header">
+                <div class="technique-modal-icon">β</div>
+                <div class="technique-modal-info">
+                    <h2>Convergence Analysis</h2>
+                    <p>Phillips-Sul club convergence and σ-convergence for panel trajectories</p>
+                </div>
+            </div>
+            <div class="technique-modal-body">
+                <div class="modal-section">
+                    <div class="modal-section-title">Methodology</div>
+                    <p>Convergence analysis examines whether countries are becoming more similar (converging) or more different (diverging) over time. <strong>σ-convergence</strong> tracks the dispersion across the full sample, while <strong>Phillips-Sul club convergence</strong> identifies subgroups following common transition paths—revealing hidden heterogeneity in global trends.</p>
+                </div>
+                
+                <div class="formula-container">
+                    <div class="formula-title">Key Formulas</div>
+                    <div class="formula">
+                        σ-convergence: σ<sub>t</sub> = √[Σ<sub>i</sub>(y<sub>it</sub> − ȳ<sub>t</sub>)² / N]
+                    </div>
+                    <div class="formula">
+                        Phillips-Sul: log(H<sub>1</sub>/H<sub>t</sub>) − 2log(log t) = α + β log t + u<sub>t</sub>
+                    </div>
+                    <div class="formula-vars">
+                        <div class="formula-var"><span>H<sub>t</sub></span> = cross-sectional variance at time t</div>
+                        <div class="formula-var"><span>β</span> ≥ 0 indicates convergence</div>
+                        <div class="formula-var"><span>t-stat</span> &gt; −1.65 confirms club</div>
+                    </div>
+                </div>
+                
+                <div class="technique-viz">
+                    <div class="technique-viz-title">Club Convergence Trajectories</div>
+                    <div class="convergence-viz">
+                        <div class="convergence-line"></div>
+                        <div class="convergence-line"></div>
+                        <div class="convergence-line"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="index-modal-overlay" id="importance-modal" onclick="closeIndexModal(event, &#39;importance&#39;)">
+        <div class="technique-modal" onclick="event.stopPropagation()">
+            <button class="modal-close" onclick="closeIndexModal(event, &#39;importance&#39;)">×</button>
+            <div class="technique-modal-header">
+                <div class="technique-modal-icon">∇</div>
+                <div class="technique-modal-info">
+                    <h2>Variable Importance</h2>
+                    <p>Random forest and permutation-based feature ranking</p>
+                </div>
+            </div>
+            <div class="technique-modal-body">
+                <div class="modal-section">
+                    <div class="modal-section-title">Methodology</div>
+                    <p>Random Forest importance scores quantify each predictor's contribution to model accuracy. <strong>Permutation importance</strong> measures the increase in prediction error when a variable's values are shuffled—providing a model-agnostic assessment of feature relevance that captures non-linear relationships and interactions.</p>
+                </div>
+                
+                <div class="formula-container">
+                    <div class="formula-title">Importance Measures</div>
+                    <div class="formula">
+                        VI<sub>j</sub><sup>perm</sup> = (1/B) Σ<sub>b</sub> [Err(T<sub>b</sub>, D<sub>j</sub><sup>π</sup>) − Err(T<sub>b</sub>, D)]
+                    </div>
+                    <div class="formula">
+                        VI<sub>j</sub><sup>gini</sup> = Σ<sub>nodes</sub> Δ Gini(j)
+                    </div>
+                    <div class="formula-vars">
+                        <div class="formula-var"><span>B</span> = number of trees</div>
+                        <div class="formula-var"><span>D<sub>j</sub><sup>π</sup></span> = data with j permuted</div>
+                        <div class="formula-var"><span>Δ Gini</span> = impurity reduction</div>
+                    </div>
+                </div>
+                
+                <div class="technique-viz">
+                    <div class="technique-viz-title">Feature Importance Rankings</div>
+                    <div class="viz-chart">
+                        <div class="viz-bar" style="height: 95%;">
+                            <span class="viz-bar-value">.42</span>
+                            <span class="viz-bar-label">GDP</span>
+                        </div>
+                        <div class="viz-bar" style="height: 78%;">
+                            <span class="viz-bar-value">.35</span>
+                            <span class="viz-bar-label">Educ.</span>
+                        </div>
+                        <div class="viz-bar" style="height: 62%;">
+                            <span class="viz-bar-value">.28</span>
+                            <span class="viz-bar-label">Health</span>
+                        </div>
+                        <div class="viz-bar" style="height: 48%;">
+                            <span class="viz-bar-value">.21</span>
+                            <span class="viz-bar-label">Gov.</span>
+                        </div>
+                        <div class="viz-bar" style="height: 35%;">
+                            <span class="viz-bar-value">.15</span>
+                            <span class="viz-bar-label">Urban</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="index-modal-overlay" id="bayesian-modal" onclick="closeIndexModal(event, &#39;bayesian&#39;)">
+        <div class="technique-modal" onclick="event.stopPropagation()">
+            <button class="modal-close" onclick="closeIndexModal(event, &#39;bayesian&#39;)">×</button>
+            <div class="technique-modal-header">
+                <div class="technique-modal-icon">ψ</div>
+                <div class="technique-modal-info">
+                    <h2>Bayesian Latent Variables</h2>
+                    <p>Confirmatory factor analysis with MCMC estimation</p>
+                </div>
+            </div>
+            <div class="technique-modal-body">
+                <div class="modal-section">
+                    <div class="modal-section-title">Methodology</div>
+                    <p>Bayesian Confirmatory Factor Analysis (BCFA) extracts latent constructs from observed indicators using probabilistic inference. The approach specifies prior distributions for factor loadings and uses <strong>MCMC sampling</strong> to estimate posterior distributions—providing credible intervals rather than point estimates and naturally handling measurement uncertainty.</p>
+                </div>
+                
+                <div class="formula-container">
+                    <div class="formula-title">Model Specification</div>
+                    <div class="formula">
+                        y<sub>i</sub> = Λη<sub>i</sub> + ε<sub>i</sub> , ε<sub>i</sub> ~ N(0, Θ)
+                    </div>
+                    <div class="formula">
+                        η<sub>i</sub> ~ N(0, Ψ) , Λ ~ N(0, 10)
+                    </div>
+                    <div class="formula-vars">
+                        <div class="formula-var"><span>y</span> = observed indicators</div>
+                        <div class="formula-var"><span>Λ</span> = factor loadings</div>
+                        <div class="formula-var"><span>η</span> = latent factors</div>
+                        <div class="formula-var"><span>Ψ</span> = factor covariance</div>
+                    </div>
+                </div>
+                
+                <div class="technique-viz">
+                    <div class="technique-viz-title">Posterior Factor Score Distributions</div>
+                    <div class="entropy-viz">
+                        <div class="entropy-bar-group">
+                            <div class="entropy-bar-pair">
+                                <div class="entropy-bar before" style="height: 40px;"></div>
+                                <div class="entropy-bar after" style="height: 85px;"></div>
+                            </div>
+                            <span class="entropy-label">Aware</span>
+                        </div>
+                        <div class="entropy-bar-group">
+                            <div class="entropy-bar-pair">
+                                <div class="entropy-bar before" style="height: 55px;"></div>
+                                <div class="entropy-bar after" style="height: 90px;"></div>
+                            </div>
+                            <span class="entropy-label">Risk</span>
+                        </div>
+                        <div class="entropy-bar-group">
+                            <div class="entropy-bar-pair">
+                                <div class="entropy-bar before" style="height: 35px;"></div>
+                                <div class="entropy-bar after" style="height: 75px;"></div>
+                            </div>
+                            <span class="entropy-label">Action</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section id="about">
+        <div class="section-header">
+            <h2 class="section-title">About</h2>
+        </div>
+        <div class="about-grid">
+            <div class="about-text">
+                <p>
+                    <strong>Mohamed Htitich</strong> is a macroeconomist and applied econometrician specializing in sustainable development measurement. His research focuses on creating robust cross-country indicators that capture multidimensional well-being while accounting for environmental constraints.
+                </p>
+                <br>
+                <p>
+                    From 2021 to 2025, he served as Research Associate at the <strong>Social Progress Imperative</strong>, co-designing the conceptual framework and statistical methodology for the Social Progress Index—a comprehensive measure of societal well-being beyond GDP covering 170+ countries.
+                </p>
+                <br>
+                <p>
+                    His dissertation at <strong>Palacký University Olomouc</strong> synthesizes seven research papers across three interconnected themes: composite measurement of well-being, environmental efficiency of social progress, and public climate change perception. This work advances both methodology and empirical understanding of global sustainability patterns.
+                </p>
+            </div>
+            <div class="about-sidebar">
+                <div class="sidebar-block">
+                    <h4>Education</h4>
+                    <p>PhD Environmental &amp; Development Studies<br>Palacký University Olomouc, 2025</p>
+                    <br>
+                    <p>MSc Applied Econometrics<br>Hassan II University, Casablanca</p>
+                </div>
+                <div class="sidebar-block">
+                    <h4>Languages</h4>
+                    <p>Arabic (native) • French (bilingual) • English (advanced)</p>
+                </div>
+                <div class="sidebar-block">
+                    <h4>Contact</h4>
+                    <p><a href="mailto:m.ahtitich@outlook.com">m.ahtitich@outlook.com</a></p>
+                    <p><a href="https://github.com/MohamedHtitich1" target="_blank">GitHub</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-left">© 2025 Mohamed Htitich</div>
+        <div class="footer-links">
+            <a href="mailto:m.ahtitich@outlook.com">Email</a>
+            <a href="https://github.com/MohamedHtitich1" target="_blank">GitHub</a>
+        </div>
+    </footer>
+
+    <script>
+        // Modal functions
+        function openIndexModal(id) {
+            document.getElementById(id + '-modal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeIndexModal(event, id) {
+            if (event.target === event.currentTarget || event.currentTarget.classList.contains('modal-close')) {
+                document.getElementById(id + '-modal').classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
+        
+        function openTechniqueModal(id) {
+            document.getElementById(id + '-modal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        // Close modal on Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                document.querySelectorAll('.index-modal-overlay.active').forEach(modal => {
+                    modal.classList.remove('active');
+                });
+                document.body.style.overflow = '';
+            }
+        });
+        
+        // Smooth scroll for nav links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+
+
+</body></html>
