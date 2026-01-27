@@ -139,6 +139,15 @@
             filter: blur(40px);
         }
 
+        /* Boost aurora visibility in light mode */
+        [data-theme="light"] .aurora {
+            filter: blur(30px) saturate(1.4) brightness(0.95);
+        }
+
+        [data-theme="light"] .aurora-streaks {
+            opacity: 0.6;
+        }
+
         /* Aurora curtains - vertical ribbon-like bands */
         .aurora-band {
             position: absolute;
@@ -148,31 +157,31 @@
         /* Primary curtain - diagonal sweep from left */
         .aurora-band-1 {
             width: 120%;
-            height: 800px;
-            top: -20%;
+            height: 700px;
+            top: -25%;
             left: -30%;
             transform-origin: top left;
-            animation: aurora-curtain-1 27s ease-in-out infinite;
+            animation: aurora-curtain-1 34s ease-in-out infinite; /* Fibonacci: 34 */
         }
         
         /* Secondary curtain - crossing wave */
         .aurora-band-2 {
             width: 100%;
-            height: 600px;
-            top: -10%;
+            height: 550px;
+            top: 15%;
             left: -20%;
             transform-origin: top center;
-            animation: aurora-curtain-2 31s ease-in-out infinite;
+            animation: aurora-curtain-2 21s ease-in-out infinite; /* Fibonacci: 21 */
         }
         
         /* Tertiary curtain - subtle background glow */
         .aurora-band-3 {
             width: 150%;
-            height: 500px;
-            top: 0%;
+            height: 450px;
+            top: 45%;
             left: -25%;
             transform-origin: center;
-            animation: aurora-curtain-3 37s ease-in-out infinite;
+            animation: aurora-curtain-3 55s ease-in-out infinite; /* Fibonacci: 55 */
         }
 
         /* Vertical streaks overlay */
@@ -183,7 +192,7 @@
             top: 0;
             left: 0;
             opacity: 0.4;
-            animation: aurora-shimmer 13s ease-in-out infinite;
+            animation: aurora-shimmer 13s ease-in-out infinite; /* Fibonacci: 13 */
         }
         
         /* Dark mode aurora colors - subtle greens */
@@ -233,37 +242,37 @@
             );
         }
         
-        /* Light mode aurora colors */
+        /* Light mode aurora colors - more visible */
         [data-theme="light"] .aurora-band-1 {
             background: linear-gradient(135deg, 
                 transparent 0%,
-                rgba(50, 130, 85, 0.06) 15%,
-                rgba(65, 150, 100, 0.15) 30%,
-                rgba(75, 165, 110, 0.25) 45%,
-                rgba(85, 175, 120, 0.28) 55%,
-                rgba(65, 150, 100, 0.18) 70%,
-                rgba(50, 125, 85, 0.08) 85%,
+                rgba(45, 120, 75, 0.12) 15%,
+                rgba(55, 140, 90, 0.28) 30%,
+                rgba(65, 155, 100, 0.42) 45%,
+                rgba(75, 165, 110, 0.48) 55%,
+                rgba(60, 145, 95, 0.32) 70%,
+                rgba(45, 120, 80, 0.14) 85%,
                 transparent 100%);
         }
         
         [data-theme="light"] .aurora-band-2 {
             background: linear-gradient(120deg, 
                 transparent 0%,
-                rgba(45, 115, 75, 0.05) 20%,
-                rgba(60, 140, 95, 0.13) 40%,
-                rgba(70, 160, 105, 0.2) 50%,
-                rgba(60, 145, 95, 0.14) 65%,
-                rgba(45, 120, 80, 0.06) 80%,
+                rgba(40, 110, 70, 0.1) 20%,
+                rgba(55, 135, 88, 0.24) 40%,
+                rgba(65, 155, 100, 0.36) 50%,
+                rgba(55, 140, 90, 0.26) 65%,
+                rgba(42, 115, 75, 0.12) 80%,
                 transparent 100%);
         }
         
         [data-theme="light"] .aurora-band-3 {
             background: linear-gradient(150deg, 
                 transparent 0%,
-                rgba(35, 100, 70, 0.04) 25%,
-                rgba(50, 125, 85, 0.1) 45%,
-                rgba(65, 145, 100, 0.15) 55%,
-                rgba(50, 120, 80, 0.08) 75%,
+                rgba(35, 95, 65, 0.08) 25%,
+                rgba(48, 120, 80, 0.18) 45%,
+                rgba(60, 140, 95, 0.28) 55%,
+                rgba(48, 115, 78, 0.15) 75%,
                 transparent 100%);
         }
 
@@ -272,103 +281,113 @@
                 100deg,
                 transparent 0px,
                 transparent 100px,
-                rgba(60, 150, 95, 0.025) 102px,
-                rgba(75, 170, 110, 0.05) 105px,
-                rgba(60, 150, 95, 0.025) 108px,
+                rgba(55, 145, 90, 0.05) 102px,
+                rgba(70, 165, 105, 0.1) 105px,
+                rgba(55, 145, 90, 0.05) 108px,
                 transparent 110px,
                 transparent 250px
             );
         }
 
+        /* Fibonacci keyframes: 0, 3, 5, 8, 13, 21, 34, 55, 89, 100 */
+        /* Golden ratio φ = 1.618, inverse = 0.618 */
         @keyframes aurora-curtain-1 {
             0% { 
-                opacity: 0.4; 
-                transform: translateX(-8%) rotate(-4deg) scaleY(0.95) skewX(-4deg); 
+                opacity: 0.38; /* 1 - 0.618 */
+                transform: translateX(-8%) rotate(-3deg) scaleY(0.95) skewX(-3deg); 
             }
-            17% { 
-                opacity: 0.7; 
-                transform: translateX(2%) rotate(-1deg) scaleY(1.12) skewX(-7deg); 
+            8% { 
+                opacity: 0.62; /* 0.618 */
+                transform: translateX(-2%) rotate(-1deg) scaleY(1.05) skewX(-5deg); 
             }
-            38% { 
-                opacity: 0.55; 
-                transform: translateX(12%) rotate(3deg) scaleY(1.05) skewX(-2deg); 
+            21% { 
+                opacity: 0.76; /* 0.618 + 0.14 */
+                transform: translateX(5%) rotate(1deg) scaleY(1.13) skewX(-2deg); 
             }
-            54% { 
-                opacity: 0.85; 
-                transform: translateX(6%) rotate(0deg) scaleY(1.18) skewX(-5deg); 
+            34% { 
+                opacity: 0.55;
+                transform: translateX(8%) rotate(2deg) scaleY(1.0) skewX(-4deg); 
             }
-            71% { 
-                opacity: 0.5; 
-                transform: translateX(-3%) rotate(-2deg) scaleY(0.98) skewX(-6deg); 
+            55% { 
+                opacity: 0.85;
+                transform: translateX(3%) rotate(-1deg) scaleY(1.18) skewX(-6deg); 
             }
             89% { 
-                opacity: 0.75; 
-                transform: translateX(4%) rotate(1deg) scaleY(1.1) skewX(-3deg); 
+                opacity: 0.48;
+                transform: translateX(-5%) rotate(-2deg) scaleY(1.02) skewX(-3deg); 
             }
             100% { 
-                opacity: 0.4; 
-                transform: translateX(-8%) rotate(-4deg) scaleY(0.95) skewX(-4deg); 
+                opacity: 0.38;
+                transform: translateX(-8%) rotate(-3deg) scaleY(0.95) skewX(-3deg); 
             }
         }
 
         @keyframes aurora-curtain-2 {
             0% { 
-                opacity: 0.35; 
-                transform: translateX(8%) rotate(2deg) scaleY(1.05) skewX(4deg); 
+                opacity: 0.32;
+                transform: translateX(5%) rotate(2deg) scaleY(1.0) skewX(3deg); 
             }
-            22% { 
-                opacity: 0.6; 
-                transform: translateX(-3%) rotate(-2deg) scaleY(1.2) skewX(1deg); 
+            13% { 
+                opacity: 0.55;
+                transform: translateX(0%) rotate(0deg) scaleY(1.13) skewX(1deg); 
             }
-            45% { 
-                opacity: 0.45; 
-                transform: translateX(5%) rotate(4deg) scaleY(0.95) skewX(6deg); 
+            34% { 
+                opacity: 0.72;
+                transform: translateX(-5%) rotate(-2deg) scaleY(1.21) skewX(5deg); 
             }
-            68% { 
-                opacity: 0.7; 
-                transform: translateX(-6%) rotate(0deg) scaleY(1.15) skewX(3deg); 
+            55% { 
+                opacity: 0.45;
+                transform: translateX(3%) rotate(3deg) scaleY(0.95) skewX(2deg); 
             }
-            85% { 
-                opacity: 0.5; 
-                transform: translateX(3%) rotate(2deg) scaleY(1.08) skewX(5deg); 
+            89% { 
+                opacity: 0.62;
+                transform: translateX(-2%) rotate(1deg) scaleY(1.08) skewX(4deg); 
             }
             100% { 
-                opacity: 0.35; 
-                transform: translateX(8%) rotate(2deg) scaleY(1.05) skewX(4deg); 
+                opacity: 0.32;
+                transform: translateX(5%) rotate(2deg) scaleY(1.0) skewX(3deg); 
             }
         }
 
         @keyframes aurora-curtain-3 {
             0% { 
-                opacity: 0.25; 
-                transform: translateX(-4%) translateY(0%) scaleY(1); 
+                opacity: 0.21; /* Fib ratio */
+                transform: translateX(-3%) translateY(0%) scaleY(1); 
             }
-            33% { 
-                opacity: 0.45; 
-                transform: translateX(3%) translateY(-3%) scaleY(1.12); 
+            21% { 
+                opacity: 0.38;
+                transform: translateX(2%) translateY(-2%) scaleY(1.08); 
             }
-            66% { 
-                opacity: 0.35; 
-                transform: translateX(-2%) translateY(-1%) scaleY(1.05); 
+            55% { 
+                opacity: 0.50;
+                transform: translateX(5%) translateY(-5%) scaleY(1.15); 
+            }
+            89% { 
+                opacity: 0.30;
+                transform: translateX(-1%) translateY(-1%) scaleY(1.03); 
             }
             100% { 
-                opacity: 0.25; 
-                transform: translateX(-4%) translateY(0%) scaleY(1); 
+                opacity: 0.21;
+                transform: translateX(-3%) translateY(0%) scaleY(1); 
             }
         }
 
         @keyframes aurora-shimmer {
             0%, 100% { 
-                opacity: 0.2; 
+                opacity: 0.21; /* Fib: 21% */
                 transform: translateX(0px); 
             }
-            35% { 
-                opacity: 0.35; 
-                transform: translateX(20px); 
+            34% { 
+                opacity: 0.34; /* Fib: 34% */
+                transform: translateX(21px); /* Fib: 21 */
             }
-            70% { 
-                opacity: 0.25; 
-                transform: translateX(-10px); 
+            55% { 
+                opacity: 0.28;
+                transform: translateX(13px); /* Fib: 13 */
+            }
+            89% { 
+                opacity: 0.18;
+                transform: translateX(-8px); /* Fib: 8 */
             }
         }
 
@@ -1287,16 +1306,19 @@
                 0 8px 32px var(--shadow-color),
                 0 0 40px var(--shadow-glow),
                 inset 0 1px 0 var(--glass-highlight);
+            height: 720px;
         }
 
         .metric-header {
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
-            padding: 1.5rem 2rem;
+            padding: 1.25rem 2rem;
             border-bottom: 1px solid var(--border);
             flex-wrap: wrap;
-            gap: 1rem;
+            gap: 0.75rem;
+            min-height: 100px;
+            height: 100px;
         }
 
         .metric-title-group {
@@ -1315,9 +1337,10 @@
 
         .metric-name {
             font-family: var(--serif);
-            font-size: 1.3rem;
+            font-size: 1.1rem;
             font-weight: 500;
             color: var(--text-primary);
+            line-height: 1.3;
         }
 
         .metric-details {
@@ -1342,9 +1365,9 @@
         .metric-body {
             display: grid;
             grid-template-columns: 1.4fr 1fr;
-            gap: 2rem;
-            padding: 1.5rem 2rem;
-            min-height: 420px;
+            gap: 1.5rem;
+            padding: 1.25rem 2rem;
+            height: calc(100% - 100px);
         }
 
         .metric-viz {
@@ -1369,6 +1392,12 @@
             flex: 1;
             display: flex;
             flex-direction: column;
+            min-height: 0;
+        }
+
+        .metric-viz-content > .jts-map-container {
+            flex: 1;
+            min-height: 0;
         }
 
         .metric-viz-content svg {
@@ -1379,13 +1408,12 @@
         .metric-text {
             display: flex;
             flex-direction: column;
-            gap: 1.25rem;
-            overflow-y: auto;
-            max-height: 400px;
+            gap: 1rem;
+            overflow: hidden;
         }
 
         .metric-text-section {
-            padding-bottom: 1.25rem;
+            padding-bottom: 0.75rem;
             border-bottom: 1px solid var(--border);
         }
 
@@ -1404,8 +1432,8 @@
         }
 
         .metric-text-content {
-            font-size: 0.85rem;
-            line-height: 1.65;
+            font-size: 0.8rem;
+            line-height: 1.55;
             color: var(--text-secondary);
         }
 
@@ -1414,7 +1442,7 @@
         }
 
         .metric-text-content p {
-            margin-bottom: 0.6rem;
+            margin-bottom: 0.5rem;
         }
 
         .metric-text-content p:last-child {
@@ -1896,10 +1924,25 @@
             margin-top: 1rem;
         }
 
+        /* Carousel-specific JTS map sizing */
+        .metric-viz .jts-map-container {
+            margin-top: 0;
+            padding: 0.5rem;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .metric-viz .jts-map-container .world-map {
+            flex: 1;
+            max-height: none;
+            height: 100%;
+        }
+
         .world-map {
             width: 100%;
             height: auto;
-            max-height: 350px;
+            max-height: 420px;
         }
 
         .world-map .country {
@@ -1927,37 +1970,37 @@
         .jts-legend {
             display: flex;
             align-items: center;
-            gap: 1.5rem;
-            margin-top: 1rem;
-            padding: 0.75rem 1rem;
+            gap: 0.75rem;
+            margin-top: 0.5rem;
+            padding: 0.35rem 0.6rem;
             background: var(--bg-glass);
-            border-radius: 8px;
+            border-radius: 6px;
             flex-wrap: wrap;
             border: 1px solid var(--glass-border);
         }
 
         .legend-title {
             font-family: var(--mono);
-            font-size: 0.75rem;
+            font-size: 0.65rem;
             font-weight: 600;
             color: var(--accent);
         }
 
         .legend-scale {
             display: flex;
-            gap: 0.75rem;
+            gap: 0.4rem;
             flex-wrap: wrap;
         }
 
         .legend-item {
             display: flex;
             align-items: center;
-            gap: 0.35rem;
+            gap: 0.2rem;
         }
 
         .legend-color {
-            width: 16px;
-            height: 12px;
+            width: 12px;
+            height: 8px;
             border-radius: 2px;
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
@@ -1970,7 +2013,7 @@
         .legend-color.jts-6 { background: #7c9885; }
 
         .legend-label {
-            font-size: 0.6rem;
+            font-size: 0.5rem;
             color: var(--text-muted);
             font-family: var(--mono);
         }
@@ -2293,6 +2336,102 @@
 
         .example-code .number {
             color: #d4a5d6;
+        }
+
+        /* Package Carousel */
+        .package-carousel-container {
+            position: relative;
+            width: 100%;
+        }
+
+        .package-carousel-wrapper {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .package-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+            pointer-events: none;
+        }
+
+        .package-slide.active {
+            position: relative;
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+        }
+
+        .package-carousel-nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .package-nav-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--bg-glass);
+            border: 1px solid var(--glass-border);
+            color: var(--text-secondary);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .package-nav-btn:hover {
+            background: var(--bg-glass-hover);
+            border-color: var(--border-accent);
+            color: var(--accent);
+            transform: scale(1.05);
+        }
+
+        .package-nav-btn svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .package-dots {
+            display: flex;
+            gap: 0.75rem;
+            align-items: center;
+        }
+
+        .package-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--bg-glass);
+            border: 1px solid var(--glass-border);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .package-dot:hover {
+            background: var(--accent-dim);
+            border-color: var(--accent);
+        }
+
+        .package-dot.active {
+            background: var(--accent);
+            border-color: var(--accent);
+            transform: scale(1.2);
+        }
+
+        .package-indicator {
+            font-family: var(--mono);
+            font-size: 0.75rem;
+            color: var(--text-muted);
         }
 
         /* ==================== TECHNIQUES SECTION ==================== */
@@ -2857,7 +2996,245 @@
             animation: draw-line 1.5s ease forwards;
         }
 
-        /* Entropy Bars Visualization */
+        /* ===== TIME-DECAY ENTROPY FORMULA STYLES ===== */
+        .formula-block {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+            padding: 1.5rem;
+            background: var(--bg-glass);
+            border-radius: 12px;
+            border: 1px solid var(--glass-border);
+        }
+
+        .formula-step {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .formula-step-label {
+            flex-shrink: 0;
+            width: 100px;
+            font-size: 0.7rem;
+            font-family: var(--mono);
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .formula-math {
+            font-family: 'Times New Roman', serif;
+            font-size: 1.15rem;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+            flex-wrap: wrap;
+        }
+
+        .formula-var-main {
+            font-style: italic;
+            font-weight: 400;
+        }
+
+        .formula-sub {
+            font-size: 0.7em;
+            vertical-align: sub;
+            font-style: italic;
+        }
+
+        .formula-sup {
+            font-size: 0.7em;
+            vertical-align: super;
+        }
+
+        .formula-eq {
+            margin: 0 0.3rem;
+            color: var(--text-muted);
+        }
+
+        .formula-frac {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            vertical-align: middle;
+        }
+
+        .formula-num {
+            border-bottom: 1px solid var(--text-secondary);
+            padding-bottom: 2px;
+            font-size: 0.95em;
+        }
+
+        .formula-denom {
+            padding-top: 2px;
+            font-size: 0.95em;
+        }
+
+        .formula-decay {
+            color: var(--accent);
+            font-weight: 500;
+        }
+
+        .formula-neg {
+            color: var(--text-secondary);
+        }
+
+        .formula-sum {
+            font-style: normal;
+            font-size: 1.1em;
+        }
+
+        .formula-dot {
+            color: var(--text-muted);
+        }
+
+        .formula-vars-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.75rem;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--glass-border);
+        }
+
+        .formula-var-item {
+            display: flex;
+            align-items: baseline;
+            gap: 0.5rem;
+            font-size: 0.8rem;
+        }
+
+        .formula-var-symbol {
+            font-family: 'Times New Roman', serif;
+            font-style: italic;
+            color: var(--accent);
+            font-size: 1rem;
+        }
+
+        .formula-var-desc {
+            color: var(--text-muted);
+        }
+
+        /* ===== ENTROPY LINE CHART ===== */
+        .entropy-chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 560px;
+            margin: 0 auto;
+            aspect-ratio: 560 / 300;
+        }
+
+        #entropy-line-chart {
+            width: 100%;
+            height: auto;
+            overflow: visible;
+        }
+
+        .entropy-axis-line {
+            stroke: var(--border);
+            stroke-width: 1;
+        }
+
+        .entropy-grid-line {
+            stroke: var(--border);
+            stroke-width: 0.5;
+            stroke-dasharray: 3, 3;
+            opacity: 0.5;
+        }
+
+        .entropy-axis-label {
+            font-family: var(--mono);
+            font-size: 9px;
+            fill: var(--text-muted);
+        }
+
+        .entropy-line {
+            fill: none;
+            stroke-width: 2.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            transition: stroke-width 0.2s ease;
+        }
+
+        .entropy-line:hover {
+            stroke-width: 4;
+        }
+
+        .entropy-dot {
+            transition: r 0.2s ease, opacity 0.2s ease;
+            cursor: pointer;
+        }
+
+        .entropy-dot:hover {
+            r: 6;
+        }
+
+        .entropy-endpoint {
+            stroke-width: 2;
+        }
+
+        .entropy-tooltip {
+            position: absolute;
+            background: var(--modal-bg);
+            border: 1px solid var(--border-accent);
+            border-radius: 8px;
+            padding: 0.5rem 0.75rem;
+            font-size: 0.75rem;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+            z-index: 100;
+            box-shadow: 0 4px 12px var(--shadow-color);
+        }
+
+        .entropy-tooltip.visible {
+            opacity: 1;
+        }
+
+        .entropy-tooltip-title {
+            font-weight: 500;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .entropy-tooltip-value {
+            font-family: var(--mono);
+            color: var(--accent);
+        }
+
+        .entropy-legend {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .entropy-legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.7rem;
+            color: var(--text-secondary);
+        }
+
+        .entropy-legend-color {
+            width: 12px;
+            height: 3px;
+            border-radius: 2px;
+        }
+
+        .technique-viz-subtitle {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-align: center;
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+
+        /* Keep old entropy-viz for backward compatibility */
         .entropy-viz {
             display: flex;
             gap: 2rem;
@@ -3423,7 +3800,7 @@
                     <p>Advancing beyond-GDP metrics through composite indicator frameworks. Developing time-varying weighting schemes and non-compensatory aggregation techniques to capture multidimensional societal development across 170+ countries over three decades.</p>
                     <div class="research-tags">
                         <span class="tag">Composite Indicators</span>
-                        <span class="tag">Entropy Weighting</span>
+                        <span class="tag">Time-Decay Entropy</span>
                         <span class="tag">Panel Data</span>
                     </div>
                 </div>
@@ -3528,13 +3905,12 @@
                         <div class="metric-card">
                             <div class="metric-header">
                                 <div class="metric-title-group">
-                                    <span class="metric-abbr">JTS</span>
-                                    <span class="metric-name">Just Transition Score</span>
+                                    <span class="metric-name" style="color: var(--accent);">Just Transition Score</span>
                                 </div>
                                 <div class="metric-details">
-                                    <span class="metric-detail-item">📊 170+ Countries</span>
-                                    <span class="metric-detail-item">📅 1990–2020</span>
-                                    <span class="metric-detail-item">📄 Environmental and Sustainability Indicators (2024)</span>
+                                    <span class="metric-detail-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align: middle; margin-right: 4px;"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/><path d="M2 12h20"/></svg>170+ Countries</span>
+                                    <span class="metric-detail-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align: middle; margin-right: 4px;"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>2011–2019</span>
+                                    <span class="metric-detail-item"><a href="https://www.sciencedirect.com/science/article/pii/S2665972724001454" target="_blank" style="color: inherit; text-decoration: none; display: inline-flex; align-items: center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align: middle; margin-right: 4px;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>Environmental and Sustainability Indicators (2024)</a></span>
                                 </div>
                             </div>
                             <div class="metric-body">
@@ -4861,6 +5237,12 @@
                                             <p>JTS quantifies just transition pathways by revealing which countries deliver well-being efficiently—informing green industrial policy, sustainable development investment, and climate finance allocation mechanisms.</p>
                                         </div>
                                     </div>
+                                    <div class="metric-text-section">
+                                        <div class="metric-text-title">Methodological Innovation</div>
+                                        <div class="metric-text-content">
+                                            <p>JTS employs <strong>entropy weighting</strong> for objective indicator aggregation and introduces a novel <strong>dual-efficiency framework</strong> combining material and carbon footprint efficiency into a single sustainability metric.</p>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -4871,13 +5253,12 @@
                         <div class="metric-card">
                             <div class="metric-header">
                                 <div class="metric-title-group">
-                                    <span class="metric-abbr">CESP</span>
-                                    <span class="metric-name">Carbon Efficiency of Social Progress</span>
+                                    <span class="metric-name" style="color: var(--accent);">Achieving Just Transition through Convergence in the Carbon Efficiency of Social Progress</span>
                                 </div>
                                 <div class="metric-details">
-                                    <span class="metric-detail-item">📊 170+ Countries</span>
-                                    <span class="metric-detail-item">📅 1990–2020</span>
-                                    <span class="metric-detail-item">📄 Geography and Sustainability (Under Revision)</span>
+                                    <span class="metric-detail-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align: middle; margin-right: 4px;"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/><path d="M2 12h20"/></svg>170+ Countries</span>
+                                    <span class="metric-detail-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align: middle; margin-right: 4px;"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>1990–2020</span>
+                                    <span class="metric-detail-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align: middle; margin-right: 4px;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>Publication: coming soon</span>
                                 </div>
                             </div>
                             <div class="metric-body">
@@ -4916,6 +5297,12 @@
                                             <p>CESP provides critical insights for climate negotiations and technology transfer policies. By identifying convergence clubs, it reveals which country groups share common challenges and could benefit from targeted cooperation.</p>
                                         </div>
                                     </div>
+                                    <div class="metric-text-section">
+                                        <div class="metric-text-title">Methodological Innovation</div>
+                                        <div class="metric-text-content">
+                                            <p>CESP applies the <strong>Phillips-Sul time-varying factor model</strong> to test convergence hypotheses, combined with <strong>segmented regression</strong> to identify emission breakpoints that define distinct country clusters.</p>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -4926,13 +5313,12 @@
                         <div class="metric-card">
                             <div class="metric-header">
                                 <div class="metric-title-group">
-                                    <span class="metric-abbr">CPI</span>
-                                    <span class="metric-name">Climate Perceptions Index</span>
+                                    <span class="metric-name" style="color: var(--accent);">Multidimensional Cross-Country Measurement of Climate Change Perceptions</span>
                                 </div>
                                 <div class="metric-details">
-                                    <span class="metric-detail-item">📊 100+ Countries</span>
-                                    <span class="metric-detail-item">👥 100k+ Survey Responses</span>
-                                    <span class="metric-detail-item">📄 Measurement (2025)</span>
+                                    <span class="metric-detail-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align: middle; margin-right: 4px;"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/><path d="M2 12h20"/></svg>100+ Countries</span>
+                                    <span class="metric-detail-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align: middle; margin-right: 4px;"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>100k+ Survey Responses</span>
+                                    <span class="metric-detail-item"><a href="https://www.tandfonline.com/doi/full/10.1080/1536867X.2025.2483047" target="_blank" style="color: inherit; text-decoration: none; display: inline-flex; align-items: center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align: middle; margin-right: 4px;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>Stata Journal (2025)</a></span>
                                 </div>
                             </div>
                             <div class="metric-body">
@@ -5026,6 +5412,12 @@
                                             <p>The CPI helps governments understand where public opinion enables or constrains climate policy ambition—whether interventions should focus on education, risk communication, or economic incentives.</p>
                                         </div>
                                     </div>
+                                    <div class="metric-text-section">
+                                        <div class="metric-text-title">Methodological Innovation</div>
+                                        <div class="metric-text-content">
+                                            <p>CPI introduces a <strong>Bayesian structural equation model</strong> that estimates latent climate perception dimensions from large-scale survey data, enabling robust cross-country comparisons with uncertainty quantification.</p>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -5069,11 +5461,11 @@
                     </div>
                     <div class="modal-meta-item">
                         <div class="modal-meta-icon">📅</div>
-                        <span>1990–2020</span>
+                        <span>2011–2019</span>
                     </div>
                     <div class="modal-meta-item">
                         <div class="modal-meta-icon">📄</div>
-                        <span>Environmental and Sustainability Indicators (2024)</span>
+                        <a href="https://www.sciencedirect.com/science/article/pii/S2665972724001454" target="_blank" style="color: inherit; text-decoration: none;">Environmental and Sustainability Indicators (2024)</a>
                     </div>
                 </div>
             </div>
@@ -6407,7 +6799,7 @@
             <button class="modal-close" onclick="closeIndexModal(event, &#39;cesp&#39;)">×</button>
             <div class="modal-header">
                 <div class="modal-abbr">CESP</div>
-                <div class="modal-title">Carbon Efficiency of Social Progress</div>
+                <div class="modal-title">Achieving Just Transition through Convergence in the Carbon Efficiency of Social Progress</div>
                 <div class="modal-meta">
                     <div class="modal-meta-item">
                         <div class="modal-meta-icon">📊</div>
@@ -6419,7 +6811,7 @@
                     </div>
                     <div class="modal-meta-item">
                         <div class="modal-meta-icon">📄</div>
-                        <span>Geography and Sustainability (Under Revision)</span>
+                        <span>Publication: coming soon</span>
                     </div>
                 </div>
             </div>
@@ -6484,7 +6876,7 @@
             <button class="modal-close" onclick="closeIndexModal(event, &#39;cpi&#39;)">×</button>
             <div class="modal-header">
                 <div class="modal-abbr">CPI</div>
-                <div class="modal-title">Climate Perceptions Index</div>
+                <div class="modal-title">Multidimensional Cross-Country Measurement of Climate Change Perceptions</div>
                 <div class="modal-meta">
                     <div class="modal-meta-item">
                         <div class="modal-meta-icon">📊</div>
@@ -6496,7 +6888,7 @@
                     </div>
                     <div class="modal-meta-item">
                         <div class="modal-meta-icon">📄</div>
-                        <span>Measurement (2025)</span>
+                        <a href="https://www.tandfonline.com/doi/full/10.1080/1536867X.2025.2483047" target="_blank" style="color: inherit; text-decoration: none;">Stata Journal (2025)</a>
                     </div>
                 </div>
             </div>
@@ -6608,209 +7000,237 @@
 
 
     <section id="tools">
-        <span id="techniques" style="position:absolute;margin-top:-100px;"></span>
         <div class="section-header">
             <h2 class="section-title">Tools</h2>
             <span class="section-count">02 PACKAGES</span>
         </div>
         
-        <div class="package-layout">
-            <div class="package-info-card">
-                <div class="package-header">
-                    <div class="package-logo">w2m</div>
-                    <div class="package-info">
-                        <h3>(What matters most) What to Measure</h3>
-                        <div class="package-tagline">A unified framework for constructing, analyzing, and visualizing composite indicators</div>
-                        <div class="package-badges">
-                            <span class="package-badge">R ≥ 4.0</span>
-                            <span class="package-badge">MIT License</span>
-                            <span class="package-badge">v1.0.0</span>
+        <div class="package-carousel-container">
+            <div class="package-carousel-wrapper">
+                <!-- Slide 1: w2m package -->
+                <div class="package-slide active" data-package="0">
+                    <div class="package-layout">
+                        <div class="package-info-card">
+                            <div class="package-header">
+                                <div class="package-logo">w2m</div>
+                                <div class="package-info">
+                                    <h3>(What matters most) What to Measure</h3>
+                                    <div class="package-tagline">A unified framework for constructing, analyzing, and visualizing composite indicators</div>
+                                    <div class="package-badges">
+                                        <span class="package-badge">R ≥ 4.0</span>
+                                        <span class="package-badge">MIT License</span>
+                                        <span class="package-badge">v1.0.0</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <p class="package-description">Implements methodological innovations from my dissertation research—including time-decay entropy weighting, convergence testing, and ML-based variable importance ranking. Designed for researchers working with cross-country panel data.</p>
+                            
+                            <div class="install-code">
+                                <code># Install from GitHub<br>devtools::install_github("MohamedHtitich1/w2m")</code>
+                            </div>
+                            
+                            <div class="package-stats">
+                                <div class="package-stat">
+                                    <div class="package-stat-value">2,246+</div>
+                                    <div class="package-stat-label">Lines of Code</div>
+                                </div>
+                                <div class="package-stat">
+                                    <div class="package-stat-value">10</div>
+                                    <div class="package-stat-label">Modules</div>
+                                </div>
+                                <div class="package-stat">
+                                    <div class="package-stat-value">40+</div>
+                                    <div class="package-stat-label">Functions</div>
+                                </div>
+                            </div>
+                            
+                            <a href="https://github.com/MohamedHtitich1/w2m" target="_blank" class="github-link">
+                                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"></path>
+                                </svg>
+                                View on GitHub
+                            </a>
                         </div>
-                    </div>
-                </div>
-                
-                <p class="package-description">Implements methodological innovations from my dissertation research—including modified entropy weighting with temporal decay, convergence testing, and ML-based variable importance ranking. Designed for researchers working with cross-country panel data.</p>
-                
-                <div class="install-code">
-                    <code># Install from GitHub<br>devtools::install_github("MohamedHtitich1/w2m")</code>
-                </div>
-                
-                <div class="package-stats">
-                    <div class="package-stat">
-                        <div class="package-stat-value">2,246+</div>
-                        <div class="package-stat-label">Lines of Code</div>
-                    </div>
-                    <div class="package-stat">
-                        <div class="package-stat-value">10</div>
-                        <div class="package-stat-label">Modules</div>
-                    </div>
-                    <div class="package-stat">
-                        <div class="package-stat-value">40+</div>
-                        <div class="package-stat-label">Functions</div>
-                    </div>
-                </div>
-                
-                <a href="https://github.com/MohamedHtitich1/w2m" target="_blank" class="github-link">
-                    <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
-                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"></path>
-                    </svg>
-                    View on GitHub
-                </a>
-            </div>
-            
-            <div class="package-examples-column">
-                <div class="example-card">
-                    <div class="example-header">
-                        <div class="example-icon">λ</div>
-                        <span class="example-title">Temporal Entropy Weighting</span>
-                    </div>
-                    <div class="example-code">
-                        <code><span class="comment"># Compute weights with temporal decay</span><br>
+                        
+                        <div class="package-examples-column">
+                            <div class="example-card">
+                                <div class="example-header">
+                                    <div class="example-icon">λ</div>
+                                    <span class="example-title">Temporal Entropy Weighting</span>
+                                </div>
+                                <div class="example-code">
+                                    <code><span class="comment"># Compute weights with temporal decay</span><br>
 weights &lt;- <span class="func">compute_entropy_weights</span>(<br>
 &nbsp;&nbsp;data, <br>
 &nbsp;&nbsp;time_var = <span class="string">"year"</span>,<br>
 &nbsp;&nbsp;decay_rate = <span class="number">0.0001</span><br>
 )</code>
-                    </div>
-                </div>
-                
-                <div class="example-card">
-                    <div class="example-header">
-                        <div class="example-icon">β</div>
-                        <span class="example-title">Convergence Analysis</span>
-                    </div>
-                    <div class="example-code">
-                        <code><span class="comment"># Phillips-Sul club convergence test</span><br>
+                                </div>
+                            </div>
+                            
+                            <div class="example-card">
+                                <div class="example-header">
+                                    <div class="example-icon">β</div>
+                                    <span class="example-title">Convergence Analysis</span>
+                                </div>
+                                <div class="example-code">
+                                    <code><span class="comment"># Phillips-Sul club convergence test</span><br>
 clubs &lt;- <span class="func">phillips_sul_test</span>(<br>
 &nbsp;&nbsp;panel_data,<br>
 &nbsp;&nbsp;id = <span class="string">"country"</span>,<br>
 &nbsp;&nbsp;time = <span class="string">"year"</span><br>
 )</code>
-                    </div>
-                </div>
-                
-                <div class="example-card">
-                    <div class="example-header">
-                        <div class="example-icon">∇</div>
-                        <span class="example-title">Variable Importance</span>
-                    </div>
-                    <div class="example-code">
-                        <code><span class="comment"># Random forest feature ranking</span><br>
+                                </div>
+                            </div>
+                            
+                            <div class="example-card">
+                                <div class="example-header">
+                                    <div class="example-icon">∇</div>
+                                    <span class="example-title">Variable Importance</span>
+                                </div>
+                                <div class="example-code">
+                                    <code><span class="comment"># Random forest feature ranking</span><br>
 importance &lt;- <span class="func">rf_importance</span>(<br>
 &nbsp;&nbsp;data,<br>
 &nbsp;&nbsp;target = <span class="string">"composite_score"</span>,<br>
 &nbsp;&nbsp;n_trees = <span class="number">500</span><br>
 )</code>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- localintel package -->
-        <div class="package-layout" style="margin-top: 3rem;">
-            <div class="package-info-card">
-                <div class="package-header">
-                    <div class="package-logo" style="font-size: 0.9rem;">lint</div>
-                    <div class="package-info">
-                        <h3>Local Intelligence</h3>
-                        <div class="package-tagline">Subnational data pipeline for Eurostat NUTS regions—bridging regional granularity with analytical accessibility</div>
-                        <div class="package-badges">
-                            <span class="package-badge">R ≥ 4.0</span>
-                            <span class="package-badge">MIT License</span>
-                            <span class="package-badge">v0.1.0</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                
-                <p class="package-description">Streamlines access to Eurostat's NUTS-level data through automated retrieval, harmonization, and transformation pipelines. Designed for researchers and analysts working with subnational European data across multiple classification revisions and temporal scales.</p>
-                
-                <div class="install-code">
-                    <code># Install from GitHub<br>devtools::install_github("MohamedHtitich1/localintel")</code>
-                </div>
-                
-                <div class="package-stats">
-                    <div class="package-stat">
-                        <div class="package-stat-value">1,400+</div>
-                        <div class="package-stat-label">NUTS Regions</div>
-                    </div>
-                    <div class="package-stat">
-                        <div class="package-stat-value">3</div>
-                        <div class="package-stat-label">NUTS Levels</div>
-                    </div>
-                    <div class="package-stat">
-                        <div class="package-stat-value">100+</div>
-                        <div class="package-stat-label">Indicators</div>
-                    </div>
-                </div>
-                
-                <a href="https://github.com/MohamedHtitich1/localintel" target="_blank" class="github-link">
-                    <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
-                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"></path>
-                    </svg>
-                    View on GitHub
-                </a>
-            </div>
-            
-            <div class="package-examples-column">
-                <div class="example-card">
-                    <div class="example-header">
-                        <div class="example-icon">⬡</div>
-                        <span class="example-title">NUTS Data Retrieval</span>
-                    </div>
-                    <div class="example-code">
-                        <code><span class="comment"># Fetch regional GDP data</span><br>
+
+                <!-- Slide 2: localintel package -->
+                <div class="package-slide" data-package="1">
+                    <div class="package-layout">
+                        <div class="package-info-card">
+                            <div class="package-header">
+                                <div class="package-logo" style="font-size: 0.9rem;">lint</div>
+                                <div class="package-info">
+                                    <h3>Local Intelligence</h3>
+                                    <div class="package-tagline">Subnational data pipeline for Eurostat NUTS regions—bridging regional granularity with analytical accessibility</div>
+                                    <div class="package-badges">
+                                        <span class="package-badge">R ≥ 4.0</span>
+                                        <span class="package-badge">MIT License</span>
+                                        <span class="package-badge">v0.1.0</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <p class="package-description">Streamlines access to Eurostat's NUTS-level data through automated retrieval, harmonization, and transformation pipelines. Designed for researchers and analysts working with subnational European data across multiple classification revisions and temporal scales.</p>
+                            
+                            <div class="install-code">
+                                <code># Install from GitHub<br>devtools::install_github("MohamedHtitich1/localintel")</code>
+                            </div>
+                            
+                            <div class="package-stats">
+                                <div class="package-stat">
+                                    <div class="package-stat-value">1,400+</div>
+                                    <div class="package-stat-label">NUTS Regions</div>
+                                </div>
+                                <div class="package-stat">
+                                    <div class="package-stat-value">3</div>
+                                    <div class="package-stat-label">NUTS Levels</div>
+                                </div>
+                                <div class="package-stat">
+                                    <div class="package-stat-value">100+</div>
+                                    <div class="package-stat-label">Indicators</div>
+                                </div>
+                            </div>
+                            
+                            <a href="https://github.com/MohamedHtitich1/localintel" target="_blank" class="github-link">
+                                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"></path>
+                                </svg>
+                                View on GitHub
+                            </a>
+                        </div>
+                        
+                        <div class="package-examples-column">
+                            <div class="example-card">
+                                <div class="example-header">
+                                    <div class="example-icon">⬡</div>
+                                    <span class="example-title">NUTS Data Retrieval</span>
+                                </div>
+                                <div class="example-code">
+                                    <code><span class="comment"># Fetch regional GDP data</span><br>
 gdp &lt;- <span class="func">get_nuts_data</span>(<br>
 &nbsp;&nbsp;indicator = <span class="string">"nama_10r_2gdp"</span>,<br>
 &nbsp;&nbsp;nuts_level = <span class="number">2</span>,<br>
 &nbsp;&nbsp;year = <span class="number">2020</span><br>
 )</code>
-                    </div>
-                </div>
-                
-                <div class="example-card">
-                    <div class="example-header">
-                        <div class="example-icon">↔</div>
-                        <span class="example-title">Classification Harmonization</span>
-                    </div>
-                    <div class="example-code">
-                        <code><span class="comment"># Harmonize NUTS versions</span><br>
+                                </div>
+                            </div>
+                            
+                            <div class="example-card">
+                                <div class="example-header">
+                                    <div class="example-icon">↔</div>
+                                    <span class="example-title">Classification Harmonization</span>
+                                </div>
+                                <div class="example-code">
+                                    <code><span class="comment"># Harmonize NUTS versions</span><br>
 harmonized &lt;- <span class="func">harmonize_nuts</span>(<br>
 &nbsp;&nbsp;data,<br>
 &nbsp;&nbsp;from = <span class="string">"NUTS2016"</span>,<br>
 &nbsp;&nbsp;to = <span class="string">"NUTS2021"</span><br>
 )</code>
-                    </div>
-                </div>
-                
-                <div class="example-card">
-                    <div class="example-header">
-                        <div class="example-icon">◈</div>
-                        <span class="example-title">Regional Aggregation</span>
-                    </div>
-                    <div class="example-code">
-                        <code><span class="comment"># Aggregate to higher NUTS level</span><br>
+                                </div>
+                            </div>
+                            
+                            <div class="example-card">
+                                <div class="example-header">
+                                    <div class="example-icon">◈</div>
+                                    <span class="example-title">Regional Aggregation</span>
+                                </div>
+                                <div class="example-code">
+                                    <code><span class="comment"># Aggregate to higher NUTS level</span><br>
 national &lt;- <span class="func">aggregate_nuts</span>(<br>
 &nbsp;&nbsp;regional_data,<br>
 &nbsp;&nbsp;from_level = <span class="number">3</span>,<br>
 &nbsp;&nbsp;to_level = <span class="number">0</span><br>
 )</code>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
+            </div>
+
+            <!-- Navigation -->
+            <div class="package-carousel-nav">
+                <button class="package-nav-btn" onclick="navigatePackage(-1)" aria-label="Previous package">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="15 18 9 12 15 6"></polyline>
+                    </svg>
+                </button>
+                
+                <div class="package-dots">
+                    <button class="package-dot active" data-index="0" onclick="goToPackage(0)" aria-label="w2m package"></button>
+                    <button class="package-dot" data-index="1" onclick="goToPackage(1)" aria-label="localintel package"></button>
+                </div>
+                
+                <button class="package-nav-btn" onclick="navigatePackage(1)" aria-label="Next package">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                </button>
             </div>
         </div>
     </section>
 
     <section id="techniques">
         <div class="section-header">
-            <h2 class="section-title">Methods</h2>
+            <h2 class="section-title">Models</h2>
             <span class="section-count">04 TECHNIQUES</span>
         </div>
         
         <div class="techniques-grid">
             <div class="technique-card" onclick="openTechniqueModal(&#39;entropy&#39;)">
                 <div class="technique-icon">λ</div>
-                <div class="technique-name">Modified Entropy Weighting</div>
-                <div class="technique-brief">Time-varying weights with temporal decay parameters to track evolving indicator importance in longitudinal data.</div>
+                <div class="technique-name">Time-Decay Entropy</div>
+                <div class="technique-brief">Entropy-based weights with temporal decay to track evolving indicator importance across longitudinal data.</div>
                 <div class="technique-expand">
                     <span>→</span> View formula &amp; methodology
                 </div>
@@ -6852,69 +7272,102 @@ national &lt;- <span class="func">aggregate_nuts</span>(<br>
             <div class="technique-modal-header">
                 <div class="technique-modal-icon">λ</div>
                 <div class="technique-modal-info">
-                    <h2>Modified Entropy Weighting</h2>
-                    <p>Time-varying weights with temporal decay for longitudinal composite indicators</p>
+                    <h2>Time-Decay Entropy</h2>
+                    <p>Entropy-based weights with temporal decay for longitudinal composite indicators</p>
                 </div>
             </div>
             <div class="technique-modal-body">
                 <div class="modal-section">
-                    <div class="modal-section-title">Methodology</div>
-                    <p>Traditional entropy weighting assigns static weights based on cross-sectional variance. The modified approach introduces a <strong>temporal decay factor</strong> that gives greater influence to recent observations while still incorporating historical patterns—essential for tracking how indicator "importance" evolves over multi-decade panels.</p>
+                    <div class="modal-section-title">Conceptual Foundation</div>
+                    <p>Entropy quantifies uncertainty in the distribution of outcomes across countries. When applying entropy to development indicators, <strong>higher entropy</strong> signifies greater uniformity (convergence)—the indicator becomes less informative for distinguishing between countries. <strong>Lower entropy</strong> means higher discriminatory power, as countries' performance is more varied.</p>
+                    <p style="margin-top: 0.75rem;">The time-decay modification introduces a factor <strong>α<sup>(T−t)</sup></strong> that gives greater influence to recent observations while still incorporating historical patterns. This is essential for tracking how indicator "importance" evolves as countries converge in some dimensions (e.g., basic needs) while diverging in others (e.g., governance).</p>
                 </div>
                 
                 <div class="formula-container">
-                    <div class="formula-title">Core Formulas</div>
-                    <div class="formula">
-                        p<sub>ij</sub><sup>(t)</sup> = X<sub>ij</sub><sup>(t)</sup> / Σ<sub>i</sub> X<sub>ij</sub><sup>(t)</sup>
+                    <div class="formula-title">Time-Decay Entropy Model</div>
+                    <div class="formula-block">
+                        <div class="formula-step">
+                            <span class="formula-step-label">1. Normalize</span>
+                            <div class="formula-math">
+                                <span class="formula-var-main">p</span><sub class="formula-sub">ij</sub><sup class="formula-sup">(t)</sup>
+                                <span class="formula-eq">=</span>
+                                <span class="formula-frac">
+                                    <span class="formula-num">X<sub>ij</sub><sup>(t)</sup></span>
+                                    <span class="formula-denom">Σ<sub>i=1</sub><sup>n</sup> X<sub>ij</sub><sup>(t)</sup></span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="formula-step">
+                            <span class="formula-step-label">2. Apply decay</span>
+                            <div class="formula-math">
+                                <span class="formula-var-main">p̃</span><sub class="formula-sub">ij</sub><sup class="formula-sup">(t)</sup>
+                                <span class="formula-eq">=</span>
+                                <span class="formula-decay">α<sup>(T−t)</sup></span>
+                                <span class="formula-dot">·</span>
+                                <span class="formula-var-main">p</span><sub class="formula-sub">ij</sub><sup class="formula-sup">(t)</sup>
+                            </div>
+                        </div>
+                        <div class="formula-step">
+                            <span class="formula-step-label">3. Shannon entropy</span>
+                            <div class="formula-math">
+                                <span class="formula-var-main">H</span><sub class="formula-sub">j</sub><sup class="formula-sup">(t)</sup>
+                                <span class="formula-eq">=</span>
+                                <span class="formula-neg">−k</span>
+                                <span class="formula-sum">Σ<sub>i=1</sub><sup>n</sup></span>
+                                <span class="formula-var-main">p̃</span><sub class="formula-sub">ij</sub><sup class="formula-sup">(t)</sup>
+                                log(<span class="formula-var-main">p̃</span><sub class="formula-sub">ij</sub><sup class="formula-sup">(t)</sup>)
+                            </div>
+                        </div>
+                        <div class="formula-step">
+                            <span class="formula-step-label">4. Diversity weight</span>
+                            <div class="formula-math">
+                                <span class="formula-var-main">w</span><sub class="formula-sub">j</sub><sup class="formula-sup">(t)</sup>
+                                <span class="formula-eq">=</span>
+                                <span class="formula-frac">
+                                    <span class="formula-num">(1 − H<sub>j</sub><sup>(t)</sup>)</span>
+                                    <span class="formula-denom">Σ<sub>j=1</sub><sup>m</sup>(1 − H<sub>j</sub><sup>(t)</sup>)</span>
+                                </span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="formula">
-                        p̃<sub>ij</sub><sup>(t)</sup> = α<sup>(T-t)</sup> · p<sub>ij</sub><sup>(t)</sup>
-                    </div>
-                    <div class="formula">
-                        H<sub>j</sub><sup>(t)</sup> = -k Σ<sub>i</sub> p̃<sub>ij</sub><sup>(t)</sup> log(p̃<sub>ij</sub><sup>(t)</sup>)
-                    </div>
-                    <div class="formula">
-                        w<sub>j</sub><sup>(t)</sup> = (1 - H<sub>j</sub><sup>(t)</sup>) / Σ<sub>j</sub>(1 - H<sub>j</sub><sup>(t)</sup>)
-                    </div>
-                    <div class="formula-vars">
-                        <div class="formula-var"><span>α</span> = decay factor (≈ e<sup>-0.0001</sup>)</div>
-                        <div class="formula-var"><span>T</span> = most recent time point</div>
-                        <div class="formula-var"><span>k</span> = 1/log(n) for standardization</div>
+                    <div class="formula-vars-grid">
+                        <div class="formula-var-item"><span class="formula-var-symbol">α</span> <span class="formula-var-desc">= decay factor (e<sup>−0.0001</sup> ≈ 1)</span></div>
+                        <div class="formula-var-item"><span class="formula-var-symbol">T</span> <span class="formula-var-desc">= most recent time point</span></div>
+                        <div class="formula-var-item"><span class="formula-var-symbol">k</span> <span class="formula-var-desc">= 1/log(n) for normalization</span></div>
+                        <div class="formula-var-item"><span class="formula-var-symbol">n</span> <span class="formula-var-desc">= number of countries</span></div>
                     </div>
                 </div>
                 
                 <div class="technique-viz">
-                    <div class="technique-viz-title">Evolution of Entropy Weights (1990–2020)</div>
-                    <div class="entropy-viz">
-                        <div class="entropy-bar-group">
-                            <div class="entropy-bar-pair">
-                                <div class="entropy-bar before" style="height: 100px;"></div>
-                                <div class="entropy-bar after" style="height: 60px;"></div>
-                            </div>
-                            <span class="entropy-label">Basic Needs</span>
+                    <div class="technique-viz-title">Evolution of Diversity of Information (1990–2020)</div>
+                    <div class="technique-viz-subtitle">Higher values indicate greater cross-country disparity — more informative for differentiating countries</div>
+                    <div id="entropy-chart-container" class="entropy-chart-container">
+                        <svg id="entropy-line-chart" viewBox="0 0 560 300" preserveAspectRatio="xMidYMid meet"></svg>
+                        <div id="entropy-tooltip" class="entropy-tooltip"></div>
+                    </div>
+                    <div class="entropy-legend">
+                        <div class="entropy-legend-item">
+                            <span class="entropy-legend-color" style="background: #e07c5a;"></span>
+                            <span>Democratic Accountability</span>
                         </div>
-                        <div class="entropy-bar-group">
-                            <div class="entropy-bar-pair">
-                                <div class="entropy-bar before" style="height: 90px;"></div>
-                                <div class="entropy-bar after" style="height: 70px;"></div>
-                            </div>
-                            <span class="entropy-label">Wellbeing</span>
+                        <div class="entropy-legend-item">
+                            <span class="entropy-legend-color" style="background: #7cb08a;"></span>
+                            <span>State Capacity</span>
                         </div>
-                        <div class="entropy-bar-group">
-                            <div class="entropy-bar-pair">
-                                <div class="entropy-bar before" style="height: 55px;"></div>
-                                <div class="entropy-bar after" style="height: 95px;"></div>
-                            </div>
-                            <span class="entropy-label">State Cap.</span>
+                        <div class="entropy-legend-item">
+                            <span class="entropy-legend-color" style="background: #6b9bc3;"></span>
+                            <span>Basic Human Needs</span>
                         </div>
-                        <div class="entropy-bar-group">
-                            <div class="entropy-bar-pair">
-                                <div class="entropy-bar before" style="height: 80px;"></div>
-                                <div class="entropy-bar after" style="height: 110px;"></div>
-                            </div>
-                            <span class="entropy-label">Democracy</span>
+                        <div class="entropy-legend-item">
+                            <span class="entropy-legend-color" style="background: #b8a0c9;"></span>
+                            <span>Foundations of Wellbeing</span>
                         </div>
                     </div>
+                </div>
+                
+                <div class="modal-section">
+                    <div class="modal-section-title">Key Insight</div>
+                    <p>The chart reveals a <strong>paradigm shift</strong> in global development: In 1990, social dimensions (Basic Human Needs, Wellbeing) had highest entropy weights—countries differed most in basic living standards. By 2020, governance dimensions dominate, indicating that contemporary development gaps are primarily <strong>governance gaps</strong>. Countries have converged on basic needs while diverging on state capacity and democratic accountability.</p>
                 </div>
             </div>
         </div>
@@ -7126,7 +7579,7 @@ national &lt;- <span class="func">aggregate_nuts</span>(<br>
             <div class="publication-item">
                 <span class="pub-year">2024</span>
                 <div class="pub-content">
-                    <h4>Just Transition Score: Measuring the Relative Sustainability of Social Progress</h4>
+                    <h4><a href="https://www.sciencedirect.com/science/article/pii/S2665972724001454" target="_blank" style="color: inherit; text-decoration: none;">Just Transition Score: Measuring the Relative Sustainability of Social Progress</a></h4>
                     <p>Htitich, M., Krylová, P., &amp; Harmáček, J. <span class="pub-journal">Environmental and Sustainability Indicators</span>, 23, 100440</p>
                 </div>
                 <span class="pub-status published">Published</span>
@@ -8946,6 +9399,263 @@ const cespConvergenceData = {"low": {"title": "Less than 1.9t", "clubs": ["All"]
         document.addEventListener("DOMContentLoaded", function() {
             initCPICharts();
             initMetricsCarousel();
+        });
+
+        // ===== ENTROPY LINE CHART =====
+        const entropyData = {
+            years: [1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020],
+            series: {
+                'Democratic Accountability': [0.291, 0.276, 0.256, 0.252, 0.249, 0.256, 0.257, 0.257, 0.257, 0.250, 0.246, 0.242, 0.246, 0.250, 0.254, 0.259, 0.269, 0.276, 0.280, 0.283, 0.290, 0.293, 0.297, 0.299, 0.301, 0.302, 0.304, 0.306, 0.310, 0.308, 0.312],
+                'State Capacity': [0.184, 0.190, 0.204, 0.209, 0.213, 0.215, 0.215, 0.219, 0.222, 0.229, 0.232, 0.237, 0.239, 0.243, 0.248, 0.251, 0.254, 0.257, 0.259, 0.261, 0.264, 0.266, 0.267, 0.267, 0.268, 0.268, 0.268, 0.270, 0.271, 0.271, 0.267],
+                'Basic Human Needs': [0.269, 0.273, 0.274, 0.273, 0.273, 0.265, 0.264, 0.262, 0.259, 0.257, 0.256, 0.254, 0.247, 0.240, 0.232, 0.225, 0.215, 0.207, 0.202, 0.198, 0.193, 0.190, 0.189, 0.188, 0.188, 0.187, 0.187, 0.186, 0.184, 0.184, 0.185],
+                'Foundations of Wellbeing': [0.256, 0.261, 0.265, 0.265, 0.264, 0.264, 0.265, 0.262, 0.262, 0.264, 0.266, 0.266, 0.267, 0.267, 0.266, 0.265, 0.262, 0.260, 0.259, 0.257, 0.253, 0.251, 0.247, 0.245, 0.243, 0.242, 0.241, 0.238, 0.236, 0.237, 0.236]
+            },
+            colors: {
+                'Democratic Accountability': '#e07c5a',
+                'State Capacity': '#7cb08a',
+                'Basic Human Needs': '#6b9bc3',
+                'Foundations of Wellbeing': '#b8a0c9'
+            }
+        };
+
+        // Apply LOESS-style smoothing (simple moving average for approximation)
+        function smoothData(data, windowSize = 3) {
+            const smoothed = [];
+            for (let i = 0; i < data.length; i++) {
+                let sum = 0;
+                let count = 0;
+                for (let j = Math.max(0, i - windowSize); j <= Math.min(data.length - 1, i + windowSize); j++) {
+                    const weight = 1 - Math.abs(i - j) / (windowSize + 1);
+                    sum += data[j] * weight;
+                    count += weight;
+                }
+                smoothed.push(sum / count);
+            }
+            return smoothed;
+        }
+
+        function renderEntropyChart() {
+            const svg = document.getElementById('entropy-line-chart');
+            const tooltip = document.getElementById('entropy-tooltip');
+            if (!svg) return;
+
+            svg.innerHTML = '';
+
+            const padding = { top: 20, right: 25, bottom: 35, left: 50 };
+            const width = 560;
+            const height = 300;
+            const chartWidth = width - padding.left - padding.right;
+            const chartHeight = height - padding.top - padding.bottom;
+
+            // Find data range
+            const allValues = Object.values(entropyData.series).flat();
+            const minVal = Math.min(...allValues) - 0.02;
+            const maxVal = Math.max(...allValues) + 0.02;
+            const years = entropyData.years;
+
+            // Scales
+            const xScale = (year) => padding.left + ((year - years[0]) / (years[years.length - 1] - years[0])) * chartWidth;
+            const yScale = (val) => padding.top + chartHeight - ((val - minVal) / (maxVal - minVal)) * chartHeight;
+
+            // Draw grid lines
+            const yTicks = [0.18, 0.22, 0.26, 0.30];
+            yTicks.forEach(tick => {
+                const y = yScale(tick);
+                const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+                line.setAttribute('x1', padding.left);
+                line.setAttribute('x2', width - padding.right);
+                line.setAttribute('y1', y);
+                line.setAttribute('y2', y);
+                line.setAttribute('class', 'entropy-grid-line');
+                svg.appendChild(line);
+
+                const label = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+                label.setAttribute('x', padding.left - 8);
+                label.setAttribute('y', y + 3);
+                label.setAttribute('text-anchor', 'end');
+                label.setAttribute('class', 'entropy-axis-label');
+                label.textContent = tick.toFixed(2);
+                svg.appendChild(label);
+            });
+
+            // X-axis labels
+            [1990, 2000, 2010, 2020].forEach(year => {
+                const x = xScale(year);
+                const label = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+                label.setAttribute('x', x);
+                label.setAttribute('y', height - padding.bottom + 18);
+                label.setAttribute('text-anchor', 'middle');
+                label.setAttribute('class', 'entropy-axis-label');
+                label.textContent = year;
+                svg.appendChild(label);
+            });
+
+            // Draw axes
+            const xAxis = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+            xAxis.setAttribute('x1', padding.left);
+            xAxis.setAttribute('x2', width - padding.right);
+            xAxis.setAttribute('y1', height - padding.bottom);
+            xAxis.setAttribute('y2', height - padding.bottom);
+            xAxis.setAttribute('class', 'entropy-axis-line');
+            svg.appendChild(xAxis);
+
+            const yAxis = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+            yAxis.setAttribute('x1', padding.left);
+            yAxis.setAttribute('x2', padding.left);
+            yAxis.setAttribute('y1', padding.top);
+            yAxis.setAttribute('y2', height - padding.bottom);
+            yAxis.setAttribute('class', 'entropy-axis-line');
+            svg.appendChild(yAxis);
+
+            // Draw lines for each series
+            Object.entries(entropyData.series).forEach(([name, rawData]) => {
+                const data = smoothData(rawData, 2);
+                const color = entropyData.colors[name];
+
+                // Create path
+                const pathPoints = data.map((val, i) => {
+                    const x = xScale(years[i]);
+                    const y = yScale(val);
+                    return `${i === 0 ? 'M' : 'L'} ${x} ${y}`;
+                }).join(' ');
+
+                const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+                path.setAttribute('d', pathPoints);
+                path.setAttribute('class', 'entropy-line');
+                path.setAttribute('stroke', color);
+                path.setAttribute('data-series', name);
+
+                // Animate on draw
+                const pathLength = path.getTotalLength ? path.getTotalLength() : 1000;
+                path.style.strokeDasharray = pathLength;
+                path.style.strokeDashoffset = pathLength;
+                path.style.animation = `drawEntropy 1.5s ease forwards`;
+
+                svg.appendChild(path);
+
+                // Add endpoint circles
+                [0, data.length - 1].forEach(i => {
+                    const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+                    circle.setAttribute('cx', xScale(years[i]));
+                    circle.setAttribute('cy', yScale(data[i]));
+                    circle.setAttribute('r', 4);
+                    circle.setAttribute('fill', color);
+                    circle.setAttribute('stroke', 'var(--bg-primary)');
+                    circle.setAttribute('class', 'entropy-endpoint');
+                    circle.setAttribute('data-series', name);
+                    circle.setAttribute('data-year', years[i]);
+                    circle.setAttribute('data-value', rawData[i].toFixed(3));
+
+                    circle.addEventListener('mouseenter', (e) => showEntropyTooltip(e, name, years[i], rawData[i]));
+                    circle.addEventListener('mouseleave', hideEntropyTooltip);
+
+                    svg.appendChild(circle);
+                });
+            });
+
+            // Add keyframe animation
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes drawEntropy {
+                    to { stroke-dashoffset: 0; }
+                }
+            `;
+            if (!document.querySelector('style[data-entropy]')) {
+                style.setAttribute('data-entropy', 'true');
+                document.head.appendChild(style);
+            }
+        }
+
+        function showEntropyTooltip(e, series, year, value) {
+            const tooltip = document.getElementById('entropy-tooltip');
+            const container = document.getElementById('entropy-chart-container');
+            if (!tooltip || !container) return;
+
+            tooltip.innerHTML = `
+                <div class="entropy-tooltip-title">${series}</div>
+                <div class="entropy-tooltip-value">${year}: ${value.toFixed(3)}</div>
+            `;
+            tooltip.classList.add('visible');
+
+            const rect = container.getBoundingClientRect();
+            tooltip.style.left = (e.clientX - rect.left + 12) + 'px';
+            tooltip.style.top = (e.clientY - rect.top - 10) + 'px';
+        }
+
+        function hideEntropyTooltip() {
+            const tooltip = document.getElementById('entropy-tooltip');
+            if (tooltip) tooltip.classList.remove('visible');
+        }
+
+        // Initialize entropy chart when modal opens
+        function initEntropyChartOnModal() {
+            const entropyModal = document.getElementById('entropy-modal');
+            if (entropyModal) {
+                const observer = new MutationObserver((mutations) => {
+                    mutations.forEach((mutation) => {
+                        if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+                            if (entropyModal.classList.contains('active')) {
+                                setTimeout(renderEntropyChart, 100);
+                            }
+                        }
+                    });
+                });
+                observer.observe(entropyModal, { attributes: true });
+
+                // Also render when clicking the technique card
+                const entropyCard = document.querySelector('[onclick*="entropy"]');
+                if (entropyCard) {
+                    entropyCard.addEventListener('click', () => {
+                        setTimeout(renderEntropyChart, 150);
+                    });
+                }
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", initEntropyChartOnModal);
+
+        // ===== PACKAGE CAROUSEL =====
+        let currentPackage = 0;
+        const totalPackages = 2;
+
+        function navigatePackage(direction) {
+            const newIndex = (currentPackage + direction + totalPackages) % totalPackages;
+            goToPackage(newIndex);
+        }
+
+        function goToPackage(index) {
+            if (index === currentPackage) return;
+            
+            const slides = document.querySelectorAll('.package-slide');
+            const dots = document.querySelectorAll('.package-dot');
+            
+            // Remove active from current
+            slides[currentPackage].classList.remove('active');
+            dots[currentPackage].classList.remove('active');
+            
+            // Add active to new
+            slides[index].classList.add('active');
+            dots[index].classList.add('active');
+            
+            currentPackage = index;
+        }
+
+        // Keyboard navigation for package carousel
+        document.addEventListener('keydown', function(e) {
+            const toolsSection = document.getElementById('tools');
+            if (!toolsSection) return;
+            const rect = toolsSection.getBoundingClientRect();
+            // Check if tools section is in view
+            if (rect.top < window.innerHeight && rect.bottom > 0) {
+                if (e.key === 'ArrowLeft') {
+                    e.preventDefault();
+                    navigatePackage(-1);
+                }
+                if (e.key === 'ArrowRight') {
+                    e.preventDefault();
+                    navigatePackage(1);
+                }
+            }
         });
 
         // ===== THEME TOGGLE =====
