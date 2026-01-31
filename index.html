@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!-- saved from url=(0058)file:///C:/Users/Mohamed%20Htitich/Downloads/index_28.html -->
 <html lang="en" data-theme="dark"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -2715,6 +2714,11 @@
             border: 1px solid rgba(255, 255, 255, 0.05);
         }
         
+        [data-theme="light"] .jt-forecast-viz-container {
+            background: rgba(45, 107, 66, 0.08);
+            border-color: rgba(45, 107, 66, 0.15);
+        }
+        
         .jt-forecast-header {
             display: flex;
             justify-content: space-between;
@@ -2859,6 +2863,12 @@
             min-width: 180px;
         }
         
+        [data-theme="light"] .jt-tooltip {
+            background: rgba(255, 255, 255, 0.95);
+            border-color: rgba(45, 107, 66, 0.3);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        
         .jt-tooltip.visible {
             opacity: 1;
             transform: translateY(0);
@@ -2889,6 +2899,10 @@
             background: rgba(255, 255, 255, 0.1);
             border-radius: 2px;
             overflow: hidden;
+        }
+        
+        [data-theme="light"] .jt-timeline-track {
+            background: rgba(45, 107, 66, 0.15);
         }
         
         .jt-timeline-progress {
@@ -3023,6 +3037,10 @@
             stroke-dasharray: 4, 4;
         }
         
+        [data-theme="light"] .jt-breakpoint {
+            stroke: rgba(45, 107, 66, 0.25);
+        }
+        
         .jt-breakpoint-label {
             fill: var(--text-muted);
             font-size: 10px;
@@ -3108,6 +3126,10 @@
             margin-bottom: 0.75rem;
         }
         
+        [data-theme="light"] .bayesian-equation {
+            background: rgba(45, 107, 66, 0.1);
+        }
+        
         .bayesian-eq-main {
             font-size: 1.3rem;
             font-family: 'Times New Roman', serif;
@@ -3150,6 +3172,10 @@
             background: rgba(0,0,0,0.2);
             border-radius: 8px;
             margin-bottom: 0.75rem;
+        }
+        
+        [data-theme="light"] .bayesian-priors {
+            background: rgba(45, 107, 66, 0.1);
         }
         
         .bayesian-prior-item {
@@ -3242,6 +3268,10 @@
             border-radius: 4px;
         }
         
+        [data-theme="light"] .bayesian-indicators span {
+            background: rgba(45, 107, 66, 0.1);
+        }
+        
         /* MCMC Animation Styles */
         .mcmc-section {
             margin: 2rem 0;
@@ -3249,6 +3279,11 @@
             background: #0a0a0f;
             border-radius: 12px;
             border: 1px solid rgba(20, 184, 166, 0.2);
+        }
+        
+        [data-theme="light"] .mcmc-section {
+            background: rgba(45, 107, 66, 0.05);
+            border-color: rgba(45, 107, 66, 0.2);
         }
         
         .mcmc-header {
@@ -3286,6 +3321,10 @@
             border-radius: 6px;
         }
         
+        [data-theme="light"] .mcmc-iteration-display {
+            background: rgba(45, 107, 66, 0.1);
+        }
+        
         .mcmc-charts-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -3298,6 +3337,11 @@
             border-radius: 8px;
             padding: 1rem;
             border: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        [data-theme="light"] .mcmc-chart-wrapper {
+            background: rgba(45, 107, 66, 0.08);
+            border-color: rgba(45, 107, 66, 0.2);
         }
         
         .mcmc-chart-label {
@@ -3403,6 +3447,273 @@
                 flex-direction: column;
                 gap: 1rem;
             }
+        }
+
+        /* ===== SIMULACRA MODAL STYLES ===== */
+        #simulacra-modal .technique-modal {
+            position: relative;
+        }
+        
+        #simulacra-modal .technique-modal-header,
+        #simulacra-modal .technique-modal-body {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .simulacra-bg-formulas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 100%;
+            min-height: 800px;
+            z-index: 0;
+            overflow: hidden;
+            pointer-events: none;
+            border-radius: 24px;
+        }
+        
+        .formula-blur-layer {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            filter: blur(3px);
+            opacity: 0.12;
+        }
+        
+        [data-theme="light"] .formula-blur-layer {
+            opacity: 0.08;
+        }
+        
+        .blur-formula {
+            position: absolute;
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--accent);
+            white-space: nowrap;
+            animation: formula-drift 30s linear infinite;
+        }
+        
+        .blur-formula.f1 { top: 8%; left: 5%; font-size: 1.1rem; animation-delay: 0s; }
+        .blur-formula.f2 { top: 18%; right: 10%; font-size: 0.9rem; animation-delay: -3s; }
+        .blur-formula.f3 { top: 28%; left: 15%; font-size: 1rem; animation-delay: -6s; }
+        .blur-formula.f4 { top: 40%; right: 5%; font-size: 0.85rem; animation-delay: -9s; }
+        .blur-formula.f5 { top: 52%; left: 8%; font-size: 1rem; animation-delay: -12s; }
+        .blur-formula.f6 { top: 62%; right: 15%; font-size: 0.95rem; animation-delay: -15s; }
+        .blur-formula.f7 { top: 72%; left: 20%; font-size: 0.9rem; animation-delay: -18s; }
+        .blur-formula.f8 { top: 82%; right: 8%; font-size: 1.05rem; animation-delay: -21s; }
+        .blur-formula.f9 { top: 90%; left: 12%; font-size: 0.85rem; animation-delay: -24s; }
+        .blur-formula.f10 { top: 35%; left: 40%; font-size: 0.95rem; animation-delay: -27s; }
+        
+        @keyframes formula-drift {
+            0%, 100% { transform: translateX(0) translateY(0); opacity: 0.12; }
+            25% { transform: translateX(10px) translateY(-5px); opacity: 0.18; }
+            50% { transform: translateX(5px) translateY(5px); opacity: 0.1; }
+            75% { transform: translateX(-5px) translateY(-3px); opacity: 0.15; }
+        }
+        
+        .coming-soon-banner {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 1.5rem;
+            background: linear-gradient(135deg, rgba(124, 152, 133, 0.2), rgba(124, 152, 133, 0.08));
+            border: 1px solid rgba(124, 152, 133, 0.4);
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+        }
+        
+        [data-theme="light"] .coming-soon-banner {
+            background: linear-gradient(135deg, rgba(45, 107, 66, 0.15), rgba(45, 107, 66, 0.05));
+            border-color: rgba(45, 107, 66, 0.3);
+        }
+        
+        .coming-soon-icon {
+            font-size: 1.5rem;
+            color: var(--accent);
+            animation: pulse-glow 2s ease-in-out infinite;
+        }
+        
+        @keyframes pulse-glow {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(1.1); }
+        }
+        
+        .coming-soon-text {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .coming-soon-label {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--accent);
+            letter-spacing: 0.05em;
+        }
+        
+        .coming-soon-subtitle {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+        
+        .simulacra-layers {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            margin: 1.5rem 0;
+        }
+        
+        .simulacra-layer {
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--glass-border);
+            background: var(--bg-glass);
+        }
+        
+        .layer-economic {
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+            border-bottom: none;
+        }
+        
+        .layer-social {
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+            border-top: none;
+        }
+        
+        .layer-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .layer-numeral {
+            font-family: 'Instrument Serif', Georgia, serif;
+            font-size: 1.5rem;
+            color: var(--accent);
+            font-weight: 400;
+        }
+        
+        .layer-title {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+        
+        .layer-subtitle {
+            font-size: 0.85rem;
+            color: var(--accent);
+            margin-bottom: 0.75rem;
+            font-style: italic;
+        }
+        
+        .layer-description {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+        
+        .layer-keywords {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        
+        .layer-keyword {
+            padding: 0.25rem 0.6rem;
+            background: var(--tag-bg);
+            border-radius: 20px;
+            font-size: 0.7rem;
+            color: var(--accent);
+            font-weight: 500;
+        }
+        
+        .simulacra-bridge {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--bg-glass);
+            padding: 0.5rem 0;
+            border-left: 1px solid var(--glass-border);
+            border-right: 1px solid var(--glass-border);
+        }
+        
+        .bridge-line {
+            height: 2px;
+            width: 80px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+        }
+        
+        .bridge-icon {
+            font-size: 1.2rem;
+            color: var(--accent);
+            margin: 0 0.5rem;
+            animation: bridge-pulse 1.5s ease-in-out infinite;
+        }
+        
+        @keyframes bridge-pulse {
+            0%, 100% { transform: scaleY(1); opacity: 1; }
+            50% { transform: scaleY(1.3); opacity: 0.7; }
+        }
+        
+        .simulacra-synthesis {
+            margin-top: 1.5rem;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, rgba(124, 152, 133, 0.15), rgba(124, 152, 133, 0.05));
+            border: 1px solid rgba(124, 152, 133, 0.3);
+            border-radius: 12px;
+            text-align: center;
+        }
+        
+        [data-theme="light"] .simulacra-synthesis {
+            background: linear-gradient(135deg, rgba(45, 107, 66, 0.12), rgba(45, 107, 66, 0.04));
+            border-color: rgba(45, 107, 66, 0.25);
+        }
+        
+        .synthesis-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+        
+        .synthesis-icon {
+            font-size: 1.5rem;
+            color: var(--accent);
+        }
+        
+        .synthesis-title {
+            font-family: 'Instrument Serif', Georgia, serif;
+            font-size: 1.3rem;
+            color: var(--text-primary);
+        }
+        
+        .synthesis-text {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .future-note {
+            border-top: 1px solid var(--border);
+            padding-top: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .future-note p {
+            font-style: italic;
+            color: var(--text-muted);
+        }
+        
+        @media (max-width: 600px) {
+            .blur-formula { display: none; }
+            .layer-header { flex-direction: column; align-items: flex-start; gap: 0.25rem; }
+            .bridge-line { width: 40px; }
         }
 
         /* CESP Convergence Panels */
@@ -4326,6 +4637,39 @@
             .legend-scale {
                 gap: 0.5rem;
             }
+            
+            /* Mobile fixes for carousel icons */
+            .metric-details {
+                flex-wrap: wrap;
+                justify-content: flex-start;
+                gap: 0.5rem;
+            }
+            
+            .metric-detail-item {
+                font-size: 0.65rem;
+                padding: 0.25rem 0.5rem;
+                min-width: 0;
+                flex-shrink: 0;
+            }
+            
+            .metric-detail-item svg {
+                width: 12px !important;
+                height: 12px !important;
+                min-width: 12px;
+                flex-shrink: 0;
+            }
+            
+            .metric-header {
+                padding: 1rem;
+            }
+            
+            .metric-title-group {
+                margin-bottom: 0.75rem;
+            }
+            
+            .metric-name {
+                font-size: 0.9rem;
+            }
         }
 
         @media (max-width: 600px) {
@@ -4444,19 +4788,21 @@
             </svg>
             <div class="logo-text">
                 <span class="logo-name">Mohamed Htitich</span>
-                <span class="logo-tagline">Policy Analytics</span>
+                <span class="logo-tagline">Research Portfolio</span>
             </div>
         </div>
         <div class="nav-links">
-            <a href="file:///C:/Users/Mohamed%20Htitich/Downloads/index_28.html#research">Research</a>
+            <a href="#research">Research</a>
             <span class="nav-separator">•</span>
-            <a href="file:///C:/Users/Mohamed%20Htitich/Downloads/index_28.html#tools">Tools</a>
+            <a href="#tools">Tools</a>
             <span class="nav-separator">•</span>
-            <a href="file:///C:/Users/Mohamed%20Htitich/Downloads/index_28.html#about">About</a>
+            <a href="#indices">Models</a>
             <span class="nav-separator">•</span>
-            <a href="file:///C:/Users/Mohamed%20Htitich/Downloads/index_28.html#about" class="nav-contact">Get in Touch</a>
+            <a href="#about">About</a>
             <span class="nav-separator">•</span>
-            <a href="file:///C:/Users/Mohamed%20Htitich/Downloads/subnational.html" class="nav-highlight">Subnational Analytics</a>
+            <a href="mailto:research@mhtitich.com" class="nav-contact">Get in Touch</a>
+            <span class="nav-separator">•</span>
+            <a href="https://mhtitich.com/subnational.html" class="nav-highlight">Subnational Analytics</a>
             <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light mode">
                 <svg class="moon-icon" viewBox="0 0 24 24">
                     <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
@@ -4478,9 +4824,9 @@
 
     <header class="hero">
         <div class="hero-label">Global Development &amp; Environment Research</div>
-        <h1>Measuring what matters for <em>human progress</em> and <em>planetary boundaries</em></h1>
+        <h1>Measuring what matters most for <em>human progress</em> within the limits of our <em>planet</em></h1>
         <p class="hero-description">
-            Developing composite indicators and analytical frameworks that bridge environmental science with policy—quantifying how societies can advance well-being within ecological limits.
+            Developing analytical frameworks that bridge science with policy-quantifying how societies can advance well-being within ecological limits.
         </p>
         <div class="hero-meta">
             <span><span class="dot"></span>PhD Environmental &amp; Development Studies</span>
@@ -4520,7 +4866,7 @@
                 <div class="research-card" data-theme="climate" onclick="selectResearchTheme(&#39;climate&#39;, this)">
                     <div class="research-number">03</div>
                     <h3>Climate Change Perception</h3>
-                    <p>Analyzing public attitudes toward climate risks across 100+ countries using large-scale survey data. Constructing latent variable models to understand awareness, worry, and action readiness—linking perception to policy effectiveness.</p>
+                    <p>Analyzing public attitudes toward climate risks across 100+ countries using large-scale survey data. Constructing latent variable models to understand awareness, worry, and action readiness-linking perception to policy effectiveness.</p>
                     <div class="research-tags">
                         <span class="tag">Climate Perceptions Index</span>
                         <span class="tag">Latent Variables</span>
@@ -4535,7 +4881,7 @@
                             <path d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"></path>
                         </svg>
                         <div>
-                            <div class="terminal-title">Research Assistant</div>
+                            <div class="terminal-title">Artificial Research-Agent (ARA)</div>
                             <div class="terminal-subtitle">Methods, literature &amp; data explorer</div>
                         </div>
                     </div>
@@ -4543,7 +4889,7 @@
                 <div class="terminal-body">
                     <div class="terminal-messages" id="terminal-messages">
                         <div class="terminal-line output welcome-message">
-                            <span>I can help you explore the methodology, underlying literature, and empirical data behind this research—covering 170+ countries and three decades of development indicators.</span>
+                            <span>I can help you explore the methodology, underlying literature, and empirical data behind this research-covering 170+ countries and three decades of development indicators.</span>
                         </div>
                         <div class="terminal-line system select-prompt">
                             <svg class="select-prompt-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 11l5-5 5 5M7 17l5-5 5 5"></path></svg>
@@ -5931,19 +6277,19 @@
                                         <div class="metric-text-title">Scope &amp; Aim</div>
                                         <div class="metric-text-content">
                                             <p>The Just Transition Score measures how efficiently countries achieve <strong>social progress</strong> relative to their environmental footprint. It integrates two efficiency dimensions: <strong>material footprint efficiency</strong> and <strong>carbon footprint efficiency</strong>.</p>
-                                            <p>This dual-efficiency framework captures the "safe and just space" concept from Raworth's Doughnut Economics—identifying countries that deliver high well-being outcomes while staying within planetary boundaries.</p>
+                                            <p>This dual-efficiency framework captures the "safe and just space" concept from Raworth's Doughnut Economics-identifying countries that deliver high well-being outcomes while staying within planetary boundaries.</p>
                                         </div>
                                     </div>
                                     <div class="metric-text-section">
                                         <div class="metric-text-title">Policy Relevance</div>
                                         <div class="metric-text-content">
-                                            <p>JTS quantifies just transition pathways by revealing which countries deliver well-being efficiently—informing green industrial policy, sustainable development investment, and climate finance allocation mechanisms.</p>
+                                            <p>JTS quantifies just transition pathways by revealing which countries deliver well-being efficiently-informing green industrial policy, sustainable development investment, and climate finance allocation mechanisms.</p>
                                         </div>
                                     </div>
                                     <div class="metric-text-section">
                                         <div class="metric-text-title">Methodological Innovation</div>
                                         <div class="metric-text-content">
-                                            <p>JTS employs <strong>entropy weighting</strong> for objective indicator aggregation and introduces a novel <strong>dual-efficiency framework</strong> combining material and carbon footprint efficiency into a single sustainability metric.</p>
+                                            <p>The methodological innovation of JTS lies in bringing together <strong>environmental integrity</strong> with <strong>development performance</strong> through recalibration of variances in constructing the JTS ratio.</p>
                                         </div>
                                     </div>
                                 </div>
@@ -5961,7 +6307,7 @@
                                 <div class="metric-details">
                                     <span class="metric-detail-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align: middle; margin-right: 4px;"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/><path d="M2 12h20"/></svg>170+ Countries</span>
                                     <span class="metric-detail-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align: middle; margin-right: 4px;"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>1990–2020</span>
-                                    <span class="metric-detail-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align: middle; margin-right: 4px;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>Publication: coming soon</span>
+                                    <span class="metric-detail-item"><a href="https://doi.org/10.1016/j.geosus.2026.100421" target="_blank" style="color: inherit; text-decoration: none; display: inline-flex; align-items: center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align: middle; margin-right: 4px;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>Geography and Sustainability (2026)</a></span>
                                 </div>
                             </div>
                             <div class="metric-body">
@@ -5983,7 +6329,7 @@
                                             <svg id="svg-high-carousel" viewBox="0 0 400 220" preserveAspectRatio="xMidYMid meet"></svg>
                                         </div>
                                     </div>
-                                    <div class="carousel-caption" id="cesp-caption-carousel">Low-emitting countries show <strong>rapid convergence toward y=1</strong> (β=0.21)—their just transition paths are closing in on carbon-free well-being, promising trajectories for nearly half the world's population.</div>
+                                    <div class="carousel-caption" id="cesp-caption-carousel">Low-emitting countries show <strong>rapid convergence toward y=1</strong> (β=0.21)-their just transition paths are closing in on carbon-free well-being, promising trajectories for nearly half the world's population.</div>
                                     <div id="cesp-tooltip-carousel" class="carousel-tooltip"></div>
                                 </div>
                                 <div class="metric-text">
@@ -6021,7 +6367,7 @@
                                 <div class="metric-details">
                                     <span class="metric-detail-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align: middle; margin-right: 4px;"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/><path d="M2 12h20"/></svg>100+ Countries</span>
                                     <span class="metric-detail-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align: middle; margin-right: 4px;"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>100k+ Survey Responses</span>
-                                    <span class="metric-detail-item"><a href="https://www.tandfonline.com/doi/full/10.1080/1536867X.2025.2483047" target="_blank" style="color: inherit; text-decoration: none; display: inline-flex; align-items: center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align: middle; margin-right: 4px;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>Stata Journal (2025)</a></span>
+                                    <span class="metric-detail-item"><a href="https://www.tandfonline.com/doi/full/10.1080/15366367.2024.2352322" target="_blank" style="color: inherit; text-decoration: none; display: inline-flex; align-items: center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align: middle; margin-right: 4px;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>Measurement (2025)</a></span>
                                 </div>
                             </div>
                             <div class="metric-body">
@@ -6112,13 +6458,13 @@
                                     <div class="metric-text-section">
                                         <div class="metric-text-title">Policy Relevance</div>
                                         <div class="metric-text-content">
-                                            <p>The CPI helps governments understand where public opinion enables or constrains climate policy ambition—whether interventions should focus on education, risk communication, or economic incentives.</p>
+                                            <p>The CPI helps governments understand where public opinion enables or constrains climate policy ambition-whether interventions should focus on education, risk communication, or economic incentives.</p>
                                         </div>
                                     </div>
                                     <div class="metric-text-section">
                                         <div class="metric-text-title">Methodological Innovation</div>
                                         <div class="metric-text-content">
-                                            <p>CPI introduces a <strong>Bayesian structural equation model</strong> that estimates latent climate perception dimensions from large-scale survey data, enabling robust cross-country comparisons with uncertainty quantification.</p>
+                                            <p>CPI represents the <strong>first composite measure of self-reported subjective indicators</strong> with a global coverage of social media users-enabling unprecedented cross-country comparisons of climate attitudes.</p>
                                         </div>
                                     </div>
                                 </div>
@@ -6176,7 +6522,7 @@
                 <div class="modal-section">
                     <div class="modal-section-title">Scope &amp; Aim</div>
                     <p>The Just Transition Score measures how efficiently countries achieve social progress relative to their environmental footprint. It integrates two efficiency dimensions: <strong>material footprint efficiency</strong> (social progress per ton of material consumption) and <strong>carbon footprint efficiency</strong> (social progress per ton of CO₂ emissions).</p>
-                    <p style="margin-top: 1rem;">This dual-efficiency framework captures the "safe and just space" concept from Raworth's Doughnut Economics—identifying countries that deliver high well-being outcomes while staying within planetary boundaries.</p>
+                    <p style="margin-top: 1rem;">This dual-efficiency framework captures the "safe and just space" concept from Raworth's Doughnut Economics-identifying countries that deliver high well-being outcomes while staying within planetary boundaries.</p>
                 </div>
                 
                 <div class="modal-visualization jts-map-viz">
@@ -7490,7 +7836,7 @@
                 <div class="modal-section">
                     <div class="modal-section-title">Policy Relevance</div>
                     <div class="policy-relevance">
-                        <p>The JTS informs climate policy by identifying which development pathways achieve human flourishing without exceeding environmental limits. It helps policymakers benchmark national performance against global leaders, prioritize investments in decoupling strategies, and track progress toward the Paris Agreement's equity principles—ensuring that climate action does not compromise development goals.</p>
+                        <p>The JTS informs climate policy by identifying which development pathways achieve human flourishing without exceeding environmental limits. It helps policymakers benchmark national performance against global leaders, prioritize investments in decoupling strategies, and track progress toward the Paris Agreement's equity principles-ensuring that climate action does not compromise development goals.</p>
                     </div>
                 </div>
             </div>
@@ -7521,7 +7867,7 @@
             <div class="modal-body">
                 <div class="modal-section">
                     <div class="modal-section-title">Scope &amp; Aim</div>
-                    <p>CESP measures how efficiently countries convert carbon emissions into social progress. The visualization shows <strong>relative transition paths</strong> where <strong>y = 1</strong> represents the convergence point—no disparity in carbon efficiency performance. Lines converging toward unity indicate countries approaching <strong>carbon-free well-being</strong>: the ultimate just transition.</p>
+                    <p>CESP measures how efficiently countries convert carbon emissions into social progress. The visualization shows <strong>relative transition paths</strong> where <strong>y = 1</strong> represents the convergence point-no disparity in carbon efficiency performance. Lines converging toward unity indicate countries approaching <strong>carbon-free well-being</strong>: the ultimate just transition.</p>
                     <p style="margin-top: 1rem;">Using Phillips-Sul club convergence analysis, each trajectory traces a country's <strong>relative just transition path</strong>. Upward movement signals improving efficiency relative to peers; convergence toward 1 means closing the gap to sustainable development.</p>
                 </div>
                 
@@ -7560,14 +7906,14 @@
                     </div>
                     <div id="cesp-tooltip" class="cesp-tooltip"></div>
                     <div class="convergence-caption" id="cesp-caption">
-                        Low-emitting countries show <strong>rapid convergence toward y=1</strong> (β=0.21)—their just transition paths are closing in on carbon-free well-being, promising trajectories for nearly half the world's population.
+                        Low-emitting countries show <strong>rapid convergence toward y=1</strong> (β=0.21)-their just transition paths are closing in on carbon-free well-being, promising trajectories for nearly half the world's population.
                     </div>
                 </div>
                 
                 <div class="modal-section">
                     <div class="modal-section-title">Policy Relevance</div>
                     <div class="policy-relevance">
-                        <p>CESP provides critical insights for climate negotiations and technology transfer policies. By identifying convergence clubs, it reveals which country groups share common challenges and could benefit from targeted cooperation. The metric supports the Paris Agreement's differentiated responsibilities framework by quantifying emission efficiency gaps between developed and developing nations—informing equitable burden-sharing mechanisms.</p>
+                        <p>CESP provides critical insights for climate negotiations and technology transfer policies. By identifying convergence clubs, it reveals which country groups share common challenges and could benefit from targeted cooperation. The metric supports the Paris Agreement's differentiated responsibilities framework by quantifying emission efficiency gaps between developed and developing nations-informing equitable burden-sharing mechanisms.</p>
                     </div>
                 </div>
             </div>
@@ -7599,7 +7945,7 @@
                 <div class="modal-section">
                     <div class="modal-section-title">Scope &amp; Aim</div>
                     <p>The Climate Perceptions Index captures public attitudes toward climate change across three dimensions: <strong>awareness</strong> (knowledge of climate change and its causes), <strong>risk perception</strong> (perceived personal and intergenerational threats), and <strong>commitment to action</strong> (willingness to engage in pro-environmental behavior).</p>
-                    <p style="margin-top: 1rem;">Built from 100,000+ survey responses across 107 countries (Meta/Yale Climate Survey), the visualization below shows how perception scores distribute within each dimension—revealing surprising disconnects between knowledge and action readiness.</p>
+                    <p style="margin-top: 1rem;">Built from 100,000+ survey responses across 107 countries (Meta/Yale Climate Survey), the visualization below shows how perception scores distribute within each dimension-revealing surprising disconnects between knowledge and action readiness.</p>
                 </div>
                 
                 <div class="modal-visualization cpi-viz">
@@ -7687,7 +8033,7 @@
                     </div>
                     <div id="cpi-tooltip" class="cpi-tooltip"></div>
                     <div class="cpi-caption" id="cpi-caption">
-                        <strong>Portugal</strong> leads globally with balanced high scores. <strong>Latin America</strong> dominates the top 10 despite lower awareness—driven by strong risk perception and action readiness.
+                        <strong>Portugal</strong> leads globally with balanced high scores. <strong>Latin America</strong> dominates the top 10 despite lower awareness-driven by strong risk perception and action readiness.
                     </div>
                 </div>
                 
@@ -7717,7 +8063,7 @@
                             <div class="package-header">
                                 <div class="package-logo">w2m</div>
                                 <div class="package-info">
-                                    <h3>(What matters most) What to Measure</h3>
+                                    <h3>What to Measure (What matters most)</h3>
                                     <div class="package-tagline">A unified framework for constructing, analyzing, and visualizing composite indicators</div>
                                     <div class="package-badges">
                                         <span class="package-badge">R ≥ 4.0</span>
@@ -7727,7 +8073,7 @@
                                 </div>
                             </div>
                             
-                            <p class="package-description">Implements methodological innovations from my dissertation research—including time-decay entropy weighting, convergence testing, and ML-based variable importance ranking. Designed for researchers working with cross-country panel data.</p>
+                            <p class="package-description">Implements methodological innovations from my dissertation research-including time-decay entropy weighting, convergence testing, and ML-based variable importance ranking. Designed for researchers working with cross-country panel data.</p>
                             
                             <div class="install-code">
                                 <code># Install from GitHub<br>devtools::install_github("MohamedHtitich1/w2m")</code>
@@ -7813,7 +8159,7 @@ importance &lt;- <span class="func">rf_importance</span>(<br>
                                 <div class="package-logo" style="font-size: 0.9rem;">lint</div>
                                 <div class="package-info">
                                     <h3>Local Intelligence</h3>
-                                    <div class="package-tagline">Subnational data pipeline for Eurostat NUTS regions—bridging regional granularity with analytical accessibility</div>
+                                    <div class="package-tagline">Subnational data pipeline for Eurostat NUTS regions-bridging regional granularity with analytical accessibility</div>
                                     <div class="package-badges">
                                         <span class="package-badge">R ≥ 4.0</span>
                                         <span class="package-badge">MIT License</span>
@@ -7948,21 +8294,21 @@ national &lt;- <span class="func">aggregate_nuts</span>(<br>
                 </div>
             </div>
             
-            <div class="technique-card" onclick="openTechniqueModal(&#39;importance&#39;)">
-                <div class="technique-icon">∇</div>
-                <div class="technique-name">Variable Importance</div>
-                <div class="technique-brief">Random forest and permutation-based feature ranking with cross-validated importance scores.</div>
-                <div class="technique-expand">
-                    <span>→</span> View formula &amp; methodology
-                </div>
-            </div>
-            
             <div class="technique-card" onclick="openTechniqueModal(&#39;bayesian&#39;)">
                 <div class="technique-icon">ξ</div>
                 <div class="technique-name">Bayesian Recursive Constructs</div>
                 <div class="technique-brief">Hierarchical latent variable model with MCMC estimation for social and governance dimensions.</div>
                 <div class="technique-expand">
                     <span>→</span> View model &amp; convergence
+                </div>
+            </div>
+            
+            <div class="technique-card" onclick="openTechniqueModal(&#39;simulacra&#39;)">
+                <div class="technique-icon">⊛</div>
+                <div class="technique-name">Simulacra</div>
+                <div class="technique-brief">Bridging General Equilibrium and Integrated Assessment models to simulate income effects on wellbeing.</div>
+                <div class="technique-expand">
+                    <span>→</span> Coming Soon
                 </div>
             </div>
         </div>
@@ -7982,7 +8328,7 @@ national &lt;- <span class="func">aggregate_nuts</span>(<br>
             <div class="technique-modal-body">
                 <div class="modal-section">
                     <div class="modal-section-title">Conceptual Foundation</div>
-                    <p>Entropy quantifies uncertainty in the distribution of outcomes across countries. When applying entropy to development indicators, <strong>higher entropy</strong> signifies greater uniformity (convergence)—the indicator becomes less informative for distinguishing between countries. <strong>Lower entropy</strong> means higher discriminatory power, as countries' performance is more varied.</p>
+                    <p>Entropy quantifies uncertainty in the distribution of outcomes across countries. When applying entropy to development indicators, <strong>higher entropy</strong> signifies greater uniformity (convergence)-the indicator becomes less informative for distinguishing between countries. <strong>Lower entropy</strong> means higher discriminatory power, as countries' performance is more varied.</p>
                     <p style="margin-top: 0.75rem;">The time-decay modification introduces a factor <strong>α<sup>(T−t)</sup></strong> that gives greater influence to recent observations while still incorporating historical patterns. This is essential for tracking how indicator "importance" evolves as countries converge in some dimensions (e.g., basic needs) while diverging in others (e.g., governance).</p>
                 </div>
                 
@@ -8043,7 +8389,7 @@ national &lt;- <span class="func">aggregate_nuts</span>(<br>
                 
                 <div class="technique-viz">
                     <div class="technique-viz-title">Evolution of Diversity of Information (1990–2020)</div>
-                    <div class="technique-viz-subtitle">Higher values indicate greater cross-country disparity — more informative for differentiating countries</div>
+                    <div class="technique-viz-subtitle">Higher values indicate greater cross-country disparity - more informative for differentiating countries</div>
                     <div id="entropy-chart-container" class="entropy-chart-container">
                         <svg id="entropy-line-chart" viewBox="0 0 560 300" preserveAspectRatio="xMidYMid meet"></svg>
                         <div id="entropy-tooltip" class="entropy-tooltip"></div>
@@ -8070,7 +8416,7 @@ national &lt;- <span class="func">aggregate_nuts</span>(<br>
                 
                 <div class="modal-section">
                     <div class="modal-section-title">Key Insight</div>
-                    <p>The chart reveals a <strong>paradigm shift</strong> in global development: In 1990, social dimensions (Basic Human Needs, Wellbeing) had highest entropy weights—countries differed most in basic living standards. By 2020, governance dimensions dominate, indicating that contemporary development gaps are primarily <strong>governance gaps</strong>. Countries have converged on basic needs while diverging on state capacity and democratic accountability.</p>
+                    <p>The chart reveals a <strong>paradigm shift</strong> in global development: In 1990, social dimensions (Basic Human Needs, Wellbeing) had highest entropy weights-countries differed most in basic living standards. By 2020, governance dimensions dominate, indicating that contemporary development gaps are primarily <strong>governance gaps</strong>. Countries have converged on basic needs while diverging on state capacity and democratic accountability.</p>
                 </div>
             </div>
         </div>
@@ -8089,7 +8435,7 @@ national &lt;- <span class="func">aggregate_nuts</span>(<br>
             <div class="technique-modal-body">
                 <div class="modal-section">
                     <div class="modal-section-title">What is a Just Transition?</div>
-                    <p>A <strong>Just Transition</strong> means achieving high social progress (SPI ≥ 80) while keeping emissions sustainable (< 1.9 tCO₂e per capita). This threshold represents the per-capita "fair share" of the global carbon budget. Using Phillips-Sul convergence analysis on 1990–2020 data, we forecast which nations are on track to reach this goal by 2050—and which face structural barriers.</p>
+                    <p>A <strong>Just Transition</strong> means achieving high social progress (SPI ≥ 80) while keeping emissions sustainable (< 1.9 tCO₂e per capita). This threshold represents the per-capita "fair share" of the global carbon budget. Using Phillips-Sul convergence analysis on 1990–2020 data, we forecast which nations are on track to reach this goal by 2050-and which face structural barriers.</p>
                 </div>
                 
                 <div class="jt-forecast-viz-container">
@@ -8185,12 +8531,12 @@ national &lt;- <span class="func">aggregate_nuts</span>(<br>
                         <div class="jt-finding-card">
                             <div class="jt-finding-icon" style="color: #2dd4bf;">●</div>
                             <div class="jt-finding-title">Low-emitting: Converging</div>
-                            <p>67 countries show <strong>rapid convergence</strong> (β=0.21) toward carbon-efficient well-being. These nations—mostly in Sub-Saharan Africa and South Asia—are on the most promising just transition pathway.</p>
+                            <p>67 countries show <strong>rapid convergence</strong> (β=0.21) toward carbon-efficient well-being. These nations-mostly in Sub-Saharan Africa and South Asia-are on the most promising just transition pathway.</p>
                         </div>
                         <div class="jt-finding-card">
                             <div class="jt-finding-icon" style="color: #5eead4;">●</div>
                             <div class="jt-finding-title">Middle-emitting: Diverging</div>
-                            <p>63 countries exhibit <strong>divergence</strong> (β=−0.33), fragmenting into 4 distinct clubs. These include major economies like China, Brazil, and Turkey—facing the greatest structural barriers to just transition.</p>
+                            <p>63 countries exhibit <strong>divergence</strong> (β=−0.33), fragmenting into 4 distinct clubs. These include major economies like China, Brazil, and Turkey-facing the greatest structural barriers to just transition.</p>
                         </div>
                         <div class="jt-finding-card">
                             <div class="jt-finding-icon" style="color: #99f6e4;">●</div>
@@ -8202,67 +8548,7 @@ national &lt;- <span class="func">aggregate_nuts</span>(<br>
                 
                 <div class="modal-section">
                     <div class="modal-section-title">Forecast Result</div>
-                    <p>Under current trajectories extrapolated to 2050 using Damped Holt Exponential Smoothing, <strong>only 4 of 160 countries</strong> would achieve Just Transition—all from the low-emitting group. This underscores the need for accelerated decoupling policies in middle and high-emitting nations.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="index-modal-overlay" id="importance-modal" onclick="closeIndexModal(event, &#39;importance&#39;)">
-        <div class="technique-modal" onclick="event.stopPropagation()">
-            <button class="modal-close" onclick="closeIndexModal(event, &#39;importance&#39;)">×</button>
-            <div class="technique-modal-header">
-                <div class="technique-modal-icon">∇</div>
-                <div class="technique-modal-info">
-                    <h2>Variable Importance</h2>
-                    <p>Random forest and permutation-based feature ranking</p>
-                </div>
-            </div>
-            <div class="technique-modal-body">
-                <div class="modal-section">
-                    <div class="modal-section-title">Methodology</div>
-                    <p>Random Forest importance scores quantify each predictor's contribution to model accuracy. <strong>Permutation importance</strong> measures the increase in prediction error when a variable's values are shuffled—providing a model-agnostic assessment of feature relevance that captures non-linear relationships and interactions.</p>
-                </div>
-                
-                <div class="formula-container">
-                    <div class="formula-title">Importance Measures</div>
-                    <div class="formula">
-                        VI<sub>j</sub><sup>perm</sup> = (1/B) Σ<sub>b</sub> [Err(T<sub>b</sub>, D<sub>j</sub><sup>π</sup>) - Err(T<sub>b</sub>, D)]
-                    </div>
-                    <div class="formula">
-                        VI<sub>j</sub><sup>gini</sup> = Σ<sub>nodes</sub> Δ Gini(j)
-                    </div>
-                    <div class="formula-vars">
-                        <div class="formula-var"><span>B</span> = number of trees</div>
-                        <div class="formula-var"><span>D<sub>j</sub><sup>π</sup></span> = data with j permuted</div>
-                        <div class="formula-var"><span>Δ Gini</span> = impurity reduction</div>
-                    </div>
-                </div>
-                
-                <div class="technique-viz">
-                    <div class="technique-viz-title">Feature Importance Rankings</div>
-                    <div class="viz-chart">
-                        <div class="viz-bar" style="height: 95%;">
-                            <span class="viz-bar-value">.42</span>
-                            <span class="viz-bar-label">GDP</span>
-                        </div>
-                        <div class="viz-bar" style="height: 78%;">
-                            <span class="viz-bar-value">.35</span>
-                            <span class="viz-bar-label">Educ.</span>
-                        </div>
-                        <div class="viz-bar" style="height: 62%;">
-                            <span class="viz-bar-value">.28</span>
-                            <span class="viz-bar-label">Health</span>
-                        </div>
-                        <div class="viz-bar" style="height: 48%;">
-                            <span class="viz-bar-value">.21</span>
-                            <span class="viz-bar-label">Gov.</span>
-                        </div>
-                        <div class="viz-bar" style="height: 35%;">
-                            <span class="viz-bar-value">.15</span>
-                            <span class="viz-bar-label">Urban</span>
-                        </div>
-                    </div>
+                    <p>Under current trajectories extrapolated to 2050 using Damped Holt Exponential Smoothing, <strong>only 4 of 160 countries</strong> would achieve Just Transition-all from the low-emitting group. This underscores the need for accelerated decoupling policies in middle and high-emitting nations.</p>
                 </div>
             </div>
         </div>
@@ -8437,11 +8723,11 @@ national &lt;- <span class="func">aggregate_nuts</span>(<br>
                     <div class="mcmc-diagnostics">
                         <div class="mcmc-diag-item">
                             <span class="mcmc-diag-label">R̂ (Gelman-Rubin)</span>
-                            <span class="mcmc-diag-value" id="mcmc-rhat">—</span>
+                            <span class="mcmc-diag-value" id="mcmc-rhat">-</span>
                         </div>
                         <div class="mcmc-diag-item">
                             <span class="mcmc-diag-label">ESS (Effective Sample Size)</span>
-                            <span class="mcmc-diag-value" id="mcmc-ess">—</span>
+                            <span class="mcmc-diag-value" id="mcmc-ess">-</span>
                         </div>
                         <div class="mcmc-diag-item">
                             <span class="mcmc-diag-label">Status</span>
@@ -8453,6 +8739,107 @@ national &lt;- <span class="func">aggregate_nuts</span>(<br>
                 <div class="modal-section">
                     <div class="modal-section-title">Key Finding</div>
                     <p>The recursive Bayesian structure reveals that <strong>State Capacity</strong> and <strong>Democratic Accountability</strong> jointly explain significant variance in wellbeing outcomes. The MCMC sampling (4 chains, 1000 iterations post-warmup) achieves convergence with R̂ < 1.01 across all parameters, providing robust posterior credible intervals for cross-country comparisons of governance quality.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="index-modal-overlay" id="simulacra-modal" onclick="closeIndexModal(event, &#39;simulacra&#39;)">
+        <div class="technique-modal technique-modal-wide" onclick="event.stopPropagation()">
+            <button class="modal-close" onclick="closeIndexModal(event, &#39;simulacra&#39;)">×</button>
+            
+            <!-- Blurred Formula Background -->
+            <div class="simulacra-bg-formulas">
+                <div class="formula-blur-layer">
+                    <span class="blur-formula f1">Y = C(Y-T, r) + I(r, A) + G + NX(e)</span>
+                    <span class="blur-formula f2">U = Σᵢ αᵢ · ln(Cᵢ)</span>
+                    <span class="blur-formula f3">σₑₛ = 1/(1-ρ)</span>
+                    <span class="blur-formula f4">Qᵢ = Aᵢ · [δKᵢᵖ + (1-δ)Lᵢᵖ]^(1/ρ)</span>
+                    <span class="blur-formula f5">∂W/∂Y = ∂H/∂Y · β₁ + ∂E/∂Y · β₂</span>
+                    <span class="blur-formula f6">max U(C,H,E) s.t. pC ≤ wL + rK</span>
+                    <span class="blur-formula f7">Ψ = ∫∫ f(Y,W) dY dW</span>
+                    <span class="blur-formula f8">σₖₗ = ∂ln(K/L)/∂ln(w/r)</span>
+                    <span class="blur-formula f9">η = [Σⱼ δⱼXⱼᵖ]^(1/ρ)</span>
+                    <span class="blur-formula f10">∇W = λ₁∇GDP + λ₂∇Health + λ₃∇Educ</span>
+                </div>
+            </div>
+            
+            <div class="technique-modal-header" style="position: relative; z-index: 2;">
+                <div class="technique-modal-icon">⊛</div>
+                <div class="technique-modal-info">
+                    <h2>Simulacra</h2>
+                    <p>Bridging General Equilibrium and Integrated Assessment Models</p>
+                </div>
+            </div>
+            
+            <div class="technique-modal-body" style="position: relative; z-index: 2;">
+                <!-- Coming Soon Banner -->
+                <div class="coming-soon-banner">
+                    <div class="coming-soon-icon">◇</div>
+                    <div class="coming-soon-text">
+                        <span class="coming-soon-label">Coming Soon</span>
+                        <span class="coming-soon-subtitle">Next Research Horizon</span>
+                    </div>
+                </div>
+                
+                <div class="modal-section">
+                    <div class="modal-section-title">The Vision</div>
+                    <p><strong>Simulacra</strong> is a simulation framework designed to bridge the gap between <em>Social Integrated Assessment</em> and <em>General Equilibrium</em> models, enabling us to trace how income changes ripple through to key aspects of human wellbeing. The name embraces the plural nature of its Latin roots-where <em>Simulacrum</em> is singular, <em>Simulacra</em> represents the synthesis of multiple representations.</p>
+                </div>
+                
+                <div class="simulacra-layers">
+                    <div class="simulacra-layer layer-economic">
+                        <div class="layer-header">
+                            <span class="layer-numeral">I</span>
+                            <span class="layer-title">Simulacrum I - The Economic</span>
+                        </div>
+                        <div class="layer-subtitle">The General Equilibrium Layer</div>
+                        <div class="layer-description">
+                            <p>The foundational representation of economic flows-the circulation of money, goods, and services across sectors and agents. CGE models with nested CES production functions capture substitution elasticities, trade linkages, and factor market clearing.</p>
+                        </div>
+                        <div class="layer-keywords">
+                            <span class="layer-keyword">Production Functions</span>
+                            <span class="layer-keyword">Market Clearing</span>
+                            <span class="layer-keyword">Trade Flows</span>
+                            <span class="layer-keyword">Factor Prices</span>
+                        </div>
+                    </div>
+                    
+                    <div class="simulacra-bridge">
+                        <div class="bridge-line"></div>
+                        <div class="bridge-icon">↕</div>
+                        <div class="bridge-line"></div>
+                    </div>
+                    
+                    <div class="simulacra-layer layer-social">
+                        <div class="layer-header">
+                            <span class="layer-numeral">II</span>
+                            <span class="layer-title">Simulacrum II - The Social</span>
+                        </div>
+                        <div class="layer-subtitle">The Integrated Assessment Layer</div>
+                        <div class="layer-description">
+                            <p>The second representation captures human dimensions that economic metrics alone cannot reveal-health outcomes, educational attainment, environmental quality, and social progress indicators that define true wellbeing.</p>
+                        </div>
+                        <div class="layer-keywords">
+                            <span class="layer-keyword">Health Outcomes</span>
+                            <span class="layer-keyword">Education Access</span>
+                            <span class="layer-keyword">Environment</span>
+                            <span class="layer-keyword">Social Progress</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="simulacra-synthesis">
+                    <div class="synthesis-header">
+                        <span class="synthesis-icon">⊛</span>
+                        <span class="synthesis-title">The Model: Simulacra</span>
+                    </div>
+                    <p class="synthesis-text"><strong>Simulacra</strong> is the synthesis where these two representations meet-mapping the transmission mechanisms through which economic shocks propagate to social outcomes. By coupling CGE dynamics with wellbeing functions, we can simulate policy scenarios and their human impact with unprecedented granularity.</p>
+                </div>
+                
+                <div class="modal-section future-note">
+                    <div class="modal-section-title">Research Partnership</div>
+                    <p>This framework represents the next frontier of my research agenda. The mathematical architecture is being developed to capture the complex interdependencies between economic and social systems-a project I hope to bring to life with the right collaborators and computational tools.</p>
                 </div>
             </div>
         </div>
@@ -8491,7 +8878,7 @@ national &lt;- <span class="func">aggregate_nuts</span>(<br>
             <div class="publication-item">
                 <span class="pub-year">2025</span>
                 <div class="pub-content">
-                    <h4>SDG10: Inequalities Beyond Income—A Longitudinal Perspective Through the Social Progress Index</h4>
+                    <h4>SDG10: Inequalities Beyond Income-A Longitudinal Perspective Through the Social Progress Index</h4>
                     <p>Krylova, P., Peiró-Palomino, J., Htitich, M., &amp; Harmáček, J. <span class="pub-journal">The Elgar Companion to SDG Indicators</span></p>
                 </div>
                 <span class="pub-status published">Accepted</span>
@@ -8505,20 +8892,12 @@ national &lt;- <span class="func">aggregate_nuts</span>(<br>
                 <span class="pub-status published">Published</span>
             </div>
             <div class="publication-item">
-                <span class="pub-year">2025</span>
+                <span class="pub-year">2026</span>
                 <div class="pub-content">
-                    <h4>Achieving Just Transition Through Convergence in the Carbon Efficiency of Social Progress</h4>
+                    <h4><a href="https://doi.org/10.1016/j.geosus.2026.100421" target="_blank" style="color: inherit; text-decoration: none;">Achieving Just Transition Through Convergence in the Carbon Efficiency of Social Progress</a></h4>
                     <p>Htitich, M., Harmáček, J., &amp; Krylova, P. <span class="pub-journal">Geography and Sustainability</span></p>
                 </div>
-                <span class="pub-status">Under Revision</span>
-            </div>
-            <div class="publication-item">
-                <span class="pub-year">2025</span>
-                <div class="pub-content">
-                    <h4>Dissimilarities in the Socio-economic Predictors of Climate Change Worry and Action</h4>
-                    <p>Htitich, M., et al. <span class="pub-journal">Computational Social Science</span></p>
-                </div>
-                <span class="pub-status">Submitted</span>
+                <span class="pub-status published">Published</span>
             </div>
         </div>
     </section>
@@ -8529,17 +8908,15 @@ national &lt;- <span class="func">aggregate_nuts</span>(<br>
             <h2 class="section-title">About</h2>
         </div>
         <div class="about-grid">
-            <div class="about-text">
+            <div class="about-text" style="text-align: justify;">
                 <p>
-                    <strong>Mohamed Htitich</strong> is a macroeconomist and applied econometrician specializing in sustainable development measurement. His research focuses on creating robust cross-country indicators that capture multidimensional well-being while accounting for environmental constraints.
+                    I'm a macroeconomist and applied econometrician specializing in sustainable development measurement. My research focuses on creating robust cross-country indicators that capture multidimensional well-being while accounting for environmental constraints.
                 </p>
-                <br>
-                <p>
-                    From 2021 to 2025, he served as Research Associate at the <strong>Social Progress Imperative</strong>, co-designing the conceptual framework and statistical methodology for the Social Progress Index—a comprehensive measure of societal well-being beyond GDP covering 170+ countries.
+                <p style="margin-top: 0.75rem;">
+                    From 2021 to 2025, I served as Research Associate at the <a href="https://www.socialprogress.org/" target="_blank" style="color: var(--accent); text-decoration: none;"><strong>Social Progress Imperative</strong></a>, contributing both as part of a team and individually to the creation of SPI's analytical products. This included co-designing the conceptual framework and statistical methodology for the Social Progress Index, a comprehensive measure of societal well-being beyond GDP covering 170+ countries. I also contributed to the development of a European Health Inequalities Index and partnered with SPI's Research Director and Professor Scott Stern of MIT's Sloan School in developing the Just Transition Score (JTS).
                 </p>
-                <br>
-                <p>
-                    His dissertation at <strong>Palacký University Olomouc</strong> synthesizes seven research papers across three interconnected themes: composite measurement of well-being, environmental efficiency of social progress, and public climate change perception. This work advances both methodology and empirical understanding of global sustainability patterns.
+                <p style="margin-top: 0.75rem;">
+                    If you look closely, you might notice that the aurora animations in the background follow the Fibonacci sequence. It's a small touch that reflects how I approach my work: with care for the details that make something feel complete. I hope this site conveys both the rigor and the curiosity that drive my research.
                 </p>
             </div>
             <div class="about-sidebar">
@@ -8560,7 +8937,7 @@ national &lt;- <span class="func">aggregate_nuts</span>(<br>
                             <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
                             <polyline points="22,6 12,13 2,6"></polyline>
                         </svg>
-                        <a href="file:///C:/cdn-cgi/l/email-protection#d8aabdabbdb9aabbb098b5b0acb1acb1bbb0f6bbb7b5"><span class="__cf_email__" data-cfemail="d1a3b4a2b4b0a3b2b991bcb9a5b8a5b8b2b9ffb2bebc">[email&nbsp;protected]</span></a>
+                        <a href="mailto:research@mhtitich.com">research@mhtitich.com</a>
                     </p>
                     <p class="contact-social">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="vertical-align: middle; margin-right: 6px;">
@@ -8572,25 +8949,44 @@ national &lt;- <span class="func">aggregate_nuts</span>(<br>
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="vertical-align: middle; margin-right: 6px;">
                             <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path>
                         </svg>
-                        <a href="https://www.linkedin.com/in/mohamedhtitich/" target="_blank">LinkedIn</a>
+                        <a href="https://www.linkedin.com/in/mohamed-htitich/" target="_blank">LinkedIn</a>
                     </p>
-                    <p style="margin-top: 1rem;"><a href="file:///C:/Users/Mohamed%20Htitich/Downloads/subnational.html" style="color: var(--accent);">→ Explore Subnational Analytics</a></p>
+                    <p style="margin-top: 1rem;"><a href="https://mhtitich.com/subnational.html" style="color: var(--accent);">→ Explore Subnational Analytics</a></p>
                 </div>
             </div>
         </div>
     </section>
 
     <footer>
-        <div class="footer-left">© 2025 Mohamed Htitich</div>
+        <div class="footer-left">
+            Built by Mohamed Htitich
+            <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener noreferrer" style="margin-left: 8px; display: inline-flex; align-items: center;">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 42" width="80" height="28" style="vertical-align: middle;">
+                    <rect fill="transparent" height="42" width="120"/>
+                    <g transform="translate(2,2)">
+                        <circle fill="transparent" stroke="currentColor" stroke-width="2" cx="19" cy="19" r="17"/>
+                        <text x="19" y="25" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="currentColor" text-anchor="middle">CC</text>
+                    </g>
+                    <g transform="translate(42,2)">
+                        <circle fill="transparent" stroke="currentColor" stroke-width="2" cx="19" cy="19" r="17"/>
+                        <text x="19" y="25" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="currentColor" text-anchor="middle">BY</text>
+                    </g>
+                    <g transform="translate(82,2)">
+                        <circle fill="transparent" stroke="currentColor" stroke-width="2" cx="17" cy="19" r="17"/>
+                        <text x="17" y="25" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="currentColor" text-anchor="middle">NC</text>
+                    </g>
+                </svg>
+            </a>
+        </div>
         <div class="footer-links">
-            <a href="file:///C:/cdn-cgi/l/email-protection#a6d4c3d5c3c7d4c5cee6cbced2cfd2cfc5ce88c5c9cb"><span class="__cf_email__" data-cfemail="413324322420332229012c293528352822296f222e2c">[email&nbsp;protected]</span></a>
+            <a href="mailto:research@mhtitich.com">research@mhtitich.com</a>
             <a href="https://github.com/MohamedHtitich1" target="_blank">GitHub</a>
-            <a href="https://www.linkedin.com/in/mohamedhtitich/" target="_blank">LinkedIn</a>
+            <a href="https://www.linkedin.com/in/mohamed-htitich/" target="_blank">LinkedIn</a>
         </div>
     </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
-    <script data-cfasync="false" src="file:///C:/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script>
         // Modal functions
         // Research Terminal Functions
         const RESEARCH_CHAT_WEBHOOK = 'https://mohamedhtitich.app.n8n.cloud/webhook/1c0d08f0-abd0-4bdc-beef-370c27aae1a0/chat';
@@ -8967,8 +9363,8 @@ national &lt;- <span class="func">aggregate_nuts</span>(<br>
 const cespConvergenceData = {"low": {"title": "Less than 1.9t", "clubs": ["All"], "trajectories": {"Albania": {"h": [1.1352, 1.1617, 1.1691, 1.1685, 1.1679, 1.1625, 1.1538, 1.1531, 1.1493, 1.1424, 1.1414, 1.138, 1.126, 1.1202, 1.1175, 1.1145, 1.1131, 1.1115, 1.1039, 1.104, 1.1013, 1.0975, 1.0966, 1.0946, 1.0898, 1.0892, 1.086, 1.0805, 1.0812, 1.0785, 1.0776], "club": null, "cesp_start": 84.4, "cesp_end": 87.9, "cesp_start_year": 1990, "cesp_end_year": 2020}, "Armenia": {"h": [1.209, 1.2023, 1.1933, 1.1931, 1.1905, 1.1792, 1.1688, 1.1642, 1.1602, 1.149, 1.1448, 1.1398, 1.1322, 1.1246, 1.1183, 1.111, 1.1088, 1.0966, 1.0905, 1.0967, 1.0986, 1.0941, 1.0887, 1.0859, 1.0849, 1.0819, 1.0803, 1.0789, 1.0838, 1.0859, 1.0823], "club": null, "cesp_start": 83.1, "cesp_end": 88.5, "cesp_start_year": 1990, "cesp_end_year": 2020}, "Bangladesh": {"h": [0.9714, 1.0043, 1.0014, 1.0038, 1.0083, 1.0047, 1.0075, 1.0135, 1.0138, 1.0108, 1.0052, 1.0049, 0.9933, 0.9896, 0.9851, 0.9844, 0.9806, 0.9768, 0.9839, 0.9853, 0.9831, 0.9876, 0.9911, 0.988, 0.9845, 0.9898, 0.9918, 0.9916, 0.9927, 0.9915, 0.9947], "club": null, "cesp_start": 71.8, "cesp_end": 78.9, "cesp_start_year": 1990, "cesp_end_year": 2020}, "Benin": {"h": [1.0574, 1.0581, 1.0568, 1.0539, 1.0537, 1.0514, 1.0472, 1.0488, 1.0455, 1.0428, 1.0377, 1.0341, 1.0273, 1.0259, 1.0248, 1.0273, 1.0222, 1.0221, 1.0195, 1.0207, 1.0215, 1.0175, 1.0191, 1.0198, 1.0176, 1.0165, 1.0196, 1.016, 1.0151, 1.0077, 1.0135], "club": null, "cesp_start": 73.5, "cesp_end": 78.3, "cesp_start_year": 1990, "cesp_end_year": 2020}, "Bhutan": {"h": [1.038, 1.0259, 1.0227, 1.0246, 1.0287, 1.031, 1.0418, 1.0395, 1.0442, 1.0464, 1.0467, 1.0484, 1.0467, 1.045, 1.0468, 1.0455, 1.0481, 1.0504, 1.0623, 1.0593, 1.0543, 1.0514, 1.05, 1.0477, 1.0484, 1.0512, 1.0601, 1.0616, 1.0431, 1.0437, 1.0448], "club": null, "cesp_start": 79.2, "cesp_end": 83.1, "cesp_start_year": 1990, "cesp_end_year": 2020}, "Bolivia": {"h": [1.1486, 1.1344, 1.1246, 1.1192, 1.1205, 1.1176, 1.1161, 1.1146, 1.1116, 1.1084, 1.1083, 1.1071, 1.0952, 1.0923, 1.0922, 1.0878, 1.0873, 1.0845, 1.0817, 1.081, 1.0775, 1.0746, 1.0731, 1.0708, 1.0664, 1.0635, 1.0586, 1.0577, 1.0578, 1.0527, 1.0481], "club": null, "cesp_start": 81.5, "cesp_end": 84.1, "cesp_start_year": 1990, "cesp_end_year": 2020}, "Burkina Faso": {"h": [0.9715, 0.9791, 0.9829, 0.9825, 0.9819, 0.9791, 0.9774, 0.9787, 0.9771, 0.983, 0.9923, 0.9925, 0.9883, 0.9889, 0.9865, 0.9884, 0.9875, 0.9864, 0.9863, 0.9869, 0.9889, 0.9895, 0.989, 0.9881, 0.9891, 0.9923, 0.9914, 0.9913, 0.9929, 0.9876, 0.9893], "club": null, "cesp_start": 67.1, "cesp_end": 74.3, "cesp_start_year": 1990, "cesp_end_year": 2020}, "Cabo Verde": {"h": [1.1287, 1.132, 1.1289, 1.1255, 1.1242, 1.1207, 1.1281, 1.12, 1.1185, 1.1139, 1.111, 1.1073, 1.1, 1.0967, 1.0933, 1.0884, 1.0853, 1.0826, 1.0835, 1.0816, 1.0794, 1.0745, 1.0753, 1.0764, 1.0765, 1.0688, 1.0804, 1.0794, 1.0675, 1.067, 1.0655], "club": null, "cesp_start": 81.7, "cesp_end": 85.5, "cesp_start_year": 1990, "cesp_end_year": 2020}, "Cameroon": {"h": [1.0114, 1.0116, 1.0064, 1.0059, 1.0073, 1.0018, 0.9989, 0.9989, 0.9972, 0.9955, 0.9995, 1.0024, 0.9957, 0.995, 0.9959, 0.9982, 0.9979, 0.9989, 0.9994, 1.0013, 0.9997, 1.0008, 1.0047, 1.0069, 1.0077, 1.0071, 1.0057, 1.0043, 1.003, 1.0073, 1.0086], "club": null, "cesp_start": 69.3, "cesp_end": 75.5, "cesp_start_year": 1990, "cesp_end_year": 2020}, "Chad": {"h": [0.7658, 0.809, 0.8047, 0.7988, 0.7993, 0.7965, 0.7922, 0.7875, 0.7843, 0.7821, 0.7841, 0.7814, 0.7787, 0.7774, 0.7817, 0.7878, 0.7888, 0.788, 0.7934, 0.7983, 0.8049, 0.8111, 0.813, 0.8148, 0.8175, 0.8255, 0.8303, 0.83, 0.831, 0.8443, 0.8468], "club": null, "cesp_start": 33.6, "cesp_end": 50.9, "cesp_start_year": 1990, "cesp_end_year": 2020}, "Colombia": {"h": [1.1438, 1.1489, 1.1436, 1.1394, 1.1364, 1.135, 1.1315, 1.1311, 1.1281, 1.1282, 1.121, 1.1179, 1.1048, 1.107, 1.1046, 1.1035, 1.0992, 1.0976, 1.0939, 1.0908, 1.0886, 1.0882, 1.0849, 1.0815, 1.0795, 1.0767, 1.0744, 1.0744, 1.071, 1.0653, 1.0609], "club": null, "cesp_start": 84.4, "cesp_end": 85.7, "cesp_start_year": 1990, "cesp_end_year": 2020}, "Congo, Democratic Republic of": {"h": [0.8241, 0.8292, 0.8321, 0.8337, 0.8416, 0.8371, 0.8307, 0.8303, 0.843, 0.8569, 0.8616, 0.8672, 0.8668, 0.8716, 0.8782, 0.8818, 0.8878, 0.8899, 0.8867, 0.8898, 0.8931, 0.8958, 0.8993, 0.9036, 0.91, 0.9162, 0.9124, 0.9171, 0.9242, 0.9358, 0.9388], "club": null, "cesp_start": 49.0, "cesp_end": 64.8, "cesp_start_year": 1990, "cesp_end_year": 2020}, "C\u00f4te d'Ivoire": {"h": [1.0493, 1.0389, 1.0284, 1.0214, 1.024, 1.0165, 1.0189, 1.0221, 1.0177, 1.0207, 1.0203, 1.0194, 1.0144, 1.0107, 1.0073, 1.0078, 1.0061, 1.0071, 1.0088, 1.009, 1.0053, 1.0042, 1.0062, 1.0078, 1.0086, 1.0134, 1.0139, 1.0152, 1.0169, 1.0158, 1.0094], "club": null, "cesp_start": 68.4, "cesp_end": 77.4, "cesp_start_year": 1990, "cesp_end_year": 2020}, "Djibouti": {"h": [0.9749, 0.9467, 0.9665, 0.964, 0.9662, 0.9744, 0.9827, 0.9773, 0.9761, 0.9776, 0.9781, 0.9797, 0.976, 0.9758, 0.9754, 0.9763, 0.9757, 0.9757, 0.9746, 0.9754, 0.9689, 0.969, 0.9671, 0.9705, 0.9703, 0.971, 0.9808, 0.9865, 0.9788, 0.979, 0.978], "club": null, "cesp_start": 62.7, "cesp_end": 70.3, "cesp_start_year": 1990, "cesp_end_year": 2020}, "El Salvador": {"h": [1.1012, 1.0873, 1.1125, 1.1273, 1.1266, 1.1238, 1.1227, 1.121, 1.1158, 1.1134, 1.1097, 1.1048, 1.0974, 1.0925, 1.0888, 1.0868, 1.0842, 1.0834, 1.0825, 1.0846, 1.0821, 1.0772, 1.0739, 1.0738, 1.0703, 1.0664, 1.066, 1.0653, 1.062, 1.062, 1.0557], "club": null, "cesp_start": 81.8, "cesp_end": 83.7, "cesp_start_year": 1990, "cesp_end_year": 2020}, "Georgia": {"h": [1.1791, 1.1593, 1.1572, 1.1543, 1.164, 1.1751, 1.1536, 1.1557, 1.1465, 1.1446, 1.1385, 1.1347, 1.1269, 1.1231, 1.1244, 1.1206, 1.1119, 1.1064, 1.102, 1.1022, 1.0986, 1.0928, 1.0875, 1.089, 1.0839, 1.0816, 1.0798, 1.0785, 1.0779, 1.0783, 1.0751], "club": null, "cesp_start": 83.4, "cesp_end": 87.0, "cesp_start_year": 1990, "cesp_end_year": 2020}, "Ghana": {"h": [1.0819, 1.0683, 1.0659, 1.087, 1.089, 1.0913, 1.0894, 1.089, 1.0869, 1.0825, 1.0823, 1.0798, 1.076, 1.0733, 1.0699, 1.0674, 1.0657, 1.0637, 1.0635, 1.0646, 1.0621, 1.0592, 1.0546, 1.0581, 1.0583, 1.0551, 1.0546, 1.0559, 1.0561, 1.0576, 1.0592], "club": null, "cesp_start": 79.4, "cesp_end": 85.2, "cesp_start_year": 1990, "cesp_end_year": 2020}, "Guatemala": {"h": [1.0384, 1.0252, 1.0109, 1.0127, 1.016, 1.0211, 1.0403, 1.0553, 1.0501, 1.0498, 1.0643, 1.0621, 1.0546, 1.0552, 1.0539, 1.0505, 1.0516, 1.0527, 1.0533, 1.0519, 1.05, 1.0477, 1.0448, 1.0436, 1.042, 1.0407, 1.0398, 1.039, 1.037, 1.0334, 1.035], "club": null, "cesp_start": 77.6, "cesp_end": 80.5, "cesp_start_year": 1990, "cesp_end_year": 2020}, "Guinea": {"h": [0.8954, 0.9021, 0.9003, 0.9007, 0.8994, 0.8999, 0.9028, 0.9038, 0.9006, 0.8992, 0.8975, 0.8998, 0.8981, 0.8991, 0.8984, 0.8987, 0.9008, 0.904, 0.9041, 0.9065, 0.9191, 0.9213, 0.9217, 0.9285, 0.9308, 0.9375, 0.9399, 0.9413, 0.9453, 0.9414, 0.9364], "club": null, "cesp_start": 55.5, "cesp_end": 65.4, "cesp_start_year": 1990, "cesp_end_year": 2020}, "Honduras": {"h": [1.151, 1.1371, 1.1274, 1.1227, 1.1234, 1.1179, 1.1117, 1.1119, 1.1042, 1.0993, 1.0913, 1.0865, 1.0774, 1.0784, 1.075, 1.0732, 1.0716, 1.0698, 1.0684, 1.0568, 1.0575, 1.0544, 1.0433, 1.0448, 1.0446, 1.0438, 1.0437, 1.0415, 1.044, 1.0416, 1.0402], "club": null, "cesp_start": 78.4, "cesp_end": 81.5, "cesp_start_year": 1990, "cesp_end_year": 2020}, "India": {"h": [1.0631, 1.0491, 1.0383, 1.0382, 1.041, 1.04, 1.0407, 1.0396, 1.0368, 1.036, 1.0328, 1.0298, 1.0266, 1.0274, 1.0275, 1.0276, 1.0244, 1.0222, 1.0203, 1.0204, 1.0204, 1.0183, 1.0175, 1.0181, 1.0125, 1.0082, 1.0079, 1.006, 1.0059, 1.0002, 1.004], "club": null, "cesp_start": 74.0, "cesp_end": 79.9, "cesp_start_year": 1990, "cesp_end_year": 2020}, "Indonesia": {"h": [1.0767, 1.0638, 1.0592, 1.0526, 1.056, 1.0562, 1.0548, 1.0555, 1.0843, 1.109, 1.1023, 1.0989, 1.0903, 1.0852, 1.0798, 1.0774, 1.0749, 1.0693, 1.0684, 1.0649, 1.0604, 1.0567, 1.0537, 1.0533, 1.0521, 1.0505, 1.0481, 1.0464, 1.0443, 1.041, 1.038], "club": null, "cesp_start": 79.6, "cesp_end": 82.9, "cesp_start_year": 1990, "cesp_end_year": 2020}, "Kenya": {"h": [1.0534, 1.0414, 1.0409, 1.0467, 1.0412, 1.0372, 1.0358, 1.0321, 1.0325, 1.0296, 1.0341, 1.0326, 1.035, 1.04, 1.0373, 1.0355, 1.0324, 1.0254, 1.026, 1.0288, 1.0315, 1.0331, 1.0324, 1.0291, 1.0309, 1.0323, 1.033, 1.0298, 1.0346, 1.0355, 1.0358], "club": null, "cesp_start": 73.8, "cesp_end": 80.8, "cesp_start_year": 1990, "cesp_end_year": 2020}, "Laos": {"h": [0.8817, 0.8786, 0.8719, 0.8823, 0.8828, 0.8886, 0.897, 0.9052, 0.9072, 0.9114, 0.9117, 0.9177, 0.9187, 0.9242, 0.9292, 0.9332, 0.9344, 0.9373, 0.9427, 0.947, 0.9509, 0.9556, 0.9521, 0.9534, 0.9562, 0.9478, 0.9392, 0.9324, 0.9335, 0.9157, 0.9197], "club": null, "cesp_start": 64.5, "cesp_end": 66.1, "cesp_start_year": 1990, "cesp_end_year": 2020}, "Lesotho": {"h": [1.0444, 1.0338, 1.0407, 1.0627, 1.0583, 1.0543, 1.0531, 1.0482, 1.0358, 1.0308, 1.0258, 1.019, 1.0147, 1.0103, 1.0022, 1.0003, 0.9987, 0.997, 0.9941, 0.9898, 0.9867, 0.9875, 0.989, 0.9923, 0.9947, 0.9906, 1.0044, 1.0065, 0.9982, 0.9982, 1.0009], "club": null, "cesp_start": 65.5, "cesp_end": 73.7, "cesp_start_year": 1990, "cesp_end_year": 2020}, "Malawi": {"h": [0.9399, 0.9275, 0.919, 0.9388, 0.9651, 1.0033, 1.0067, 1.0096, 1.0079, 1.0048, 1.0052, 1.0081, 1.0061, 1.0076, 1.0062, 1.0083, 1.0078, 1.0092, 1.0092, 1.0111, 1.0106, 1.0106, 1.0117, 1.0136, 1.0136, 1.0148, 1.011, 1.0128, 1.0116, 1.0105, 1.0131], "club": null, "cesp_start": 71.1, "cesp_end": 78.6, "cesp_start_year": 1990, "cesp_end_year": 2020}, "Moldova": {"h": [1.2096, 1.1964, 1.1904, 1.1829, 1.1791, 1.174, 1.1728, 1.1734, 1.1687, 1.163, 1.1551, 1.1483, 1.1389, 1.1351, 1.132, 1.1281, 1.1245, 1.12, 1.1138, 1.108, 1.1098, 1.1075, 1.1052, 1.1011, 1.1077, 1.1022, 1.0925, 1.0873, 1.0767, 1.077, 1.0769], "club": null, "cesp_start": 85.5, "cesp_end": 87.6, "cesp_start_year": 1990, "cesp_end_year": 2020}, "Morocco": {"h": [1.0658, 1.0567, 1.0461, 1.05, 1.0525, 1.0507, 1.0541, 1.0589, 1.0564, 1.0529, 1.0633, 1.0624, 1.0563, 1.0575, 1.0556, 1.0546, 1.0557, 1.0519, 1.0502, 1.052, 1.052, 1.0479, 1.0514, 1.0507, 1.0484, 1.047, 1.046, 1.0442, 1.0439, 1.0425, 1.0452], "club": null, "cesp_start": 76.0, "cesp_end": 82.4, "cesp_start_year": 1990, "cesp_end_year": 2020}, "Mozambique": {"h": [0.9358, 0.9401, 0.9443, 0.9552, 0.972, 0.975, 0.9759, 0.9804, 0.9784, 0.9788, 0.9806, 0.9829, 0.9792, 0.9782, 0.9775, 0.9742, 0.97, 0.9664, 0.9631, 0.96, 0.9611, 0.9594, 0.9583, 0.956, 0.9568, 0.9609, 0.9555, 0.9509, 0.9542, 0.9528, 0.954], "club": null, "cesp_start": 64.7, "cesp_end": 71.9, "cesp_start_year": 1990, "cesp_end_year": 2020}, "Myanmar": {"h": [0.9343, 0.9243, 0.9224, 0.9244, 0.9288, 0.926, 0.9301, 0.9353, 0.9377, 0.9389, 0.9378, 0.9406, 0.94, 0.94, 0.9397, 0.9422, 0.9427, 0.9437, 0.9441, 0.949, 0.9702, 0.9837, 0.9909, 0.9934, 0.9983, 1.0109, 1.0152, 1.0188, 1.0219, 1.0238, 1.0232], "club": null, "cesp_start": 65.1, "cesp_end": 73.9, "cesp_start_year": 1990, "cesp_end_year": 2020}, "Nepal": {"h": [0.9577, 0.994, 0.9934, 0.9909, 0.991, 0.9887, 0.988, 0.994, 0.9951, 0.9971, 0.9977, 0.9962, 0.9891, 0.9868, 0.9861, 0.9904, 0.9996, 1.0173, 1.0206, 1.0202, 1.0203, 1.0198, 1.0223, 1.0185, 1.0187, 1.0235, 1.0214, 1.0224, 1.0227, 1.0174, 1.0181], "club": null, "cesp_start": 75.4, "cesp_end": 81.4, "cesp_start_year": 1990, "cesp_end_year": 2020}, "Nicaragua": {"h": [1.1817, 1.1676, 1.1577, 1.1527, 1.15, 1.1431, 1.1387, 1.1372, 1.1303, 1.1254, 1.1175, 1.1134, 1.1046, 1.0982, 1.0946, 1.0911, 1.0865, 1.0834, 1.0799, 1.0781, 1.0726, 1.0693, 1.0671, 1.0683, 1.0664, 1.063, 1.0607, 1.0567, 1.0391, 1.0356, 1.0355], "club": null, "cesp_start": 81.4, "cesp_end": 81.5, "cesp_start_year": 1990, "cesp_end_year": 2020}, "Niger": {"h": [0.9392, 0.9275, 0.931, 0.9375, 0.938, 0.936, 0.9247, 0.9253, 0.9228, 0.9239, 0.9332, 0.9333, 0.9323, 0.9332, 0.9365, 0.9336, 0.9367, 0.9382, 0.9417, 0.9366, 0.9439, 0.9467, 0.9448, 0.9448, 0.9439, 0.9404, 0.936, 0.9375, 0.9365, 0.9349, 0.9339], "club": null, "cesp_start": 56.4, "cesp_end": 65.0, "cesp_start_year": 1990, "cesp_end_year": 2020}, "Nigeria": {"h": [1.0329, 1.0223, 1.0146, 1.0023, 1.005, 1.0033, 1.0005, 1.0003, 1.0053, 1.0275, 1.0198, 1.0154, 1.0086, 1.0087, 1.0064, 1.0081, 1.0113, 1.0097, 1.0115, 1.0119, 1.0116, 1.0131, 1.014, 1.0145, 1.0135, 1.01, 1.0124, 1.012, 1.0151, 1.0139, 1.016], "club": null, "cesp_start": 68.7, "cesp_end": 76.4, "cesp_start_year": 1990, "cesp_end_year": 2020}, "Pakistan": {"h": [1.0039, 0.9908, 0.9816, 0.9803, 0.9782, 0.975, 0.9695, 0.973, 0.9733, 0.9644, 0.9693, 0.9674, 0.9622, 0.9631, 0.961, 0.9608, 0.9608, 0.9606, 0.9623, 0.9624, 0.9658, 0.9668, 0.9679, 0.9697, 0.9697, 0.9692, 0.9668, 0.9656, 0.9665, 0.9675, 0.974], "club": null, "cesp_start": 67.4, "cesp_end": 73.7, "cesp_start_year": 1990, "cesp_end_year": 2020}, "Papua New Guinea": {"h": [1.0403, 1.0274, 1.0245, 1.0268, 1.0327, 1.021, 1.0168, 1.0129, 1.0079, 1.0086, 1.0016, 0.9973, 0.99, 0.9838, 0.9789, 0.9758, 0.97, 0.9671, 0.9662, 0.9641, 0.9609, 0.96, 0.9575, 0.9593, 0.9592, 0.9605, 0.9579, 0.9593, 0.959, 0.961, 0.9606], "club": null, "cesp_start": 62.2, "cesp_end": 69.2, "cesp_start_year": 1990, "cesp_end_year": 2020}, "Paraguay": {"h": [1.1624, 1.1504, 1.1435, 1.1393, 1.1339, 1.1286, 1.1269, 1.1257, 1.1221, 1.1179, 1.1166, 1.114, 1.1093, 1.1061, 1.1012, 1.0998, 1.0968, 1.0956, 1.0949, 1.0946, 1.087, 1.0856, 1.0803, 1.0777, 1.0761, 1.074, 1.0698, 1.0681, 1.0673, 1.0663, 1.066], "club": null, "cesp_start": 83.4, "cesp_end": 85.7, "cesp_start_year": 1990, "cesp_end_year": 2020}, "Peru": {"h": [1.1643, 1.151, 1.1322, 1.1191, 1.1186, 1.1153, 1.1177, 1.1147, 1.1107, 1.1083, 1.1183, 1.1343, 1.1252, 1.123, 1.1175, 1.1123, 1.1118, 1.1083, 1.1011, 1.0972, 1.0902, 1.0909, 1.0847, 1.0849, 1.0816, 1.0816, 1.0799, 1.0785, 1.0786, 1.0774, 1.074], "club": null, "cesp_start": 83.8, "cesp_end": 86.3, "cesp_start_year": 1990, "cesp_end_year": 2020}, "Philippines": {"h": [1.1856, 1.1715, 1.159, 1.1553, 1.1534, 1.1494, 1.1462, 1.144, 1.14, 1.1342, 1.1273, 1.1237, 1.1157, 1.1107, 1.1071, 1.1007, 1.0973, 1.0929, 1.0877, 1.0853, 1.0849, 1.0826, 1.0784, 1.0738, 1.0715, 1.0678, 1.0618, 1.0581, 1.0569, 1.0523, 1.0495], "club": null, "cesp_start": 83.3, "cesp_end": 85.2, "cesp_start_year": 1990, "cesp_end_year": 2020}, "Sao Tome and Principe": {"h": [1.0863, 1.0917, 1.0855, 1.0878, 1.0893, 1.0883, 1.0856, 1.0863, 1.0872, 1.083, 1.08, 1.0775, 1.0708, 1.0673, 1.0647, 1.0639, 1.0603, 1.0584, 1.0574, 1.0571, 1.0554, 1.0539, 1.0523, 1.0513, 1.0519, 1.0535, 1.052, 1.0511, 1.0494, 1.0484, 1.0482], "club": null, "cesp_start": 77.2, "cesp_end": 82.3, "cesp_start_year": 1990, "cesp_end_year": 2020}, "Senegal": {"h": [1.0894, 1.0779, 1.0694, 1.063, 1.0627, 1.0651, 1.0623, 1.0653, 1.062, 1.0591, 1.0621, 1.062, 1.0554, 1.0568, 1.053, 1.0524, 1.0516, 1.0484, 1.046, 1.0464, 1.0447, 1.0407, 1.0407, 1.0452, 1.0436, 1.0411, 1.0405, 1.0392, 1.0387, 1.0373, 1.0395], "club": null, "cesp_start": 74.5, "cesp_end": 80.3, "cesp_start_year": 1990, "cesp_end_year": 2020}, "Sri Lanka": {"h": [1.1655, 1.1516, 1.143, 1.1402, 1.14, 1.1363, 1.1329, 1.1316, 1.1275, 1.1214, 1.1155, 1.1122, 1.1064, 1.1021, 1.0966, 1.0905, 1.0865, 1.0838, 1.0801, 1.0797, 1.0795, 1.0738, 1.0704, 1.071, 1.0685, 1.0726, 1.0735, 1.0715, 1.074, 1.0682, 1.0645], "club": null, "cesp_start": 82.2, "cesp_end": 86.2, "cesp_start_year": 1990, "cesp_end_year": 2020}, "Tajikistan": {"h": [1.1133, 1.0939, 1.0645, 1.0658, 1.0648, 1.0607, 1.0655, 1.0657, 1.0689, 1.0657, 1.0637, 1.0583, 1.0505, 1.0495, 1.0438, 1.0382, 1.0353, 1.0334, 1.0326, 1.0329, 1.0262, 1.0217, 1.018, 1.0131, 1.0097, 1.0051, 1.0044, 1.0035, 1.0009, 0.9995, 0.9985], "club": null, "cesp_start": 75.1, "cesp_end": 78.0, "cesp_start_year": 1990, "cesp_end_year": 2020}, "Tanzania": {"h": [1.0684, 1.0586, 1.0573, 1.0516, 1.0503, 1.0477, 1.0461, 1.0463, 1.0437, 1.0438, 1.0415, 1.0418, 1.0364, 1.0341, 1.0314, 1.0283, 1.0275, 1.0272, 1.0253, 1.0254, 1.0239, 1.0237, 1.0196, 1.0155, 1.0162, 1.0207, 1.0204, 1.0194, 1.0191, 1.0209, 1.0238], "club": null, "cesp_start": 70.7, "cesp_end": 78.7, "cesp_start_year": 1990, "cesp_end_year": 2020}, "Togo": {"h": [0.9979, 0.9991, 0.9994, 0.9966, 0.9968, 0.9951, 0.9958, 0.9984, 0.9944, 0.9958, 0.9979, 0.9957, 0.9871, 0.9849, 0.9853, 0.9874, 0.9948, 0.9911, 0.994, 0.9939, 0.9929, 0.9969, 0.9872, 0.9929, 0.9943, 0.9948, 0.9972, 0.9922, 0.9982, 0.9955, 1.0043], "club": null, "cesp_start": 67.5, "cesp_end": 74.5, "cesp_start_year": 1990, "cesp_end_year": 2020}, "Uganda": {"h": [1.0105, 0.9991, 0.9926, 0.9881, 0.9949, 1.0025, 0.9989, 1.003, 1.0003, 0.9972, 0.9913, 0.9934, 0.9926, 0.9959, 0.9966, 0.9967, 0.9954, 0.9993, 1.0016, 1.0008, 0.9982, 0.9983, 0.9954, 0.9914, 0.9922, 0.9905, 0.9847, 0.9838, 0.9826, 0.9827, 0.9818], "club": null, "cesp_start": 69.3, "cesp_end": 74.0, "cesp_start_year": 1990, "cesp_end_year": 2020}, "Vanuatu": {"h": [1.1106, 1.0973, 1.0907, 1.0899, 1.091, 1.0893, 1.1004, 1.085, 1.0853, 1.0801, 1.0813, 1.0746, 1.0681, 1.0627, 1.0596, 1.0546, 1.0503, 1.0455, 1.0418, 1.0412, 1.0401, 1.0339, 1.0335, 1.0297, 1.0309, 1.0322, 1.0324, 1.0316, 1.0323, 1.0299, 1.0268], "club": null, "cesp_start": null, "cesp_end": null, "cesp_start_year": null, "cesp_end_year": null}, "Vietnam": {"h": [1.1322, 1.1201, 1.1183, 1.1143, 1.1145, 1.1119, 1.1092, 1.1069, 1.1055, 1.1033, 1.0994, 1.0963, 1.0883, 1.082, 1.0795, 1.0796, 1.0771, 1.0756, 1.0736, 1.0728, 1.07, 1.0669, 1.0647, 1.0615, 1.0593, 1.0561, 1.0561, 1.0551, 1.0525, 1.0478, 1.0476], "club": null, "cesp_start": 81.2, "cesp_end": 84.0, "cesp_start_year": 1990, "cesp_end_year": 2020}, "Zambia": {"h": [1.0386, 1.0393, 1.0387, 1.0296, 1.0306, 1.0266, 1.019, 1.016, 1.0143, 1.0134, 1.0107, 1.0112, 1.012, 1.012, 1.0121, 1.0135, 1.0133, 1.0116, 1.0062, 1.0091, 1.0074, 1.0092, 1.0144, 1.0107, 1.0095, 1.0101, 1.0049, 1.0082, 1.0078, 1.0086, 0.9986], "club": null, "cesp_start": 69.4, "cesp_end": 75.7, "cesp_start_year": 1990, "cesp_end_year": 2020}, "Zimbabwe": {"h": [1.0924, 1.0787, 1.0656, 1.0613, 1.057, 1.0536, 1.0491, 1.0528, 1.0421, 1.0326, 1.0136, 1.0072, 0.9952, 0.9915, 0.9829, 0.9775, 0.9725, 0.9672, 0.9637, 0.9705, 0.9792, 0.98, 0.9871, 0.9929, 0.9872, 0.9925, 0.9918, 0.9959, 0.994, 0.9936, 1.0009], "club": null, "cesp_start": 66.6, "cesp_end": 75.2, "cesp_start_year": 1990, "cesp_end_year": 2020}}, "h_min": 0.766, "h_max": 1.21}, "mid": {"title": "Between 1.9t and 10t", "clubs": ["Club 1", "Club 2", "Club 3", "Club 4"], "trajectories": {"Algeria": {"h": [0.9993, 1.0005, 0.9924, 0.991, 0.9897, 0.9921, 0.9943, 0.997, 0.9932, 1.0008, 1.0072, 1.0076, 1.0071, 1.0108, 1.013, 1.0152, 1.021, 1.0209, 1.0214, 1.0127, 1.0158, 1.0161, 1.0171, 1.0169, 1.0168, 1.0154, 1.0013, 1.0042, 1.0022, 1.0057, 1.0051], "club": "Club 2", "cesp_start": 80.3, "cesp_end": 79.8, "cesp_start_year": 1990, "cesp_end_year": 2020}, "Argentina": {"h": [1.0697, 1.0611, 1.0555, 1.0535, 1.0508, 1.0519, 1.0493, 1.0472, 1.0475, 1.046, 1.0494, 1.0529, 1.0652, 1.06, 1.0552, 1.0538, 1.0518, 1.0505, 1.0484, 1.047, 1.0457, 1.0431, 1.042, 1.0411, 1.0402, 1.0361, 1.0367, 1.0368, 1.0408, 1.0451, 1.0458], "club": "Club 2", "cesp_start": 84.6, "cesp_end": 87.3, "cesp_start_year": 1990, "cesp_end_year": 2020}, "Brazil": {"h": [1.0553, 1.0521, 1.0487, 1.0443, 1.0427, 1.0435, 1.0411, 1.0389, 1.0407, 1.0407, 1.0391, 1.0408, 1.0433, 1.0474, 1.0473, 1.0472, 1.0484, 1.0458, 1.0454, 1.0432, 1.0404, 1.039, 1.0377, 1.0359, 1.0324, 1.0339, 1.032, 1.03, 1.0272, 1.0242, 1.0245], "club": "Club 2", "cesp_start": 85.6, "cesp_end": 85.8, "cesp_start_year": 1990, "cesp_end_year": 2020}, "Bulgaria": {"h": [1.0241, 1.0431, 1.0417, 1.0312, 1.0329, 1.0259, 1.0204, 1.022, 1.024, 1.0287, 1.0215, 1.0201, 1.0229, 1.0199, 1.021, 1.0186, 1.0162, 1.0147, 1.0145, 1.021, 1.0222, 1.0165, 1.0191, 1.027, 1.0219, 1.0167, 1.0192, 1.0166, 1.0177, 1.0182, 1.017], "club": "Club 2", "cesp_start": 79.2, "cesp_end": 83.6, "cesp_start_year": 1990, "cesp_end_year": 2020}, "Chile": {"h": [1.0694, 1.0699, 1.0651, 1.0594, 1.056, 1.0549, 1.0484, 1.0436, 1.0438, 1.0406, 1.0467, 1.0511, 1.0472, 1.0525, 1.0508, 1.0495, 1.049, 1.0461, 1.0428, 1.0466, 1.0441, 1.0387, 1.0357, 1.0366, 1.0383, 1.0362, 1.0367, 1.0371, 1.0366, 1.0355, 1.0343], "club": "Club 2", "cesp_start": 84.7, "cesp_end": 86.4, "cesp_start_year": 1990, "cesp_end_year": 2020}, "China": {"h": [0.9437, 0.9416, 0.9388, 0.9365, 0.9382, 0.9401, 0.9418, 0.9459, 0.9519, 0.9514, 0.9528, 0.9537, 0.9531, 0.9538, 0.9502, 0.9478, 0.9496, 0.9476, 0.9466, 0.9377, 0.9354, 0.9323, 0.9335, 0.9343, 0.9354, 0.9392, 0.9425, 0.9422, 0.9398, 0.9413, 0.9424], "club": "Club 3", "cesp_start": 71.6, "cesp_end": 74.5, "cesp_start_year": 1990, "cesp_end_year": 2020}, "Costa Rica": {"h": [1.0963, 1.0912, 1.0858, 1.0816, 1.0749, 1.0765, 1.0759, 1.0737, 1.0719, 1.0617, 1.0658, 1.0646, 1.0501, 1.062, 1.0601, 1.0577, 1.0629, 1.0592, 1.0602, 1.0598, 1.0573, 1.0552, 1.0568, 1.0589, 1.0584, 1.0583, 1.0581, 1.0584, 1.0579, 1.0584, 1.0587], "club": "Club 1", "cesp_start": 86.7, "cesp_end": 90.0, "cesp_start_year": 1990, "cesp_end_year": 2020}, "Croatia": {"h": [1.0331, 1.0431, 1.0321, 1.0294, 1.0288, 1.0251, 1.0258, 1.0234, 1.0258, 1.0223, 1.0386, 1.0333, 1.0285, 1.0256, 1.0259, 1.0234, 1.0171, 1.0189, 1.0197, 1.026, 1.0314, 1.0242, 1.0358, 1.0395, 1.039, 1.0366, 1.0349, 1.0322, 1.0343, 1.0332, 1.0332], "club": "Club 1", "cesp_start": 81.2, "cesp_end": 86.8, "cesp_start_year": 1990, "cesp_end_year": 2020}, "Cuba": {"h": [1.0025, 1.0067, 1.0039, 1.0072, 0.9978, 1.0025, 1.0024, 1.0053, 1.0099, 1.0086, 1.0074, 1.0103, 1.0098, 1.012, 1.0131, 1.0115, 1.0129, 1.0133, 1.0088, 1.0059, 0.9983, 0.9976, 0.9963, 0.9983, 0.9965, 0.995, 0.9978, 1.0013, 1.0028, 1.0066, 1.0086], "club": "Club 3", "cesp_start": null, "cesp_end": null, "cesp_start_year": null, "cesp_end_year": null}, "Dominican Republic": {"h": [1.0452, 1.0406, 1.0347, 1.0293, 1.0233, 1.0229, 1.0213, 1.0222, 1.0221, 1.0197, 1.0147, 1.0167, 1.0167, 1.0198, 1.0276, 1.0236, 1.0247, 1.0217, 1.0223, 1.0216, 1.0214, 1.0198, 1.0186, 1.0193, 1.0167, 1.0164, 1.0169, 1.0182, 1.0177, 1.0166, 1.022], "club": "Club 2", "cesp_start": 81.0, "cesp_end": 84.5, "cesp_start_year": 1990, "cesp_end_year": 2020}, "Ecuador": {"h": [1.0521, 1.0468, 1.0388, 1.0325, 1.0424, 1.0353, 1.0354, 1.0395, 1.0395, 1.0412, 1.042, 1.0383, 1.032, 1.0336, 1.0321, 1.032, 1.0333, 1.0326, 1.0404, 1.0346, 1.0329, 1.0311, 1.0316, 1.0315, 1.029, 1.0294, 1.032, 1.0348, 1.0363, 1.0369, 1.0373], "club": "Club 1", "cesp_start": 83.1, "cesp_end": 85.8, "cesp_start_year": 1990, "cesp_end_year": 2020}, "Egypt": {"h": [0.9707, 0.9704, 0.9656, 0.961, 0.9638, 0.9652, 0.9695, 0.9669, 0.9692, 0.9692, 0.9704, 0.9712, 0.9698, 0.9676, 0.9725, 0.9679, 0.9702, 0.9682, 0.9692, 0.9652, 0.9671, 0.9731, 0.9749, 0.9705, 0.9613, 0.9603, 0.9606, 0.9657, 0.9713, 0.977, 0.9821], "club": "Club 3", "cesp_start": 73.3, "cesp_end": 77.7, "cesp_start_year": 1990, "cesp_end_year": 2020}, "Eswatini": {"h": [0.8788, 0.8742, 0.8693, 0.8677, 0.8641, 0.8609, 0.8608, 0.8408, 0.8389, 0.8354, 0.8292, 0.8234, 0.8215, 0.8102, 0.8104, 0.8168, 0.824, 0.8285, 0.838, 0.8336, 0.8482, 0.8631, 0.8695, 0.884, 0.8887, 0.8967, 0.9056, 0.9165, 0.9212, 0.922, 0.9244], "club": "Club 1", "cesp_start": 52.1, "cesp_end": 66.5, "cesp_start_year": 1990, "cesp_end_year": 2020}, "Fiji": {"h": [1.0204, 1.0195, 1.0301, 1.0244, 1.019, 1.0166, 1.0172, 1.0185, 1.0232, 1.0214, 1.0141, 1.0135, 1.0157, 1.013, 1.0077, 1.0108, 1.0038, 0.9979, 1.0013, 1.0017, 0.9984, 0.9996, 1.0039, 1.003, 1.0074, 1.0109, 1.0192, 1.0223, 1.0163, 1.0171, 1.0171], "club": "Club 2", "cesp_start": 78.0, "cesp_end": 82.8, "cesp_start_year": 1990, "cesp_end_year": 2020}, "France": {"h": [1.0427, 1.0354, 1.0258, 1.0295, 1.0288, 1.0271, 1.0256, 1.0287, 1.0264, 1.0244, 1.0234, 1.0252, 1.0231, 1.0258, 1.022, 1.0228, 1.0254, 1.0235, 1.0267, 1.0269, 1.0265, 1.0219, 1.0309, 1.0327, 1.0348, 1.0333, 1.0331, 1.0317, 1.0329, 1.0343, 1.0341], "club": "Club 1", "cesp_start": 82.7, "cesp_end": 86.6, "cesp_start_year": 1990, "cesp_end_year": 2020}, "Gabon": {"h": [0.8625, 0.8843, 0.898, 0.9, 0.9036, 0.9096, 0.9142, 0.9187, 0.9215, 0.9301, 0.9421, 0.9483, 0.9526, 0.9557, 0.9599, 0.9651, 0.9729, 0.9758, 0.9804, 0.9772, 0.9901, 0.9852, 0.9897, 0.9954, 0.9981, 1.0002, 1.0055, 1.0096, 1.0093, 1.0087, 1.0126], "club": "Club 1", "cesp_start": 73.4, "cesp_end": 79.5, "cesp_start_year": 1990, "cesp_end_year": 2020}, "Greece": {"h": [1.0187, 1.0161, 1.0037, 1.0068, 1.0055, 1.005, 1.0073, 1.0069, 1.0014, 1.0046, 1.0011, 1.0019, 0.9997, 1.0148, 1.0172, 1.0171, 1.0151, 1.0152, 1.0154, 0.9992, 1.0101, 1.0185, 1.0235, 1.033, 1.0348, 1.0348, 1.0356, 1.0357, 1.038, 1.0414, 1.0419], "club": "Club 1", "cesp_start": 79.2, "cesp_end": 86.9, "cesp_start_year": 1990, "cesp_end_year": 2020}, "Hungary": {"h": [1.015, 1.0186, 1.0023, 1.0071, 1.0137, 1.0194, 1.0247, 1.0256, 1.0258, 1.0227, 1.0231, 1.0224, 1.0166, 1.0132, 1.0177, 1.0188, 1.014, 1.0158, 1.0175, 1.0254, 1.0206, 1.0189, 1.0239, 1.0235, 1.0205, 1.0148, 1.0147, 1.0109, 1.0066, 1.0082, 1.0084], "club": "Club 2", "cesp_start": 80.0, "cesp_end": 82.3, "cesp_start_year": 1990, "cesp_end_year": 2020}, "Iran": {"h": [0.9577, 0.9532, 0.9534, 0.9559, 0.9518, 0.9521, 0.9516, 0.9609, 0.9578, 0.9529, 0.9589, 0.9544, 0.9565, 0.9471, 0.9455, 0.942, 0.9359, 0.9333, 0.9363, 0.9295, 0.9277, 0.9306, 0.9324, 0.9419, 0.9391, 0.9432, 0.9466, 0.938, 0.9426, 0.9329, 0.934], "club": "Club 3", "cesp_start": 66.9, "cesp_end": 68.7, "cesp_start_year": 1990, "cesp_end_year": 2020}, "Iraq": {"h": [0.8933, 0.8955, 0.8805, 0.8825, 0.8776, 0.8835, 0.8978, 0.9104, 0.9165, 0.9192, 0.9237, 0.9175, 0.9181, 0.9447, 0.9411, 0.9397, 0.9492, 0.9654, 0.9533, 0.9411, 0.9427, 0.9377, 0.9328, 0.9308, 0.9298, 0.9348, 0.9373, 0.9375, 0.9429, 0.9441, 0.9443], "club": "Club 3", "cesp_start": 66.0, "cesp_end": 69.1, "cesp_start_year": 1990, "cesp_end_year": 2020}, "Italy": {"h": [1.0176, 1.0146, 1.0017, 1.0088, 1.0098, 1.0082, 1.0131, 1.0116, 1.0108, 1.0061, 1.0036, 1.0073, 1.0025, 1.0052, 1.0021, 1.0043, 1.0031, 1.0038, 1.0049, 1.012, 1.0072, 1.0065, 1.0152, 1.0219, 1.0221, 1.0206, 1.0216, 1.0214, 1.0207, 1.0232, 1.0222], "club": "Club 1", "cesp_start": 78.1, "cesp_end": 84.8, "cesp_start_year": 1990, "cesp_end_year": 2020}, "Jamaica": {"h": [1.0555, 1.052, 1.0494, 1.0417, 1.0404, 1.0363, 1.0429, 1.0394, 1.0317, 1.0307, 1.0416, 1.0288, 1.0378, 1.0298, 1.0269, 1.0225, 1.0162, 1.0153, 1.0169, 1.0324, 1.0339, 1.0264, 1.0282, 1.0282, 1.0298, 1.0309, 1.033, 1.0356, 1.0372, 1.0376, 1.0388], "club": "Club 1", "cesp_start": 80.3, "cesp_end": 86.2, "cesp_start_year": 1990, "cesp_end_year": 2020}, "Jordan": {"h": [0.9965, 1.0041, 0.996, 0.9968, 0.993, 0.9957, 1.0059, 1.0011, 1.0038, 1.0056, 1.007, 0.9989, 0.9927, 0.9986, 0.994, 0.9915, 0.9995, 1.0034, 1.0064, 1.0003, 1.009, 1.011, 1.0157, 1.0118, 1.0111, 1.0127, 1.0167, 1.0171, 1.0177, 1.0184, 1.015], "club": "Club 1", "cesp_start": 78.3, "cesp_end": 81.7, "cesp_start_year": 1990, "cesp_end_year": 2020}, "Kyrgyzstan": {"h": [1.0036, 1.0095, 1.0057, 1.015, 1.0201, 1.0201, 1.0242, 1.0326, 1.0201, 1.0297, 1.0274, 1.0286, 1.0233, 1.0193, 1.0168, 1.0129, 1.0097, 1.018, 1.0203, 1.0036, 1.0136, 1.0171, 1.0123, 1.0134, 1.012, 1.011, 1.0152, 1.0158, 1.0139, 1.0178, 1.0121], "club": "Club 2", "cesp_start": 82.0, "cesp_end": 83.0, "cesp_start_year": 1990, "cesp_end_year": 2020}, "Latvia": {"h": [1.0226, 1.0265, 1.0289, 1.0378, 1.0368, 1.0428, 1.0366, 1.0392, 1.0405, 1.0441, 1.0424, 1.0419, 1.0448, 1.0337, 1.0367, 1.0419, 1.0325, 1.0227, 1.0264, 1.036, 1.0348, 1.0341, 1.0327, 1.0351, 1.0338, 1.0323, 1.0313, 1.0298, 1.0252, 1.0283, 1.0279], "club": "Club 2", "cesp_start": 80.7, "cesp_end": 84.7, "cesp_start_year": 1990, "cesp_end_year": 2020}, "Lebanon": {"h": [0.9969, 0.9936, 0.9896, 0.9962, 0.9837, 0.9697, 0.9718, 0.9712, 0.9735, 0.9755, 0.9835, 0.9806, 0.9837, 0.9778, 0.9817, 0.9886, 0.997, 1.0008, 0.9916, 0.9823, 0.9878, 0.99, 0.9914, 0.9963, 0.9961, 1.0086, 1.0124, 1.0092, 1.0075, 1.0065, 1.0039], "club": "Club 1", "cesp_start": 76.0, "cesp_end": 79.7, "cesp_start_year": 1990, "cesp_end_year": 2020}, "Malaysia": {"h": [1.0042, 0.9963, 0.9886, 0.9838, 0.9824, 0.9769, 0.978, 0.9737, 0.9998, 0.9905, 0.9864, 0.9866, 0.9813, 0.9817, 0.9833, 0.9832, 0.9855, 0.9851, 0.9801, 0.9805, 0.9752, 0.9741, 0.969, 0.9576, 0.9574, 0.961, 0.9603, 0.9632, 0.9674, 0.968, 0.9682], "club": "Club 3", "cesp_start": 77.1, "cesp_end": 77.3, "cesp_start_year": 1990, "cesp_end_year": 2020}, "Maldives": {"h": [0.9566, 0.9523, 0.9509, 0.9503, 0.9526, 0.9563, 0.9653, 0.9559, 0.9664, 0.9641, 0.9671, 0.9695, 0.9685, 0.9764, 0.9725, 0.9862, 0.9781, 0.981, 0.9937, 0.996, 0.9982, 1.0003, 0.9934, 0.9869, 0.9836, 0.9837, 0.9863, 0.9903, 0.996, 1.0095, 1.0108], "club": "Club 1", "cesp_start": 75.9, "cesp_end": 80.9, "cesp_start_year": 1990, "cesp_end_year": 2020}, "Mauritius": {"h": [1.0679, 1.0624, 1.055, 1.0511, 1.0492, 1.0483, 1.0438, 1.0432, 1.0461, 1.0403, 1.0379, 1.04, 1.0373, 1.0356, 1.034, 1.0373, 1.0333, 1.0358, 1.0336, 1.0313, 1.0344, 1.0276, 1.0341, 1.0326, 1.0311, 1.0306, 1.0285, 1.0281, 1.0273, 1.0291, 1.0251], "club": "Club 2", "cesp_start": 83.0, "cesp_end": 84.5, "cesp_start_year": 1990, "cesp_end_year": 2020}, "Mexico": {"h": [1.0025, 0.9971, 0.9955, 0.9923, 0.9915, 1.0031, 1.0003, 0.997, 0.9965, 0.9951, 0.9984, 0.9988, 0.9991, 0.9993, 1.0016, 0.9984, 0.9989, 1.0013, 1.0012, 0.9997, 1.0007, 0.9999, 0.9982, 0.9994, 0.9996, 1.0039, 1.0063, 1.0096, 1.0134, 1.0177, 1.0167], "club": "Club 1", "cesp_start": 78.6, "cesp_end": 83.5, "cesp_start_year": 1990, "cesp_end_year": 2020}, "Mongolia": {"h": [0.9645, 0.9732, 0.9918, 1.0125, 1.0111, 1.0101, 0.998, 1.0067, 1.0056, 1.0046, 1.0009, 1.0007, 0.9975, 0.9971, 0.9981, 0.9999, 0.9963, 0.988, 0.9869, 0.9823, 0.9807, 0.9439, 0.8985, 0.8678, 0.9291, 0.9531, 0.9505, 0.9249, 0.8909, 0.7788, 0.7807], "club": "Club 4", "cesp_start": 75.2, "cesp_end": 45.6, "cesp_start_year": 1990, "cesp_end_year": 2020}, "New Zealand": {"h": [1.0504, 1.0457, 1.0392, 1.0366, 1.0335, 1.0314, 1.0265, 1.0229, 1.035, 1.027, 1.0309, 1.0302, 1.0254, 1.0231, 1.0195, 1.0152, 1.0221, 1.0195, 1.0208, 1.0272, 1.027, 1.0235, 1.0213, 1.0229, 1.0212, 1.0209, 1.0228, 1.0211, 1.0205, 1.0191, 1.0193], "club": "Club 2", "cesp_start": 81.9, "cesp_end": 84.4, "cesp_start_year": 1990, "cesp_end_year": 2020}, "Poland": {"h": [1.0151, 1.0052, 1.0003, 1.0016, 1.004, 1.0071, 1.0047, 1.0073, 1.0171, 1.0124, 1.0154, 1.0176, 1.0195, 1.0217, 1.0206, 1.0218, 1.0191, 1.0156, 1.0164, 1.0159, 1.0131, 1.0114, 1.0131, 1.0162, 1.0171, 1.0155, 1.0122, 1.0086, 1.0073, 1.0104, 1.009], "club": "Club 2", "cesp_start": 80.2, "cesp_end": 82.2, "cesp_start_year": 1990, "cesp_end_year": 2020}, "Portugal": {"h": [1.0609, 1.0533, 1.0436, 1.0424, 1.0404, 1.0393, 1.0414, 1.0379, 1.0354, 1.0303, 1.0264, 1.028, 1.0225, 1.0289, 1.0246, 1.0221, 1.0289, 1.0332, 1.0363, 1.0363, 1.0388, 1.0395, 1.044, 1.0459, 1.0437, 1.0404, 1.0412, 1.0382, 1.0395, 1.0419, 1.0413], "club": "Club 1", "cesp_start": 83.5, "cesp_end": 87.9, "cesp_start_year": 1990, "cesp_end_year": 2020}, "Republic of North Macedonia": {"h": [1.0124, 1.0147, 1.019, 1.0105, 1.0044, 1.0024, 1.0063, 1.006, 1.0012, 1.0026, 1.0003, 0.9977, 1.0064, 1.0132, 1.0151, 1.0126, 1.0164, 1.0137, 1.0143, 1.0108, 1.0128, 1.0094, 1.0085, 1.0131, 1.0132, 1.0127, 1.0142, 1.0185, 1.0228, 1.0243, 1.0242], "club": "Club 1", "cesp_start": 79.3, "cesp_end": 83.8, "cesp_start_year": 1990, "cesp_end_year": 2020}, "Romania": {"h": [0.9922, 1.0092, 1.0143, 1.0145, 1.016, 1.0169, 1.0188, 1.025, 1.0282, 1.0317, 1.0306, 1.027, 1.0258, 1.0253, 1.0253, 1.0238, 1.0196, 1.0264, 1.0286, 1.036, 1.0371, 1.0329, 1.0343, 1.0408, 1.0389, 1.0372, 1.038, 1.0337, 1.0333, 1.0361, 1.0365], "club": "Club 1", "cesp_start": 81.9, "cesp_end": 86.1, "cesp_start_year": 1990, "cesp_end_year": 2020}, "Slovakia": {"h": [0.9456, 0.9775, 0.9787, 0.9852, 0.9968, 0.9939, 0.9911, 0.9943, 0.9955, 1.005, 1.0076, 1.0052, 1.0087, 1.0131, 1.0138, 1.0136, 1.008, 1.0074, 1.0018, 1.0069, 1.0057, 1.0021, 1.0086, 1.0082, 1.0079, 1.0041, 1.0046, 1.0019, 0.9993, 1.0039, 1.0044], "club": "Club 2", "cesp_start": 77.5, "cesp_end": 81.3, "cesp_start_year": 1990, "cesp_end_year": 2020}, "Slovenia": {"h": [1.0269, 1.0327, 1.0068, 1.0105, 1.013, 1.0064, 1.0097, 1.0063, 1.0071, 1.0105, 1.0074, 1.0116, 1.0091, 1.0116, 1.014, 1.0126, 1.0052, 1.0018, 0.9998, 1.0092, 1.0048, 0.9937, 1.0083, 1.0121, 1.0161, 1.0141, 1.0117, 1.0099, 1.0098, 1.0101, 1.0059], "club": "Club 2", "cesp_start": 78.4, "cesp_end": 82.1, "cesp_start_year": 1990, "cesp_end_year": 2020}, "Spain": {"h": [1.0528, 1.0459, 1.0367, 1.0385, 1.0355, 1.033, 1.0366, 1.0355, 1.0329, 1.0263, 1.0236, 1.0243, 1.0166, 1.0213, 1.0169, 1.014, 1.0142, 1.0125, 1.0213, 1.029, 1.0316, 1.0324, 1.0365, 1.0418, 1.0398, 1.0369, 1.0388, 1.0362, 1.037, 1.0405, 1.0408], "club": "Club 1", "cesp_start": 81.8, "cesp_end": 87.2, "cesp_start_year": 1990, "cesp_end_year": 2020}, "Suriname": {"h": [0.9921, 0.9874, 0.9913, 0.9941, 0.9988, 1.0076, 1.0094, 1.0043, 1.0113, 1.0111, 1.0113, 1.0093, 1.022, 1.0213, 1.0189, 1.0169, 1.0189, 1.0191, 1.0195, 1.0154, 1.006, 1.0083, 1.0056, 1.0115, 1.0098, 1.0039, 1.0068, 1.0098, 1.0122, 1.0138, 1.0168], "club": "Club 2", "cesp_start": 80.6, "cesp_end": 82.7, "cesp_start_year": 1990, "cesp_end_year": 2020}, "Sweden": {"h": [1.0412, 1.0365, 1.0226, 1.0273, 1.0264, 1.029, 1.0226, 1.0296, 1.0305, 1.0342, 1.0316, 1.0363, 1.0328, 1.0291, 1.0275, 1.029, 1.0273, 1.023, 1.0279, 1.0359, 1.0244, 1.0272, 1.0311, 1.034, 1.0342, 1.0329, 1.033, 1.0323, 1.0319, 1.0354, 1.0357], "club": "Club 1", "cesp_start": 83.2, "cesp_end": 87.6, "cesp_start_year": 1990, "cesp_end_year": 2020}, "Syria": {"h": [0.9232, 0.9153, 0.9177, 0.9215, 0.9189, 0.927, 0.9284, 0.9342, 0.9309, 0.9304, 0.9344, 0.9389, 0.9449, 0.9435, 0.9474, 0.9509, 0.9542, 0.9459, 0.9474, 0.9484, 0.9504, 0.9471, 0.9496, 0.9504, 0.9504, 0.9393, 0.9411, 0.9452, 0.9474, 0.9494, 0.95], "club": "Club 3", "cesp_start": 69.6, "cesp_end": 70.6, "cesp_start_year": 1990, "cesp_end_year": 2020}, "Thailand": {"h": [1.0151, 1.0043, 0.9963, 1.0058, 1.0021, 1.0006, 0.9984, 1.006, 1.022, 1.0185, 1.0207, 1.0228, 1.0222, 1.0215, 1.0176, 1.0164, 1.0114, 1.0121, 1.0158, 1.0121, 1.0084, 1.0106, 1.0088, 1.0073, 0.9951, 0.9928, 0.9946, 0.9951, 0.9957, 1.0, 0.9987], "club": "Club 3", "cesp_start": 81.4, "cesp_end": 82.0, "cesp_start_year": 1990, "cesp_end_year": 2020}, "Tunisia": {"h": [1.0161, 1.01, 0.9992, 0.9997, 1.0028, 1.0047, 1.0041, 1.0035, 1.0072, 1.0051, 1.0005, 1.0035, 1.0018, 1.0073, 1.0079, 1.011, 1.0126, 1.0124, 1.0122, 1.0106, 1.0105, 1.0372, 1.0406, 1.0374, 1.0365, 1.0348, 1.0352, 1.0363, 1.0377, 1.0377, 1.0383], "club": "Club 1", "cesp_start": 80.4, "cesp_end": 84.9, "cesp_start_year": 1990, "cesp_end_year": 2020}, "Turkey": {"h": [0.9814, 0.9807, 0.9703, 0.9721, 0.9773, 0.9761, 0.9817, 0.9804, 0.9841, 0.987, 0.9889, 1.0032, 1.0064, 1.0101, 1.0078, 1.0047, 1.0047, 0.999, 1.0005, 1.0001, 0.9955, 0.9935, 0.9943, 0.9908, 0.9888, 0.9879, 0.9795, 0.9763, 0.9826, 0.9881, 0.989], "club": "Club 3", "cesp_start": 76.9, "cesp_end": 78.6, "cesp_start_year": 1990, "cesp_end_year": 2020}, "Turkmenistan": {"h": [0.9412, 0.9381, 0.9499, 0.9443, 0.9445, 0.9241, 0.9299, 0.9274, 0.9216, 0.901, 0.9019, 0.8983, 0.8941, 0.8841, 0.8833, 0.8784, 0.8838, 0.8801, 0.8837, 0.8855, 0.8853, 0.8864, 0.885, 0.8807, 0.8865, 0.8747, 0.8498, 0.8585, 0.862, 0.8663, 0.8676], "club": "Club 4", "cesp_start": 58.2, "cesp_end": 57.8, "cesp_start_year": 1990, "cesp_end_year": 2020}, "Ukraine": {"h": [0.9945, 1.0006, 0.9982, 1.0055, 1.0256, 1.0361, 1.0181, 1.0193, 1.0266, 1.0228, 1.0233, 1.0122, 1.01, 1.0164, 1.0188, 1.0169, 1.0199, 1.0143, 1.0153, 1.0212, 1.0167, 1.0104, 1.0103, 1.0095, 1.0103, 1.0139, 1.0126, 1.0146, 1.0104, 1.0139, 1.0154], "club": "Club 2", "cesp_start": 78.2, "cesp_end": 83.1, "cesp_start_year": 1990, "cesp_end_year": 2020}, "Uruguay": {"h": [1.1012, 1.0933, 1.0858, 1.082, 1.0799, 1.0785, 1.0731, 1.0701, 1.0702, 1.063, 1.0669, 1.0693, 1.0706, 1.0712, 1.0665, 1.0648, 1.0652, 1.0652, 1.0607, 1.0587, 1.0594, 1.0531, 1.0476, 1.0505, 1.0512, 1.0507, 1.0513, 1.0521, 1.0532, 1.0541, 1.0538], "club": "Club 1", "cesp_start": 87.4, "cesp_end": 88.7, "cesp_start_year": 1990, "cesp_end_year": 2020}, "Uzbekistan": {"h": [0.9408, 0.9507, 0.9455, 0.9389, 0.9365, 0.9414, 0.9397, 0.9398, 0.9384, 0.9313, 0.9303, 0.9331, 0.9318, 0.9375, 0.9377, 0.9355, 0.9387, 0.942, 0.9432, 0.9426, 0.9515, 0.9532, 0.9522, 0.9604, 0.9617, 0.9631, 0.9668, 0.9794, 0.9841, 0.9966, 0.9985], "club": "Club 1", "cesp_start": 71.2, "cesp_end": 81.8, "cesp_start_year": 1990, "cesp_end_year": 2020}}, "h_min": 0.779, "h_max": 1.101}, "high": {"title": "More than 10t", "clubs": ["All"], "trajectories": {"Australia": {"h": [1.0733, 1.0752, 1.0887, 1.0991, 1.0922, 1.0845, 1.082, 1.0765, 1.0667, 1.0409, 1.0489, 1.0461, 1.0386, 1.0457, 1.039, 1.0482, 1.0464, 1.0326, 1.0477, 1.0283, 1.0282, 1.0093, 1.014, 1.0187, 1.0141, 1.0198, 1.0225, 1.0217, 1.0254, 1.0234, 1.0236], "club": null, "cesp_start": 71.7, "cesp_end": 75.4, "cesp_start_year": 1990, "cesp_end_year": 2020}, "Austria": {"h": [1.1054, 1.1037, 1.1147, 1.1283, 1.1288, 1.1164, 1.1072, 1.1121, 1.1055, 1.0774, 1.0794, 1.0746, 1.0767, 1.0886, 1.0841, 1.0858, 1.0892, 1.085, 1.0968, 1.092, 1.0818, 1.0599, 1.0773, 1.0741, 1.0755, 1.0786, 1.0753, 1.0714, 1.0718, 1.0709, 1.0705], "club": null, "cesp_start": 78.0, "cesp_end": 82.1, "cesp_start_year": 1990, "cesp_end_year": 2020}, "Belgium": {"h": [1.0646, 1.0645, 1.0589, 1.0779, 1.0788, 1.0681, 1.0701, 1.0608, 1.0461, 1.0128, 1.0133, 1.0153, 1.0088, 1.0239, 1.001, 1.0102, 1.0072, 0.9953, 1.0218, 1.0391, 1.0237, 0.9961, 1.0253, 1.0221, 1.0256, 1.0307, 1.0331, 1.0309, 1.0253, 1.0259, 1.0244], "club": null, "cesp_start": 67.4, "cesp_end": 75.1, "cesp_start_year": 1990, "cesp_end_year": 2020}, "Canada": {"h": [1.0535, 1.0573, 1.0665, 1.0794, 1.0785, 1.0692, 1.0671, 1.0525, 1.0497, 1.0238, 1.0202, 1.0285, 1.0248, 1.0454, 1.039, 1.0394, 1.0496, 1.029, 1.0446, 1.0389, 1.0257, 1.0188, 1.0194, 1.0144, 1.0162, 1.026, 1.0295, 1.0249, 1.0225, 1.0212, 1.0214], "club": null, "cesp_start": 70.8, "cesp_end": 74.9, "cesp_start_year": 1990, "cesp_end_year": 2020}, "Czechia": {"h": [1.0513, 1.0773, 1.0721, 1.0982, 1.1053, 1.1005, 1.1027, 1.1041, 1.1071, 1.0803, 1.0718, 1.071, 1.0726, 1.088, 1.0921, 1.1028, 1.0995, 1.0831, 1.0906, 1.0901, 1.0818, 1.0639, 1.0827, 1.0792, 1.0807, 1.0826, 1.0783, 1.0729, 1.0695, 1.069, 1.0686], "club": null, "cesp_start": 75.7, "cesp_end": 81.5, "cesp_start_year": 1990, "cesp_end_year": 2020}, "Denmark": {"h": [1.115, 1.1069, 1.1131, 1.1251, 1.1201, 1.1144, 1.1037, 1.1127, 1.1159, 1.0778, 1.0882, 1.0871, 1.0907, 1.1012, 1.0971, 1.1054, 1.0984, 1.0927, 1.1073, 1.1008, 1.0957, 1.0793, 1.101, 1.0944, 1.0965, 1.1043, 1.1002, 1.0981, 1.0939, 1.0957, 1.0941], "club": null, "cesp_start": 79.5, "cesp_end": 86.0, "cesp_start_year": 1990, "cesp_end_year": 2020}, "Estonia": {"h": [0.9771, 0.9919, 1.0503, 1.101, 1.1065, 1.1078, 1.102, 1.1063, 1.0903, 1.0385, 1.0538, 1.0557, 1.0515, 1.0513, 1.0692, 1.0702, 1.0663, 1.0431, 1.0804, 1.0868, 1.0629, 1.0292, 1.0472, 1.0405, 1.0405, 1.0556, 1.0464, 1.0364, 1.0333, 1.0555, 1.055], "club": null, "cesp_start": 74.2, "cesp_end": 79.7, "cesp_start_year": 1990, "cesp_end_year": 2020}, "Finland": {"h": [1.0633, 1.0793, 1.0273, 1.0777, 1.0936, 1.0951, 1.0975, 1.0969, 1.0991, 1.063, 1.0642, 1.0565, 1.0634, 1.0566, 1.0481, 1.0695, 1.0501, 1.0389, 1.065, 1.075, 1.0511, 1.0464, 1.0631, 1.0625, 1.0629, 1.0706, 1.0664, 1.0656, 1.0582, 1.0623, 1.0626], "club": null, "cesp_start": 73.7, "cesp_end": 81.8, "cesp_start_year": 1990, "cesp_end_year": 2020}, "Germany": {"h": [1.071, 1.0799, 1.085, 1.1, 1.1048, 1.098, 1.101, 1.104, 1.1005, 1.0692, 1.0719, 1.0717, 1.0806, 1.093, 1.0909, 1.0971, 1.0982, 1.0931, 1.1027, 1.0964, 1.0854, 1.0653, 1.0827, 1.0765, 1.0782, 1.0836, 1.0793, 1.0773, 1.0763, 1.077, 1.0765], "club": null, "cesp_start": 78.7, "cesp_end": 82.9, "cesp_start_year": 1990, "cesp_end_year": 2020}, "Iceland": {"h": [1.0909, 1.0921, 1.1347, 1.1325, 1.1244, 1.1077, 1.1078, 1.1, 1.0923, 1.0572, 1.0592, 1.0682, 1.0728, 1.0751, 1.0596, 1.0545, 1.0457, 1.0281, 1.0545, 1.0676, 1.0656, 1.0473, 1.0586, 1.0533, 1.056, 1.0603, 1.0448, 1.0316, 1.0205, 1.0152, 1.0137], "club": null, "cesp_start": 72.1, "cesp_end": 74.1, "cesp_start_year": 1990, "cesp_end_year": 2020}, "Ireland": {"h": [1.0984, 1.0941, 1.103, 1.1187, 1.1169, 1.1113, 1.0881, 1.0892, 1.0883, 1.043, 1.0431, 1.0428, 1.0466, 1.0476, 1.0394, 1.0383, 1.0501, 1.0458, 1.0727, 1.0847, 1.0911, 1.0767, 1.0898, 1.0848, 1.0862, 1.0958, 1.0911, 1.0902, 1.0894, 1.0874, 1.0879], "club": null, "cesp_start": 74.4, "cesp_end": 84.5, "cesp_start_year": 1990, "cesp_end_year": 2020}, "Israel": {"h": [1.0952, 1.0982, 1.0937, 1.1069, 1.1032, 1.0927, 1.0933, 1.0882, 1.0853, 1.0741, 1.0709, 1.0645, 1.0776, 1.0722, 1.0786, 1.0882, 1.0895, 1.082, 1.0864, 1.084, 1.0734, 1.0533, 1.0578, 1.0665, 1.0678, 1.0717, 1.0729, 1.0718, 1.068, 1.0641, 1.0657], "club": null, "cesp_start": 74.9, "cesp_end": 80.9, "cesp_start_year": 1990, "cesp_end_year": 2020}, "Japan": {"h": [1.1186, 1.1172, 1.1221, 1.1312, 1.1245, 1.1145, 1.1161, 1.1153, 1.1208, 1.0817, 1.0769, 1.0801, 1.083, 1.0952, 1.0944, 1.0967, 1.1038, 1.0905, 1.1013, 1.0962, 1.0863, 1.0598, 1.0673, 1.0651, 1.0675, 1.0758, 1.0739, 1.0719, 1.0712, 1.0688, 1.0686], "club": null, "cesp_start": 78.9, "cesp_end": 82.3, "cesp_start_year": 1990, "cesp_end_year": 2020}, "Kazakhstan": {"h": [0.9006, 0.974, 1.0621, 1.0236, 1.0414, 1.0408, 1.0524, 1.0561, 1.0488, 1.0338, 1.0259, 1.0177, 1.014, 1.0182, 1.0148, 1.0052, 0.9866, 0.9741, 0.9979, 1.0007, 1.0136, 1.0069, 1.0011, 0.9828, 0.9738, 0.954, 0.9622, 0.9562, 0.9589, 0.9693, 0.9734], "club": null, "cesp_start": 64.8, "cesp_end": 68.3, "cesp_start_year": 1990, "cesp_end_year": 2020}, "Korea, Republic of": {"h": [1.1223, 1.1179, 1.1179, 1.1291, 1.124, 1.1116, 1.1027, 1.101, 1.1395, 1.0936, 1.0878, 1.0911, 1.0852, 1.0965, 1.0953, 1.0913, 1.0905, 1.0742, 1.0798, 1.0775, 1.0606, 1.0371, 1.0498, 1.0415, 1.0395, 1.0433, 1.0414, 1.0387, 1.0334, 1.0325, 1.0326], "club": null, "cesp_start": 75.6, "cesp_end": 76.4, "cesp_start_year": 1990, "cesp_end_year": 2020}, "Malta": {"h": [1.1141, 1.1209, 1.1274, 1.1266, 1.1296, 1.1203, 1.1176, 1.1223, 1.0853, 1.0703, 1.0554, 1.0559, 1.0832, 1.0593, 1.107, 1.0898, 1.0719, 1.1006, 1.0474, 1.042, 1.05, 1.0145, 0.991, 1.0397, 1.0403, 1.0535, 1.0578, 1.0499, 1.0428, 1.0417, 1.0432], "club": null, "cesp_start": 70.3, "cesp_end": 77.8, "cesp_start_year": 1990, "cesp_end_year": 2020}, "Netherlands": {"h": [1.0864, 1.0813, 1.0724, 1.0953, 1.0998, 1.091, 1.0942, 1.0958, 1.091, 1.1124, 1.1154, 1.116, 1.1115, 1.1009, 1.0979, 1.1031, 1.0919, 1.1048, 1.1125, 1.1004, 1.0927, 1.0838, 1.0963, 1.0928, 1.0927, 1.0972, 1.0948, 1.0934, 1.0898, 1.0875, 1.0868], "club": null, "cesp_start": 80.6, "cesp_end": 84.8, "cesp_start_year": 1990, "cesp_end_year": 2020}, "Norway": {"h": [1.117, 1.1221, 1.1398, 1.1498, 1.1518, 1.1241, 1.1159, 1.1133, 1.114, 1.088, 1.095, 1.0917, 1.0934, 1.1321, 1.1319, 1.1334, 1.1319, 1.1094, 1.1243, 1.1127, 1.1056, 1.0846, 1.0997, 1.0966, 1.0949, 1.0984, 1.0949, 1.0928, 1.0921, 1.0885, 1.0877], "club": null, "cesp_start": 81.6, "cesp_end": 85.2, "cesp_start_year": 1990, "cesp_end_year": 2020}, "Oman": {"h": [0.9339, 0.9371, 0.9584, 0.9599, 0.9583, 0.9564, 0.9717, 0.9728, 0.9622, 0.9395, 0.9455, 0.9515, 0.9282, 0.9082, 0.9494, 0.9523, 0.9012, 0.8821, 0.8973, 0.8934, 0.919, 0.9111, 0.8964, 0.8977, 0.9031, 0.9013, 0.9087, 0.9143, 0.9425, 0.9531, 0.9551], "club": null, "cesp_start": 52.7, "cesp_end": 66.0, "cesp_start_year": 1990, "cesp_end_year": 2020}, "Switzerland": {"h": [1.1028, 1.1019, 1.106, 1.1273, 1.1289, 1.1147, 1.0872, 1.1044, 1.0703, 1.0566, 1.048, 1.0636, 1.0784, 1.0726, 1.0698, 1.0721, 1.0832, 1.063, 1.0703, 1.0677, 1.0659, 1.0327, 1.0537, 1.0328, 1.0376, 1.0474, 1.0481, 1.0447, 1.0427, 1.044, 1.0445], "club": null, "cesp_start": 73.9, "cesp_end": 78.6, "cesp_start_year": 1990, "cesp_end_year": 2020}, "United Kingdom": {"h": [1.0921, 1.091, 1.102, 1.1171, 1.1188, 1.1135, 1.1081, 1.1071, 1.1011, 1.0766, 1.0818, 1.0785, 1.0879, 1.0989, 1.0926, 1.099, 1.1024, 1.0895, 1.1072, 1.1018, 1.0933, 1.083, 1.0921, 1.0884, 1.0905, 1.0965, 1.098, 1.0956, 1.0934, 1.0911, 1.0913], "club": null, "cesp_start": 79.6, "cesp_end": 84.8, "cesp_start_year": 1990, "cesp_end_year": 2020}, "United States": {"h": [1.0107, 1.0174, 1.0235, 1.0292, 1.0262, 1.0187, 1.0155, 1.0107, 1.0047, 0.9712, 0.9628, 0.9669, 0.9689, 0.9783, 0.9724, 0.9767, 0.9836, 0.9755, 0.9973, 1.0027, 0.9946, 0.9801, 0.9992, 0.9916, 0.9901, 0.9988, 1.0005, 0.9969, 0.9902, 0.9898, 0.9873], "club": null, "cesp_start": 64.8, "cesp_end": 70.3, "cesp_start_year": 1990, "cesp_end_year": 2020}}, "h_min": 0.882, "h_max": 1.152}};
         // Captions for each emission group
         const cespCaptions = {
-            low: "Low-emitting countries show <strong>rapid convergence toward y=1</strong> (β=0.21)—their just transition paths are closing in on carbon-free well-being, promising trajectories for nearly half the world's population.",
-            mid: "Middle-emitting countries exhibit <strong>divergence</strong> (β=-0.33), forming four distinct clubs moving away from unity—significant barriers to achieving carbon-efficient well-being remain.",
+            low: "Low-emitting countries show <strong>rapid convergence toward y=1</strong> (β=0.21)-their just transition paths are closing in on carbon-free well-being, promising trajectories for nearly half the world's population.",
+            mid: "Middle-emitting countries exhibit <strong>divergence</strong> (β=-0.33), forming four distinct clubs moving away from unity-significant barriers to achieving carbon-efficient well-being remain.",
             high: "High-emitting countries show <strong>early-stage convergence</strong> (β=0.08), with some paths bending toward y=1. However, diminishing returns on emissions limit how close they can approach just transition."
         };
 
@@ -9313,7 +9709,7 @@ const cespConvergenceData = {"low": {"title": "Less than 1.9t", "clubs": ["All"]
         ];
 
         const cpiCaptions = {
-            ranking: "<strong>Portugal</strong> leads globally with balanced high scores. <strong>Latin America</strong> dominates the top 10 despite lower awareness—driven by strong risk perception and action readiness.",
+            ranking: "<strong>Portugal</strong> leads globally with balanced high scores. <strong>Latin America</strong> dominates the top 10 despite lower awareness-driven by strong risk perception and action readiness.",
             dimensions: "The three dimensions reveal distinct patterns: <strong>Risk perception</strong> shows highest variance, while <strong>Awareness</strong> clusters tightly. Note how some high-awareness countries (Finland, Norway) have surprisingly low risk scores."
         };
 
@@ -11053,10 +11449,12 @@ const cespConvergenceData = {"low": {"title": "Less than 1.9t", "clubs": ["All"]
                 ctx1.scale(dpr, dpr);
                 ctx2.scale(dpr, dpr);
                 
-                // Clear canvases
-                ctx1.fillStyle = '#000';
+                // Clear canvases with theme-aware background
+                const isLightTheme = document.documentElement.getAttribute('data-theme') === 'light';
+                const canvasBg = isLightTheme ? 'rgba(45, 107, 66, 0.08)' : '#000';
+                ctx1.fillStyle = canvasBg;
                 ctx1.fillRect(0, 0, rect1.width, rect1.height);
-                ctx2.fillStyle = '#000';
+                ctx2.fillStyle = canvasBg;
                 ctx2.fillRect(0, 0, rect2.width, rect2.height);
                 
                 // Reset chains
@@ -11075,10 +11473,15 @@ const cespConvergenceData = {"low": {"title": "Less than 1.9t", "clubs": ["All"]
                 const w2 = canvas2.getBoundingClientRect().width;
                 const h2 = canvas2.getBoundingClientRect().height;
                 
-                // Clear
-                ctx1.fillStyle = '#000';
+                // Clear with theme-aware background
+                const isLightTheme = document.documentElement.getAttribute('data-theme') === 'light';
+                const canvasBg = isLightTheme ? 'rgba(45, 107, 66, 0.08)' : '#000';
+                const axisColor = isLightTheme ? 'rgba(45, 107, 66, 0.3)' : 'rgba(255,255,255,0.2)';
+                const labelColor = isLightTheme ? 'rgba(45, 107, 66, 0.6)' : 'rgba(255,255,255,0.4)';
+                
+                ctx1.fillStyle = canvasBg;
                 ctx1.fillRect(0, 0, w1, h1);
-                ctx2.fillStyle = '#000';
+                ctx2.fillStyle = canvasBg;
                 ctx2.fillRect(0, 0, w2, h2);
                 
                 const padding = { left: 40, right: 10, top: 10, bottom: 25 };
@@ -11088,7 +11491,7 @@ const cespConvergenceData = {"low": {"title": "Less than 1.9t", "clubs": ["All"]
                 const plotH2 = h2 - padding.top - padding.bottom;
                 
                 // Draw axes
-                ctx1.strokeStyle = 'rgba(255,255,255,0.2)';
+                ctx1.strokeStyle = axisColor;
                 ctx1.lineWidth = 1;
                 ctx1.beginPath();
                 ctx1.moveTo(padding.left, padding.top);
@@ -11096,7 +11499,7 @@ const cespConvergenceData = {"low": {"title": "Less than 1.9t", "clubs": ["All"]
                 ctx1.lineTo(w1 - padding.right, h1 - padding.bottom);
                 ctx1.stroke();
                 
-                ctx2.strokeStyle = 'rgba(255,255,255,0.2)';
+                ctx2.strokeStyle = axisColor;
                 ctx2.lineWidth = 1;
                 ctx2.beginPath();
                 ctx2.moveTo(padding.left, padding.top);
@@ -11105,13 +11508,13 @@ const cespConvergenceData = {"low": {"title": "Less than 1.9t", "clubs": ["All"]
                 ctx2.stroke();
                 
                 // Y-axis labels
-                ctx1.fillStyle = 'rgba(255,255,255,0.4)';
+                ctx1.fillStyle = labelColor;
                 ctx1.font = '10px JetBrains Mono, monospace';
                 ctx1.textAlign = 'right';
                 ctx1.fillText('1.35', padding.left - 5, padding.top + 10);
                 ctx1.fillText('1.25', padding.left - 5, h1 - padding.bottom - 5);
                 
-                ctx2.fillStyle = 'rgba(255,255,255,0.4)';
+                ctx2.fillStyle = labelColor;
                 ctx2.font = '10px JetBrains Mono, monospace';
                 ctx2.textAlign = 'right';
                 ctx2.fillText('1.05', padding.left - 5, padding.top + 10);
@@ -11176,8 +11579,8 @@ const cespConvergenceData = {"low": {"title": "Less than 1.9t", "clubs": ["All"]
                 if (iterEl) iterEl.textContent = mcmcAnimState.iteration;
                 
                 if (mcmcAnimState.iteration < 200) {
-                    if (rhatEl) rhatEl.textContent = '—';
-                    if (essEl) essEl.textContent = '—';
+                    if (rhatEl) rhatEl.textContent = '-';
+                    if (essEl) essEl.textContent = '-';
                     if (statusEl) {
                         statusEl.textContent = 'Warmup';
                         statusEl.className = 'mcmc-diag-value mcmc-status sampling';
