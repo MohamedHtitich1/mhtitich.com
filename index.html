@@ -2702,6 +2702,709 @@
             }
         }
 
+        /* Just Transition Forecaster Styles */
+        .technique-modal-wide {
+            max-width: 900px;
+        }
+        
+        .jt-forecast-viz-container {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .jt-forecast-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .jt-year-display {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .jt-year-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        
+        .jt-current-year {
+            font-family: 'Instrument Serif', Georgia, serif;
+            font-size: 2.5rem;
+            font-weight: 400;
+            color: var(--accent);
+            text-shadow: 0 0 30px rgba(20, 184, 166, 0.4);
+            line-height: 1;
+        }
+        
+        .jt-forecast-badge {
+            display: inline-block;
+            padding: 0.2rem 0.6rem;
+            background: rgba(20, 184, 166, 0.2);
+            border: 1px solid var(--accent);
+            border-radius: 20px;
+            font-size: 0.65rem;
+            font-weight: 600;
+            color: var(--accent);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .jt-forecast-badge.visible {
+            opacity: 1;
+        }
+        
+        .jt-controls {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .jt-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.5rem 1rem;
+            background: rgba(20, 184, 166, 0.15);
+            border: 1px solid rgba(20, 184, 166, 0.3);
+            border-radius: 8px;
+            color: var(--accent);
+            font-family: inherit;
+            font-size: 0.8rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .jt-btn:hover {
+            background: rgba(20, 184, 166, 0.25);
+            border-color: rgba(20, 184, 166, 0.5);
+        }
+        
+        .jt-btn-primary {
+            background: var(--accent);
+            color: var(--bg-primary);
+        }
+        
+        .jt-btn-primary:hover {
+            background: #0d9488;
+        }
+        
+        .jt-btn svg {
+            width: 16px;
+            height: 16px;
+        }
+        
+        .jt-legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            justify-content: center;
+            padding: 0.75rem 0;
+            margin-bottom: 0.5rem;
+        }
+        
+        .jt-legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+        
+        .jt-legend-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            box-shadow: 0 0 8px rgba(20, 184, 166, 0.3);
+        }
+        
+        .jt-legend-low { background: #2dd4bf; }
+        .jt-legend-mid { background: #5eead4; opacity: 0.7; }
+        .jt-legend-high { background: #99f6e4; }
+        
+        .jt-chart-container {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 7/4;
+            min-height: 300px;
+        }
+        
+        #jt-forecast-chart {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .jt-tooltip {
+            position: absolute;
+            pointer-events: none;
+            background: rgba(17, 24, 39, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(20, 184, 166, 0.3);
+            border-radius: 10px;
+            padding: 0.75rem 1rem;
+            opacity: 0;
+            transform: translateY(5px);
+            transition: opacity 0.2s, transform 0.2s;
+            z-index: 100;
+            font-size: 0.85rem;
+            min-width: 180px;
+        }
+        
+        .jt-tooltip.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .jt-tooltip-title {
+            font-family: 'Instrument Serif', serif;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+        
+        .jt-tooltip-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.2rem 0;
+        }
+        
+        .jt-tooltip-label { color: var(--text-muted); }
+        .jt-tooltip-value { color: var(--text-primary); font-weight: 500; }
+        
+        .jt-timeline {
+            margin-top: 1rem;
+        }
+        
+        .jt-timeline-track {
+            height: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+        
+        .jt-timeline-progress {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, var(--accent), #5eead4);
+            border-radius: 2px;
+            transition: width 0.1s linear;
+        }
+        
+        .jt-timeline-labels {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 0.5rem;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+        
+        .jt-timeline-marker {
+            position: relative;
+        }
+        
+        .jt-timeline-marker::before {
+            content: '|';
+            position: absolute;
+            top: -0.65rem;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.6rem;
+            color: rgba(255, 255, 255, 0.3);
+        }
+        
+        .jt-stats-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .jt-stat-box {
+            text-align: center;
+            padding: 0.75rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .jt-stat-jt {
+            background: rgba(20, 184, 166, 0.1);
+            border-color: rgba(20, 184, 166, 0.2);
+        }
+        
+        .jt-stat-value {
+            font-family: 'Instrument Serif', serif;
+            font-size: 1.75rem;
+            color: var(--text-primary);
+            line-height: 1.2;
+        }
+        
+        .jt-stat-jt .jt-stat-value {
+            color: var(--accent);
+        }
+        
+        .jt-stat-label {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-top: 0.25rem;
+        }
+        
+        .jt-findings-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .jt-finding-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 1.25rem;
+        }
+        
+        .jt-finding-icon {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .jt-finding-title {
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+        
+        .jt-finding-card p {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+            margin: 0;
+        }
+        
+        /* Chart styles */
+        .jt-zone {
+            fill: url(#jt-gradient);
+            stroke: var(--accent);
+            stroke-width: 2;
+            stroke-dasharray: 8, 4;
+            opacity: 0.8;
+        }
+        
+        .jt-axis text {
+            fill: var(--text-muted);
+            font-size: 11px;
+        }
+        
+        .jt-axis line,
+        .jt-axis path {
+            stroke: rgba(255, 255, 255, 0.1);
+        }
+        
+        .jt-axis-label {
+            fill: var(--text-secondary);
+            font-size: 12px;
+        }
+        
+        .jt-breakpoint {
+            stroke: rgba(255, 255, 255, 0.15);
+            stroke-width: 1;
+            stroke-dasharray: 4, 4;
+        }
+        
+        .jt-breakpoint-label {
+            fill: var(--text-muted);
+            font-size: 10px;
+        }
+        
+        .jt-zone-label {
+            fill: var(--accent);
+            font-size: 13px;
+            font-weight: 600;
+            opacity: 0.8;
+        }
+        
+        .jt-country-dot {
+            cursor: pointer;
+            transition: r 0.2s, filter 0.2s;
+        }
+        
+        .jt-country-dot:hover {
+            filter: drop-shadow(0 0 8px rgba(20, 184, 166, 0.8));
+        }
+        
+        @media (max-width: 600px) {
+            .jt-forecast-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .jt-stats-row {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .jt-findings-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .jt-current-year {
+                font-size: 2rem;
+            }
+        }
+
+        /* ===== BAYESIAN RECURSIVE CONSTRUCTS STYLES ===== */
+        .bayesian-model-container {
+            display: grid;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .bayesian-model-section {
+            background: rgba(20, 184, 166, 0.05);
+            border: 1px solid rgba(20, 184, 166, 0.15);
+            border-radius: 12px;
+            padding: 1.25rem;
+        }
+        
+        .bayesian-model-title {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+        
+        .bayesian-model-number {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--accent);
+            color: var(--bg-primary);
+            border-radius: 50%;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+        
+        .bayesian-equation {
+            text-align: center;
+            padding: 1rem;
+            background: rgba(0,0,0,0.2);
+            border-radius: 8px;
+            margin-bottom: 0.75rem;
+        }
+        
+        .bayesian-eq-main {
+            font-size: 1.3rem;
+            font-family: 'Times New Roman', serif;
+            font-style: italic;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .bayesian-eq-dist {
+            font-size: 1rem;
+            font-family: 'Times New Roman', serif;
+            font-style: italic;
+            color: var(--text-muted);
+        }
+        
+        .bayesian-var {
+            color: var(--text-primary);
+        }
+        
+        .bayesian-var-accent {
+            color: var(--accent);
+        }
+        
+        .bayesian-sum {
+            font-size: 1.4rem;
+            margin: 0 0.25rem;
+        }
+        
+        .bayesian-eq-desc {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-align: center;
+        }
+        
+        .bayesian-priors {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.75rem;
+            padding: 1rem;
+            background: rgba(0,0,0,0.2);
+            border-radius: 8px;
+            margin-bottom: 0.75rem;
+        }
+        
+        .bayesian-prior-item {
+            text-align: center;
+            font-family: 'Times New Roman', serif;
+            font-style: italic;
+            font-size: 1rem;
+            color: var(--text-primary);
+            padding: 0.5rem;
+            background: rgba(20, 184, 166, 0.08);
+            border-radius: 6px;
+        }
+        
+        .bayesian-hierarchy-visual {
+            margin: 1.5rem 0;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, rgba(20, 184, 166, 0.08) 0%, rgba(20, 184, 166, 0.02) 100%);
+            border-radius: 12px;
+            border: 1px solid rgba(20, 184, 166, 0.15);
+        }
+        
+        .bayesian-hierarchy-title {
+            text-align: center;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .bayesian-hierarchy-diagram {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .bayesian-level {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .bayesian-level-2 {
+            gap: 3rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .bayesian-node {
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            text-align: center;
+        }
+        
+        .bayesian-node-l2 {
+            background: var(--accent);
+            color: var(--bg-primary);
+            min-width: 140px;
+        }
+        
+        .bayesian-node-l1 {
+            background: rgba(20, 184, 166, 0.2);
+            color: var(--accent);
+            border: 1px solid rgba(20, 184, 166, 0.3);
+        }
+        
+        .bayesian-arrows {
+            width: 100%;
+            max-width: 400px;
+            height: 40px;
+        }
+        
+        .bayesian-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 0.75rem;
+            margin-top: 0.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .bayesian-indicators span {
+            font-size: 0.65rem;
+            color: var(--text-muted);
+            background: rgba(0,0,0,0.2);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+        }
+        
+        /* MCMC Animation Styles */
+        .mcmc-section {
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background: #0a0a0f;
+            border-radius: 12px;
+            border: 1px solid rgba(20, 184, 166, 0.2);
+        }
+        
+        .mcmc-header {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        
+        .mcmc-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 0.25rem;
+        }
+        
+        .mcmc-subtitle {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+        
+        .mcmc-controls {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .mcmc-iteration-display {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            background: rgba(0,0,0,0.3);
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+        }
+        
+        .mcmc-charts-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .mcmc-chart-wrapper {
+            background: #000;
+            border-radius: 8px;
+            padding: 1rem;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .mcmc-chart-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+            font-family: 'Times New Roman', serif;
+            font-style: italic;
+        }
+        
+        .mcmc-chart-wrapper canvas {
+            width: 100%;
+            height: 150px;
+            display: block;
+        }
+        
+        .mcmc-legend {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .mcmc-legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.7rem;
+            color: var(--text-muted);
+        }
+        
+        .mcmc-chain-color {
+            width: 12px;
+            height: 3px;
+            border-radius: 1px;
+        }
+        
+        .mcmc-diagnostics {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            padding: 1rem;
+            background: rgba(20, 184, 166, 0.05);
+            border-radius: 8px;
+            flex-wrap: wrap;
+        }
+        
+        .mcmc-diag-item {
+            text-align: center;
+        }
+        
+        .mcmc-diag-label {
+            display: block;
+            font-size: 0.65rem;
+            color: var(--text-muted);
+            margin-bottom: 0.25rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+        
+        .mcmc-diag-value {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            color: var(--text-primary);
+        }
+        
+        .mcmc-status {
+            padding: 0.15rem 0.5rem;
+            border-radius: 4px;
+            background: rgba(20, 184, 166, 0.15);
+        }
+        
+        .mcmc-status.converged {
+            color: #2dd4bf;
+            background: rgba(45, 212, 191, 0.15);
+        }
+        
+        .mcmc-status.sampling {
+            color: #60a5fa;
+            background: rgba(96, 165, 250, 0.15);
+        }
+        
+        @media (max-width: 600px) {
+            .bayesian-priors {
+                grid-template-columns: 1fr;
+            }
+            
+            .bayesian-level-2 {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .bayesian-arrows {
+                display: none;
+            }
+            
+            .mcmc-charts-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .mcmc-diagnostics {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
         /* CESP Convergence Panels */
         .cesp-convergence-viz {
             padding: 1.5rem;
@@ -7237,11 +7940,11 @@ national &lt;- <span class="func">aggregate_nuts</span>(<br>
             </div>
             
             <div class="technique-card" onclick="openTechniqueModal(&#39;convergence&#39;)">
-                <div class="technique-icon">β</div>
-                <div class="technique-name">Convergence Analysis</div>
-                <div class="technique-brief">Phillips-Sul club convergence and σ-convergence tests for identifying clusters and trajectories in panel data.</div>
+                <div class="technique-icon">⟶</div>
+                <div class="technique-name">Just Transition Forecaster</div>
+                <div class="technique-brief">30 years of convergence patterns reveal which nations are on track for carbon-efficient well-being by 2050.</div>
                 <div class="technique-expand">
-                    <span>→</span> View formula &amp; methodology
+                    <span>→</span> Explore forecasts &amp; methodology
                 </div>
             </div>
             
@@ -7255,11 +7958,11 @@ national &lt;- <span class="func">aggregate_nuts</span>(<br>
             </div>
             
             <div class="technique-card" onclick="openTechniqueModal(&#39;bayesian&#39;)">
-                <div class="technique-icon">ψ</div>
-                <div class="technique-name">Bayesian Latent Variables</div>
-                <div class="technique-brief">Confirmatory factor analysis using MCMC estimation to extract scores for unobservable constructs.</div>
+                <div class="technique-icon">ξ</div>
+                <div class="technique-name">Bayesian Recursive Constructs</div>
+                <div class="technique-brief">Hierarchical latent variable model with MCMC estimation for social and governance dimensions.</div>
                 <div class="technique-expand">
-                    <span>→</span> View formula &amp; methodology
+                    <span>→</span> View model &amp; convergence
                 </div>
             </div>
         </div>
@@ -7374,43 +8077,132 @@ national &lt;- <span class="func">aggregate_nuts</span>(<br>
     </div>
 
     <div class="index-modal-overlay" id="convergence-modal" onclick="closeIndexModal(event, &#39;convergence&#39;)">
-        <div class="technique-modal" onclick="event.stopPropagation()">
+        <div class="technique-modal technique-modal-wide" onclick="event.stopPropagation()">
             <button class="modal-close" onclick="closeIndexModal(event, &#39;convergence&#39;)">×</button>
             <div class="technique-modal-header">
-                <div class="technique-modal-icon">β</div>
+                <div class="technique-modal-icon">⟶</div>
                 <div class="technique-modal-info">
-                    <h2>Convergence Analysis</h2>
-                    <p>Phillips-Sul club convergence and σ-convergence for panel trajectories</p>
+                    <h2>Just Transition Forecaster</h2>
+                    <p>Mapping pathways to carbon-efficient well-being using 30 years of convergence data</p>
                 </div>
             </div>
             <div class="technique-modal-body">
                 <div class="modal-section">
-                    <div class="modal-section-title">Methodology</div>
-                    <p>Convergence analysis examines whether countries are becoming more similar (converging) or more different (diverging) over time. <strong>σ-convergence</strong> tracks the dispersion across the full sample, while <strong>Phillips-Sul club convergence</strong> identifies subgroups following common transition paths—revealing hidden heterogeneity in global trends.</p>
+                    <div class="modal-section-title">What is a Just Transition?</div>
+                    <p>A <strong>Just Transition</strong> means achieving high social progress (SPI ≥ 80) while keeping emissions sustainable (< 1.9 tCO₂e per capita). This threshold represents the per-capita "fair share" of the global carbon budget. Using Phillips-Sul convergence analysis on 1990–2020 data, we forecast which nations are on track to reach this goal by 2050—and which face structural barriers.</p>
+                </div>
+                
+                <div class="jt-forecast-viz-container">
+                    <div class="jt-forecast-header">
+                        <div class="jt-year-display">
+                            <span class="jt-year-label">Year</span>
+                            <span class="jt-current-year" id="jt-current-year">1990</span>
+                            <span class="jt-forecast-badge" id="jt-forecast-badge">FORECAST</span>
+                        </div>
+                        <div class="jt-controls">
+                            <button class="jt-btn jt-btn-primary" id="jt-play-btn" onclick="if(typeof window.toggleJTAnimation === 'function') window.toggleJTAnimation();">
+                                <svg viewBox="0 0 24 24" fill="currentColor" id="jt-play-icon">
+                                    <path d="M8 5v14l11-7z"/>
+                                </svg>
+                                <span id="jt-play-text">Play 1990–2050</span>
+                            </button>
+                            <button class="jt-btn" id="jt-reset-btn" onclick="if(typeof window.resetJTAnimation === 'function') window.resetJTAnimation();">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
+                                    <path d="M3 3v5h5"/>
+                                </svg>
+                                Reset
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="jt-legend">
+                        <div class="jt-legend-item">
+                            <span class="jt-legend-dot jt-legend-low"></span>
+                            <span>Low-emitting (&lt;1.9t)</span>
+                        </div>
+                        <div class="jt-legend-item">
+                            <span class="jt-legend-dot jt-legend-mid"></span>
+                            <span>Middle-emitting (1.9–10t)</span>
+                        </div>
+                        <div class="jt-legend-item">
+                            <span class="jt-legend-dot jt-legend-high"></span>
+                            <span>High-emitting (&gt;10t)</span>
+                        </div>
+                    </div>
+                    
+                    <div id="jt-chart-container" class="jt-chart-container">
+                        <svg id="jt-forecast-chart" viewBox="0 0 700 400" preserveAspectRatio="xMidYMid meet"></svg>
+                        <div id="jt-tooltip" class="jt-tooltip"></div>
+                    </div>
+                    
+                    <div class="jt-timeline">
+                        <div class="jt-timeline-track">
+                            <div class="jt-timeline-progress" id="jt-timeline-progress"></div>
+                        </div>
+                        <div class="jt-timeline-labels">
+                            <span>1990</span>
+                            <span class="jt-timeline-marker">2020</span>
+                            <span>2050</span>
+                        </div>
+                    </div>
+                    
+                    <div class="jt-stats-row">
+                        <div class="jt-stat-box jt-stat-jt">
+                            <div class="jt-stat-value" id="jt-count">0</div>
+                            <div class="jt-stat-label">In JT Zone</div>
+                        </div>
+                        <div class="jt-stat-box">
+                            <div class="jt-stat-value" id="jt-low-count">67</div>
+                            <div class="jt-stat-label">Low-emitting</div>
+                        </div>
+                        <div class="jt-stat-box">
+                            <div class="jt-stat-value" id="jt-mid-count">63</div>
+                            <div class="jt-stat-label">Middle-emitting</div>
+                        </div>
+                        <div class="jt-stat-box">
+                            <div class="jt-stat-value" id="jt-high-count">30</div>
+                            <div class="jt-stat-label">High-emitting</div>
+                        </div>
+                    </div>
                 </div>
                 
                 <div class="formula-container">
-                    <div class="formula-title">Key Formulas</div>
+                    <div class="formula-title">Phillips-Sul Club Convergence</div>
                     <div class="formula">
-                        σ-convergence: σ<sub>t</sub> = √[Σ<sub>i</sub>(y<sub>it</sub> - ȳ<sub>t</sub>)² / N]
-                    </div>
-                    <div class="formula">
-                        Phillips-Sul: log(H<sub>1</sub>/H<sub>t</sub>) - 2log(log t) = α + β log t + u<sub>t</sub>
+                        log(H₁/H<sub>t</sub>) − 2log(log t) = α + β log t + u<sub>t</sub>
                     </div>
                     <div class="formula-vars">
                         <div class="formula-var"><span>H<sub>t</sub></span> = cross-sectional variance at time t</div>
-                        <div class="formula-var"><span>β</span> ≥ 0 indicates convergence</div>
-                        <div class="formula-var"><span>t-stat</span> &gt; -1.65 confirms club</div>
+                        <div class="formula-var"><span>β ≥ 0</span> indicates convergence toward common path</div>
+                        <div class="formula-var"><span>t-stat > −1.65</span> confirms club membership</div>
                     </div>
                 </div>
                 
-                <div class="technique-viz">
-                    <div class="technique-viz-title">Club Convergence Trajectories</div>
-                    <div class="convergence-viz">
-                        <div class="convergence-line"></div>
-                        <div class="convergence-line"></div>
-                        <div class="convergence-line"></div>
+                <div class="modal-section">
+                    <div class="modal-section-title">Key Findings</div>
+                    <div class="jt-findings-grid">
+                        <div class="jt-finding-card">
+                            <div class="jt-finding-icon" style="color: #2dd4bf;">●</div>
+                            <div class="jt-finding-title">Low-emitting: Converging</div>
+                            <p>67 countries show <strong>rapid convergence</strong> (β=0.21) toward carbon-efficient well-being. These nations—mostly in Sub-Saharan Africa and South Asia—are on the most promising just transition pathway.</p>
+                        </div>
+                        <div class="jt-finding-card">
+                            <div class="jt-finding-icon" style="color: #5eead4;">●</div>
+                            <div class="jt-finding-title">Middle-emitting: Diverging</div>
+                            <p>63 countries exhibit <strong>divergence</strong> (β=−0.33), fragmenting into 4 distinct clubs. These include major economies like China, Brazil, and Turkey—facing the greatest structural barriers to just transition.</p>
+                        </div>
+                        <div class="jt-finding-card">
+                            <div class="jt-finding-icon" style="color: #99f6e4;">●</div>
+                            <div class="jt-finding-title">High-emitting: Slow Progress</div>
+                            <p>30 wealthy nations show <strong>early-stage convergence</strong> (β=0.08). While paths are bending toward sustainability, diminishing returns on emissions mean few will achieve just transition without radical decoupling.</p>
+                        </div>
                     </div>
+                </div>
+                
+                <div class="modal-section">
+                    <div class="modal-section-title">Forecast Result</div>
+                    <p>Under current trajectories extrapolated to 2050 using Damped Holt Exponential Smoothing, <strong>only 4 of 160 countries</strong> would achieve Just Transition—all from the low-emitting group. This underscores the need for accelerated decoupling policies in middle and high-emitting nations.</p>
                 </div>
             </div>
         </div>
@@ -7477,62 +8269,190 @@ national &lt;- <span class="func">aggregate_nuts</span>(<br>
     </div>
 
     <div class="index-modal-overlay" id="bayesian-modal" onclick="closeIndexModal(event, &#39;bayesian&#39;)">
-        <div class="technique-modal" onclick="event.stopPropagation()">
+        <div class="technique-modal technique-modal-wide" onclick="event.stopPropagation()">
             <button class="modal-close" onclick="closeIndexModal(event, &#39;bayesian&#39;)">×</button>
             <div class="technique-modal-header">
-                <div class="technique-modal-icon">ψ</div>
+                <div class="technique-modal-icon">ξ</div>
                 <div class="technique-modal-info">
-                    <h2>Bayesian Latent Variables</h2>
-                    <p>Confirmatory factor analysis with MCMC estimation</p>
+                    <h2>Social &amp; Governance Bayesian Recursive Constructs</h2>
+                    <p>Hierarchical latent variable model with MCMC posterior estimation</p>
                 </div>
             </div>
             <div class="technique-modal-body">
                 <div class="modal-section">
-                    <div class="modal-section-title">Methodology</div>
-                    <p>Bayesian Confirmatory Factor Analysis (BCFA) extracts latent constructs from observed indicators using probabilistic inference. The approach specifies prior distributions for factor loadings and uses <strong>MCMC sampling</strong> to estimate posterior distributions—providing credible intervals rather than point estimates and naturally handling measurement uncertainty.</p>
+                    <div class="modal-section-title">Recursive Structure</div>
+                    <p>This model employs a <strong>two-level hierarchical structure</strong>: first-order latent factors capture observed indicators (e.g., fiscal capacity from tax revenue, reserves, etc.), while second-order factors represent higher-order constructs (State Capacity, Democratic Accountability). The recursive specification allows governance dimensions to influence wellbeing outcomes through structured pathways.</p>
                 </div>
                 
-                <div class="formula-container">
-                    <div class="formula-title">Model Specification</div>
-                    <div class="formula">
-                        y<sub>i</sub> = Λη<sub>i</sub> + ε<sub>i</sub> , ε<sub>i</sub> ~ N(0, Θ)
+                <div class="bayesian-model-container">
+                    <div class="bayesian-model-section">
+                        <div class="bayesian-model-title">
+                            <span class="bayesian-model-number">I</span>
+                            <span>Measurement Model</span>
+                        </div>
+                        <div class="bayesian-equation">
+                            <div class="bayesian-eq-main">
+                                <span class="bayesian-var">y</span><sub>ij</sub> = 
+                                <span class="bayesian-sum">∑</span><sub>k</sub>
+                                <span class="bayesian-var-accent">λ</span><sub>jk</sub>
+                                <span class="bayesian-var">η</span><sub>ik</sub> + 
+                                <span class="bayesian-var">ε</span><sub>ij</sub>
+                            </div>
+                            <div class="bayesian-eq-dist">
+                                <span class="bayesian-var">ε</span><sub>ij</sub> ~ 𝒩(0, θ<sub>j</sub>)
+                            </div>
+                        </div>
+                        <div class="bayesian-eq-desc">
+                            Observed indicators load onto first-order latent factors
+                        </div>
                     </div>
-                    <div class="formula">
-                        η<sub>i</sub> ~ N(0, Ψ) , Λ ~ N(0, 10)
+                    
+                    <div class="bayesian-model-section">
+                        <div class="bayesian-model-title">
+                            <span class="bayesian-model-number">II</span>
+                            <span>Structural Model</span>
+                        </div>
+                        <div class="bayesian-equation">
+                            <div class="bayesian-eq-main">
+                                <span class="bayesian-var">η</span><sub>ik</sub> = 
+                                <span class="bayesian-sum">∑</span><sub>l</sub>
+                                <span class="bayesian-var-accent">γ</span><sub>kl</sub>
+                                <span class="bayesian-var">ξ</span><sub>il</sub> + 
+                                <span class="bayesian-var">ζ</span><sub>ik</sub>
+                            </div>
+                            <div class="bayesian-eq-dist">
+                                <span class="bayesian-var">ζ</span><sub>ik</sub> ~ 𝒩(0, ψ<sub>k</sub>)
+                            </div>
+                        </div>
+                        <div class="bayesian-eq-desc">
+                            First-order factors load onto second-order constructs
+                        </div>
                     </div>
-                    <div class="formula-vars">
-                        <div class="formula-var"><span>y</span> = observed indicators</div>
-                        <div class="formula-var"><span>Λ</span> = factor loadings</div>
-                        <div class="formula-var"><span>η</span> = latent factors</div>
-                        <div class="formula-var"><span>Ψ</span> = factor covariance</div>
+                    
+                    <div class="bayesian-model-section">
+                        <div class="bayesian-model-title">
+                            <span class="bayesian-model-number">III</span>
+                            <span>Prior Specification</span>
+                        </div>
+                        <div class="bayesian-priors">
+                            <div class="bayesian-prior-item">
+                                <span class="bayesian-var-accent">λ</span><sub>jk</sub> ~ 𝒩(0, 10)
+                            </div>
+                            <div class="bayesian-prior-item">
+                                <span class="bayesian-var-accent">γ</span><sub>kl</sub> ~ 𝒩(0, 10)
+                            </div>
+                            <div class="bayesian-prior-item">
+                                θ<sub>j</sub><sup>−1</sup> ~ Γ(1, 0.5)
+                            </div>
+                            <div class="bayesian-prior-item">
+                                ψ<sub>k</sub><sup>−1</sup> ~ Γ(1, 0.5)
+                            </div>
+                        </div>
+                        <div class="bayesian-eq-desc">
+                            Weakly informative priors for loadings; Gamma priors for precisions
+                        </div>
                     </div>
                 </div>
                 
-                <div class="technique-viz">
-                    <div class="technique-viz-title">Posterior Factor Score Distributions</div>
-                    <div class="entropy-viz">
-                        <div class="entropy-bar-group">
-                            <div class="entropy-bar-pair">
-                                <div class="entropy-bar before" style="height: 40px;"></div>
-                                <div class="entropy-bar after" style="height: 85px;"></div>
-                            </div>
-                            <span class="entropy-label">Aware</span>
+                <div class="bayesian-hierarchy-visual">
+                    <div class="bayesian-hierarchy-title">Model Hierarchy</div>
+                    <div class="bayesian-hierarchy-diagram">
+                        <div class="bayesian-level bayesian-level-2">
+                            <div class="bayesian-node bayesian-node-l2">State Capacity</div>
+                            <div class="bayesian-node bayesian-node-l2">Democratic Accountability</div>
                         </div>
-                        <div class="entropy-bar-group">
-                            <div class="entropy-bar-pair">
-                                <div class="entropy-bar before" style="height: 55px;"></div>
-                                <div class="entropy-bar after" style="height: 90px;"></div>
-                            </div>
-                            <span class="entropy-label">Risk</span>
+                        <div class="bayesian-arrows">
+                            <svg viewBox="0 0 400 40" preserveAspectRatio="xMidYMid meet">
+                                <defs>
+                                    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                                        <polygon points="0 0, 10 3.5, 0 7" fill="var(--accent)"/>
+                                    </marker>
+                                </defs>
+                                <line x1="70" y1="5" x2="40" y2="35" stroke="var(--accent)" stroke-width="1.5" marker-end="url(#arrowhead)" opacity="0.6"/>
+                                <line x1="100" y1="5" x2="100" y2="35" stroke="var(--accent)" stroke-width="1.5" marker-end="url(#arrowhead)" opacity="0.6"/>
+                                <line x1="130" y1="5" x2="160" y2="35" stroke="var(--accent)" stroke-width="1.5" marker-end="url(#arrowhead)" opacity="0.6"/>
+                                <line x1="270" y1="5" x2="240" y2="35" stroke="var(--accent)" stroke-width="1.5" marker-end="url(#arrowhead)" opacity="0.6"/>
+                                <line x1="300" y1="5" x2="300" y2="35" stroke="var(--accent)" stroke-width="1.5" marker-end="url(#arrowhead)" opacity="0.6"/>
+                                <line x1="330" y1="5" x2="360" y2="35" stroke="var(--accent)" stroke-width="1.5" marker-end="url(#arrowhead)" opacity="0.6"/>
+                            </svg>
                         </div>
-                        <div class="entropy-bar-group">
-                            <div class="entropy-bar-pair">
-                                <div class="entropy-bar before" style="height: 35px;"></div>
-                                <div class="entropy-bar after" style="height: 75px;"></div>
-                            </div>
-                            <span class="entropy-label">Action</span>
+                        <div class="bayesian-level bayesian-level-1">
+                            <div class="bayesian-node bayesian-node-l1">Fiscal</div>
+                            <div class="bayesian-node bayesian-node-l1">Coord.</div>
+                            <div class="bayesian-node bayesian-node-l1">Delivery</div>
+                            <div class="bayesian-node bayesian-node-l1">Instit.</div>
+                            <div class="bayesian-node bayesian-node-l1">Electoral</div>
+                            <div class="bayesian-node bayesian-node-l1">Social</div>
+                        </div>
+                        <div class="bayesian-indicators">
+                            <span>6 indicators</span>
+                            <span>4 indicators</span>
+                            <span>4 indicators</span>
+                            <span>9 indicators</span>
+                            <span>14 indicators</span>
+                            <span>13 indicators</span>
                         </div>
                     </div>
+                </div>
+                
+                <div class="mcmc-section">
+                    <div class="mcmc-header">
+                        <div class="mcmc-title">MCMC Chain Convergence</div>
+                        <div class="mcmc-subtitle">Trace plots showing 4 parallel chains sampling from the posterior distribution</div>
+                    </div>
+                    <div class="mcmc-controls">
+                        <button class="jt-btn jt-btn-primary" id="mcmc-play-btn" onclick="if(typeof window.toggleMCMCAnimation === 'function') window.toggleMCMCAnimation();">
+                            <svg viewBox="0 0 24 24" fill="currentColor" id="mcmc-play-icon">
+                                <path d="M8 5v14l11-7z"/>
+                            </svg>
+                            <span id="mcmc-play-text">Run Sampler</span>
+                        </button>
+                        <button class="jt-btn" id="mcmc-reset-btn" onclick="if(typeof window.resetMCMCAnimation === 'function') window.resetMCMCAnimation();">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
+                                <path d="M3 3v5h5"/>
+                            </svg>
+                            Reset
+                        </button>
+                        <div class="mcmc-iteration-display">
+                            Iteration: <span id="mcmc-iteration">0</span> / 1000
+                        </div>
+                    </div>
+                    <div class="mcmc-charts-container" id="mcmc-charts-container">
+                        <div class="mcmc-chart-wrapper">
+                            <div class="mcmc-chart-label">λ<sub>fiscal</sub> (Factor Loading)</div>
+                            <canvas id="mcmc-chain-1" width="380" height="150"></canvas>
+                        </div>
+                        <div class="mcmc-chart-wrapper">
+                            <div class="mcmc-chart-label">γ<sub>state</sub> (Structural Path)</div>
+                            <canvas id="mcmc-chain-2" width="380" height="150"></canvas>
+                        </div>
+                    </div>
+                    <div class="mcmc-legend">
+                        <div class="mcmc-legend-item"><span class="mcmc-chain-color" style="background: #60a5fa;"></span>Chain 1</div>
+                        <div class="mcmc-legend-item"><span class="mcmc-chain-color" style="background: #34d399;"></span>Chain 2</div>
+                        <div class="mcmc-legend-item"><span class="mcmc-chain-color" style="background: #a78bfa;"></span>Chain 3</div>
+                        <div class="mcmc-legend-item"><span class="mcmc-chain-color" style="background: #f472b6;"></span>Chain 4</div>
+                    </div>
+                    <div class="mcmc-diagnostics">
+                        <div class="mcmc-diag-item">
+                            <span class="mcmc-diag-label">R̂ (Gelman-Rubin)</span>
+                            <span class="mcmc-diag-value" id="mcmc-rhat">—</span>
+                        </div>
+                        <div class="mcmc-diag-item">
+                            <span class="mcmc-diag-label">ESS (Effective Sample Size)</span>
+                            <span class="mcmc-diag-value" id="mcmc-ess">—</span>
+                        </div>
+                        <div class="mcmc-diag-item">
+                            <span class="mcmc-diag-label">Status</span>
+                            <span class="mcmc-diag-value mcmc-status" id="mcmc-status">Ready</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="modal-section">
+                    <div class="modal-section-title">Key Finding</div>
+                    <p>The recursive Bayesian structure reveals that <strong>State Capacity</strong> and <strong>Democratic Accountability</strong> jointly explain significant variance in wellbeing outcomes. The MCMC sampling (4 chains, 1000 iterations post-warmup) achieves convergence with R̂ < 1.01 across all parameters, providing robust posterior credible intervals for cross-country comparisons of governance quality.</p>
                 </div>
             </div>
         </div>
@@ -7669,6 +8589,7 @@ national &lt;- <span class="func">aggregate_nuts</span>(<br>
         </div>
     </footer>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
     <script data-cfasync="false" src="file:///C:/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // Modal functions
         // Research Terminal Functions
@@ -7937,6 +8858,14 @@ national &lt;- <span class="func">aggregate_nuts</span>(<br>
         function openTechniqueModal(id) {
             document.getElementById(id + '-modal').classList.add('active');
             document.body.style.overflow = 'hidden';
+            // Initialize JT Forecaster chart when convergence modal opens
+            if (id === 'convergence' && typeof initJTChart === 'function') {
+                setTimeout(initJTChart, 100);
+            }
+            // Initialize MCMC chart when bayesian modal opens
+            if (id === 'bayesian' && typeof window.initMCMCChart === 'function') {
+                setTimeout(window.initMCMCChart, 100);
+            }
         }
         
         // Close modal on Escape key
@@ -9676,6 +10605,690 @@ const cespConvergenceData = {"low": {"title": "Less than 1.9t", "clubs": ["All"]
                 localStorage.setItem("theme", next);
             });
         }
+
+        // ===== JUST TRANSITION FORECASTER =====
+        (function() {
+            // Country trajectory data
+            const countryData = [{"country":"Afghanistan","code":"AFG","group":"Less than 1.9t","intercept":36.3955,"slope":13.5692,"h":0.9162,"spi_1990":20.44,"spi_2000":18.32,"spi_2010":33.76,"spi_2020":42.28,"spi_2030":49.51,"spi_2040":55.27,"spi_2050":59.98,"co2_1990":0.736,"co2_2000":0.564,"co2_2010":0.822,"co2_2020":0.927,"co2_2030":1.033,"co2_2040":1.087,"co2_2050":1.119},{"country":"Angola","code":"AGO","group":"Less than 1.9t","intercept":36.3955,"slope":13.5692,"h":0.9607,"spi_1990":23.56,"spi_2000":28.33,"spi_2010":40.15,"spi_2020":49.23,"spi_2030":56.4,"spi_2040":62.35,"spi_2050":67.2,"co2_1990":0.898,"co2_2000":0.879,"co2_2010":1.452,"co2_2020":1.462,"co2_2030":1.606,"co2_2040":1.648,"co2_2050":1.672},{"country":"Albania","code":"ALB","group":"Less than 1.9t","intercept":36.3955,"slope":13.5692,"h":1.0776,"spi_1990":52.55,"spi_2000":65.58,"spi_2010":74.12,"spi_2020":77.55,"spi_2030":82.3,"spi_2040":85.61,"spi_2050":88.32,"co2_1990":1.654,"co2_2000":1.216,"co2_2010":2.063,"co2_2020":2.031,"co2_2030":2.151,"co2_2040":2.193,"co2_2050":2.218},{"country":"United Arab Emirates","code":"ARE","group":"More than 10t","intercept":88.6934,"slope":-0.508,"h":0.8589,"spi_1990":52.18,"spi_2000":57.94,"spi_2010":65.69,"spi_2020":70.97,"spi_2030":76.45,"spi_2040":80.39,"spi_2050":83.6,"co2_1990":30.706,"co2_2000":32.894,"co2_2010":24.091,"co2_2020":20.65,"co2_2030":17.123,"co2_2040":14.896,"co2_2050":13.562},{"country":"Argentina","code":"ARG","group":"Between 1.9t and 10t","intercept":56.9537,"slope":2.6381,"h":1.0458,"club":"Club 2","spi_1990":71.56,"spi_2000":75.75,"spi_2010":82.49,"spi_2020":84.56,"spi_2030":87.76,"spi_2040":90.05,"spi_2050":91.93,"co2_1990":3.433,"co2_2000":3.8,"co2_2010":4.279,"co2_2020":3.72,"co2_2030":4.008,"co2_2040":3.944,"co2_2050":3.905},{"country":"Armenia","code":"ARM","group":"Less than 1.9t","intercept":36.3955,"slope":13.5692,"h":1.0823,"spi_1990":65.82,"spi_2000":66.72,"spi_2010":72.71,"spi_2020":78.53,"spi_2030":83.32,"spi_2040":87.47,"spi_2050":90.85,"co2_1990":1.707,"co2_2000":1.308,"co2_2010":1.906,"co2_2020":1.85,"co2_2030":1.945,"co2_2040":1.934,"co2_2050":1.927},{"country":"Australia","code":"AUS","group":"More than 10t","intercept":88.6934,"slope":-0.508,"h":1.0236,"spi_1990":81.01,"spi_2000":86.38,"spi_2010":90.66,"spi_2020":91.42,"spi_2030":93.26,"spi_2040":94.45,"spi_2050":95.42,"co2_1990":14.499,"co2_2000":15.341,"co2_2010":17.308,"co2_2020":14.897,"co2_2030":14.332,"co2_2040":13.726,"co2_2050":13.362},{"country":"Austria","code":"AUT","group":"More than 10t","intercept":88.6934,"slope":-0.508,"h":1.0705,"spi_1990":79.81,"spi_2000":84.75,"spi_2010":89.65,"spi_2020":91.82,"spi_2030":94.56,"spi_2040":96.55,"spi_2050":98.18,"co2_1990":11.392,"co2_2000":11.967,"co2_2010":11.717,"co2_2020":10.231,"co2_2030":9.591,"co2_2040":9.168,"co2_2050":8.915},{"country":"Azerbaijan","code":"AZE","group":"Between 1.9t and 10t","intercept":56.9537,"slope":2.6381,"h":0.9752,"club":"Club 2","spi_1990":54.19,"spi_2000":54.93,"spi_2010":60.86,"spi_2020":64.4,"spi_2030":68.27,"spi_2040":71.16,"spi_2050":73.52,"co2_1990":3.932,"co2_2000":3.162,"co2_2010":3.339,"co2_2020":4.018,"co2_2030":4.137,"co2_2040":4.196,"co2_2050":4.232},{"country":"Burundi","code":"BDI","group":"Less than 1.9t","intercept":36.3955,"slope":13.5692,"h":0.8986,"spi_1990":31.81,"spi_2000":34.23,"spi_2010":39.04,"spi_2020":39.63,"spi_2030":40.5,"spi_2040":41.35,"spi_2050":42.04,"co2_1990":0.583,"co2_2000":0.545,"co2_2010":0.545,"co2_2020":0.564,"co2_2030":0.56,"co2_2040":0.566,"co2_2050":0.569},{"country":"Belgium","code":"BEL","group":"More than 10t","intercept":88.6934,"slope":-0.508,"h":1.0244,"spi_1990":81.53,"spi_2000":85.72,"spi_2010":90.34,"spi_2020":91.57,"spi_2030":94.12,"spi_2040":95.69,"spi_2050":96.98,"co2_1990":15.431,"co2_2000":18.343,"co2_2010":17.624,"co2_2020":14.866,"co2_2030":13.316,"co2_2040":12.409,"co2_2050":11.866},{"country":"Benin","code":"BEN","group":"Less than 1.9t","intercept":36.3955,"slope":13.5692,"h":1.0135,"spi_1990":40.15,"spi_2000":45.35,"spi_2010":51.93,"spi_2020":56.31,"spi_2030":60.22,"spi_2040":63.35,"spi_2050":65.91,"co2_1990":0.191,"co2_2000":0.362,"co2_2010":0.777,"co2_2020":0.79,"co2_2030":0.851,"co2_2040":0.878,"co2_2050":0.894},{"country":"Burkina Faso","code":"BFA","group":"Less than 1.9t","intercept":36.3955,"slope":13.5692,"h":0.9893,"spi_1990":33.5,"spi_2000":39.94,"spi_2010":45.6,"spi_2020":50.44,"spi_2030":54.91,"spi_2040":58.3,"spi_2050":61.07,"co2_1990":0.092,"co2_2000":0.127,"co2_2010":0.182,"co2_2020":0.268,"co2_2030":0.314,"co2_2040":0.341,"co2_2050":0.357},{"country":"Bangladesh","code":"BGD","group":"Less than 1.9t","intercept":36.3955,"slope":13.5692,"h":0.9947,"spi_1990":33.65,"spi_2000":41.49,"spi_2010":45.59,"spi_2020":52.59,"spi_2030":57.08,"spi_2040":61.02,"spi_2050":64.24,"co2_1990":0.175,"co2_2000":0.256,"co2_2010":0.478,"co2_2020":0.709,"co2_2030":0.818,"co2_2040":0.893,"co2_2050":0.938},{"country":"Bulgaria","code":"BGR","group":"Between 1.9t and 10t","intercept":56.9537,"slope":2.6381,"h":1.017,"club":"Club 2","spi_1990":71.06,"spi_2000":73.61,"spi_2010":79.79,"spi_2020":80.61,"spi_2030":83.31,"spi_2040":84.83,"spi_2050":86.07,"co2_1990":6.93,"co2_2000":5.572,"co2_2010":5.77,"co2_2020":5.485,"co2_2030":5.268,"co2_2040":5.134,"co2_2050":5.054},{"country":"Bahrain","code":"BHR","group":"More than 10t","intercept":88.6934,"slope":-0.508,"h":0.9471,"spi_1990":52.15,"spi_2000":57.36,"spi_2010":65.18,"spi_2020":66.19,"spi_2030":68.31,"spi_2040":70.17,"spi_2050":71.69,"co2_1990":23.393,"co2_2000":18.97,"co2_2010":15.695,"co2_2020":11.549,"co2_2030":10.291,"co2_2040":9.698,"co2_2050":9.342},{"country":"Bosnia and Herzegovina","code":"BIH","group":"Between 1.9t and 10t","intercept":56.9537,"slope":2.6381,"h":0.9928,"club":"Club 3","spi_1990":54.28,"spi_2000":65.67,"spi_2010":72.6,"spi_2020":75.57,"spi_2030":80.24,"spi_2040":83.24,"spi_2050":85.69,"co2_1990":6.436,"co2_2000":4.03,"co2_2010":5.424,"co2_2020":6.207,"co2_2030":6.704,"co2_2040":7.005,"co2_2050":7.186},{"country":"Belarus","code":"BLR","group":"Between 1.9t and 10t","intercept":56.9537,"slope":2.6381,"h":0.9879,"club":"Club 2","spi_1990":70.81,"spi_2000":69.57,"spi_2010":75.44,"spi_2020":75.78,"spi_2030":81.94,"spi_2040":84.07,"spi_2050":85.82,"co2_1990":5.921,"co2_2000":6.613,"co2_2010":6.419,"co2_2020":6.719,"co2_2030":6.788,"co2_2040":6.826,"co2_2050":6.849},{"country":"Bolivia","code":"BOL","group":"Less than 1.9t","intercept":36.3955,"slope":13.5692,"h":1.0481,"spi_1990":52.17,"spi_2000":58.02,"spi_2010":65.15,"spi_2020":68.39,"spi_2030":73.99,"spi_2040":77.3,"spi_2050":80,"co2_1990":0.816,"co2_2000":1.074,"co2_2010":1.401,"co2_2020":2.03,"co2_2030":2.393,"co2_2040":2.588,"co2_2050":2.706},{"country":"Brazil","code":"BRA","group":"Between 1.9t and 10t","intercept":56.9537,"slope":2.6381,"h":1.0245,"club":"Club 2","spi_1990":62.12,"spi_2000":66.64,"spi_2010":73.99,"spi_2020":72.1,"spi_2030":74.29,"spi_2040":74.75,"spi_2050":75.13,"co2_1990":1.646,"co2_2000":2.005,"co2_2010":2.478,"co2_2020":2.388,"co2_2030":2.548,"co2_2040":2.565,"co2_2050":2.576},{"country":"Barbados","code":"BRB","group":"Between 1.9t and 10t","intercept":56.9537,"slope":2.6381,"h":1.0278,"club":"Club 1","spi_1990":74.27,"spi_2000":77.29,"spi_2010":83.16,"spi_2020":84.57,"spi_2030":87.18,"spi_2040":88.91,"spi_2050":90.34,"co2_1990":7.591,"co2_2000":6.989,"co2_2010":7.916,"co2_2020":5.529,"co2_2030":4.398,"co2_2040":3.736,"co2_2050":3.34},{"country":"Bhutan","code":"BTN","group":"Less than 1.9t","intercept":36.3955,"slope":13.5692,"h":1.0448,"spi_1990":40.51,"spi_2000":48.62,"spi_2010":61.45,"spi_2020":70.24,"spi_2030":78.32,"spi_2040":84.76,"spi_2050":90.03,"co2_1990":1.137,"co2_2000":1.204,"co2_2010":1.91,"co2_2020":2.827,"co2_2030":3.03,"co2_2040":3.318,"co2_2050":3.491},{"country":"Botswana","code":"BWA","group":"Between 1.9t and 10t","intercept":56.9537,"slope":2.6381,"h":0.9593,"club":"Club 3","spi_1990":54.41,"spi_2000":58.31,"spi_2010":65.36,"spi_2020":72.12,"spi_2030":77.44,"spi_2040":81.87,"spi_2050":85.48,"co2_1990":2.099,"co2_2000":4.675,"co2_2010":3.415,"co2_2020":8,"co2_2030":9.824,"co2_2040":10.797,"co2_2050":11.379},{"country":"Central African Republic","code":"CAF","group":"Less than 1.9t","intercept":36.3955,"slope":13.5692,"h":0.8321,"spi_1990":27.3,"spi_2000":29.83,"spi_2010":31.43,"spi_2020":34.13,"spi_2030":35.67,"spi_2040":37.43,"spi_2050":38.86,"co2_1990":0.688,"co2_2000":0.593,"co2_2010":0.612,"co2_2020":0.65,"co2_2030":0.639,"co2_2040":0.648,"co2_2050":0.654},{"country":"Canada","code":"CAN","group":"More than 10t","intercept":88.6934,"slope":-0.508,"h":1.0214,"spi_1990":84.56,"spi_2000":87.51,"spi_2010":90.46,"spi_2020":92.14,"spi_2030":93.79,"spi_2040":95.08,"spi_2050":96.14,"co2_1990":17.63,"co2_2000":18.454,"co2_2010":17.476,"co2_2020":15.381,"co2_2030":14.552,"co2_2040":14.022,"co2_2050":13.705},{"country":"Switzerland","code":"CHE","group":"More than 10t","intercept":88.6934,"slope":-0.508,"h":1.0445,"spi_1990":83.04,"spi_2000":87.89,"spi_2010":91.86,"spi_2020":93.66,"spi_2030":95.7,"spi_2040":97.27,"spi_2050":98.55,"co2_1990":12.792,"co2_2000":16.004,"co2_2010":14.024,"co2_2020":13.508,"co2_2030":13.24,"co2_2040":12.885,"co2_2050":12.671},{"country":"Chile","code":"CHL","group":"Between 1.9t and 10t","intercept":56.9537,"slope":2.6381,"h":1.0343,"club":"Club 2","spi_1990":68.1,"spi_2000":75.32,"spi_2010":82.18,"spi_2020":84.81,"spi_2030":89.66,"spi_2040":92.5,"spi_2050":94.83,"co2_1990":2.427,"co2_2000":3.915,"co2_2010":4.355,"co2_2020":4.941,"co2_2030":5.323,"co2_2040":5.477,"co2_2050":5.569},{"country":"China","code":"CHN","group":"Between 1.9t and 10t","intercept":56.9537,"slope":2.6381,"h":0.9424,"club":"Club 3","spi_1990":45.03,"spi_2000":50.7,"spi_2010":58.1,"spi_2020":64.53,"spi_2030":70.1,"spi_2040":74.34,"spi_2050":77.81,"co2_1990":1.972,"co2_2000":2.357,"co2_2010":5.332,"co2_2020":6.586,"co2_2030":7.597,"co2_2040":8.126,"co2_2050":8.443},{"country":"Côte d'Ivoire","code":"CIV","group":"Less than 1.9t","intercept":36.3955,"slope":13.5692,"h":1.0094,"spi_1990":40.11,"spi_2000":43.29,"spi_2010":48.4,"spi_2020":54.94,"spi_2030":61.07,"spi_2040":65.3,"spi_2050":68.75,"co2_1990":0.498,"co2_2000":0.342,"co2_2010":0.394,"co2_2020":0.599,"co2_2030":0.706,"co2_2040":0.748,"co2_2050":0.773},{"country":"Cameroon","code":"CMR","group":"Less than 1.9t","intercept":36.3955,"slope":13.5692,"h":1.0086,"spi_1990":36.54,"spi_2000":40.93,"spi_2010":47.59,"spi_2020":54.21,"spi_2030":59.04,"spi_2040":63.07,"spi_2050":66.37,"co2_1990":0.258,"co2_2000":0.258,"co2_2010":0.392,"co2_2020":0.403,"co2_2030":0.453,"co2_2040":0.467,"co2_2050":0.476},{"country":"Congo, Democratic Republic of","code":"COD","group":"Less than 1.9t","intercept":36.3955,"slope":13.5692,"h":0.9388,"spi_1990":27.06,"spi_2000":31.18,"spi_2010":36.6,"spi_2020":44.2,"spi_2030":48.5,"spi_2040":52.72,"spi_2050":56.16,"co2_1990":0.64,"co2_2000":0.535,"co2_2010":0.574,"co2_2020":0.621,"co2_2030":0.636,"co2_2040":0.649,"co2_2050":0.657},{"country":"Congo, Republic of","code":"COG","group":"Less than 1.9t","intercept":36.3955,"slope":13.5692,"h":0.9677,"spi_1990":30.53,"spi_2000":34.8,"spi_2010":43.04,"spi_2020":49.62,"spi_2030":54.94,"spi_2040":59.23,"spi_2050":62.73,"co2_1990":1.099,"co2_2000":0.755,"co2_2010":0.965,"co2_2020":1.213,"co2_2030":1.338,"co2_2040":1.419,"co2_2050":1.467},{"country":"Colombia","code":"COL","group":"Less than 1.9t","intercept":36.3955,"slope":13.5692,"h":1.0609,"spi_1990":54.51,"spi_2000":61.88,"spi_2010":69.66,"spi_2020":71.98,"spi_2030":77.55,"spi_2040":80.44,"spi_2050":82.8,"co2_1990":1.911,"co2_2000":1.487,"co2_2010":1.864,"co2_2020":1.998,"co2_2030":2.149,"co2_2040":2.202,"co2_2050":2.235},{"country":"Cabo Verde","code":"CPV","group":"Less than 1.9t","intercept":36.3955,"slope":13.5692,"h":1.0655,"spi_1990":51.43,"spi_2000":59.39,"spi_2010":68.26,"spi_2020":72.72,"spi_2030":77.97,"spi_2040":81.77,"spi_2050":84.88,"co2_1990":1.576,"co2_2000":1.347,"co2_2010":2.168,"co2_2020":1.815,"co2_2030":1.599,"co2_2040":1.54,"co2_2050":1.504},{"country":"Costa Rica","code":"CRI","group":"Between 1.9t and 10t","intercept":56.9537,"slope":2.6381,"h":1.0587,"club":"Club 1","spi_1990":72.9,"spi_2000":76.08,"spi_2010":80.71,"spi_2020":85.38,"spi_2030":89.26,"spi_2040":92.12,"spi_2050":94.46,"co2_1990":1.643,"co2_2000":2.45,"co2_2010":2.705,"co2_2020":2.614,"co2_2030":2.526,"co2_2040":2.47,"co2_2050":2.437},{"country":"Cuba","code":"CUB","group":"Between 1.9t and 10t","intercept":56.9537,"slope":2.6381,"h":1.0086,"club":"Club 3","spi_1990":59.26,"spi_2000":62.46,"spi_2010":67.5,"spi_2020":71.58,"spi_2030":74.05,"spi_2040":76.72,"spi_2050":78.9,"co2_1990":4.278,"co2_2000":3.065,"co2_2010":4.058,"co2_2020":3.6,"co2_2030":3.72,"co2_2040":3.749,"co2_2050":3.766},{"country":"Cyprus","code":"CYP","group":"Between 1.9t and 10t","intercept":56.9537,"slope":2.6381,"h":1.0297,"club":"Club 1","spi_1990":73.82,"spi_2000":77.89,"spi_2010":85.27,"spi_2020":88.79,"spi_2030":93.18,"spi_2040":96.21,"spi_2050":98.68,"co2_1990":8.746,"co2_2000":10.43,"co2_2010":12.017,"co2_2020":6.49,"co2_2030":4.8,"co2_2040":3.898,"co2_2050":3.359},{"country":"Czechia","code":"CZE","group":"More than 10t","intercept":88.6934,"slope":-0.508,"h":1.0686,"spi_1990":76.87,"spi_2000":81.54,"spi_2010":88.55,"spi_2020":89.39,"spi_2030":92.12,"spi_2040":93.8,"spi_2050":95.17,"co2_1990":14.587,"co2_2000":11.503,"co2_2010":11.353,"co2_2020":9.684,"co2_2030":9.069,"co2_2040":8.708,"co2_2050":8.492},{"country":"Germany","code":"DEU","group":"More than 10t","intercept":88.6934,"slope":-0.508,"h":1.0765,"spi_1990":81.92,"spi_2000":86.93,"spi_2010":91.91,"spi_2020":92.67,"spi_2030":94.67,"spi_2040":95.89,"spi_2050":96.9,"co2_1990":15.05,"co2_2000":13.421,"co2_2010":12.099,"co2_2020":9.875,"co2_2030":8.976,"co2_2040":8.349,"co2_2050":7.973},{"country":"Djibouti","code":"DJI","group":"Less than 1.9t","intercept":36.3955,"slope":13.5692,"h":0.978,"spi_1990":36.38,"spi_2000":40.69,"spi_2010":45.85,"spi_2020":52.45,"spi_2030":57.08,"spi_2040":61.01,"spi_2050":64.21,"co2_1990":1.5,"co2_2000":1.08,"co2_2010":1.309,"co2_2020":1.672,"co2_2030":1.685,"co2_2040":1.788,"co2_2050":1.85},{"country":"Denmark","code":"DNK","group":"More than 10t","intercept":88.6934,"slope":-0.508,"h":1.0941,"spi_1990":83.75,"spi_2000":87.93,"spi_2010":92.66,"spi_2020":93.49,"spi_2030":95.95,"spi_2040":97.24,"spi_2050":98.3,"co2_1990":12.001,"co2_2000":12.26,"co2_2010":11.308,"co2_2020":8.272,"co2_2030":6.897,"co2_2040":6.032,"co2_2050":5.513},{"country":"Dominican Republic","code":"DOM","group":"Between 1.9t and 10t","intercept":56.9537,"slope":2.6381,"h":1.022,"club":"Club 2","spi_1990":58.89,"spi_2000":63.1,"spi_2010":68.59,"spi_2020":72.2,"spi_2030":74.47,"spi_2040":76.92,"spi_2050":78.92,"co2_1990":1.308,"co2_2000":2.743,"co2_2010":2.537,"co2_2020":2.632,"co2_2030":2.652,"co2_2040":2.687,"co2_2050":2.707},{"country":"Algeria","code":"DZA","group":"Between 1.9t and 10t","intercept":56.9537,"slope":2.6381,"h":1.0051,"club":"Club 2","spi_1990":54.95,"spi_2000":58.93,"spi_2010":66.23,"spi_2020":71.18,"spi_2030":76.12,"spi_2040":79.76,"spi_2050":82.73,"co2_1990":2.875,"co2_2000":1.901,"co2_2010":2.283,"co2_2020":3.772,"co2_2030":4.472,"co2_2040":4.927,"co2_2050":5.2},{"country":"Ecuador","code":"ECU","group":"Between 1.9t and 10t","intercept":56.9537,"slope":2.6381,"h":1.0373,"club":"Club 1","spi_1990":61.45,"spi_2000":66.18,"spi_2010":72.86,"spi_2020":76.9,"spi_2030":81.6,"spi_2040":84.95,"spi_2050":87.68,"co2_1990":1.661,"co2_2000":1.646,"co2_2010":2.817,"co2_2020":2.554,"co2_2030":2.728,"co2_2040":2.717,"co2_2050":2.71},{"country":"Egypt","code":"EGY","group":"Between 1.9t and 10t","intercept":56.9537,"slope":2.6381,"h":0.9821,"club":"Club 3","spi_1990":47.12,"spi_2000":52.52,"spi_2010":56.11,"spi_2020":60.67,"spi_2030":62.78,"spi_2040":65.34,"spi_2050":67.43,"co2_1990":1.457,"co2_2000":2.005,"co2_2010":2.447,"co2_2020":2.26,"co2_2030":2.426,"co2_2040":2.433,"co2_2050":2.438},{"country":"Eritrea","code":"ERI","group":"Less than 1.9t","intercept":36.3955,"slope":13.5692,"h":0.8677,"spi_1990":21.83,"spi_2000":30.48,"spi_2010":32.09,"spi_2020":37.05,"spi_2030":40.22,"spi_2040":42.99,"spi_2050":45.25,"co2_1990":0.908,"co2_2000":0.774,"co2_2010":0.679,"co2_2020":0.698,"co2_2030":0.681,"co2_2040":0.675,"co2_2050":0.672},{"country":"Spain","code":"ESP","group":"Between 1.9t and 10t","intercept":56.9537,"slope":2.6381,"h":1.0408,"club":"Club 1","spi_1990":77.82,"spi_2000":82.16,"spi_2010":88.37,"spi_2020":90.77,"spi_2030":93.67,"spi_2040":95.88,"spi_2050":97.67,"co2_1990":6.76,"co2_2000":8.084,"co2_2010":7.32,"co2_2020":5.83,"co2_2030":4.907,"co2_2040":4.393,"co2_2050":4.085},{"country":"Estonia","code":"EST","group":"More than 10t","intercept":88.6934,"slope":-0.508,"h":1.055,"spi_1990":76.5,"spi_2000":82.11,"spi_2010":88.8,"spi_2020":90.07,"spi_2030":93.07,"spi_2040":94.96,"spi_2050":96.49,"co2_1990":20.257,"co2_2000":13.28,"co2_2010":13.252,"co2_2020":11.258,"co2_2030":11.483,"co2_2040":10.964,"co2_2050":10.654},{"country":"Ethiopia","code":"ETH","group":"Less than 1.9t","intercept":36.3955,"slope":13.5692,"h":0.9643,"spi_1990":19.61,"spi_2000":30.04,"spi_2010":37.73,"spi_2020":46.47,"spi_2030":52.75,"spi_2040":58.18,"spi_2050":62.62,"co2_1990":0.081,"co2_2000":0.075,"co2_2010":0.113,"co2_2020":0.192,"co2_2030":0.232,"co2_2040":0.252,"co2_2050":0.264},{"country":"Finland","code":"FIN","group":"More than 10t","intercept":88.6934,"slope":-0.508,"h":1.0626,"spi_1990":82.79,"spi_2000":87.52,"spi_2010":91.88,"spi_2020":92.61,"spi_2030":94.24,"spi_2040":95.32,"spi_2050":96.2,"co2_1990":16.055,"co2_2000":14.358,"co2_2010":15.502,"co2_2020":11.29,"co2_2030":9.787,"co2_2040":8.843,"co2_2050":8.278},{"country":"Fiji","code":"FJI","group":"Between 1.9t and 10t","intercept":56.9537,"slope":2.6381,"h":1.0171,"club":"Club 2","spi_1990":56.72,"spi_2000":59.54,"spi_2010":62.39,"spi_2020":70.85,"spi_2030":76.21,"spi_2040":80.54,"spi_2050":84.08,"co2_1990":2.187,"co2_2000":1.633,"co2_2010":2.397,"co2_2020":2.664,"co2_2030":2.741,"co2_2040":2.843,"co2_2050":2.903},{"country":"France","code":"FRA","group":"Between 1.9t and 10t","intercept":56.9537,"slope":2.6381,"h":1.0341,"club":"Club 1","spi_1990":80.92,"spi_2000":84.48,"spi_2010":89.12,"spi_2020":90.51,"spi_2030":92.93,"spi_2040":94.45,"spi_2050":95.7,"co2_1990":8.661,"co2_2000":8.828,"co2_2010":8.068,"co2_2020":6.482,"co2_2030":5.698,"co2_2040":5.233,"co2_2050":4.954},{"country":"Gabon","code":"GAB","group":"Between 1.9t and 10t","intercept":56.9537,"slope":2.6381,"h":1.0126,"club":"Club 1","spi_1990":43.7,"spi_2000":51.34,"spi_2010":61.67,"spi_2020":69.54,"spi_2030":76.46,"spi_2040":81.91,"spi_2050":86.36,"co2_1990":5.385,"co2_2000":3.247,"co2_2010":2.769,"co2_2020":2.655,"co2_2030":2.403,"co2_2040":2.267,"co2_2050":2.186},{"country":"United Kingdom","code":"GBR","group":"More than 10t","intercept":88.6934,"slope":-0.508,"h":1.0913,"spi_1990":77.76,"spi_2000":84.93,"spi_2010":90.14,"spi_2020":90.44,"spi_2030":92.38,"spi_2040":93.52,"spi_2050":94.44,"co2_1990":11.699,"co2_2000":11.81,"co2_2010":10.756,"co2_2020":7.711,"co2_2030":6.287,"co2_2040":5.422,"co2_2050":4.905},{"country":"Georgia","code":"GEO","group":"Less than 1.9t","intercept":36.3955,"slope":13.5692,"h":1.0751,"spi_1990":60.2,"spi_2000":65.1,"spi_2010":73.08,"spi_2020":79.12,"spi_2030":85.1,"spi_2040":89.3,"spi_2050":92.74,"co2_1990":1.84,"co2_2000":1.28,"co2_2010":2.006,"co2_2020":2.654,"co2_2030":3.105,"co2_2040":3.27,"co2_2050":3.369},{"country":"Ghana","code":"GHA","group":"Less than 1.9t","intercept":36.3955,"slope":13.5692,"h":1.0592,"spi_1990":42.79,"spi_2000":51.73,"spi_2010":58.94,"spi_2020":66.68,"spi_2030":71.92,"spi_2040":76.66,"spi_2050":80.53,"co2_1990":0.327,"co2_2000":0.463,"co2_2010":0.596,"co2_2020":0.676,"co2_2030":0.719,"co2_2040":0.727,"co2_2050":0.732},{"country":"Guinea","code":"GIN","group":"Less than 1.9t","intercept":36.3955,"slope":13.5692,"h":0.9364,"spi_1990":29.43,"spi_2000":32.7,"spi_2010":38.16,"spi_2020":43.12,"spi_2030":48.25,"spi_2040":51.85,"spi_2050":54.8,"co2_1990":0.158,"co2_2000":0.181,"co2_2010":0.244,"co2_2020":0.291,"co2_2030":0.318,"co2_2040":0.342,"co2_2050":0.356},{"country":"Gambia, The","code":"GMB","group":"Less than 1.9t","intercept":36.3955,"slope":13.5692,"h":1.0181,"spi_1990":39.15,"spi_2000":38.45,"spi_2010":44.79,"spi_2020":57.33,"spi_2030":64.77,"spi_2040":71.9,"spi_2050":77.73,"co2_1990":1.003,"co2_2000":0.803,"co2_2010":0.793,"co2_2020":0.822,"co2_2030":0.79,"co2_2040":0.796,"co2_2050":0.799},{"country":"Greece","code":"GRC","group":"Between 1.9t and 10t","intercept":56.9537,"slope":2.6381,"h":1.0419,"club":"Club 1","spi_1990":76.82,"spi_2000":81,"spi_2010":86.48,"spi_2020":88.51,"spi_2030":91.24,"spi_2040":93.12,"spi_2050":94.65,"co2_1990":9.396,"co2_2000":9.825,"co2_2010":8.976,"co2_2020":5.132,"co2_2030":3.697,"co2_2040":2.798,"co2_2050":2.259},{"country":"Guatemala","code":"GTM","group":"Less than 1.9t","intercept":36.3955,"slope":13.5692,"h":1.035,"spi_1990":39.66,"spi_2000":50.82,"spi_2010":58.02,"spi_2020":63.2,"spi_2030":68.17,"spi_2040":72.05,"spi_2050":75.23,"co2_1990":0.725,"co2_2000":1.111,"co2_2010":1.092,"co2_2020":1.486,"co2_2030":1.552,"co2_2040":1.634,"co2_2050":1.683},{"country":"Honduras","code":"HND","group":"Less than 1.9t","intercept":36.3955,"slope":13.5692,"h":1.0402,"spi_1990":52.05,"spi_2000":55.22,"spi_2010":59.98,"spi_2020":63.89,"spi_2030":67.01,"spi_2040":69.68,"spi_2050":71.86,"co2_1990":0.65,"co2_2000":1.159,"co2_2010":1.225,"co2_2020":1.313,"co2_2030":1.31,"co2_2040":1.318,"co2_2050":1.323},{"country":"Croatia","code":"HRV","group":"Between 1.9t and 10t","intercept":56.9537,"slope":2.6381,"h":1.0332,"club":"Club 1","spi_1990":65.71,"spi_2000":76.13,"spi_2010":83.09,"spi_2020":85.27,"spi_2030":89.41,"spi_2040":92.05,"spi_2050":94.21,"co2_1990":4.405,"co2_2000":4.865,"co2_2010":5.848,"co2_2020":5.18,"co2_2030":4.713,"co2_2040":4.489,"co2_2050":4.355},{"country":"Haiti","code":"HTI","group":"Less than 1.9t","intercept":36.3955,"slope":13.5692,"h":0.9627,"spi_1990":33.29,"spi_2000":38.85,"spi_2010":41.95,"spi_2020":48.07,"spi_2030":51.63,"spi_2040":54.71,"spi_2050":57.22,"co2_1990":0.669,"co2_2000":0.65,"co2_2010":0.736,"co2_2020":0.898,"co2_2030":0.947,"co2_2040":0.994,"co2_2050":1.023},{"country":"Hungary","code":"HUN","group":"Between 1.9t and 10t","intercept":56.9537,"slope":2.6381,"h":1.0084,"club":"Club 2","spi_1990":73.76,"spi_2000":78.15,"spi_2010":83.44,"spi_2020":82.14,"spi_2030":82.98,"spi_2040":83.19,"spi_2050":83.37,"co2_1990":8.625,"co2_2000":6.863,"co2_2010":7.003,"co2_2020":6.759,"co2_2030":6.458,"co2_2040":6.355,"co2_2050":6.293},{"country":"Indonesia","code":"IDN","group":"Less than 1.9t","intercept":36.3955,"slope":13.5692,"h":1.038,"spi_1990":43.36,"spi_2000":57.06,"spi_2010":62.69,"spi_2020":67.27,"spi_2030":72.75,"spi_2040":76.48,"spi_2050":79.52,"co2_1990":0.792,"co2_2000":1.123,"co2_2010":1.877,"co2_2020":2.488,"co2_2030":2.792,"co2_2040":2.999,"co2_2050":3.123},{"country":"India","code":"IND","group":"Less than 1.9t","intercept":36.3955,"slope":13.5692,"h":1.004,"spi_1990":41.73,"spi_2000":45.97,"spi_2010":53.18,"spi_2020":57.36,"spi_2030":61.32,"spi_2040":64.47,"spi_2050":67.04,"co2_1990":0.662,"co2_2000":0.849,"co2_2010":1.287,"co2_2020":1.764,"co2_2030":2.037,"co2_2040":2.197,"co2_2050":2.292},{"country":"Ireland","code":"IRL","group":"More than 10t","intercept":88.6934,"slope":-0.508,"h":1.0879,"spi_1990":77.85,"spi_2000":83.52,"spi_2010":89.2,"spi_2020":91.8,"spi_2030":94.84,"spi_2040":97.04,"spi_2050":98.83,"co2_1990":11.234,"co2_2000":14.764,"co2_2010":10.674,"co2_2020":8.445,"co2_2030":6.272,"co2_2040":5.106,"co2_2050":4.408},{"country":"Iran","code":"IRN","group":"Between 1.9t and 10t","intercept":56.9537,"slope":2.6381,"h":0.934,"club":"Club 3","spi_1990":50.54,"spi_2000":58.06,"spi_2010":62.06,"spi_2020":68.44,"spi_2030":73.23,"spi_2040":76.95,"spi_2050":79.98,"co2_1990":3.59,"co2_2000":4.86,"co2_2010":7.467,"co2_2020":8.743,"co2_2030":9.271,"co2_2040":9.773,"co2_2050":10.074},{"country":"Iraq","code":"IRQ","group":"Between 1.9t and 10t","intercept":56.9537,"slope":2.6381,"h":0.9443,"club":"Club 3","spi_1990":42.77,"spi_2000":45.68,"spi_2010":56.28,"spi_2020":61.89,"spi_2030":67.4,"spi_2040":71.65,"spi_2050":75.11,"co2_1990":3.409,"co2_2000":1.91,"co2_2010":4.125,"co2_2020":5.452,"co2_2030":6.346,"co2_2040":6.794,"co2_2050":7.062},{"country":"Iceland","code":"ISL","group":"More than 10t","intercept":88.6934,"slope":-0.508,"h":1.0137,"spi_1990":80.39,"spi_2000":86.4,"spi_2010":92.11,"spi_2020":92.99,"spi_2030":95.85,"spi_2040":97.4,"spi_2050":98.67,"co2_1990":12.794,"co2_2000":14.408,"co2_2010":14.14,"co2_2020":16.489,"co2_2030":16.541,"co2_2040":16.97,"co2_2050":17.226},{"country":"Israel","code":"ISR","group":"More than 10t","intercept":88.6934,"slope":-0.508,"h":1.0657,"spi_1990":77.01,"spi_2000":80.27,"spi_2010":85.89,"spi_2020":87.38,"spi_2030":89.53,"spi_2040":91.17,"spi_2050":92.52,"co2_1990":11.172,"co2_2000":11.124,"co2_2010":11.26,"co2_2020":9.348,"co2_2030":8.464,"co2_2040":7.939,"co2_2050":7.625},{"country":"Italy","code":"ITA","group":"Between 1.9t and 10t","intercept":56.9537,"slope":2.6381,"h":1.0222,"club":"Club 1","spi_1990":77.89,"spi_2000":83.14,"spi_2010":88.06,"spi_2020":89.3,"spi_2030":91.83,"spi_2040":93.42,"spi_2050":94.71,"co2_1990":9.867,"co2_2000":10.312,"co2_2010":9.765,"co2_2020":7.434,"co2_2030":6.357,"co2_2040":5.764,"co2_2050":5.408},{"country":"Jamaica","code":"JAM","group":"Between 1.9t and 10t","intercept":56.9537,"slope":2.6381,"h":1.0388,"club":"Club 1","spi_1990":66.68,"spi_2000":70.06,"spi_2010":75.3,"spi_2020":78.53,"spi_2030":81.64,"spi_2040":84.15,"spi_2050":86.2,"co2_1990":3.056,"co2_2000":2.818,"co2_2010":3.41,"co2_2020":2.846,"co2_2030":2.389,"co2_2040":2.078,"co2_2050":1.892},{"country":"Jordan","code":"JOR","group":"Between 1.9t and 10t","intercept":56.9537,"slope":2.6381,"h":1.015,"club":"Club 1","spi_1990":58.7,"spi_2000":63.05,"spi_2010":69.37,"spi_2020":72.71,"spi_2030":77.84,"spi_2040":80.91,"spi_2050":83.41,"co2_1990":4.466,"co2_2000":3.291,"co2_2010":3.783,"co2_2020":3.377,"co2_2030":3.151,"co2_2040":2.992,"co2_2050":2.897},{"country":"Japan","code":"JPN","group":"More than 10t","intercept":88.6934,"slope":-0.508,"h":1.0686,"spi_1990":80.69,"spi_2000":84.23,"spi_2010":89.21,"spi_2020":90.92,"spi_2030":93.45,"spi_2040":95.12,"spi_2050":96.47,"co2_1990":10.618,"co2_2000":12.011,"co2_2010":11.137,"co2_2020":10.153,"co2_2030":9.706,"co2_2040":9.317,"co2_2050":9.084},{"country":"Kazakhstan","code":"KAZ","group":"More than 10t","intercept":88.6934,"slope":-0.508,"h":0.9734,"spi_1990":61.73,"spi_2000":61.8,"spi_2010":68.16,"spi_2020":72.78,"spi_2030":76.3,"spi_2040":79.44,"spi_2050":82,"co2_1990":17.776,"co2_2000":7.447,"co2_2010":9.691,"co2_2020":12.323,"co2_2030":13.98,"co2_2040":14.604,"co2_2050":14.977},{"country":"Kenya","code":"KEN","group":"Less than 1.9t","intercept":36.3955,"slope":13.5692,"h":1.0358,"spi_1990":40.11,"spi_2000":44.81,"spi_2010":52.6,"spi_2020":60.26,"spi_2030":65.97,"spi_2040":70.83,"spi_2050":74.79,"co2_1990":0.336,"co2_2000":0.319,"co2_2010":0.426,"co2_2020":0.533,"co2_2030":0.605,"co2_2040":0.64,"co2_2050":0.661},{"country":"Kyrgyzstan","code":"KGZ","group":"Between 1.9t and 10t","intercept":56.9537,"slope":2.6381,"h":1.0121,"club":"Club 2","spi_1990":59.86,"spi_2000":60.4,"spi_2010":65.37,"spi_2020":69.23,"spi_2030":74.52,"spi_2040":77.69,"spi_2050":80.27,"co2_1990":4.427,"co2_2000":0.979,"co2_2010":2.193,"co2_2020":2.608,"co2_2030":3.001,"co2_2040":3.166,"co2_2050":3.264},{"country":"Cambodia","code":"KHM","group":"Less than 1.9t","intercept":36.3955,"slope":13.5692,"h":0.9945,"spi_1990":27.88,"spi_2000":38.78,"spi_2010":46.99,"spi_2020":53.97,"spi_2030":60.65,"spi_2040":65.33,"spi_2050":69.16,"co2_1990":0.208,"co2_2000":0.229,"co2_2010":0.697,"co2_2020":1.205,"co2_2030":1.458,"co2_2040":1.624,"co2_2050":1.724},{"country":"Korea, Republic of","code":"KOR","group":"More than 10t","intercept":88.6934,"slope":-0.508,"h":1.0326,"spi_1990":72.53,"spi_2000":81.85,"spi_2010":87.8,"spi_2020":90.38,"spi_2030":93.67,"spi_2040":96.13,"spi_2050":98.13,"co2_1990":7.475,"co2_2000":10.216,"co2_2010":13.126,"co2_2020":13.614,"co2_2030":14.427,"co2_2040":14.791,"co2_2050":15.009},{"country":"Kuwait","code":"KWT","group":"More than 10t","intercept":88.6934,"slope":-0.508,"h":0.8934,"spi_1990":61.34,"spi_2000":67.6,"spi_2010":74.45,"spi_2020":77.73,"spi_2030":81.77,"spi_2040":84.78,"spi_2050":87.25,"co2_1990":18.695,"co2_2000":14.96,"co2_2010":25.027,"co2_2020":21.319,"co2_2030":20.306,"co2_2040":19.643,"co2_2050":19.246},{"country":"Laos","code":"LAO","group":"Less than 1.9t","intercept":36.3955,"slope":13.5692,"h":0.9197,"spi_1990":28.84,"spi_2000":33.96,"spi_2010":42.34,"spi_2020":50.11,"spi_2030":55.79,"spi_2040":60.71,"spi_2050":64.73,"co2_1990":0.194,"co2_2000":0.36,"co2_2010":0.704,"co2_2020":4.179,"co2_2030":4.937,"co2_2040":5.842,"co2_2050":6.384},{"country":"Lebanon","code":"LBN","group":"Between 1.9t and 10t","intercept":56.9537,"slope":2.6381,"h":1.0039,"club":"Club 1","spi_1990":59.05,"spi_2000":63.87,"spi_2010":69.93,"spi_2020":71.99,"spi_2030":76.52,"spi_2040":79.02,"spi_2050":81.07,"co2_1990":4.574,"co2_2000":5.3,"co2_2010":5.71,"co2_2020":4.125,"co2_2030":3.533,"co2_2040":3.188,"co2_2050":2.982},{"country":"Liberia","code":"LBR","group":"Less than 1.9t","intercept":36.3955,"slope":13.5692,"h":0.9973,"spi_1990":31.13,"spi_2000":33.76,"spi_2010":48.35,"spi_2020":53.15,"spi_2030":59.53,"spi_2040":63.93,"spi_2050":67.54,"co2_1990":0.669,"co2_2000":0.574,"co2_2010":0.64,"co2_2020":0.745,"co2_2030":0.761,"co2_2040":0.792,"co2_2050":0.81},{"country":"Libya","code":"LBY","group":"Between 1.9t and 10t","intercept":56.9537,"slope":2.6381,"h":0.9027,"club":"Club 3","spi_1990":50.12,"spi_2000":54.13,"spi_2010":58.96,"spi_2020":60.66,"spi_2030":63.85,"spi_2040":65.39,"spi_2050":66.64,"co2_1990":6.426,"co2_2000":6.302,"co2_2010":4.583,"co2_2020":8.001,"co2_2030":9.364,"co2_2040":10.39,"co2_2050":11.004},{"country":"Sri Lanka","code":"LKA","group":"Less than 1.9t","intercept":36.3955,"slope":13.5692,"h":1.0645,"spi_1990":53.41,"spi_2000":58.57,"spi_2010":64.43,"spi_2020":71.32,"spi_2030":78.27,"spi_2040":83.1,"spi_2050":87.05,"co2_1990":0.36,"co2_2000":0.8,"co2_2010":1.047,"co2_2020":1.517,"co2_2030":1.755,"co2_2040":1.878,"co2_2050":1.952},{"country":"Lesotho","code":"LSO","group":"Less than 1.9t","intercept":36.3955,"slope":13.5692,"h":1.0009,"spi_1990":42.36,"spi_2000":46.44,"spi_2010":50.21,"spi_2020":56.78,"spi_2030":60.82,"spi_2040":64.39,"spi_2050":67.31,"co2_1990":1.729,"co2_2000":1.385,"co2_2010":2.12,"co2_2020":1.767,"co2_2030":1.709,"co2_2040":1.674,"co2_2050":1.653},{"country":"Lithuania","code":"LTU","group":"Between 1.9t and 10t","intercept":56.9537,"slope":2.6381,"h":1.0185,"club":"Club 2","spi_1990":76.7,"spi_2000":80.44,"spi_2010":87.82,"spi_2020":89.34,"spi_2030":92.05,"spi_2040":93.96,"spi_2050":95.52,"co2_1990":11.476,"co2_2000":5.171,"co2_2010":6.376,"co2_2020":7.836,"co2_2030":8.372,"co2_2040":8.704,"co2_2050":8.902},{"country":"Luxembourg","code":"LUX","group":"More than 10t","intercept":88.6934,"slope":-0.508,"h":0.8112,"spi_1990":80.26,"spi_2000":84.04,"spi_2010":90.1,"spi_2020":91.18,"spi_2030":93.83,"spi_2040":95.44,"spi_2050":96.75,"co2_1990":30.969,"co2_2000":17.685,"co2_2010":49.622,"co2_2020":36.436,"co2_2030":38.886,"co2_2040":38.826,"co2_2050":38.79},{"country":"Latvia","code":"LVA","group":"Between 1.9t and 10t","intercept":56.9537,"slope":2.6381,"h":1.0279,"club":"Club 2","spi_1990":73.71,"spi_2000":78.66,"spi_2010":85.79,"spi_2020":88.53,"spi_2030":92.27,"spi_2040":94.85,"spi_2050":96.95,"co2_1990":7.971,"co2_2000":5.266,"co2_2010":6.264,"co2_2020":6.611,"co2_2030":6.71,"co2_2040":6.806,"co2_2050":6.863},{"country":"Morocco","code":"MAR","group":"Less than 1.9t","intercept":36.3955,"slope":13.5692,"h":1.0452,"spi_1990":43.33,"spi_2000":51.48,"spi_2010":60.78,"spi_2020":67.11,"spi_2030":72.51,"spi_2040":77.04,"spi_2050":80.75,"co2_1990":1.252,"co2_2000":1.413,"co2_2010":1.856,"co2_2020":1.881,"co2_2030":1.922,"co2_2040":1.954,"co2_2050":1.973},{"country":"Moldova","code":"MDA","group":"Less than 1.9t","intercept":36.3955,"slope":13.5692,"h":1.0769,"spi_1990":62.29,"spi_2000":66.46,"spi_2010":73.13,"spi_2020":77.98,"spi_2030":82.15,"spi_2040":85.58,"spi_2050":88.39,"co2_1990":0.631,"co2_2000":0.507,"co2_2010":1.099,"co2_2020":2.197,"co2_2030":2.522,"co2_2040":2.878,"co2_2050":3.091},{"country":"Madagascar","code":"MDG","group":"Less than 1.9t","intercept":36.3955,"slope":13.5692,"h":0.9679,"spi_1990":34.28,"spi_2000":40.26,"spi_2010":39.83,"spi_2020":46.98,"spi_2030":51.07,"spi_2040":54.15,"spi_2050":56.67,"co2_1990":0.115,"co2_2000":0.143,"co2_2010":0.161,"co2_2020":0.197,"co2_2030":0.213,"co2_2040":0.22,"co2_2050":0.224},{"country":"Maldives","code":"MDV","group":"Between 1.9t and 10t","intercept":56.9537,"slope":2.6381,"h":1.0108,"club":"Club 1","spi_1990":46.11,"spi_2000":52.49,"spi_2010":68.88,"spi_2020":73.79,"spi_2030":78.91,"spi_2040":84.14,"spi_2050":88.42,"co2_1990":1.777,"co2_2000":2.197,"co2_2010":4.507,"co2_2020":4.058,"co2_2030":4.319,"co2_2040":4.365,"co2_2050":4.393},{"country":"Mexico","code":"MEX","group":"Between 1.9t and 10t","intercept":56.9537,"slope":2.6381,"h":1.0167,"club":"Club 1","spi_1990":58.05,"spi_2000":64.48,"spi_2010":69.08,"spi_2020":73.89,"spi_2030":77.87,"spi_2040":81.02,"spi_2050":83.59,"co2_1990":3.826,"co2_2000":4.405,"co2_2010":4.374,"co2_2020":3.569,"co2_2030":3.317,"co2_2040":3.064,"co2_2050":2.912},{"country":"Republic of North Macedonia","code":"MKD","group":"Between 1.9t and 10t","intercept":56.9537,"slope":2.6381,"h":1.0242,"club":"Club 1","spi_1990":63.4,"spi_2000":65.65,"spi_2010":74.02,"spi_2020":77.86,"spi_2030":81.74,"spi_2040":84.94,"spi_2050":87.55,"co2_1990":5.109,"co2_2000":4.669,"co2_2010":4.899,"co2_2020":4.02,"co2_2030":3.743,"co2_2040":3.532,"co2_2050":3.405},{"country":"Mali","code":"MLI","group":"Less than 1.9t","intercept":36.3955,"slope":13.5692,"h":0.9681,"spi_1990":31.04,"spi_2000":39,"spi_2010":44.9,"spi_2020":48.65,"spi_2030":52.16,"spi_2040":54.96,"spi_2050":57.26,"co2_1990":0.65,"co2_2000":0.65,"co2_2010":0.707,"co2_2020":0.822,"co2_2030":0.859,"co2_2040":0.892,"co2_2050":0.911},{"country":"Malta","code":"MLT","group":"More than 10t","intercept":88.6934,"slope":-0.508,"h":1.0432,"spi_1990":75.85,"spi_2000":78.77,"spi_2010":85.06,"spi_2020":88.57,"spi_2030":91.85,"spi_2040":94.44,"spi_2050":96.55,"co2_1990":9.262,"co2_2000":11.887,"co2_2010":13.139,"co2_2020":11.943,"co2_2030":11.648,"co2_2040":11.356,"co2_2050":11.182},{"country":"Myanmar","code":"MMR","group":"Less than 1.9t","intercept":36.3955,"slope":13.5692,"h":1.0232,"spi_1990":32.23,"spi_2000":36.38,"spi_2010":44.56,"spi_2020":59.18,"spi_2030":69.44,"spi_2040":77.82,"spi_2050":84.68,"co2_1990":0.612,"co2_2000":0.64,"co2_2010":0.707,"co2_2020":1.07,"co2_2030":1.218,"co2_2040":1.322,"co2_2050":1.384},{"country":"Mongolia","code":"MNG","group":"Between 1.9t and 10t","intercept":56.9537,"slope":2.6381,"h":0.7807,"club":"Club 4","spi_1990":52.78,"spi_2000":60.2,"spi_2010":67.3,"spi_2020":71.07,"spi_2030":74.97,"spi_2040":77.91,"spi_2050":80.32,"co2_1990":4.125,"co2_2000":2.768,"co2_2010":5.392,"co2_2020":22.749,"co2_2030":24.253,"co2_2040":28.179,"co2_2050":30.53},{"country":"Mozambique","code":"MOZ","group":"Less than 1.9t","intercept":36.3955,"slope":13.5692,"h":0.954,"spi_1990":31.66,"spi_2000":39.09,"spi_2010":42.73,"spi_2020":45.99,"spi_2030":48.72,"spi_2040":50.86,"spi_2050":52.6,"co2_1990":0.241,"co2_2000":0.235,"co2_2010":0.389,"co2_2020":0.556,"co2_2030":0.681,"co2_2040":0.728,"co2_2050":0.756},{"country":"Mauritania","code":"MRT","group":"Less than 1.9t","intercept":36.3955,"slope":13.5692,"h":0.9807,"spi_1990":32.09,"spi_2000":38.03,"spi_2010":46.1,"spi_2020":51.78,"spi_2030":55.68,"spi_2040":59.5,"spi_2050":62.63,"co2_1990":1.137,"co2_2000":0.917,"co2_2010":1.146,"co2_2020":1.261,"co2_2030":1.301,"co2_2040":1.342,"co2_2050":1.366},{"country":"Mauritius","code":"MUS","group":"Between 1.9t and 10t","intercept":56.9537,"slope":2.6381,"h":1.0251,"club":"Club 2","spi_1990":67.71,"spi_2000":72.02,"spi_2010":77.79,"spi_2020":79.72,"spi_2030":83.99,"spi_2040":86.41,"spi_2050":88.39,"co2_1990":2.425,"co2_2000":3.7,"co2_2010":4.068,"co2_2020":4.455,"co2_2030":4.659,"co2_2040":4.771,"co2_2050":4.838},{"country":"Malawi","code":"MWI","group":"Less than 1.9t","intercept":36.3955,"slope":13.5692,"h":1.0131,"spi_1990":31.75,"spi_2000":41.27,"spi_2010":48.61,"spi_2020":54.39,"spi_2030":59.28,"spi_2040":63.19,"spi_2050":66.39,"co2_1990":0.162,"co2_2000":0.158,"co2_2010":0.186,"co2_2020":0.179,"co2_2030":0.184,"co2_2040":0.187,"co2_2050":0.189},{"country":"Malaysia","code":"MYS","group":"Between 1.9t and 10t","intercept":56.9537,"slope":2.6381,"h":0.9682,"club":"Club 3","spi_1990":57.88,"spi_2000":63.08,"spi_2010":70.1,"spi_2020":75.3,"spi_2030":79.59,"spi_2040":83.33,"spi_2050":86.38,"co2_1990":3.651,"co2_2000":4.802,"co2_2010":6.81,"co2_2020":8.328,"co2_2030":9.254,"co2_2040":9.765,"co2_2050":10.07},{"country":"Namibia","code":"NAM","group":"Between 1.9t and 10t","intercept":56.9537,"slope":2.6381,"h":0.9944,"club":"Club 1","spi_1990":52.04,"spi_2000":55.05,"spi_2010":62.95,"spi_2020":67.86,"spi_2030":73.29,"spi_2040":77.13,"spi_2050":80.27,"co2_1990":2.617,"co2_2000":2.7,"co2_2010":1.857,"co2_2020":3.64,"co2_2030":4.309,"co2_2040":4.622,"co2_2050":4.809},{"country":"Niger","code":"NER","group":"Less than 1.9t","intercept":36.3955,"slope":13.5692,"h":0.9339,"spi_1990":32.51,"spi_2000":35.99,"spi_2010":41.49,"spi_2020":43.92,"spi_2030":47.02,"spi_2040":49.19,"spi_2050":50.97,"co2_1990":0.612,"co2_2000":0.621,"co2_2010":0.66,"co2_2020":0.755,"co2_2030":0.784,"co2_2040":0.81,"co2_2050":0.825},{"country":"Nigeria","code":"NGA","group":"Less than 1.9t","intercept":36.3955,"slope":13.5692,"h":1.016,"spi_1990":38.5,"spi_2000":43.33,"spi_2010":49.88,"spi_2020":56.38,"spi_2030":61.32,"spi_2040":65.48,"spi_2050":68.87,"co2_1990":0.398,"co2_2000":0.382,"co2_2010":0.597,"co2_2020":0.649,"co2_2030":0.696,"co2_2040":0.715,"co2_2050":0.727},{"country":"Nicaragua","code":"NIC","group":"Less than 1.9t","intercept":36.3955,"slope":13.5692,"h":1.0355,"spi_1990":56.88,"spi_2000":59.31,"spi_2010":62.66,"spi_2020":61.71,"spi_2030":63.39,"spi_2040":63.55,"spi_2050":63.68,"co2_1990":0.614,"co2_2000":0.912,"co2_2010":1.015,"co2_2020":0.993,"co2_2030":0.996,"co2_2040":0.992,"co2_2050":0.99},{"country":"Netherlands","code":"NLD","group":"More than 10t","intercept":88.6934,"slope":-0.508,"h":1.0868,"spi_1990":81.01,"spi_2000":85.66,"spi_2010":90.91,"spi_2020":92.15,"spi_2030":94.84,"spi_2040":96.47,"spi_2050":97.8,"co2_1990":13.41,"co2_2000":9.002,"co2_2010":11.053,"co2_2020":8.653,"co2_2030":7.704,"co2_2040":7.152,"co2_2050":6.822},{"country":"Norway","code":"NOR","group":"More than 10t","intercept":88.6934,"slope":-0.508,"h":1.0877,"spi_1990":83.76,"spi_2000":88.78,"spi_2010":93.05,"spi_2020":93.51,"spi_2030":95.57,"spi_2040":96.75,"spi_2050":97.71,"co2_1990":11.83,"co2_2000":11.906,"co2_2010":10.434,"co2_2020":8.946,"co2_2030":8.322,"co2_2040":7.928,"co2_2050":7.692},{"country":"Nepal","code":"NPL","group":"Less than 1.9t","intercept":36.3955,"slope":13.5692,"h":1.0181,"spi_1990":32.6,"spi_2000":40.53,"spi_2010":50.56,"spi_2020":57.19,"spi_2030":64.16,"spi_2040":69.33,"spi_2050":73.55,"co2_1990":0.061,"co2_2000":0.159,"co2_2010":0.355,"co2_2020":0.774,"co2_2030":0.939,"co2_2040":1.069,"co2_2050":1.147},{"country":"New Zealand","code":"NZL","group":"Between 1.9t and 10t","intercept":56.9537,"slope":2.6381,"h":1.0193,"club":"Club 2","spi_1990":80.98,"spi_2000":86.08,"spi_2010":90.63,"spi_2020":91.56,"spi_2030":93.74,"spi_2040":95.12,"spi_2050":96.24,"co2_1990":7.974,"co2_2000":8.581,"co2_2010":8.452,"co2_2020":8.382,"co2_2030":7.991,"co2_2040":7.818,"co2_2050":7.715},{"country":"Oman","code":"OMN","group":"More than 10t","intercept":88.6934,"slope":-0.508,"h":0.9551,"spi_1990":45.53,"spi_2000":52.97,"spi_2010":61.62,"spi_2020":68.65,"spi_2030":74.68,"spi_2040":79.43,"spi_2050":83.31,"co2_1990":6.902,"co2_2000":8.388,"co2_2010":13.376,"co2_2020":12.022,"co2_2030":12.955,"co2_2040":12.667,"co2_2050":12.494},{"country":"Pakistan","code":"PAK","group":"Less than 1.9t","intercept":36.3955,"slope":13.5692,"h":0.974,"spi_1990":36.82,"spi_2000":39.29,"spi_2010":44.51,"spi_2020":50.3,"spi_2030":53.88,"spi_2040":57.3,"spi_2050":60.08,"co2_1990":0.671,"co2_2000":0.796,"co2_2010":0.905,"co2_2020":1.106,"co2_2030":1.217,"co2_2040":1.285,"co2_2050":1.325},{"country":"Panama","code":"PAN","group":"Between 1.9t and 10t","intercept":56.9537,"slope":2.6381,"h":1.0075,"club":"Club 3","spi_1990":65.69,"spi_2000":70.76,"spi_2010":75.73,"spi_2020":78.45,"spi_2030":81.96,"spi_2040":84.35,"spi_2050":86.31,"co2_1990":1.165,"co2_2000":1.832,"co2_2010":6.925,"co2_2020":5.748,"co2_2030":7.027,"co2_2040":7.536,"co2_2050":7.841},{"country":"Peru","code":"PER","group":"Less than 1.9t","intercept":36.3955,"slope":13.5692,"h":1.074,"spi_1990":55.35,"spi_2000":60.72,"spi_2010":70.94,"spi_2020":75.97,"spi_2030":82.02,"spi_2040":86.24,"spi_2050":89.69,"co2_1990":1.085,"co2_2000":1.304,"co2_2010":2.097,"co2_2020":1.942,"co2_2030":2.147,"co2_2040":2.226,"co2_2050":2.273},{"country":"Philippines","code":"PHL","group":"Less than 1.9t","intercept":36.3955,"slope":13.5692,"h":1.0495,"spi_1990":58.76,"spi_2000":62.19,"spi_2010":66.05,"spi_2020":67.02,"spi_2030":69.69,"spi_2040":71.18,"spi_2050":72.4,"co2_1990":0.996,"co2_2000":1.171,"co2_2010":1.118,"co2_2020":1.519,"co2_2030":1.678,"co2_2040":1.787,"co2_2050":1.852},{"country":"Papua New Guinea","code":"PNG","group":"Less than 1.9t","intercept":36.3955,"slope":13.5692,"h":0.9606,"spi_1990":40.63,"spi_2000":42.58,"spi_2010":44.47,"spi_2020":49.4,"spi_2030":52.22,"spi_2040":54.78,"spi_2050":56.87,"co2_1990":1.099,"co2_2000":0.889,"co2_2010":1.137,"co2_2020":1.538,"co2_2030":1.712,"co2_2040":1.82,"co2_2050":1.885},{"country":"Poland","code":"POL","group":"Between 1.9t and 10t","intercept":56.9537,"slope":2.6381,"h":1.009,"club":"Club 2","spi_1990":73.41,"spi_2000":78.46,"spi_2010":85.51,"spi_2020":84.74,"spi_2030":87.48,"spi_2040":88.58,"spi_2050":89.47,"co2_1990":8.489,"co2_2000":7.659,"co2_2010":8.376,"co2_2020":7.476,"co2_2030":7.433,"co2_2040":7.311,"co2_2050":7.237},{"country":"Portugal","code":"PRT","group":"Between 1.9t and 10t","intercept":56.9537,"slope":2.6381,"h":1.0413,"club":"Club 1","spi_1990":75.24,"spi_2000":81.41,"spi_2010":86.72,"spi_2020":88.49,"spi_2030":91.73,"spi_2040":93.71,"spi_2050":95.33,"co2_1990":5.262,"co2_2000":7.581,"co2_2010":6.116,"co2_2020":5.192,"co2_2030":4.614,"co2_2040":4.274,"co2_2050":4.07},{"country":"Paraguay","code":"PRY","group":"Less than 1.9t","intercept":36.3955,"slope":13.5692,"h":1.066,"spi_1990":54.48,"spi_2000":59.43,"spi_2010":67.67,"spi_2020":72.44,"spi_2030":77.02,"spi_2040":80.74,"spi_2050":83.79,"co2_1990":0.891,"co2_2000":1.006,"co2_2010":1.421,"co2_2020":1.695,"co2_2030":1.907,"co2_2040":2.037,"co2_2050":2.114},{"country":"Qatar","code":"QAT","group":"More than 10t","intercept":88.6934,"slope":-0.508,"h":0.7507,"spi_1990":54.73,"spi_2000":59.02,"spi_2010":65.41,"spi_2020":67.72,"spi_2030":71.49,"spi_2040":73.94,"spi_2050":75.94,"co2_1990":22.547,"co2_2000":27.248,"co2_2010":22.926,"co2_2020":27.081,"co2_2030":24.585,"co2_2040":24.646,"co2_2050":24.683},{"country":"Romania","code":"ROU","group":"Between 1.9t and 10t","intercept":56.9537,"slope":2.6381,"h":1.0365,"club":"Club 1","spi_1990":63.87,"spi_2000":69.94,"spi_2010":79.09,"spi_2020":81.94,"spi_2030":86.12,"spi_2040":89.14,"spi_2050":91.6,"co2_1990":6.732,"co2_2000":3.674,"co2_2010":4.181,"co2_2020":3.961,"co2_2030":3.711,"co2_2040":3.6,"co2_2050":3.534},{"country":"Russia","code":"RUS","group":"Between 1.9t and 10t","intercept":56.9537,"slope":2.6381,"h":0.9513,"club":"Club 3","spi_1990":66.45,"spi_2000":68.07,"spi_2010":73.49,"spi_2020":75.23,"spi_2030":77.8,"spi_2040":79.54,"spi_2050":80.96,"co2_1990":13.829,"co2_2000":6.832,"co2_2010":9.401,"co2_2020":9.822,"co2_2030":10.256,"co2_2040":10.453,"co2_2050":10.571},{"country":"Rwanda","code":"RWA","group":"Less than 1.9t","intercept":36.3955,"slope":13.5692,"h":1.0058,"spi_1990":30.29,"spi_2000":35.11,"spi_2010":46.54,"spi_2020":52.78,"spi_2030":58.96,"spi_2040":63.71,"spi_2050":67.6,"co2_1990":0.072,"co2_2000":0.065,"co2_2010":0.057,"co2_2020":0.094,"co2_2030":0.106,"co2_2040":0.115,"co2_2050":0.12},{"country":"Saudi Arabia","code":"SAU","group":"More than 10t","intercept":88.6934,"slope":-0.508,"h":0.8402,"spi_1990":45.57,"spi_2000":49.65,"spi_2010":58.71,"spi_2020":65.09,"spi_2030":71.07,"spi_2040":75.65,"spi_2050":79.4,"co2_1990":11.936,"co2_2000":10.022,"co2_2010":18.574,"co2_2020":18.834,"co2_2030":20.98,"co2_2040":21.649,"co2_2050":22.049},{"country":"Senegal","code":"SEN","group":"Less than 1.9t","intercept":36.3955,"slope":13.5692,"h":1.0395,"spi_1990":43.86,"spi_2000":48.85,"spi_2010":55.61,"spi_2020":61.64,"spi_2030":66.35,"spi_2040":70.23,"spi_2050":73.4,"co2_1990":0.452,"co2_2000":0.494,"co2_2010":0.641,"co2_2020":0.687,"co2_2030":0.753,"co2_2040":0.773,"co2_2050":0.785},{"country":"Singapore","code":"SGP","group":"More than 10t","intercept":88.6934,"slope":-0.508,"h":0.9573,"spi_1990":71.08,"spi_2000":77.35,"spi_2010":83.11,"spi_2020":85.48,"spi_2030":88.52,"spi_2040":90.64,"spi_2050":92.37,"co2_1990":23.71,"co2_2000":29.757,"co2_2010":22.553,"co2_2020":19.11,"co2_2030":16.211,"co2_2040":14.629,"co2_2050":13.682},{"country":"Sierra Leone","code":"SLE","group":"Less than 1.9t","intercept":36.3955,"slope":13.5692,"h":0.9898,"spi_1990":27.64,"spi_2000":33.36,"spi_2010":42.78,"spi_2020":51.75,"spi_2030":57.9,"spi_2040":63.29,"spi_2050":67.69,"co2_1990":0.64,"co2_2000":0.583,"co2_2010":0.631,"co2_2020":0.707,"co2_2030":0.711,"co2_2040":0.727,"co2_2050":0.736},{"country":"El Salvador","code":"SLV","group":"Less than 1.9t","intercept":36.3955,"slope":13.5692,"h":1.0557,"spi_1990":45.91,"spi_2000":59.28,"spi_2010":66.18,"spi_2020":68.08,"spi_2030":72.82,"spi_2040":75.62,"spi_2050":77.91,"co2_1990":0.762,"co2_2000":1.395,"co2_2010":1.364,"co2_2020":1.335,"co2_2030":1.267,"co2_2040":1.237,"co2_2050":1.218},{"country":"Serbia","code":"SRB","group":"Between 1.9t and 10t","intercept":56.9537,"slope":2.6381,"h":0.9958,"club":"Club 3","spi_1990":61.71,"spi_2000":67.96,"spi_2010":77.28,"spi_2020":79.34,"spi_2030":83.31,"spi_2040":85.94,"spi_2050":88.09,"co2_1990":8.297,"co2_2000":5.681,"co2_2010":7.161,"co2_2020":7.123,"co2_2030":7.258,"co2_2040":7.262,"co2_2050":7.265},{"country":"Sao Tome and Principe","code":"STP","group":"Less than 1.9t","intercept":36.3955,"slope":13.5692,"h":1.0482,"spi_1990":47.76,"spi_2000":53.26,"spi_2010":60.22,"spi_2020":66.21,"spi_2030":71.44,"spi_2040":75.51,"spi_2050":78.84,"co2_1990":2.216,"co2_2000":1.127,"co2_2010":1.442,"co2_2020":1.385,"co2_2030":1.406,"co2_2040":1.41,"co2_2050":1.411},{"country":"Suriname","code":"SUR","group":"Between 1.9t and 10t","intercept":56.9537,"slope":2.6381,"h":1.0168,"club":"Club 2","spi_1990":62.19,"spi_2000":66.41,"spi_2010":72.16,"spi_2020":75.87,"spi_2030":78.62,"spi_2040":81.13,"spi_2050":83.18,"co2_1990":6.092,"co2_2000":4.077,"co2_2010":4.908,"co2_2020":4.135,"co2_2030":4.223,"co2_2040":4.175,"co2_2050":4.146},{"country":"Slovakia","code":"SVK","group":"Between 1.9t and 10t","intercept":56.9537,"slope":2.6381,"h":1.0044,"club":"Club 2","spi_1990":72.25,"spi_2000":77.96,"spi_2010":85.17,"spi_2020":86.36,"spi_2030":89.29,"spi_2040":91.22,"spi_2050":92.79,"co2_1990":13.732,"co2_2000":8.203,"co2_2010":9.02,"co2_2020":8.43,"co2_2030":8.436,"co2_2040":8.381,"co2_2050":8.348},{"country":"Slovenia","code":"SVN","group":"Between 1.9t and 10t","intercept":56.9537,"slope":2.6381,"h":1.0059,"club":"Club 2","spi_1990":74.5,"spi_2000":81.81,"spi_2010":89.05,"spi_2020":88.51,"spi_2030":92.2,"spi_2040":93.73,"spi_2050":94.98,"co2_1990":7.892,"co2_2000":9.505,"co2_2010":10.329,"co2_2020":8.922,"co2_2030":8.431,"co2_2040":8.149,"co2_2050":7.98},{"country":"Sweden","code":"SWE","group":"Between 1.9t and 10t","intercept":56.9537,"slope":2.6381,"h":1.0357,"club":"Club 1","spi_1990":84.34,"spi_2000":88.56,"spi_2010":92.21,"spi_2020":92.22,"spi_2030":93.16,"spi_2040":93.75,"spi_2050":94.24,"co2_1990":9.919,"co2_2000":9.267,"co2_2010":9.197,"co2_2020":6.764,"co2_2030":5.858,"co2_2040":5.292,"co2_2050":4.953},{"country":"Eswatini","code":"SWZ","group":"Between 1.9t and 10t","intercept":56.9537,"slope":2.6381,"h":0.9244,"club":"Club 1","spi_1990":39.68,"spi_2000":39.4,"spi_2010":43.69,"spi_2020":52.21,"spi_2030":58.13,"spi_2040":62.83,"spi_2050":66.67,"co2_1990":2.531,"co2_2000":3.524,"co2_2010":4.106,"co2_2020":3.065,"co2_2030":2.789,"co2_2040":2.538,"co2_2050":2.387},{"country":"Syria","code":"SYR","group":"Between 1.9t and 10t","intercept":56.9537,"slope":2.6381,"h":0.95,"club":"Club 3","spi_1990":45.95,"spi_2000":49.26,"spi_2010":54.46,"spi_2020":55.51,"spi_2030":57.24,"spi_2040":58.82,"spi_2050":60.11,"co2_1990":3.438,"co2_2000":2.836,"co2_2010":2.922,"co2_2020":2.684,"co2_2030":2.637,"co2_2040":2.642,"co2_2050":2.645},{"country":"Chad","code":"TCD","group":"Less than 1.9t","intercept":36.3955,"slope":13.5692,"h":0.8468,"spi_1990":24.81,"spi_2000":27.31,"spi_2010":30.53,"spi_2020":35.19,"spi_2030":37.94,"spi_2040":40.57,"spi_2050":42.73,"co2_1990":0.555,"co2_2000":0.516,"co2_2010":0.555,"co2_2020":0.621,"co2_2030":0.63,"co2_2040":0.649,"co2_2050":0.66},{"country":"Togo","code":"TGO","group":"Less than 1.9t","intercept":36.3955,"slope":13.5692,"h":1.0043,"spi_1990":35.73,"spi_2000":40.92,"spi_2010":47.53,"spi_2020":54.84,"spi_2030":59.23,"spi_2040":63.43,"spi_2050":66.86,"co2_1990":0.338,"co2_2000":0.326,"co2_2010":0.728,"co2_2020":0.889,"co2_2030":1.027,"co2_2040":1.072,"co2_2050":1.099},{"country":"Thailand","code":"THA","group":"Between 1.9t and 10t","intercept":56.9537,"slope":2.6381,"h":0.9987,"club":"Club 3","spi_1990":55.61,"spi_2000":63.58,"spi_2010":69,"spi_2020":70.28,"spi_2030":72.34,"spi_2040":73.89,"spi_2050":75.15,"co2_1990":2.132,"co2_2000":2.455,"co2_2010":3.716,"co2_2020":4.038,"co2_2030":4.38,"co2_2040":4.529,"co2_2050":4.619},{"country":"Tajikistan","code":"TJK","group":"Less than 1.9t","intercept":36.3955,"slope":13.5692,"h":0.9985,"spi_1990":53.91,"spi_2000":49.98,"spi_2010":53.08,"spi_2020":54.44,"spi_2030":55.82,"spi_2040":57.01,"spi_2050":57.99,"co2_1990":3.333,"co2_2000":0.831,"co2_2010":0.908,"co2_2020":1.118,"co2_2030":1.136,"co2_2040":1.174,"co2_2050":1.197},{"country":"Turkmenistan","code":"TKM","group":"Between 1.9t and 10t","intercept":56.9537,"slope":2.6381,"h":0.8676,"club":"Club 4","spi_1990":54.92,"spi_2000":52.69,"spi_2010":56.55,"spi_2020":60.69,"spi_2030":63.85,"spi_2040":66.46,"spi_2050":68.59,"co2_1990":6.455,"co2_2000":6.254,"co2_2010":8.059,"co2_2020":10.551,"co2_2030":12.039,"co2_2040":12.831,"co2_2050":13.305},{"country":"Trinidad and Tobago","code":"TTO","group":"More than 10t","intercept":88.6934,"slope":-0.508,"h":0.9065,"spi_1990":69.39,"spi_2000":72.54,"spi_2010":79.51,"spi_2020":80.82,"spi_2030":83.43,"spi_2040":85.27,"spi_2050":86.78,"co2_1990":9.617,"co2_2000":10.013,"co2_2010":21.403,"co2_2020":21.682,"co2_2030":23.827,"co2_2040":25.123,"co2_2050":25.898},{"country":"Tunisia","code":"TUN","group":"Between 1.9t and 10t","intercept":56.9537,"slope":2.6381,"h":1.0383,"club":"Club 1","spi_1990":55.28,"spi_2000":58.84,"spi_2010":65.28,"spi_2020":76.75,"spi_2030":84.77,"spi_2040":90.47,"spi_2050":95.13,"co2_1990":1.955,"co2_2000":2.328,"co2_2010":2.402,"co2_2020":2.418,"co2_2030":2.511,"co2_2040":2.555,"co2_2050":2.582},{"country":"Turkey","code":"TUR","group":"Between 1.9t and 10t","intercept":56.9537,"slope":2.6381,"h":0.989,"club":"Club 3","spi_1990":54.86,"spi_2000":61.9,"spi_2010":69.8,"spi_2020":70.05,"spi_2030":71.99,"spi_2040":73.22,"spi_2050":74.22,"co2_1990":3.945,"co2_2000":4.208,"co2_2010":5.03,"co2_2020":4.779,"co2_2030":5.169,"co2_2040":5.199,"co2_2050":5.217},{"country":"Tanzania","code":"TZA","group":"Less than 1.9t","intercept":36.3955,"slope":13.5692,"h":1.0238,"spi_1990":41.03,"spi_2000":45.26,"spi_2010":50.89,"spi_2020":57.07,"spi_2030":61.03,"spi_2040":64.74,"spi_2050":67.77,"co2_1990":0.136,"co2_2000":0.147,"co2_2010":0.266,"co2_2020":0.357,"co2_2030":0.421,"co2_2040":0.446,"co2_2050":0.461},{"country":"Uganda","code":"UGA","group":"Less than 1.9t","intercept":36.3955,"slope":13.5692,"h":0.9818,"spi_1990":36.13,"spi_2000":39.77,"spi_2010":46.84,"spi_2020":49.01,"spi_2030":52.06,"spi_2040":54.23,"spi_2050":56,"co2_1990":0.087,"co2_2000":0.094,"co2_2010":0.186,"co2_2020":0.182,"co2_2030":0.2,"co2_2040":0.207,"co2_2050":0.211},{"country":"Ukraine","code":"UKR","group":"Between 1.9t and 10t","intercept":56.9537,"slope":2.6381,"h":1.0154,"club":"Club 2","spi_1990":72.45,"spi_2000":70.16,"spi_2010":76.64,"spi_2020":78,"spi_2030":79.28,"spi_2040":80.76,"spi_2050":81.97,"co2_1990":9.826,"co2_2000":4.332,"co2_2010":5.348,"co2_2020":4.876,"co2_2030":4.571,"co2_2040":4.433,"co2_2050":4.35},{"country":"Uruguay","code":"URY","group":"Between 1.9t and 10t","intercept":56.9537,"slope":2.6381,"h":1.0538,"club":"Club 1","spi_1990":74.21,"spi_2000":76.86,"spi_2010":82.98,"spi_2020":86.37,"spi_2030":90.08,"spi_2040":92.96,"spi_2050":95.31,"co2_1990":1.584,"co2_2000":2.559,"co2_2010":3.07,"co2_2020":3.352,"co2_2030":3.568,"co2_2040":3.641,"co2_2050":3.685},{"country":"United States","code":"USA","group":"More than 10t","intercept":88.6934,"slope":-0.508,"h":0.9873,"spi_1990":81.55,"spi_2000":84.14,"spi_2010":87.83,"spi_2020":87.63,"spi_2030":89.43,"spi_2040":90.17,"spi_2050":90.78,"co2_1990":19.958,"co2_2000":22.207,"co2_2010":19.411,"co2_2020":17.096,"co2_2030":15.583,"co2_2040":14.752,"co2_2050":14.254},{"country":"Uzbekistan","code":"UZB","group":"Between 1.9t and 10t","intercept":56.9537,"slope":2.6381,"h":0.9985,"club":"Club 1","spi_1990":55.27,"spi_2000":52.28,"spi_2010":56.64,"spi_2020":66.57,"spi_2030":70.91,"spi_2040":76.07,"spi_2050":80.29,"co2_1990":6.636,"co2_2000":4.345,"co2_2010":3.676,"co2_2020":2.903,"co2_2030":2.494,"co2_2040":2.251,"co2_2050":2.106},{"country":"Venezuela","code":"VEN","group":"Between 1.9t and 10t","intercept":56.9537,"slope":2.6381,"h":0.9741,"club":"Club 3","spi_1990":67.17,"spi_2000":66.82,"spi_2010":69.2,"spi_2020":64.75,"spi_2030":63.99,"spi_2040":62.3,"spi_2050":60.91,"co2_1990":4.801,"co2_2000":3.628,"co2_2010":5.628,"co2_2020":4.227,"co2_2030":4.619,"co2_2040":4.371,"co2_2050":4.223},{"country":"Vietnam","code":"VNM","group":"Less than 1.9t","intercept":36.3955,"slope":13.5692,"h":1.0476,"spi_1990":48.59,"spi_2000":54.98,"spi_2010":64.61,"spi_2020":69.61,"spi_2030":75.33,"spi_2040":79.53,"spi_2050":82.97,"co2_1990":0.341,"co2_2000":0.607,"co2_2010":1.786,"co2_2020":2.418,"co2_2030":2.789,"co2_2040":3.025,"co2_2050":3.166},{"country":"Vanuatu","code":"VUT","group":"Less than 1.9t","intercept":36.3955,"slope":13.5692,"h":1.0268,"spi_1990":50.75,"spi_2000":53.47,"spi_2010":57.51,"spi_2020":61.21,"spi_2030":65.13,"spi_2040":68.02,"spi_2050":70.38,"co2_1990":2.235,"co2_2000":1.127,"co2_2010":1.567,"co2_2020":1.462,"co2_2030":1.496,"co2_2040":1.504,"co2_2050":1.509},{"country":"Yemen","code":"YEM","group":"Less than 1.9t","intercept":36.3955,"slope":13.5692,"h":0.8747,"spi_1990":29.03,"spi_2000":33.57,"spi_2010":39.71,"spi_2020":39.3,"spi_2030":40.68,"spi_2040":41.44,"spi_2050":42.06,"co2_1990":1.538,"co2_2000":1.318,"co2_2010":1.356,"co2_2020":1.5,"co2_2030":1.551,"co2_2040":1.583,"co2_2050":1.603},{"country":"South Africa","code":"ZAF","group":"Between 1.9t and 10t","intercept":56.9537,"slope":2.6381,"h":0.9885,"club":"Club 1","spi_1990":47.93,"spi_2000":61.12,"spi_2010":67.05,"spi_2020":72.95,"spi_2030":77.84,"spi_2040":81.66,"spi_2050":84.78,"co2_1990":5.95,"co2_2000":6.185,"co2_2010":6.442,"co2_2020":5.75,"co2_2030":5.46,"co2_2040":5.285,"co2_2050":5.18},{"country":"Zambia","code":"ZMB","group":"Less than 1.9t","intercept":36.3955,"slope":13.5692,"h":0.9986,"spi_1990":38.84,"spi_2000":42.33,"spi_2010":48.78,"spi_2020":52.86,"spi_2030":58.12,"spi_2040":61.31,"spi_2050":63.92,"co2_1990":0.336,"co2_2000":0.371,"co2_2010":0.425,"co2_2020":0.561,"co2_2030":0.634,"co2_2040":0.665,"co2_2050":0.684},{"country":"Zimbabwe","code":"ZWE","group":"Less than 1.9t","intercept":36.3955,"slope":13.5692,"h":1.0009,"spi_1990":47.22,"spi_2000":44.06,"spi_2010":45.74,"spi_2020":54.1,"spi_2030":57.87,"spi_2040":61.76,"spi_2050":64.94,"co2_1990":1.703,"co2_2000":0.977,"co2_2010":0.738,"co2_2020":0.848,"co2_2030":0.85,"co2_2040":0.846,"co2_2050":0.843}];
+
+            // Milestone years
+            const milestones = [1990, 2000, 2010, 2020, 2030, 2040, 2050];
+
+            // Configuration
+            const jtConfig = {
+                margin: { top: 40, right: 50, bottom: 60, left: 60 },
+                colors: {
+                    low: '#2dd4bf',
+                    mid: '#5eead4',
+                    high: '#99f6e4'
+                },
+                breakpoints: { low: 1.9, high: 10 },
+                jtZone: { spiMin: 80, co2Max: 1.9 }
+            };
+
+            // Interpolate between milestones
+            function interpolateValue(data, year, key) {
+                if (year <= 1990) return data[`${key}_1990`];
+                if (year >= 2050) return data[`${key}_2050`];
+                
+                let prevYear, nextYear;
+                for (let i = 0; i < milestones.length - 1; i++) {
+                    if (year >= milestones[i] && year <= milestones[i + 1]) {
+                        prevYear = milestones[i];
+                        nextYear = milestones[i + 1];
+                        break;
+                    }
+                }
+                
+                const prevVal = data[`${key}_${prevYear}`];
+                const nextVal = data[`${key}_${nextYear}`];
+                const t = (year - prevYear) / (nextYear - prevYear);
+                
+                return prevVal + t * (nextVal - prevVal);
+            }
+
+            // Initialize chart when modal opens
+            let jtChartInitialized = false;
+            let jtAnimState = {
+                isPlaying: false,
+                currentYear: 1990,
+                speed: 1,
+                rafId: null
+            };
+            let jtStartTime = null;
+            let jtDots = null;
+            let jtXScale, jtYScale;
+
+            function initJTChart() {
+                if (jtChartInitialized) return;
+                
+                const chartContainer = document.getElementById('jt-chart-container');
+                if (!chartContainer) return;
+                
+                const width = 700;
+                const height = 400;
+
+                const svg = d3.select('#jt-forecast-chart');
+                svg.selectAll('*').remove();
+
+                // Scales
+                jtXScale = d3.scaleSqrt()
+                    .domain([0, 45])
+                    .range([jtConfig.margin.left, width - jtConfig.margin.right]);
+
+                jtYScale = d3.scaleLinear()
+                    .domain([10, 100])
+                    .range([height - jtConfig.margin.bottom, jtConfig.margin.top]);
+
+                // Defs
+                const defs = svg.append('defs');
+                const jtGradient = defs.append('linearGradient')
+                    .attr('id', 'jtGradientMain')
+                    .attr('x1', '0%').attr('y1', '0%')
+                    .attr('x2', '100%').attr('y2', '100%');
+                jtGradient.append('stop').attr('offset', '0%').attr('stop-color', '#14b8a6').attr('stop-opacity', 0.15);
+                jtGradient.append('stop').attr('offset', '100%').attr('stop-color', '#14b8a6').attr('stop-opacity', 0.03);
+
+                const g = svg.append('g');
+
+                // JT Zone
+                g.append('rect')
+                    .attr('x', jtXScale(0))
+                    .attr('y', jtYScale(100))
+                    .attr('width', jtXScale(jtConfig.jtZone.co2Max) - jtXScale(0))
+                    .attr('height', jtYScale(jtConfig.jtZone.spiMin) - jtYScale(100))
+                    .attr('fill', 'url(#jtGradientMain)')
+                    .attr('stroke', '#14b8a6')
+                    .attr('stroke-width', 2)
+                    .attr('stroke-dasharray', '8, 4')
+                    .attr('opacity', 0.8);
+
+                g.append('text')
+                    .attr('class', 'jt-label')
+                    .attr('x', jtXScale(0.5))
+                    .attr('y', jtYScale(95))
+                    .attr('fill', '#14b8a6')
+                    .attr('font-size', '11px')
+                    .attr('font-weight', '500')
+                    .text('Just Transition');
+
+                // Axes
+                const xAxis = d3.axisBottom(jtXScale).tickValues([0, 1, 2, 5, 10, 15, 20, 25, 30, 35, 40]);
+                const yAxis = d3.axisLeft(jtYScale).tickValues([20, 30, 40, 50, 60, 70, 80, 90, 100]);
+
+                g.append('g')
+                    .attr('class', 'axis')
+                    .attr('transform', `translate(0, ${height - jtConfig.margin.bottom})`)
+                    .call(xAxis)
+                    .selectAll('text, line, path')
+                    .attr('stroke', 'var(--text-muted)')
+                    .attr('fill', 'var(--text-muted)');
+
+                g.append('g')
+                    .attr('class', 'axis')
+                    .attr('transform', `translate(${jtConfig.margin.left}, 0)`)
+                    .call(yAxis)
+                    .selectAll('text, line, path')
+                    .attr('stroke', 'var(--text-muted)')
+                    .attr('fill', 'var(--text-muted)');
+
+                g.append('text')
+                    .attr('x', width / 2)
+                    .attr('y', height - 10)
+                    .attr('text-anchor', 'middle')
+                    .attr('fill', 'var(--text-secondary)')
+                    .attr('font-size', '12px')
+                    .text('CO₂ emissions per capita (tCO₂e)');
+
+                g.append('text')
+                    .attr('transform', 'rotate(-90)')
+                    .attr('x', -height / 2)
+                    .attr('y', 18)
+                    .attr('text-anchor', 'middle')
+                    .attr('fill', 'var(--text-secondary)')
+                    .attr('font-size', '12px')
+                    .text('Social Progress Index');
+
+                // Breakpoint lines
+                g.append('line')
+                    .attr('x1', jtXScale(jtConfig.breakpoints.low)).attr('y1', jtYScale(10))
+                    .attr('x2', jtXScale(jtConfig.breakpoints.low)).attr('y2', jtYScale(100))
+                    .attr('stroke', 'var(--text-muted)')
+                    .attr('stroke-width', 1)
+                    .attr('stroke-dasharray', '4, 4')
+                    .attr('opacity', 0.5);
+
+                g.append('line')
+                    .attr('x1', jtXScale(jtConfig.breakpoints.high)).attr('y1', jtYScale(10))
+                    .attr('x2', jtXScale(jtConfig.breakpoints.high)).attr('y2', jtYScale(100))
+                    .attr('stroke', 'var(--text-muted)')
+                    .attr('stroke-width', 1)
+                    .attr('stroke-dasharray', '4, 4')
+                    .attr('opacity', 0.5);
+
+                g.append('text').attr('x', jtXScale(jtConfig.breakpoints.low) + 5).attr('y', jtYScale(13))
+                    .attr('fill', 'var(--text-muted)').attr('font-size', '10px').text('1.9t');
+                g.append('text').attr('x', jtXScale(jtConfig.breakpoints.high) + 5).attr('y', jtYScale(13))
+                    .attr('fill', 'var(--text-muted)').attr('font-size', '10px').text('10t');
+
+                // Country dots
+                jtDots = g.selectAll('.country-dot')
+                    .data(countryData)
+                    .enter()
+                    .append('circle')
+                    .attr('class', 'country-dot')
+                    .attr('cx', d => jtXScale(d.co2_1990))
+                    .attr('cy', d => jtYScale(d.spi_1990))
+                    .attr('r', 5)
+                    .attr('fill', d => {
+                        if (d.group === 'Less than 1.9t') return jtConfig.colors.low;
+                        if (d.group === 'Between 1.9t and 10t') return jtConfig.colors.mid;
+                        return jtConfig.colors.high;
+                    })
+                    .attr('stroke', 'rgba(255,255,255,0.3)')
+                    .attr('stroke-width', 1)
+                    .attr('opacity', d => d.group === 'Between 1.9t and 10t' ? 0.7 : 1)
+                    .style('filter', 'drop-shadow(0 0 3px rgba(20, 184, 166, 0.4))')
+                    .style('cursor', 'pointer');
+
+                // Tooltip handling
+                const tooltip = document.getElementById('jt-tooltip');
+                
+                jtDots.on('mouseenter', function(event, d) {
+                    const currentYear = jtAnimState.currentYear;
+                    const spi = interpolateValue(d, currentYear, 'spi');
+                    const co2 = interpolateValue(d, currentYear, 'co2');
+                    const inJT = spi >= 80 && co2 <= 1.9;
+                    const groupLabel = d.group === 'Less than 1.9t' ? 'Low-emitting' :
+                        d.group === 'Between 1.9t and 10t' ? 'Middle-emitting' : 'High-emitting';
+                    
+                    tooltip.innerHTML = `
+                        <div class="jt-tooltip-title">${d.country}</div>
+                        <div class="jt-tooltip-row"><span class="jt-tooltip-label">SPI:</span> <span class="jt-tooltip-value">${spi.toFixed(1)}</span></div>
+                        <div class="jt-tooltip-row"><span class="jt-tooltip-label">CO₂:</span> <span class="jt-tooltip-value">${co2.toFixed(2)} tCO₂e</span></div>
+                        <div class="jt-tooltip-row"><span class="jt-tooltip-label">Group:</span> <span class="jt-tooltip-value">${groupLabel}</span></div>
+                        <div class="jt-tooltip-row"><span class="jt-tooltip-value" style="color: ${inJT ? '#14b8a6' : 'var(--text-muted)'}">${inJT ? '✓ In JT Zone' : 'Not in JT Zone'}</span></div>
+                    `;
+                    tooltip.classList.add('visible');
+                    
+                    const rect = chartContainer.getBoundingClientRect();
+                    tooltip.style.left = `${Math.min(event.clientX - rect.left + 15, rect.width - 240)}px`;
+                    tooltip.style.top = `${event.clientY - rect.top - 10}px`;
+                })
+                .on('mousemove', function(event) {
+                    const rect = chartContainer.getBoundingClientRect();
+                    tooltip.style.left = `${Math.min(event.clientX - rect.left + 15, rect.width - 240)}px`;
+                    tooltip.style.top = `${event.clientY - rect.top - 10}px`;
+                })
+                .on('mouseleave', () => tooltip.classList.remove('visible'));
+
+                jtChartInitialized = true;
+                updateJTPositions(1990);
+            }
+
+            // Expose initJTChart globally for modal trigger
+            window.initJTChart = initJTChart;
+
+            function updateJTPositions(year) {
+                jtAnimState.currentYear = year;
+                
+                if (jtDots) {
+                    jtDots.attr('cx', d => jtXScale(interpolateValue(d, year, 'co2')))
+                          .attr('cy', d => jtYScale(interpolateValue(d, year, 'spi')));
+                }
+                
+                // Update year display
+                const yearEl = document.getElementById('jt-current-year');
+                if (yearEl) yearEl.textContent = Math.round(year);
+                
+                const badge = document.getElementById('jt-forecast-badge');
+                if (badge) badge.classList.toggle('visible', year > 2020);
+                
+                // Update timeline
+                const progress = (year - 1990) / (2050 - 1990) * 100;
+                const progressEl = document.getElementById('jt-timeline-progress');
+                if (progressEl) progressEl.style.width = `${progress}%`;
+                
+                // Update stats
+                let inJT = 0;
+                countryData.forEach(d => {
+                    const spi = interpolateValue(d, year, 'spi');
+                    const co2 = interpolateValue(d, year, 'co2');
+                    if (spi >= 80 && co2 <= 1.9) inJT++;
+                });
+                
+                const jtCountEl = document.getElementById('jt-count');
+                if (jtCountEl) jtCountEl.textContent = inJT;
+            }
+
+            function updateJTPlayButton() {
+                const icon = document.getElementById('jt-play-icon');
+                const text = document.getElementById('jt-play-text');
+                
+                if (jtAnimState.isPlaying) {
+                    if (icon) icon.innerHTML = '<rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/>';
+                    if (text) text.textContent = 'Pause';
+                } else {
+                    if (icon) icon.innerHTML = '<path d="M8 5v14l11-7z"/>';
+                    if (text) text.textContent = jtAnimState.currentYear >= 2049 ? 'Replay' : 'Play 1990–2050';
+                }
+            }
+
+            const animDuration = 15000; // 15 seconds for full animation
+
+            function jtAnimate(timestamp) {
+                if (!jtStartTime) jtStartTime = timestamp;
+                const elapsed = (timestamp - jtStartTime) * jtAnimState.speed;
+                const progress = Math.min(1, elapsed / animDuration);
+                const year = 1990 + progress * (2050 - 1990);
+                
+                updateJTPositions(year);
+                
+                if (progress < 1 && jtAnimState.isPlaying) {
+                    jtAnimState.rafId = requestAnimationFrame(jtAnimate);
+                } else if (progress >= 1) {
+                    jtAnimState.isPlaying = false;
+                    updateJTPlayButton();
+                }
+            }
+
+            // Expose toggle and reset functions globally for button onclick
+            window.toggleJTAnimation = function() {
+                if (!jtChartInitialized) initJTChart();
+                
+                if (jtAnimState.currentYear >= 2049) {
+                    jtAnimState.currentYear = 1990;
+                    jtStartTime = null;
+                }
+                
+                jtAnimState.isPlaying = !jtAnimState.isPlaying;
+                updateJTPlayButton();
+                
+                if (jtAnimState.isPlaying) {
+                    if (jtAnimState.currentYear > 1990 && jtAnimState.currentYear < 2050) {
+                        const progress = (jtAnimState.currentYear - 1990) / (2050 - 1990);
+                        jtStartTime = performance.now() - (progress * animDuration / jtAnimState.speed);
+                    } else {
+                        jtStartTime = null;
+                    }
+                    jtAnimState.rafId = requestAnimationFrame(jtAnimate);
+                } else {
+                    cancelAnimationFrame(jtAnimState.rafId);
+                }
+            };
+
+            window.resetJTAnimation = function() {
+                cancelAnimationFrame(jtAnimState.rafId);
+                jtAnimState.isPlaying = false;
+                jtAnimState.currentYear = 1990;
+                jtStartTime = null;
+                if (jtChartInitialized) updateJTPositions(1990);
+                updateJTPlayButton();
+            };
+
+            // Event listeners for play/reset buttons
+            document.addEventListener('click', function(e) {
+                if (e.target.closest('#jt-play-btn')) {
+                    if (!jtChartInitialized) initJTChart();
+                    
+                    if (jtAnimState.currentYear >= 2049) {
+                        jtAnimState.currentYear = 1990;
+                        jtStartTime = null;
+                    }
+                    
+                    jtAnimState.isPlaying = !jtAnimState.isPlaying;
+                    updateJTPlayButton();
+                    
+                    if (jtAnimState.isPlaying) {
+                        if (jtAnimState.currentYear > 1990 && jtAnimState.currentYear < 2050) {
+                            const progress = (jtAnimState.currentYear - 1990) / (2050 - 1990);
+                            jtStartTime = performance.now() - (progress * animDuration / jtAnimState.speed);
+                        } else {
+                            jtStartTime = null;
+                        }
+                        jtAnimState.rafId = requestAnimationFrame(jtAnimate);
+                    } else {
+                        cancelAnimationFrame(jtAnimState.rafId);
+                    }
+                }
+                
+                if (e.target.closest('#jt-reset-btn')) {
+                    cancelAnimationFrame(jtAnimState.rafId);
+                    jtAnimState.isPlaying = false;
+                    jtAnimState.currentYear = 1990;
+                    jtStartTime = null;
+                    if (jtChartInitialized) updateJTPositions(1990);
+                    updateJTPlayButton();
+                }
+            });
+
+            // Initialize chart when JT forecaster modal opens
+            const observer = new MutationObserver(function(mutations) {
+                mutations.forEach(function(mutation) {
+                    if (mutation.attributeName === 'class') {
+                        const modal = document.getElementById('convergence-modal');
+                        if (modal && modal.classList.contains('active')) {
+                            setTimeout(initJTChart, 100);
+                        }
+                    }
+                });
+            });
+
+            const jtModal = document.getElementById('convergence-modal');
+            if (jtModal) {
+                observer.observe(jtModal, { attributes: true });
+            }
+
+            // Also try to init when scrolled into view
+            const chartContainer = document.getElementById('jt-chart-container');
+            if (chartContainer) {
+                const intersectionObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting && !jtChartInitialized) {
+                            initJTChart();
+                        }
+                    });
+                }, { threshold: 0.1 });
+                intersectionObserver.observe(chartContainer);
+            }
+        })();
+
+        // ===== MCMC CHAIN ANIMATION =====
+        (function() {
+            let mcmcAnimState = {
+                isPlaying: false,
+                iteration: 0,
+                rafId: null,
+                chains: [[], [], [], []],
+                chains2: [[], [], [], []],
+                maxIterations: 1000,
+                speed: 5
+            };
+            
+            const chainColors = ['#60a5fa', '#34d399', '#a78bfa', '#f472b6'];
+            let canvas1, canvas2, ctx1, ctx2;
+            let mcmcInitialized = false;
+            
+            // Generate MCMC-like samples with convergence behavior
+            function generateMCMCSample(chain, iteration, target, startVal) {
+                const warmup = 200;
+                const noise = 0.03;
+                
+                if (iteration < warmup) {
+                    // Warmup period: chains converge toward target
+                    const progress = iteration / warmup;
+                    const currentTarget = startVal + (target - startVal) * progress;
+                    const wanderNoise = (1 - progress) * 0.15;
+                    return currentTarget + (Math.random() - 0.5) * wanderNoise + (Math.random() - 0.5) * noise;
+                } else {
+                    // Post-warmup: stable sampling around target
+                    const prev = chain.length > 0 ? chain[chain.length - 1] : target;
+                    const proposal = prev + (Math.random() - 0.5) * 0.08;
+                    // Add small autocorrelation
+                    return proposal * 0.3 + target * 0.7 + (Math.random() - 0.5) * noise;
+                }
+            }
+            
+            function initMCMC() {
+                if (mcmcInitialized) return;
+                
+                canvas1 = document.getElementById('mcmc-chain-1');
+                canvas2 = document.getElementById('mcmc-chain-2');
+                
+                if (!canvas1 || !canvas2) return;
+                
+                // Set canvas resolution for sharp rendering
+                const dpr = window.devicePixelRatio || 1;
+                const rect1 = canvas1.getBoundingClientRect();
+                const rect2 = canvas2.getBoundingClientRect();
+                
+                canvas1.width = rect1.width * dpr;
+                canvas1.height = rect1.height * dpr;
+                canvas2.width = rect2.width * dpr;
+                canvas2.height = rect2.height * dpr;
+                
+                ctx1 = canvas1.getContext('2d');
+                ctx2 = canvas2.getContext('2d');
+                
+                ctx1.scale(dpr, dpr);
+                ctx2.scale(dpr, dpr);
+                
+                // Clear canvases
+                ctx1.fillStyle = '#000';
+                ctx1.fillRect(0, 0, rect1.width, rect1.height);
+                ctx2.fillStyle = '#000';
+                ctx2.fillRect(0, 0, rect2.width, rect2.height);
+                
+                // Reset chains
+                mcmcAnimState.chains = [[], [], [], []];
+                mcmcAnimState.chains2 = [[], [], [], []];
+                mcmcAnimState.iteration = 0;
+                
+                mcmcInitialized = true;
+            }
+            
+            function drawChains() {
+                if (!ctx1 || !ctx2) return;
+                
+                const w1 = canvas1.getBoundingClientRect().width;
+                const h1 = canvas1.getBoundingClientRect().height;
+                const w2 = canvas2.getBoundingClientRect().width;
+                const h2 = canvas2.getBoundingClientRect().height;
+                
+                // Clear
+                ctx1.fillStyle = '#000';
+                ctx1.fillRect(0, 0, w1, h1);
+                ctx2.fillStyle = '#000';
+                ctx2.fillRect(0, 0, w2, h2);
+                
+                const padding = { left: 40, right: 10, top: 10, bottom: 25 };
+                const plotW1 = w1 - padding.left - padding.right;
+                const plotH1 = h1 - padding.top - padding.bottom;
+                const plotW2 = w2 - padding.left - padding.right;
+                const plotH2 = h2 - padding.top - padding.bottom;
+                
+                // Draw axes
+                ctx1.strokeStyle = 'rgba(255,255,255,0.2)';
+                ctx1.lineWidth = 1;
+                ctx1.beginPath();
+                ctx1.moveTo(padding.left, padding.top);
+                ctx1.lineTo(padding.left, h1 - padding.bottom);
+                ctx1.lineTo(w1 - padding.right, h1 - padding.bottom);
+                ctx1.stroke();
+                
+                ctx2.strokeStyle = 'rgba(255,255,255,0.2)';
+                ctx2.lineWidth = 1;
+                ctx2.beginPath();
+                ctx2.moveTo(padding.left, padding.top);
+                ctx2.lineTo(padding.left, h2 - padding.bottom);
+                ctx2.lineTo(w2 - padding.right, h2 - padding.bottom);
+                ctx2.stroke();
+                
+                // Y-axis labels
+                ctx1.fillStyle = 'rgba(255,255,255,0.4)';
+                ctx1.font = '10px JetBrains Mono, monospace';
+                ctx1.textAlign = 'right';
+                ctx1.fillText('1.35', padding.left - 5, padding.top + 10);
+                ctx1.fillText('1.25', padding.left - 5, h1 - padding.bottom - 5);
+                
+                ctx2.fillStyle = 'rgba(255,255,255,0.4)';
+                ctx2.font = '10px JetBrains Mono, monospace';
+                ctx2.textAlign = 'right';
+                ctx2.fillText('1.05', padding.left - 5, padding.top + 10);
+                ctx2.fillText('0.95', padding.left - 5, h2 - padding.bottom - 5);
+                
+                // X-axis labels
+                ctx1.textAlign = 'center';
+                ctx1.fillText('0', padding.left, h1 - 5);
+                ctx1.fillText('1000', w1 - padding.right, h1 - 5);
+                
+                ctx2.textAlign = 'center';
+                ctx2.fillText('0', padding.left, h2 - 5);
+                ctx2.fillText('1000', w2 - padding.right, h2 - 5);
+                
+                // Draw chains for canvas 1 (λ parameter around 1.3)
+                const yMin1 = 1.24, yMax1 = 1.36;
+                mcmcAnimState.chains.forEach((chain, chainIdx) => {
+                    if (chain.length < 2) return;
+                    
+                    ctx1.strokeStyle = chainColors[chainIdx];
+                    ctx1.lineWidth = 1;
+                    ctx1.globalAlpha = 0.8;
+                    ctx1.beginPath();
+                    
+                    chain.forEach((val, i) => {
+                        const x = padding.left + (i / mcmcAnimState.maxIterations) * plotW1;
+                        const y = padding.top + plotH1 - ((val - yMin1) / (yMax1 - yMin1)) * plotH1;
+                        if (i === 0) ctx1.moveTo(x, y);
+                        else ctx1.lineTo(x, y);
+                    });
+                    ctx1.stroke();
+                    ctx1.globalAlpha = 1;
+                });
+                
+                // Draw chains for canvas 2 (γ parameter around 1.0)
+                const yMin2 = 0.94, yMax2 = 1.06;
+                mcmcAnimState.chains2.forEach((chain, chainIdx) => {
+                    if (chain.length < 2) return;
+                    
+                    ctx2.strokeStyle = chainColors[chainIdx];
+                    ctx2.lineWidth = 1;
+                    ctx2.globalAlpha = 0.8;
+                    ctx2.beginPath();
+                    
+                    chain.forEach((val, i) => {
+                        const x = padding.left + (i / mcmcAnimState.maxIterations) * plotW2;
+                        const y = padding.top + plotH2 - ((val - yMin2) / (yMax2 - yMin2)) * plotH2;
+                        if (i === 0) ctx2.moveTo(x, y);
+                        else ctx2.lineTo(x, y);
+                    });
+                    ctx2.stroke();
+                    ctx2.globalAlpha = 1;
+                });
+            }
+            
+            function updateDiagnostics() {
+                const iterEl = document.getElementById('mcmc-iteration');
+                const rhatEl = document.getElementById('mcmc-rhat');
+                const essEl = document.getElementById('mcmc-ess');
+                const statusEl = document.getElementById('mcmc-status');
+                
+                if (iterEl) iterEl.textContent = mcmcAnimState.iteration;
+                
+                if (mcmcAnimState.iteration < 200) {
+                    if (rhatEl) rhatEl.textContent = '—';
+                    if (essEl) essEl.textContent = '—';
+                    if (statusEl) {
+                        statusEl.textContent = 'Warmup';
+                        statusEl.className = 'mcmc-diag-value mcmc-status sampling';
+                    }
+                } else if (mcmcAnimState.iteration < mcmcAnimState.maxIterations) {
+                    // Simulate R-hat decreasing toward 1
+                    const progress = (mcmcAnimState.iteration - 200) / (mcmcAnimState.maxIterations - 200);
+                    const rhat = 1.15 - progress * 0.14 + (Math.random() - 0.5) * 0.02;
+                    const ess = Math.floor(50 + progress * 950);
+                    
+                    if (rhatEl) rhatEl.textContent = rhat.toFixed(3);
+                    if (essEl) essEl.textContent = ess.toString();
+                    if (statusEl) {
+                        statusEl.textContent = 'Sampling';
+                        statusEl.className = 'mcmc-diag-value mcmc-status sampling';
+                    }
+                } else {
+                    if (rhatEl) rhatEl.textContent = '1.003';
+                    if (essEl) essEl.textContent = '1000';
+                    if (statusEl) {
+                        statusEl.textContent = 'Converged ✓';
+                        statusEl.className = 'mcmc-diag-value mcmc-status converged';
+                    }
+                }
+            }
+            
+            function mcmcAnimate() {
+                if (!mcmcAnimState.isPlaying) return;
+                
+                // Add samples to each chain
+                const startVals1 = [1.35, 1.25, 1.32, 1.28];
+                const startVals2 = [1.05, 0.95, 1.02, 0.98];
+                const target1 = 1.30;
+                const target2 = 1.00;
+                
+                for (let step = 0; step < mcmcAnimState.speed; step++) {
+                    if (mcmcAnimState.iteration >= mcmcAnimState.maxIterations) break;
+                    
+                    for (let c = 0; c < 4; c++) {
+                        const sample1 = generateMCMCSample(mcmcAnimState.chains[c], mcmcAnimState.iteration, target1, startVals1[c]);
+                        const sample2 = generateMCMCSample(mcmcAnimState.chains2[c], mcmcAnimState.iteration, target2, startVals2[c]);
+                        mcmcAnimState.chains[c].push(sample1);
+                        mcmcAnimState.chains2[c].push(sample2);
+                    }
+                    mcmcAnimState.iteration++;
+                }
+                
+                drawChains();
+                updateDiagnostics();
+                
+                if (mcmcAnimState.iteration < mcmcAnimState.maxIterations) {
+                    mcmcAnimState.rafId = requestAnimationFrame(mcmcAnimate);
+                } else {
+                    mcmcAnimState.isPlaying = false;
+                    updateMCMCPlayButton();
+                }
+            }
+            
+            function updateMCMCPlayButton() {
+                const btn = document.getElementById('mcmc-play-btn');
+                const icon = document.getElementById('mcmc-play-icon');
+                const text = document.getElementById('mcmc-play-text');
+                
+                if (!btn || !icon || !text) return;
+                
+                if (mcmcAnimState.isPlaying) {
+                    icon.innerHTML = '<rect x="6" y="4" width="4" height="16" fill="currentColor"/><rect x="14" y="4" width="4" height="16" fill="currentColor"/>';
+                    text.textContent = 'Pause';
+                } else {
+                    icon.innerHTML = '<path d="M8 5v14l11-7z"/>';
+                    text.textContent = mcmcAnimState.iteration >= mcmcAnimState.maxIterations ? 'Completed' : 'Run Sampler';
+                }
+            }
+            
+            window.toggleMCMCAnimation = function() {
+                if (!mcmcInitialized) initMCMC();
+                
+                if (mcmcAnimState.iteration >= mcmcAnimState.maxIterations) {
+                    // Reset if completed
+                    mcmcAnimState.chains = [[], [], [], []];
+                    mcmcAnimState.chains2 = [[], [], [], []];
+                    mcmcAnimState.iteration = 0;
+                }
+                
+                mcmcAnimState.isPlaying = !mcmcAnimState.isPlaying;
+                updateMCMCPlayButton();
+                
+                if (mcmcAnimState.isPlaying) {
+                    mcmcAnimState.rafId = requestAnimationFrame(mcmcAnimate);
+                } else {
+                    cancelAnimationFrame(mcmcAnimState.rafId);
+                }
+            };
+            
+            window.resetMCMCAnimation = function() {
+                cancelAnimationFrame(mcmcAnimState.rafId);
+                mcmcAnimState.isPlaying = false;
+                mcmcAnimState.iteration = 0;
+                mcmcAnimState.chains = [[], [], [], []];
+                mcmcAnimState.chains2 = [[], [], [], []];
+                
+                if (mcmcInitialized) {
+                    drawChains();
+                    updateDiagnostics();
+                }
+                updateMCMCPlayButton();
+            };
+            
+            // Initialize when Bayesian modal opens
+            window.initMCMCChart = initMCMC;
+        })();
     </script>
 
 
