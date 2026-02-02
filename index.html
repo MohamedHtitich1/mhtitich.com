@@ -853,7 +853,8 @@
             border-radius: 8px;
             padding: 0.6rem 0.75rem;
             color: var(--text-primary);
-            font-size: 0.8rem;
+            font-size: 16px; /* 16px minimum prevents iOS zoom on focus */
+            font-family: var(--sans);
         }
         
         .inline-chat-input:focus {
@@ -5391,6 +5392,76 @@
                 transform: none;
             }
             
+            /* Fixed size chat box on mobile - prevents resizing when output appears */
+            .inline-chat {
+                min-height: 200px;
+            }
+            
+            .inline-chat-messages {
+                min-height: 80px;
+                max-height: 200px;
+                flex: 1;
+            }
+            
+            .inline-chat-input {
+                font-size: 16px; /* Prevents iOS zoom on focus */
+            }
+            
+            /* Formula mobile optimization for Time-Decay Entropy */
+            .formula-block {
+                padding: 1rem;
+                gap: 1rem;
+            }
+            
+            .formula-step {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+            
+            .formula-step-label {
+                width: auto;
+                font-size: 0.65rem;
+            }
+            
+            .formula-math {
+                font-size: 1rem;
+                gap: 0.25rem;
+                width: 100%;
+                overflow-x: auto;
+                padding-bottom: 0.25rem;
+            }
+            
+            .formula-frac {
+                font-size: 0.9em;
+            }
+            
+            .formula-num,
+            .formula-denom {
+                font-size: 0.85em;
+            }
+            
+            .formula-vars-grid {
+                grid-template-columns: 1fr;
+                gap: 0.5rem;
+            }
+            
+            .formula-var-item {
+                font-size: 0.75rem;
+            }
+            
+            .formula-var-symbol {
+                font-size: 0.9rem;
+            }
+            
+            .formula-container {
+                margin: 1rem 0;
+            }
+            
+            .formula-title {
+                font-size: 0.8rem;
+            }
+            
             /* Publications - Mobile List */
             .publication-item {
                 grid-template-columns: 1fr;
@@ -5800,7 +5871,7 @@
                         </div>
                         <div class="inline-chat-messages"></div>
                         <div class="inline-chat-input-row">
-                            <input type="text" class="inline-chat-input" placeholder="Ask about methods, data, or literature..." onkeypress="handleInlineChatKeypress(event, this)">
+                            <input type="text" class="inline-chat-input" inputmode="text" enterkeyhint="send" placeholder="Ask about methods, data, or literature..." onkeypress="handleInlineChatKeypress(event, this)">
                             <button class="inline-chat-send" onclick="event.stopPropagation(); sendInlineChat(this);">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 19V5M5 12l7-7 7 7"></path></svg>
                             </button>
@@ -5823,7 +5894,7 @@
                         </div>
                         <div class="inline-chat-messages"></div>
                         <div class="inline-chat-input-row">
-                            <input type="text" class="inline-chat-input" placeholder="Ask about CESP, JTS, or metrics..." onkeypress="handleInlineChatKeypress(event, this)">
+                            <input type="text" class="inline-chat-input" inputmode="text" enterkeyhint="send" placeholder="Ask about CESP, JTS, or metrics..." onkeypress="handleInlineChatKeypress(event, this)">
                             <button class="inline-chat-send" onclick="event.stopPropagation(); sendInlineChat(this);">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 19V5M5 12l7-7 7 7"></path></svg>
                             </button>
@@ -5846,7 +5917,7 @@
                         </div>
                         <div class="inline-chat-messages"></div>
                         <div class="inline-chat-input-row">
-                            <input type="text" class="inline-chat-input" placeholder="Ask about CPI, surveys, or perceptions..." onkeypress="handleInlineChatKeypress(event, this)">
+                            <input type="text" class="inline-chat-input" inputmode="text" enterkeyhint="send" placeholder="Ask about CPI, surveys, or perceptions..." onkeypress="handleInlineChatKeypress(event, this)">
                             <button class="inline-chat-send" onclick="event.stopPropagation(); sendInlineChat(this);">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 19V5M5 12l7-7 7 7"></path></svg>
                             </button>
@@ -9882,11 +9953,11 @@ national &lt;- <span class="func">aggregate_nuts</span>(<br>
             </div>
         </div>
         
-        <a href="https://scholar.google.com/citations?user=TkpVjfkAAAAJ" target="_blank" class="scholar-link">
+        <a href="https://orcid.org/0000-0002-8732-6286" target="_blank" class="scholar-link">
             <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
-                <path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-24L0 9.5l4.838 3.94A8 8 0 0 1 12 9a8 8 0 0 1 7.162 4.44L24 9.5z"/>
+                <path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 0 1-.947-.947c0-.525.422-.947.947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.025-5.325 5.025h-3.919V7.416zm1.444 1.303v7.444h2.297c3.272 0 4.022-2.484 4.022-3.722 0-1.209-.653-3.722-3.916-3.722h-2.403z"/>
             </svg>
-            View full list on Google Scholar
+            View full list on ORCID
         </a>
     </section>
 
@@ -10104,7 +10175,11 @@ national &lt;- <span class="func">aggregate_nuts</span>(<br>
                     inlineChat.classList.add('active');
                     const input = inlineChat.querySelector('.inline-chat-input');
                     if (input) {
-                        setTimeout(() => input.focus(), 100);
+                        // Immediate focus to trigger keyboard on mobile
+                        input.focus();
+                        // Also set inputMode for better mobile keyboard
+                        input.setAttribute('inputmode', 'text');
+                        input.setAttribute('enterkeyhint', 'send');
                     }
                 }
                 return;
