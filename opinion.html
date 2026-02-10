@@ -4,15 +4,44 @@
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Opinion — Mohamed Htitich</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com/">
-    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
-    <link href="./opinion_files/css2" rel="stylesheet">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="When Measurement Becomes Ritual">
+    <meta property="og:description" content="Development indices have become biased coins. Information theory reveals what they hide: the real story is in governance, not basic needs.">
+    <meta property="og:image" content="https://mhtitich.com/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Two coins representing HDI (95% predictable) vs Governance (48% predictable), illustrating how development indices carry less information than a fair coin.">
+    <meta property="og:url" content="https://mhtitich.com/opinion">
+    <meta property="og:site_name" content="Mohamed Htitich">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:locale:alternate" content="fr_FR">
+    <meta property="article:author" content="Mohamed Htitich">
+    <meta property="article:published_time" content="2026-02-10">
+    <meta property="article:section" content="Opinion">
+    <meta property="article:tag" content="Development Measurement">
+    <meta property="article:tag" content="Information Theory">
+    <meta property="article:tag" content="HDI">
+    <meta property="article:tag" content="Governance">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="When Measurement Becomes Ritual">
+    <meta name="twitter:description" content="Development indices have become biased coins. Information theory reveals what they hide.">
+    <meta name="twitter:image" content="https://mhtitich.com/og-image.jpg">
+    <meta name="twitter:image:alt" content="Two coins: HDI (95% predictable) vs Governance (48% predictable)">
+
+    <!-- General meta -->
+    <meta name="description" content="Development indices have become biased coins. Information theory reveals what they hide: the real story is in governance, not basic needs.">
+    <meta name="author" content="Mohamed Htitich">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/aaaakshat/cm-web-fonts@latest/fonts.css">
     <style>
         /* ===== THEME VARIABLES (from mhtitich.com) ===== */
         :root {
-            --serif: 'EB Garamond', Georgia, serif;
-            --sans: 'IBM Plex Sans', -apple-system, sans-serif;
-            --mono: 'JetBrains Mono', monospace;
+            --serif: 'CMU Serif', 'Latin Modern Roman', 'Computer Modern', Georgia, serif;
+            --sans: 'CMU Sans Serif', 'Latin Modern Sans', -apple-system, sans-serif;
+            --mono: 'CMU Typewriter Text', 'Latin Modern Mono', monospace;
             --accent: #7c9885;
             --accent-hover: #9ab8a3;
             --accent-light: #7cb08a;
@@ -168,7 +197,7 @@
             z-index: 100;
             padding: 1.5rem 3rem;
             display: flex;
-            justify-content: flex-end;
+            justify-content: space-between;
             align-items: center;
             background: var(--bg-card);
             backdrop-filter: blur(30px) saturate(1.5);
@@ -177,7 +206,80 @@
             transition: all 0.3s ease;
         }
 
-        .nav-right { display: flex; align-items: center; gap: 0.5rem; }
+        .nav-left {
+            display: flex;
+            align-items: baseline;
+            gap: 0.4rem;
+        }
+        .nav-logo {
+            font-family: var(--serif);
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            text-decoration: none;
+            letter-spacing: -0.01em;
+            transition: color 0.3s;
+        }
+        .nav-logo:hover { color: var(--accent); }
+        .nav-section-label {
+            font-family: var(--sans);
+            font-size: 0.65rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-left: 0.3rem;
+        }
+
+        .nav-right { display: flex; align-items: center; gap: 1.2rem; }
+        .nav-link {
+            font-family: var(--sans);
+            font-size: 0.72rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            text-decoration: none;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+        .nav-link:hover { color: var(--accent); }
+
+        /* TTS / Read Aloud button */
+        .tts-toggle {
+            width: 38px; height: 38px;
+            display: flex; align-items: center; justify-content: center;
+            background: var(--bg-glass);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .tts-toggle:hover { background: var(--bg-glass-hover); border-color: var(--accent-dim); transform: scale(1.05); }
+        .tts-toggle svg { width: 18px; height: 18px; stroke: var(--text-secondary); fill: none; stroke-width: 2; transition: all 0.3s ease; }
+        .tts-toggle:hover svg { stroke: var(--accent); }
+        .tts-toggle.active { border-color: var(--accent); background: var(--accent); }
+        .tts-toggle.active svg { stroke: var(--bg-primary); }
+        .tts-toggle.active:hover { opacity: 0.85; transform: scale(1.05); }
+
+        /* TTS progress bar */
+        #tts-progress {
+            position: fixed;
+            bottom: 0; left: 0;
+            height: 3px;
+            width: 0%;
+            background: linear-gradient(90deg, var(--accent), var(--accent-light));
+            z-index: 200;
+            transition: width 0.3s linear;
+            opacity: 0;
+        }
+        #tts-progress.active { opacity: 1; }
+
+        /* TTS highlight on current paragraph */
+        .tts-reading {
+            background: var(--accent-dim);
+            border-radius: 4px;
+            transition: background 0.3s ease;
+        }
 
         .theme-toggle {
             display: flex; align-items: center; justify-content: center;
@@ -501,6 +603,26 @@
             letter-spacing: 0.05em;
         }
 
+        .article-cite {
+            margin-top: 3rem;
+            padding: 1.2rem 1.5rem;
+            background: var(--bg-glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 6px;
+            font-family: var(--sans);
+            font-size: 0.78rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+        .article-cite .cite-label {
+            font-size: 0.65rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+        }
+
         /* ===== SCROLL PROGRESS ===== */
         .scroll-progress {
             position: fixed;
@@ -513,9 +635,14 @@
         }
 
         /* ===== RESPONSIVE ===== */
+
+        /* Tablet */
         @media (max-width: 820px) {
-            nav { padding: 1rem 1.5rem; }
-            .article-wrapper { padding: 6rem 1.5rem 3rem; }
+            nav { padding: 0.8rem 1.2rem; }
+            .nav-logo { font-size: 0.85rem; }
+            .nav-section-label { display: none; }
+            .nav-link { font-size: 0.65rem; }
+            .article-wrapper { padding: 5.5rem 1.5rem 3rem; }
             .article-body {
                 column-count: 1;
                 column-gap: 0;
@@ -523,21 +650,150 @@
                 font-size: 1.05rem;
             }
             .article-title { font-size: clamp(1.8rem, 6vw, 2.6rem); }
+            .article-subtitle { font-size: 1rem; line-height: 1.65; }
             .marginal-note {
                 float: none;
                 width: 100%;
                 margin: 1.5rem 0;
+                padding: 1rem 1.2rem;
+            }
+            .article-infobox {
+                padding: 1.5rem 1.2rem;
             }
             .article-infobox .stat-row {
                 flex-direction: column;
                 gap: 1rem;
             }
+            .pull-quote blockquote {
+                font-size: 1.3rem;
+            }
+            .article-notes li {
+                font-size: 0.78rem;
+            }
         }
 
+        /* Mobile */
         @media (max-width: 480px) {
-            .article-wrapper { padding: 5rem 1rem 2rem; }
-            .article-body > p:first-of-type::first-letter { font-size: 3.2em; }
-            .pull-quote blockquote { font-size: 1.2rem; }
+            nav {
+                padding: 0.6rem 0.8rem;
+                gap: 0.3rem;
+            }
+            .nav-logo { font-size: 0.8rem; letter-spacing: 0.08em; }
+            .nav-link { font-size: 0.6rem; padding: 0.3rem 0.5rem; }
+            .theme-toggle { width: 32px; height: 32px; }
+            .theme-toggle svg { width: 16px; height: 16px; }
+            .tts-toggle { width: 32px; height: 32px; }
+            .tts-toggle svg { width: 14px; height: 14px; }
+            .article-wrapper {
+                padding: 4.5rem 0.9rem 2rem;
+            }
+            .article-section-label {
+                font-size: 0.6rem;
+                gap: 0.5rem;
+            }
+            .article-overline {
+                font-size: 1rem;
+            }
+            .article-title {
+                font-size: clamp(1.5rem, 7vw, 2.2rem);
+                margin-bottom: 1rem;
+            }
+            .article-subtitle {
+                font-size: 0.92rem;
+                line-height: 1.6;
+                margin-bottom: 1.5rem;
+            }
+            .article-meta {
+                font-size: 0.78rem;
+                gap: 0.35rem;
+                margin-bottom: 2rem;
+                padding-bottom: 1.5rem;
+            }
+            .article-body {
+                font-size: 0.98rem;
+                line-height: 1.75;
+            }
+            .article-body > p:first-of-type::first-letter {
+                font-size: 3.2em;
+            }
+            .article-body p + p {
+                text-indent: 1em;
+            }
+            .pull-quote {
+                margin: 1.8rem 0;
+                padding: 1.2rem 0;
+            }
+            .pull-quote blockquote {
+                font-size: 1.1rem;
+                line-height: 1.5;
+                padding: 0 0.5rem;
+            }
+            .article-infobox {
+                padding: 1.2rem 1rem;
+                margin: 1.8rem -0.5rem;
+                border-radius: 8px;
+            }
+            .article-infobox h3 {
+                font-size: 0.68rem;
+            }
+            .article-infobox p {
+                font-size: 0.82rem;
+            }
+            .article-infobox .stat-value {
+                font-size: 1.3rem;
+            }
+            .marginal-note {
+                margin: 1.2rem -0.5rem;
+                padding: 0.9rem 1rem;
+                font-size: 0.78rem;
+                border-radius: 6px;
+                background: var(--bg-glass);
+                border-left-width: 2px;
+            }
+            .article-notes {
+                margin-top: 2rem;
+                padding-top: 1.5rem;
+            }
+            .article-notes ol {
+                padding-left: 1rem;
+            }
+            .article-notes li {
+                font-size: 0.73rem;
+                line-height: 1.55;
+                margin-bottom: 0.6rem;
+            }
+            .article-tags {
+                gap: 0.35rem;
+                margin-top: 1.8rem;
+            }
+            .tag {
+                font-size: 0.62rem;
+                padding: 0.25rem 0.55rem;
+            }
+            .article-footer {
+                margin-top: 2.5rem;
+                flex-direction: column;
+                gap: 0.8rem;
+                align-items: flex-start;
+            }
+            .article-cite {
+                padding: 1rem;
+                font-size: 0.72rem;
+            }
+            /* Entropy chart: ensure canvas doesn't overflow */
+            #article-entropy-chart,
+            #article-entropy-chart-fr {
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+        }
+
+        /* Very small screens */
+        @media (max-width: 360px) {
+            .article-wrapper { padding: 4rem 0.7rem 1.5rem; }
+            .article-title { font-size: 1.4rem; }
+            .article-body { font-size: 0.93rem; line-height: 1.7; }
+            .pull-quote blockquote { font-size: 1rem; }
         }
 
         /* ===== ENTRANCE ANIMATIONS ===== */
@@ -573,7 +829,17 @@
 
     <!-- Navigation -->
     <nav>
+        <div class="nav-left">
+            <a href="https://mhtitich.com/" class="nav-logo">Mohamed Htitich</a>
+            <span class="nav-section-label">Opinion &amp; Analysis</span>
+        </div>
         <div class="nav-right">
+            <a href="https://mhtitich.com/#research" class="nav-link">Research</a>
+            <a href="https://mhtitich.com/#about" class="nav-link">About</a>
+            <button class="tts-toggle" onclick="toggleTTS()" aria-label="Read aloud" title="Read aloud">
+                <svg class="tts-play-icon" viewBox="0 0 24 24"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+                <svg class="tts-stop-icon" viewBox="0 0 24 24" style="display:none;"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>
+            </button>
             <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
                 <svg class="moon-icon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
                 <svg class="sun-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
@@ -587,19 +853,20 @@
         <!-- Section Label with language toggle -->
         <div class="article-section-label fade-in fade-in-d1" style="display: flex; justify-content: flex-end; align-items: center;">
             <span class="lang-toggle" style="display: flex; gap: 0.25rem; font-size: 0.7rem; letter-spacing: 0.1em;">
-                <button onclick="setLang(&#39;en&#39;)" id="lang-en-btn" style="background: transparent; color: var(--text-muted); border: 1px solid var(--accent); border-radius: 4px; padding: 0.2rem 0.6rem; cursor: pointer; font-family: var(--sans); font-size: 0.65rem; font-weight: 600; letter-spacing: 0.1em; transition: 0.3s;">EN</button>
-                <button onclick="setLang(&#39;fr&#39;)" id="lang-fr-btn" style="background: var(--accent); color: var(--bg-primary); border: 1px solid var(--border); border-radius: 4px; padding: 0.2rem 0.6rem; cursor: pointer; font-family: var(--sans); font-size: 0.65rem; font-weight: 600; letter-spacing: 0.1em; transition: 0.3s;">FR</button>
+                <button onclick="setLang(&#39;en&#39;)" id="lang-en-btn" style="background: var(--accent); color: var(--bg-primary); border: 1px solid var(--accent); border-radius: 4px; padding: 0.2rem 0.6rem; cursor: pointer; font-family: var(--sans); font-size: 0.65rem; font-weight: 600; letter-spacing: 0.1em; transition: 0.3s;">EN</button>
+                <button onclick="setLang(&#39;fr&#39;)" id="lang-fr-btn" style="background: transparent; color: var(--text-muted); border: 1px solid var(--border); border-radius: 4px; padding: 0.2rem 0.6rem; cursor: pointer; font-family: var(--sans); font-size: 0.65rem; font-weight: 600; letter-spacing: 0.1em; transition: 0.3s;">FR</button>
             </span>
         </div>
 
         <!-- Overline / Surtitre -->
         <!-- ENGLISH VERSION -->
-        <div id="lang-en" class="lang-content" style="display: none;">
+        <div id="lang-en" class="lang-content" style="">
         <div class="article-overline fade-in fade-in-d2">Opinion · February 2026</div>
 
         <!-- Title -->
         <h1 class="article-title fade-in fade-in-d3">
             When Measurement Becomes Ritual
+            <span style="display: block; font-size: 0.42em; font-weight: 400; color: var(--text-muted); margin-top: 0.4rem; letter-spacing: 0;">The Biased Coin of Development Rankings</span>
         </h1>
 
         <!-- Subtitle / Chapeau -->
@@ -619,7 +886,7 @@
         <!-- Body -->
         <div class="article-body fade-in fade-in-d5">
 
-            <p>Almost four decades after the first Human Development Index ranked countries by life expectancy, education, and income, the ritual has barely changed. Each year, the United Nations Development Programme releases its updated HDI. Each year, Norway or Switzerland sits at the top. Each year, Chad or the Central African Republic sits at the bottom. The latest edition is no different: Norway, Denmark, and Finland occupy the podium; South Sudan and the Central African Republic anchor the bottom.<sup>1</sup> Each year, newspapers write the same headline with a different date. The ceremony has acquired the solemnity of a liturgical calendar: predictable, repetitive, and, in the strict sense of the word, uninformative. Because information, as Claude Shannon demonstrated in 1948, is surprise.<sup>2</sup></p>
+            <p>Almost four decades after the first Human Development Index ranked countries by life expectancy, education, and income, the ritual has barely changed. Each year, the United Nations Development Programme releases its updated HDI. Each year, Norway or Switzerland sits at the top. Each year, Chad or the Central African Republic sits at the bottom. The latest edition is no different: Norway, Denmark, and Switzerland occupy the podium; South Sudan and the Central African Republic anchor the bottom.<sup><a href="#fn-en-1" style="color: var(--accent); text-decoration: none;">1</a></sup> Each year, newspapers write the same headline with a different date. The ceremony has acquired the solemnity of a liturgical calendar: predictable, repetitive, and, in the strict sense of the word, uninformative. Because information, as Claude Shannon demonstrated in 1948, is surprise.<sup><a href="#fn-en-2" style="color: var(--accent); text-decoration: none;">2</a></sup></p>
 
             <div class="pull-quote">
                 <blockquote>
@@ -627,19 +894,19 @@
                 </blockquote>
             </div>
 
-            <p>This is not merely an aesthetic complaint about boring rankings. It is a mathematical one. Shannon's information theory provides the formal apparatus to understand why these annual exercises have exhausted their usefulness, and (more importantly) what they are hiding. Consider a coin. If it is fair, each flip carries one bit of information: you genuinely do not know whether the next result will be heads or tails. The entropy, Shannon's measure of uncertainty, is at its maximum.<sup>3</sup> Now bias the coin. Make it land on heads 99 % of the time. Each flip becomes almost entirely predictable. The entropy collapses. You learn almost nothing from watching it land, because you already knew the outcome. The formula is elegant and unforgiving: <em>H = −Σ p log(p)</em>. As the probability distribution concentrates, as one outcome becomes near-certain, the information content of the signal approaches zero.</p>
+            <p>This is not merely an aesthetic complaint about boring rankings. It is a mathematical one. Shannon's information theory provides the formal apparatus to understand why these annual exercises have exhausted their usefulness, and (more importantly) what they are hiding. Consider a coin. If it is fair, each flip carries one bit of information: you genuinely do not know whether the next result will be heads or tails. The entropy, Shannon's measure of uncertainty, is at its maximum.<sup><a href="#fn-en-3" style="color: var(--accent); text-decoration: none;">3</a></sup> Now bias the coin. Make it land on heads 99 % of the time. Each flip becomes almost entirely predictable. The entropy collapses. You learn almost nothing from watching it land, because you already knew the outcome. The formula is elegant and unforgiving: <em>H = −Σ p log(p)</em>. As the probability distribution concentrates, as one outcome becomes near-certain, the information content of the signal approaches zero.</p>
 
             <div class="marginal-note">
-                <em>Shannon entropy.</em> — Introduced in « A Mathematical Theory of Communication » (1948), entropy quantifies the average information content of a signal. Maximum entropy occurs when all outcomes are equally likely (a fair coin: H = 1 bit). Minimum entropy occurs when the outcome is certain (H = 0). In composite indices, however, the logic is inverted: when countries' scores become uniformly similar, the indicator loses its ability to discriminate between them — the system behaves like a biased coin landing the same way every time. High entropy in that context means high loss of information.
+                <em>Shannon entropy.</em> — Introduced in « A Mathematical Theory of Communication » (1948), entropy quantifies the average information content of a signal. Maximum entropy occurs when all outcomes are equally likely (a fair coin: H = 1 bit). Minimum entropy occurs when the outcome is certain (H = 0).
             </div>
 
-            <p>Development indices, I want to argue, have become biased coins. The top-ten rankings of the HDI<sup>4</sup> have become so predictable that they carry roughly as much information as a coin biased at 95 %. We keep flipping it, year after year, and we keep being told what we already know. The Scandinavian countries are doing well. Sub-Saharan Africa is not. The exercise has become ritual: comforting, perhaps, for those at the top, and demoralizing for those at the bottom, but analytically barren.<sup>5</sup></p>
+            <p>Development indices, I want to argue, have become biased coins. The top-ten rankings of the HDI<sup><a href="#fn-en-4" style="color: var(--accent); text-decoration: none;">4</a></sup> have become so predictable that they carry roughly as much information as a coin biased at 95 %. We keep flipping it, year after year, and we keep being told what we already know. Norway, Denmark, and Switzerland are doing well. Sub-Saharan Africa is not. The exercise has become ritual: comforting, perhaps, for those at the top, and demoralizing for those at the bottom, but analytically barren.<sup><a href="#fn-en-5" style="color: var(--accent); text-decoration: none;">5</a></sup></p>
 
-            <p>This is not hyperbole. The UNDP's own trend data, recalculated on a consistent methodology from 2010 to 2023, show that 90 % of the top-ten countries carry over from one measurement period to the next.<sup>6</sup> Only fifteen nations have ever entered the top ten across the entire span. Five of them (Norway, Switzerland, Germany, Iceland, Australia) have never left it. The value spread between rank one and rank ten is roughly 0.02 points on a zero-to-one scale: in 2023, Iceland leads at 0.972 and Belgium anchors the group at 0.951. The academic literature has been saying this for over thirty years. McGillivray showed in 1991 that HDI rankings correlate with GDP per capita at <em>r</em> = 0.89; Deb, two decades later, pushed that figure to 0.96. Ravallion, the former World Bank research director, called the whole enterprise a « mashup », a composite index « for which existing theory and practice provides little or no guidance to its design. » The rank-robustness literature confirms the intuition: top-ranked countries remain at the top regardless of how you weight the components.<sup>7</sup> The coin, in other words, is not merely biased. It may be fixed.</p>
+            <p>This is not hyperbole. The UNDP's own trend data, recalculated on a consistent methodology from 2010 to 2023, show that 90 % of the top-ten countries carry over from one measurement period to the next.<sup><a href="#fn-en-6" style="color: var(--accent); text-decoration: none;">6</a></sup> Only fifteen nations have ever entered the top ten across the entire span. Five of them (Norway, Switzerland, Germany, Iceland, Australia) have never left it. The value spread between rank one and rank ten is roughly 0.02 points on a zero-to-one scale. The academic literature has been saying this for over thirty years. Ravallion, the former World Bank research director, called the whole enterprise a « mashup », a composite index « for which existing theory and practice provides little or no guidance to its design. » The rank-robustness literature confirms the intuition: top-ranked countries remain at the top regardless of how you weight the components.<sup><a href="#fn-en-7" style="color: var(--accent); text-decoration: none;">7</a></sup> The coin, in other words, is not merely biased. It may be fixed.</p>
 
             <p>The question that follows is the one worth asking. If the signal has gone flat, what is it drowning out? If the coin always shows heads, what would we learn by flipping a different coin?</p>
 
-            <p>In a study published in <em>Global Policy</em>, I computed the Shannon entropy of social and governance indicators across 170 countries from 1990 to 2020.<sup>8</sup> The question was simple: for each dimension of development, at each point in time, how much surprise does it still carry?</p>
+            <p>In a study published in <em>Global Policy</em>, I computed the Shannon entropy of social and governance indicators across 170 countries from 1990 to 2020.<sup><a href="#fn-en-8" style="color: var(--accent); text-decoration: none;">8</a></sup> The question was simple: for each dimension of development, at each point in time, how much surprise does it still carry?</p>
 
             <p>The chart below shows what I found. The social dimensions (basic human needs, foundations of wellbeing) have been losing their capacity to surprise for three decades. This is a measurement crisis. Composite indices that continue to lean on these dimensions are listening to signals that have gone nearly silent.</p>
 
@@ -651,7 +918,7 @@
                 </div>
             </div>
 
-            <p>The governance dimensions tell the opposite story. State capacity and democratic accountability have been diverging steadily: they are where the surprise still lives, where a country's trajectory remains genuinely hard to predict.<sup>9</sup> The complete crossover occurred in the 2010s: from that point onward, governance dimensions consistently carried more surprise than social ones. The predictable coin of basic needs was replaced by the much fairer coin of governance, but very few people were watching it flip.</p>
+            <p>The governance dimensions tell the opposite story. State capacity and democratic accountability have been diverging steadily: they are where the surprise still lives, where a country's trajectory remains genuinely hard to predict.<sup><a href="#fn-en-9" style="color: var(--accent); text-decoration: none;">9</a></sup> The complete crossover occurred in the 2010s: from that point onward, governance dimensions consistently carried more surprise than social ones. The predictable coin of basic needs was replaced by the much fairer coin of governance, but very few people were watching it flip.</p>
 
             <!-- Pull Quote -->
             <div class="pull-quote">
@@ -660,15 +927,15 @@
                 </blockquote>
             </div>
 
-            <p>What emerges from this analysis is not a technical footnote about measurement methods. It is a fundamental reorientation of how we should understand global development in the twenty-first century. The HDI, and the many composite measures built on similar architectures, were designed in an era when the central question was whether countries could feed their people, educate their children, and keep them alive past the age of five. These were the dimensions of maximum uncertainty, and therefore maximum information. The indices did their job. But they continued doing the same job long after the question changed. And the question, as the entropy analysis shows, has changed completely. Contemporary development gaps are primarily governance gaps. What separates Uganda from Vietnam, or Argentina from Denmark, is no longer chiefly a matter of infant mortality or access to clean water (although these remain critical at the most granular, community-intervention level). What separates them is the quality of their institutions: the capacity of the state to mobilize resources and redistribute wealth, the accountability of democratic processes, the independence of courts, the freedom of the press.<sup>10</sup></p>
+            <p>What emerges from this analysis is not a technical footnote about measurement methods. It is a fundamental reorientation of how we should understand global development in the twenty-first century. The HDI, and the many composite measures built on similar architectures, were designed in an era when the central question was whether countries could feed their people, educate their children, and keep them alive past the age of five. These were the dimensions of maximum uncertainty, and therefore maximum information. The indices did their job. But they continued doing the same job long after the question changed. And the question, as the entropy analysis shows, has changed completely. Contemporary development gaps are primarily governance gaps. What separates Uganda from Vietnam, or Argentina from Denmark, is no longer chiefly a matter of infant mortality or access to clean water (although these remain critical at the most granular, community-intervention level). What separates them is the quality of their institutions: the capacity of the state to mobilize resources and redistribute wealth, the accountability of democratic processes, the independence of courts, the freedom of the press.<sup><a href="#fn-en-10" style="color: var(--accent); text-decoration: none;">10</a></sup></p>
 
             <div class="marginal-note">
                 <em>Regional patterns.</em> — The shift from social to governance dimensions is visible across nearly all world regions. It is sharpest in Central Asia, Latin America, the Middle East, and sub-Saharan Africa. In Europe and North America, governance indicators have dominated throughout, reflecting already high baseline performance. South Asia stands apart: all dimensions retain similar weights, reflecting persistent challenges across the board.
             </div>
 
-            <p>The regional analysis reinforces this picture.<sup>11</sup> In almost every region — Central Asia, Latin America, the Middle East, sub-Saharan Africa — governance dimensions now carry the most surprise, meaning they are where countries' paths diverge most sharply. The shift became visible from the mid-1990s onwards, and by 2020 it was complete.<sup>12</sup></p>
+            <p>The regional analysis reinforces this picture.<sup><a href="#fn-en-11" style="color: var(--accent); text-decoration: none;">11</a></sup> In almost every region — Central Asia, Latin America, the Middle East, sub-Saharan Africa — governance dimensions now carry the most surprise, meaning they are where countries' paths diverge most sharply. The shift became visible from the mid-1990s onwards, and by 2020 it was complete.<sup><a href="#fn-en-12" style="color: var(--accent); text-decoration: none;">12</a></sup></p>
 
-            <p>One might object that the gain of information in the governance dimensions is an artifact, that expert-coded governance indicators are contaminated by what some scholars call « recency bias, » a systematic pessimism that makes recent assessments harsher than older ones, which results in less predictable governance country performance (Little and Meng 2024).<sup>13</sup> I addressed this concern at length. The evidence does not support it. The V-Dem project, whose data underpin much of the governance analysis, has shown that less than 1.4 % of its experts revised their historical ratings, and those revisions showed no systematic negative trend (Knutsen et al. 2024).<sup>14</sup> The patterns I observe (some countries improving, others deteriorating, with the net effect being greater cross-national variance) are consistent with genuine divergence, not measurement drift. The quality of democratic accountability is not converging globally. It is bifurcating.<sup>15</sup></p>
+            <p>One might object that the gain of information in the governance dimensions is an artifact, that expert-coded governance indicators are contaminated by what some scholars call « recency bias, » a systematic pessimism that makes recent assessments harsher than older ones, which results in less predictable governance country performance (Little and Meng 2024).<sup><a href="#fn-en-13" style="color: var(--accent); text-decoration: none;">13</a></sup> I addressed this concern at length. The evidence does not support it. The V-Dem project, whose data underpin much of the governance analysis, has shown that less than 1.4 % of its experts revised their historical ratings, and those revisions showed no systematic negative trend (Knutsen et al. 2024).<sup><a href="#fn-en-14" style="color: var(--accent); text-decoration: none;">14</a></sup> The patterns I observe (some countries improving, others deteriorating, with the net effect being greater cross-national variance) are consistent with genuine divergence, not measurement drift. The quality of democratic accountability is not converging globally. It is bifurcating.<sup><a href="#fn-en-15" style="color: var(--accent); text-decoration: none;">15</a></sup></p>
 
             <p>There is a deeper lesson here, one that goes beyond the technicalities of entropy. It concerns what we choose to measure and, by extension, what we choose to see. When we keep measuring the same things in the same way, decade after decade, we risk enshrining a particular model of development as permanent truth. The coin flip becomes not just biased but fixed: the question itself stops evolving.</p>
 
@@ -676,7 +943,7 @@
 
             <p>The question that development measurement must now confront is not whether to rank countries (the world will go on ranking) but whether to keep ranking them on dimensions that have lost their informational value. The index did what it was built to do: it distinguished countries on basic needs, again and again, until the distinction became trivial. The moment has come to flip a different coin. Whether the development measurement community is willing to do so is, itself, a question whose answer is far from certain. Which is to say: it is a question that still carries information.</p>
 
-            <p>An old econometrics professor of mine in Casablanca had a saying: « To better measure poverty, look at the poorest among the poor. »<sup>16</sup> The development measurement community might consider the corollary: measure not merely what matters, but what matters <em>most</em>. The fix, in its most practical form, is almost embarrassingly simple: weight the dimensions by their informational content, and let those weights vary over time. When a dimension goes silent, turn the volume down. When another starts speaking, turn it up. It might help unbias the coin. But of course, that would mean admitting the coin was biased in the first place.</p>
+            <p>An old econometrics professor of mine in Casablanca had a saying: « To better measure poverty, look at the poorest among the poor. »<sup><a href="#fn-en-16" style="color: var(--accent); text-decoration: none;">16</a></sup> The development measurement community might consider the corollary: measure not merely what matters, but what matters <em>most</em>. The fix, in its most practical form, is almost embarrassingly simple: weight the dimensions by their informational content, and let those weights vary over time. When a dimension goes silent, turn the volume down. When another starts speaking, turn it up. It might help unbias the coin. But of course, that would mean admitting the coin was biased in the first place.</p>
 
         </div>
 
@@ -684,22 +951,22 @@
         <div class="article-notes">
             <h3>Notes</h3>
                         <ol>
-                <li>UNDP, <em>Human Development Report 2024/2025</em>, Statistical Annex Table 1. The HDI has been published annually since 1990.</li>
-                <li>Shannon, C. E., « A Mathematical Theory of Communication », <em>The Bell System Technical Journal</em>, vol. 27, July 1948. For an accessible introduction to the idea that information is surprise, see Freiberger, M., « Information is surprise », <em>Plus Magazine</em>, Cambridge, 2016. Available at: <a href="https://plus.maths.org/content/information-surprise" style="color: var(--accent);">plus.maths.org/content/information-surprise</a>.</li>
-                <li>The formal apparatus is laid out in Cover, T. M. and Thomas, J. A., <em>Elements of Information Theory</em>, 2nd ed., Wiley-Interscience, 2006. ISBN 978-0-471-24195-9. Available at: <a href="https://onlinelibrary.wiley.com/doi/book/10.1002/047174882X" style="color: var(--accent);">doi.org/10.1002/047174882X</a>.</li>
-                <li>The HDI is used here as the most visible example, but practically no composite index with the same vocation is immune to this problem. The « beyond GDP » movement, for all its intellectual merits, has largely become an exercise in appending whichever non-GDP indicators happen to be available, without asking whether the resulting composite still carries informational value. The proliferation of indices has not solved the underlying measurement problem. If anything, it has compounded it: more indices measuring overlapping dimensions of convergence, each producing the same predictable rankings, each generating the same headlines. The issue that emerges is far more concerning than redundancy among components. It is redundancy of the entire enterprise.</li>
-                <li>Over the past five years of working on composite indices, one joke kept resurfacing whenever rankings were presented: « How Scandinavian are you? », in reference to the fact that the top positions were occupied, year after year, by the same Nordic and Northern European countries. As if the index had reduced itself to a kind of barometer that, in binary terms, simply sorted the world into two categories: <em>Scandinavian</em> and <em>Not Scandinavian</em>.</li>
-                <li>UNDP, <em>Human Development Report 2025</em>, Statistical Annex, Table 2: « Human Development Index Trends, 1990–2023 ». Values recalculated using consistent methodology across all years. Available at: <a href="https://hdr.undp.org/data-center/documentation-and-downloads" style="color: var(--accent);">hdr.undp.org/data-center</a>.</li>
-                <li>McGillivray, M., « The Human Development Index: Yet Another Redundant Composite Development Indicator? », <em>World Development</em>, vol. 19, no. 10, pp. 1461–1468, 1991; Deb, S., « The Human Development Index and Its Methodological Refinements », <em>Social Change</em>, vol. 45, no. 1, pp. 131–136, 2015; Ravallion, M., « Mashup Indices of Development », <em>World Bank Research Observer</em>, vol. 27, no. 1, pp. 1–32, 2012. On rank robustness, see Cherchye, L., Ooghe, E., and Van Puyenbroeck, T., « Robust Human Development Rankings », <em>Journal of Economic Inequality</em>, vol. 6, pp. 287–321, 2008.</li>
-                <li>Htitich, M., Harmáček, J., and Krylova, P., « The Evolving "Importance" of Social and Governance Measures Over Time », <em>Global Policy</em>, vol. 16, pp. 1021–1038, 2025. Available at: <a href="https://onlinelibrary.wiley.com/doi/full/10.1111/1758-5899.70066" style="color: var(--accent);">doi.org/10.1111/1758-5899.70066</a>.</li>
-                <li><em>State capacity</em>, as defined by the Berggruen Governance Index (BGI), combines three sub-dimensions: fiscal capacity (the government's ability to generate revenue), coordination capacity (administrative efficiency and policy coordination), and delivery capacity (effectiveness in providing public services). <em>Democratic accountability</em> integrates institutional accountability (independence of judiciary and legislature), electoral accountability (integrity and fairness of elections), and societal accountability (freedom of press, civil society oversight). See Anheier, H. K., Lang, M., and Knudsen, E. L., « Introducing the Berggruen Governance Index I », <em>Global Policy</em>, vol. 14, Suppl. 4, pp. 5–15, 2023.</li>
-                <li>These governance dimensions are measured through the Varieties of Democracy (V-Dem) project and the Worldwide Governance Indicators. See Coppedge, M. et al., <em>Varieties of Democracy: Measuring Two Centuries of Political Change</em>, Cambridge University Press, 2020; Freedom House, <em>Freedom in the World 2021: Democracy Under Siege</em>, 2021.</li>
-                <li>For the full regional analysis, see Htitich, Harmáček, and Krylova (2025), Section 4.3 and Figure 5.</li>
-                <li>The one exception is South Asia, where all dimensions retain a similar degree of unpredictability — but this reflects not balanced progress, rather balanced stagnation, where countries struggle to converge on any dimension. See Section 4.3 and Figure 5 in Htitich, Harmáček &amp; Krylova (2025).</li>
-                <li>Little, A. T. and Meng, A., « Measuring Democratic Backsliding », <em>PS: Political Science and Politics</em>, vol. 57, no. 2, pp. 149–161, 2024. See also Weidmann, N. B., « Recent Events and the Coding of Cross-National Indicators », <em>Comparative Political Studies</em>, vol. 57, no. 6, pp. 921–937, 2024.</li>
-                <li>Knutsen, C. H. et al., « Conceptual and Measurement Issues in Assessing Democratic Backsliding », <em>PS: Political Science &amp; Politics</em>, vol. 57, no. 2, pp. 162–177, 2024.</li>
-                <li>Freedom House reports a 19th consecutive year of decline in global freedom (<em>Freedom in the World 2025</em>); International IDEA records a 9th consecutive year in which more countries deteriorated than improved — the longest such streak since records began in 1975 (<em>Global State of Democracy 2025</em>). Of 173 countries assessed, 94 experienced democratic declines while only 55 recorded improvements. Yet the picture is not uniform decline — it is bifurcation: while democratic erosion deepens in countries such as Hungary, El Salvador, Nicaragua, and Georgia, others including Poland, Brazil, Zambia, and Senegal have begun paths of democratic recovery. The United States itself entered this bifurcating landscape in 2025, with the Century Foundation's Democracy Meter registering a 28 % drop in its democracy score in a single year.</li>
-                <li>The context was a course on survey methodology. In stratified sampling, best practice dictates allocating more observations to the strata with the highest variance — this is the Neyman optimal allocation principle. If you want to measure poverty precisely, you oversample the poorest households, because that is where outcomes differ most and where equal-sized samples would waste precision. The analogy to composite indices is direct: allocate analytical attention — weight — where the signal is strongest, not where it has already gone quiet.</li>
+                <li id="fn-en-1">UNDP, <em>Human Development Report 2024/2025</em>, Statistical Annex Table 1. The HDI has been published annually since 1990.</li>
+                <li id="fn-en-2">Shannon, C. E., « A Mathematical Theory of Communication », <em>The Bell System Technical Journal</em>, vol. 27, July 1948. For an accessible introduction to the idea that information is surprise, see Freiberger, M., « Information is surprise », <em>Plus Magazine</em>, Cambridge, 2016. Available at: <a href="https://plus.maths.org/content/information-surprise" style="color: var(--accent);">plus.maths.org/content/information-surprise</a>.</li>
+                <li id="fn-en-3">The formal apparatus is laid out in Cover, T. M. and Thomas, J. A., <em>Elements of Information Theory</em>, 2nd ed., Wiley-Interscience, 2006. ISBN 978-0-471-24195-9. Available at: <a href="https://onlinelibrary.wiley.com/doi/book/10.1002/047174882X" style="color: var(--accent);">doi.org/10.1002/047174882X</a>.</li>
+                <li id="fn-en-4">The HDI is used here as the most visible example, but practically no composite index with the same vocation is immune to this problem. The « beyond GDP » movement, for all its intellectual merits, has largely become an exercise in appending whichever non-GDP indicators happen to be available, without asking whether the resulting composite still carries informational value. The proliferation of indices has not solved the underlying measurement problem. If anything, it has compounded it: more indices measuring overlapping dimensions of convergence, each producing the same predictable rankings, each generating the same headlines. The issue that emerges is far more concerning than redundancy among components. It is redundancy of the entire enterprise.</li>
+                <li id="fn-en-5">Over the past five years of working on composite indices, one joke kept resurfacing whenever rankings were presented: « How Scandinavian are you? », in reference to the fact that the top positions were occupied, year after year, by the same Nordic and Northern European countries. As if the index had reduced itself to a kind of barometer that, in binary terms, simply sorted the world into two categories: <em>Scandinavian</em> and <em>Not Scandinavian</em>.</li>
+                <li id="fn-en-6">UNDP, <em>Human Development Report 2025</em>, Statistical Annex, Table 2: « Human Development Index Trends, 1990–2023 ». Values recalculated using consistent methodology across all years. Available at: <a href="https://hdr.undp.org/data-center/documentation-and-downloads" style="color: var(--accent);">hdr.undp.org/data-center</a>.</li>
+                <li id="fn-en-7">McGillivray, M., « The Human Development Index: Yet Another Redundant Composite Development Indicator? », <em>World Development</em>, vol. 19, no. 10, pp. 1461–1468, 1991; Ravallion, M., « Mashup Indices of Development », <em>World Bank Research Observer</em>, vol. 27, no. 1, pp. 1–32, 2012. On rank robustness, see Cherchye, L., Ooghe, E., and Van Puyenbroeck, T., « Robust Human Development Rankings », <em>Journal of Economic Inequality</em>, vol. 6, pp. 287–321, 2008.</li>
+                <li id="fn-en-8">Htitich, M., Harmáček, J., and Krylova, P., « The Evolving "Importance" of Social and Governance Measures Over Time », <em>Global Policy</em>, vol. 16, pp. 1021–1038, 2025. Available at: <a href="https://onlinelibrary.wiley.com/doi/full/10.1111/1758-5899.70066" style="color: var(--accent);">doi.org/10.1111/1758-5899.70066</a>.</li>
+                <li id="fn-en-9"><em>State capacity</em>, as defined by the Berggruen Governance Index (BGI), combines three sub-dimensions: fiscal capacity (the government's ability to generate revenue), coordination capacity (administrative efficiency and policy coordination), and delivery capacity (effectiveness in providing public services). <em>Democratic accountability</em> integrates institutional accountability (independence of judiciary and legislature), electoral accountability (integrity and fairness of elections), and societal accountability (freedom of press, civil society oversight). See Anheier, H. K., Lang, M., and Knudsen, E. L., « Introducing the Berggruen Governance Index I », <em>Global Policy</em>, vol. 14, Suppl. 4, pp. 5–15, 2023.</li>
+                <li id="fn-en-10">These governance dimensions are measured through the Varieties of Democracy (V-Dem) project and the Worldwide Governance Indicators. See Coppedge, M. et al., <em>Varieties of Democracy: Measuring Two Centuries of Political Change</em>, Cambridge University Press, 2020; Freedom House, <em>Freedom in the World 2021: Democracy Under Siege</em>, 2021.</li>
+                <li id="fn-en-11">For the full regional analysis, see Htitich, Harmáček, and Krylova (2025), Section 4.3 and Figure 5.</li>
+                <li id="fn-en-12">The one exception is South Asia, where all dimensions retain a similar degree of unpredictability — but this reflects not balanced progress, rather balanced stagnation, where countries struggle to converge on any dimension. See Section 4.3 and Figure 5 in Htitich, Harmáček &amp; Krylova (2025).</li>
+                <li id="fn-en-13">Little, A. T. and Meng, A., « Measuring Democratic Backsliding », <em>PS: Political Science and Politics</em>, vol. 57, no. 2, pp. 149–161, 2024. See also Weidmann, N. B., « Recent Events and the Coding of Cross-National Indicators », <em>Comparative Political Studies</em>, vol. 57, no. 6, pp. 921–937, 2024.</li>
+                <li id="fn-en-14">Knutsen, C. H. et al., « Conceptual and Measurement Issues in Assessing Democratic Backsliding », <em>PS: Political Science &amp; Politics</em>, vol. 57, no. 2, pp. 162–177, 2024.</li>
+                <li id="fn-en-15">Freedom House reports a 19th consecutive year of decline in global freedom (<em>Freedom in the World 2025</em>); International IDEA records a 9th consecutive year in which more countries deteriorated than improved — the longest such streak since records began in 1975 (<em>Global State of Democracy 2025</em>). Of 173 countries assessed, 94 experienced democratic declines while only 55 recorded improvements. Yet the picture is not uniform decline — it is bifurcation: while democratic erosion deepens in countries such as Hungary, El Salvador, Nicaragua, and Georgia, others including Poland, Brazil, Zambia, and Senegal have begun paths of democratic recovery. The United States itself entered this bifurcating landscape in 2025, with the Century Foundation's Democracy Meter registering a 28 % drop in its democracy score in a single year.</li>
+                <li id="fn-en-16">The context was a course on survey methodology. In stratified sampling, best practice dictates allocating more observations to the strata with the highest variance — this is the Neyman optimal allocation principle. If you want to measure poverty precisely, you oversample the poorest households, because that is where outcomes differ most and where equal-sized samples would waste precision. The analogy to composite indices is direct: allocate analytical attention — weight — where the signal is strongest, not where it has already gone quiet.</li>
             </ol>
         </div>
 
@@ -713,6 +980,11 @@
             <span class="tag">Methodology</span>
         </div>
 
+        <div class="article-cite">
+            <div class="cite-label">Cite as</div>
+            Htitich, M. (2026). "When Measurement Becomes Ritual: The Biased Coin of Development Rankings." <em>Opinion &amp; Analysis</em>, February 2026. Available at: <a href="https://mhtitich.com/opinion" style="color: var(--accent);">mhtitich.com/opinion</a>.
+        </div>
+
         <!-- Footer -->
         <div class="article-footer">
             <a href="https://mhtitich.com/">← Return to main site</a>
@@ -721,11 +993,12 @@
         </div><!-- /lang-en -->
 
         <!-- FRENCH VERSION -->
-        <div id="lang-fr" class="lang-content" style="">
+        <div id="lang-fr" class="lang-content" style="display: none;">
         <div class="article-overline fade-in fade-in-d2">Opinion · February 2026</div>
 
         <h1 class="article-title fade-in fade-in-d3">
             Quand la mesure devient liturgie
+            <span style="display: block; font-size: 0.42em; font-weight: 400; color: var(--text-muted); margin-top: 0.4rem; letter-spacing: 0;">Le biais invisible des indices de développement</span>
         </h1>
 
         <p class="article-subtitle fade-in fade-in-d4">
@@ -742,7 +1015,7 @@
 
         <div class="article-body fade-in fade-in-d5">
 
-            <p>Près de quatre décennies après la première publication de l'indice de développement humain (ce classement des nations par espérance de vie, éducation et revenu) le rituel n'a guère changé. Chaque année, le Programme des Nations unies pour le développement publie son IDH actualisé. Chaque année, la Norvège ou la Suisse trône au sommet. Chaque année, le Tchad ou la République centrafricaine occupe le bas du classement. La dernière édition ne fait pas exception : Norvège, Danemark et Finlande sur le podium ; Soudan du Sud et République centrafricaine en queue de peloton.<sup>1</sup> Chaque année, les journaux écrivent le même titre avec une date différente. La cérémonie a acquis la solennité d'un calendrier liturgique : prévisible, répétitive, et, au sens strict du terme, non informative. Car l'information, comme Claude Shannon l'a démontré en 1948, c'est la surprise.<sup>2</sup></p>
+            <p>Près de quatre décennies après la première publication de l'indice de développement humain (ce classement des nations par espérance de vie, éducation et revenu) le rituel n'a guère changé. Chaque année, le Programme des Nations unies pour le développement publie son IDH actualisé. Chaque année, la Norvège ou la Suisse trône au sommet. Chaque année, le Tchad ou la République centrafricaine occupe le bas du classement. La dernière édition ne fait pas exception : Norvège, Danemark et Suisse sur le podium ; Soudan du Sud et République centrafricaine en queue de peloton.<sup><a href="#fn-fr-1" style="color: var(--accent); text-decoration: none;">1</a></sup> Chaque année, les journaux écrivent le même titre avec une date différente. La cérémonie a acquis la solennité d'un calendrier liturgique : prévisible, répétitive, et, au sens strict du terme, non informative. Car l'information, comme Claude Shannon l'a démontré en 1948, c'est la surprise.<sup><a href="#fn-fr-2" style="color: var(--accent); text-decoration: none;">2</a></sup></p>
 
             <div class="pull-quote">
                 <blockquote>
@@ -750,21 +1023,21 @@
                 </blockquote>
             </div>
 
-            <p>Ce n'est pas simplement une plainte esthétique sur des classements ennuyeux. C'est une objection mathématique. La théorie de l'information de Shannon fournit l'appareil formel pour comprendre pourquoi ces exercices annuels ont épuisé leur utilité, et, plus important encore, ce qu'ils dissimulent. Considérons une pièce de monnaie. Si elle est équilibrée, chaque tirage porte un bit d'information : on ne sait véritablement pas si le résultat sera pile ou face. L'entropie, la mesure de Shannon de l'incertitude, est à son maximum.<sup>3</sup> Maintenant, truquons la pièce. Faisons-la tomber sur pile 99 % du temps. Chaque tirage devient presque entièrement prévisible. L'entropie s'effondre. On n'apprend presque rien en la regardant tomber, parce qu'on connaissait déjà le résultat. La formule est élégante et impitoyable : <em>H = −Σ p log(p)</em>. À mesure que la distribution de probabilité se concentre, qu'un résultat devient quasi certain, le contenu informationnel du signal tend vers zéro.</p>
+            <p>Ce n'est pas simplement une plainte esthétique sur des classements ennuyeux. C'est une objection mathématique. La théorie de l'information de Shannon fournit l'appareil formel pour comprendre pourquoi ces exercices annuels ont épuisé leur utilité, et, plus important encore, ce qu'ils dissimulent. Considérons une pièce de monnaie. Si elle est équilibrée, chaque tirage porte un bit d'information : on ne sait véritablement pas si le résultat sera pile ou face. L'entropie, la mesure de Shannon de l'incertitude, est à son maximum.<sup><a href="#fn-fr-3" style="color: var(--accent); text-decoration: none;">3</a></sup> Maintenant, truquons la pièce. Faisons-la tomber sur pile 99 % du temps. Chaque tirage devient presque entièrement prévisible. L'entropie s'effondre. On n'apprend presque rien en la regardant tomber, parce qu'on connaissait déjà le résultat. La formule est élégante et impitoyable : <em>H = −Σ p log(p)</em>. À mesure que la distribution de probabilité se concentre, qu'un résultat devient quasi certain, le contenu informationnel du signal tend vers zéro.</p>
 
             <div class="marginal-note">
-                <em>Entropie de Shannon.</em> — Introduite dans « A Mathematical Theory of Communication » (1948), l'entropie quantifie le contenu informationnel moyen d'un signal. L'entropie maximale se produit lorsque tous les résultats sont équiprobables (une pièce équilibrée : H = 1 bit). L'entropie minimale se produit lorsque le résultat est certain (H = 0). Dans les indices composites, cependant, la logique s'inverse : lorsque les scores des pays deviennent uniformément similaires, l'indicateur perd sa capacité à les discriminer (le système se comporte comme une pièce truquée qui retombe toujours du même côté).
+                <em>Entropie de Shannon.</em> — Introduite dans « A Mathematical Theory of Communication » (1948), l'entropie quantifie le contenu informationnel moyen d'un signal. L'entropie maximale se produit lorsque tous les résultats sont équiprobables (une pièce équilibrée : H = 1 bit). L'entropie minimale se produit lorsque le résultat est certain (H = 0).
             </div>
 
-            <p>Les indices de développement, je veux le soutenir, sont devenus des pièces truquées. Les classements top dix de l'IDH<sup>4</sup> sont devenus si prévisibles qu'ils portent à peu près autant d'information qu'une pièce truquée à 95 %. On la lance, année après année, et on nous répète ce que l'on sait déjà. Les pays scandinaves vont bien. L'Afrique subsaharienne, non. L'exercice est devenu un rite : réconfortant, peut-être, pour ceux qui sont en haut, et décourageant pour ceux qui sont en bas, mais analytiquement stérile.<sup>5</sup></p>
+            <p>Les indices de développement, je veux le soutenir, sont devenus des pièces truquées. Les classements top dix de l'IDH<sup><a href="#fn-fr-4" style="color: var(--accent); text-decoration: none;">4</a></sup> sont devenus si prévisibles qu'ils portent à peu près autant d'information qu'une pièce truquée à 95 %. On la lance, année après année, et on nous répète ce que l'on sait déjà. La Norvège, le Danemark et la Suisse vont bien. L'Afrique subsaharienne, non. L'exercice est devenu un rite : réconfortant, peut-être, pour ceux qui sont en haut, et décourageant pour ceux qui sont en bas, mais analytiquement stérile.<sup><a href="#fn-fr-5" style="color: var(--accent); text-decoration: none;">5</a></sup></p>
 
-            <p>Ce n'est pas une hyperbole. Les propres données tendancielles du PNUD, recalculées selon une méthodologie cohérente de 2010 à 2023, montrent que 90 % des pays du top dix se maintiennent d'une période de mesure à la suivante.<sup>6</sup> Au total, quinze pays seulement ont accédé au top dix sur l'ensemble de la période. Cinq d'entre eux (Norvège, Suisse, Allemagne, Islande, Australie) n'en sont jamais sortis. L'écart de valeur entre le premier et le dixième rang est d'environ 0,02 point sur une échelle de zéro à un : en 2023, l'Islande mène à 0,972 et la Belgique ancre le groupe à 0,951. La littérature académique le dit depuis plus de trente ans. McGillivray a montré en 1991 que les classements de l'IDH corrèlent avec le PIB par habitant à <em>r</em> = 0,89 ; Deb, deux décennies plus tard, a porté ce chiffre à 0,96. Ravallion, ancien directeur de recherche de la Banque mondiale, a qualifié toute l'entreprise de « mashup », un indice composite « <em>for which existing theory and practice provides little or no guidance to its design</em> ». La littérature sur la robustesse des classements confirme l'intuition : les pays les mieux classés restent en tête quelle que soit la pondération des composantes.<sup>7</sup> La pièce, en d'autres termes, n'est pas seulement truquée. Elle est peut-être pipée.</p>
+            <p>Ce n'est pas une hyperbole. Les propres données tendancielles du PNUD, recalculées selon une méthodologie cohérente de 2010 à 2023, montrent que 90 % des pays du top dix se maintiennent d'une période de mesure à la suivante.<sup><a href="#fn-fr-6" style="color: var(--accent); text-decoration: none;">6</a></sup> Au total, quinze pays seulement ont accédé au top dix sur l'ensemble de la période. Cinq d'entre eux (Norvège, Suisse, Allemagne, Islande, Australie) n'en sont jamais sortis. L'écart de valeur entre le premier et le dixième rang est d'environ 0,02 point sur une échelle de zéro à un. La littérature académique le dit depuis plus de trente ans. Ravallion, ancien directeur de recherche de la Banque mondiale, a qualifié toute la démarche de « mashup », un indice composite « <em>for which existing theory and practice provides little or no guidance to its design</em> ». La littérature sur la robustesse des classements confirme l'intuition : les pays les mieux classés restent en tête quelle que soit la pondération des composantes.<sup><a href="#fn-fr-7" style="color: var(--accent); text-decoration: none;">7</a></sup> La pièce, en d'autres termes, n'est pas seulement truquée. Elle est peut-être pipée.</p>
 
             <p>La question qui suit est celle qui mérite d'être posée. Si le signal est devenu plat, que couvre-t-il ? Si la pièce tombe toujours du même côté, qu'apprendrait-on en lançant une autre pièce ?</p>
 
-            <p>Dans une étude publiée dans <em>Global Policy</em>, j'ai calculé l'entropie de Shannon des indicateurs sociaux et de gouvernance pour 170 pays de 1990 à 2020.<sup>8</sup> La question était simple : pour chaque dimension du développement, à chaque moment dans le temps, combien de surprise porte-t-elle encore ?</p>
+            <p>Dans une étude publiée dans <em>Global Policy</em>, j'ai calculé l'entropie de Shannon des indicateurs sociaux et de gouvernance pour 170 pays de 1990 à 2020.<sup><a href="#fn-fr-8" style="color: var(--accent); text-decoration: none;">8</a></sup> La question était simple : pour chaque dimension du développement, à chaque moment dans le temps, combien de surprise porte-t-elle encore ?</p>
 
-            <p>Le graphique ci-dessous montre ce que j'ai trouvé. Les dimensions sociales (besoins humains de base, fondements du bien-être) perdent leur capacité à surprendre depuis trois décennies. Entre 1990 et 2020, le score moyen en besoins humains de base a augmenté de 13 points. Les pays ont convergé. La pièce s'est truquée. C'est, en un sens, une bonne nouvelle, le monde a fait de véritables progrès sur les besoins fondamentaux. Mais c'est aussi une crise de mesure, car les indices composites qui continuent de s'appuyer sur ces dimensions écoutent des signaux devenus quasi silencieux.</p>
+            <p>Le graphique ci-dessous montre ce que j'ai trouvé. Les dimensions sociales (besoins humains de base, fondements du bien-être) perdent leur capacité à surprendre depuis trois décennies. Entre 1990 et 2020, le score moyen en besoins humains de base a augmenté de 13 points. La surprise s'est éteinte. La pièce s'est truquée. C'est, en un sens, une bonne nouvelle, le monde a fait de véritables progrès sur les besoins fondamentaux. Mais c'est aussi une crise de mesure, car les indices composites qui continuent de s'appuyer sur ces dimensions écoutent des signaux devenus quasi silencieux.</p>
 
             <!-- Info Box - same chart, shared -->
             <div class="article-infobox" style="padding: 1.5rem 2rem;">
@@ -774,7 +1047,7 @@
                 </div>
             </div>
 
-            <p>Les dimensions de gouvernance racontent l'histoire inverse. La capacité étatique et la redevabilité démocratique ont divergé régulièrement, c'est là que la surprise persiste, là où la trajectoire d'un pays reste véritablement difficile à prédire.<sup>9</sup> Le renversement complet s'est produit dans les années 2010 : à partir de ce moment, les dimensions de gouvernance portaient systématiquement plus de surprise que les dimensions sociales. La pièce prévisible des besoins fondamentaux a été remplacée par la pièce bien plus équilibrée de la gouvernance, mais très peu de gens la regardaient tomber.</p>
+            <p>Les dimensions de gouvernance racontent l'histoire inverse. La capacité étatique et la redevabilité démocratique gagnent en surprise régulièrement, c'est là que le signal reste le plus fort, là où la trajectoire d'un pays reste véritablement difficile à prédire.<sup><a href="#fn-fr-9" style="color: var(--accent); text-decoration: none;">9</a></sup> Le renversement complet s'est produit dans les années 2010 : à partir de ce moment, les dimensions de gouvernance portaient systématiquement plus de surprise que les dimensions sociales. La pièce prévisible des besoins fondamentaux a été remplacée par la pièce bien plus équilibrée de la gouvernance, mais très peu de gens la regardaient tomber.</p>
 
             <div class="pull-quote">
                 <blockquote>
@@ -782,15 +1055,15 @@
                 </blockquote>
             </div>
 
-            <p>Ce qui émerge de cette analyse n'est pas une note de bas de page technique sur les méthodes de mesure. C'est une réorientation fondamentale de la façon dont nous devrions comprendre le développement mondial au XXI<sup>e</sup> siècle. Les indices dominants (l'IDH, de nombreuses mesures composites bâties sur des architectures similaires) ont été conçus à une époque où la question centrale était de savoir si les pays pouvaient nourrir leur peuple, éduquer leurs enfants, et les maintenir en vie au-delà de l'âge de cinq ans. C'étaient les dimensions d'incertitude maximale, et donc d'information maximale. Les indices ont fait leur travail. Mais ils ont continué à faire le même travail longtemps après que la question a changé. Et la question, comme l'analyse entropique le montre, a complètement changé. Les écarts de développement contemporains sont avant tout des écarts de gouvernance. Ce qui sépare l'Ouganda du Vietnam, ou l'Argentine du Danemark, n'est plus principalement une affaire de mortalité infantile ou d'accès à l'eau potable (bien que ceux-ci demeurent critiques au niveau le plus granulaire, celui de l'intervention communautaire). Ce qui les sépare, c'est la qualité de leurs institutions : la capacité de l'État à mobiliser des ressources et à redistribuer la richesse, la redevabilité des processus démocratiques, l'indépendance des tribunaux, la liberté de la presse.<sup>10</sup></p>
+            <p>Ce qui émerge de cette analyse n'est pas une note de bas de page technique sur les méthodes de mesure. C'est une réorientation fondamentale de la façon dont nous devrions comprendre le développement mondial au XXI<sup>e</sup> siècle. Les indices dominants (l'IDH, de nombreuses mesures composites bâties sur des architectures similaires) ont été conçus à une époque où la question centrale était de savoir si les pays pouvaient nourrir leur peuple, éduquer leurs enfants, et les maintenir en vie au-delà de l'âge de cinq ans. C'étaient les dimensions d'incertitude maximale, et donc d'information maximale. Les indices ont fait leur travail. Mais ils ont continué à faire le même travail longtemps après que la question a changé. Et la question, comme l'analyse entropique le montre, a complètement changé. Les écarts de développement contemporains sont avant tout des écarts de gouvernance. Ce qui sépare l'Ouganda du Vietnam, ou l'Argentine du Danemark, n'est plus principalement une affaire de mortalité infantile ou d'accès à l'eau potable (bien que ceux-ci demeurent critiques au niveau le plus granulaire, celui de l'intervention communautaire). Ce qui les sépare, c'est la qualité de leurs institutions : la capacité de l'État à mobiliser des ressources et à redistribuer la richesse, la redevabilité des processus démocratiques, l'indépendance des tribunaux, la liberté de la presse.<sup><a href="#fn-fr-10" style="color: var(--accent); text-decoration: none;">10</a></sup></p>
 
             <div class="marginal-note">
                 <em>Schémas régionaux.</em> — Le basculement des dimensions sociales vers les dimensions de gouvernance est visible dans presque toutes les régions du monde. Il est le plus marqué en Asie centrale, en Amérique latine, au Moyen-Orient et en Afrique subsaharienne. En Europe et en Amérique du Nord, les indicateurs de gouvernance ont dominé tout au long de la période. L'Asie du Sud se distingue : toutes les dimensions conservent des poids similaires, reflétant des défis persistants sur tous les fronts.
             </div>
 
-            <p>L'analyse régionale renforce ce tableau.<sup>11</sup> Dans presque chaque région (Asie centrale, Amérique latine, Moyen-Orient, Afrique subsaharienne), les dimensions de gouvernance portent désormais le plus de surprise, c'est-à-dire que c'est là que les trajectoires des pays divergent le plus nettement. Le basculement est devenu visible à partir du milieu des années 1990, et en 2020 il était complet.<sup>12</sup></p>
+            <p>L'analyse régionale renforce ce tableau.<sup><a href="#fn-fr-11" style="color: var(--accent); text-decoration: none;">11</a></sup> Dans presque chaque région (Asie centrale, Amérique latine, Moyen-Orient, Afrique subsaharienne), les dimensions de gouvernance portent désormais le plus de surprise, c'est-à-dire que c'est là que le contenu informationnel est le plus riche. Le basculement est devenu visible à partir du milieu des années 1990, et en 2020 il était complet.<sup><a href="#fn-fr-12" style="color: var(--accent); text-decoration: none;">12</a></sup></p>
 
-            <p>On pourrait objecter que le gain d'information dans les dimensions de gouvernance est un artefact, que les indicateurs de gouvernance codés par des experts sont contaminés par ce que certains chercheurs appellent le « biais de récence », un pessimisme systématique qui rend les évaluations récentes plus sévères que les anciennes, ce qui se traduit par des performances de gouvernance moins prévisibles (Little et Meng 2024).<sup>13</sup> J'ai traité cette objection en détail. Les données ne la soutiennent pas. Le projet V-Dem, dont les données sous-tendent une grande partie de l'analyse de gouvernance, a montré que moins de 1,4 % de ses experts ont révisé leurs évaluations historiques, et que ces révisions ne présentaient aucune tendance négative systématique (Knutsen et al. 2024).<sup>14</sup> Les schémas que j'observe (certains pays s'améliorant, d'autres se détériorant, avec pour effet net une plus grande variance entre pays) sont cohérents avec une divergence véritable, non un artefact de mesure. La qualité de la redevabilité démocratique ne converge pas au niveau mondial. Elle bifurque.<sup>15</sup></p>
+            <p>On pourrait objecter que le gain d'information dans les dimensions de gouvernance est un artefact, que les indicateurs de gouvernance codés par des experts sont contaminés par ce que certains chercheurs appellent le « biais de récence », un pessimisme systématique qui rend les évaluations récentes plus sévères que les anciennes, ce qui se traduit par des performances de gouvernance moins prévisibles (Little et Meng 2024).<sup><a href="#fn-fr-13" style="color: var(--accent); text-decoration: none;">13</a></sup> J'ai traité cette objection en détail. Les données ne la soutiennent pas. Le projet V-Dem, dont les données sous-tendent une grande partie de l'analyse de gouvernance, a montré que moins de 1,4 % de ses experts ont révisé leurs évaluations historiques, et que ces révisions ne présentaient aucune tendance négative systématique (Knutsen et al. 2024).<sup><a href="#fn-fr-14" style="color: var(--accent); text-decoration: none;">14</a></sup> Les schémas que j'observe (certains pays s'améliorant, d'autres se détériorant, avec pour effet net une plus grande variance entre pays) sont cohérents avec un gain d'information véritable, non un artefact de mesure. La surprise portée par la redevabilité démocratique ne faiblit pas au niveau mondial. Elle s'amplifie.<sup><a href="#fn-fr-15" style="color: var(--accent); text-decoration: none;">15</a></sup></p>
 
             <p>Il y a une leçon plus profonde ici, qui dépasse les aspects techniques de l'entropie. Elle concerne ce que nous choisissons de mesurer et, par extension, ce que nous choisissons de voir. Lorsque nous continuons à mesurer les mêmes choses de la même manière, décennie après décennie, nous risquons de consacrer un modèle particulier du développement comme vérité permanente. Le tirage à pile ou face devient non seulement truqué, mais fixé : la question elle-même cesse d'évoluer.</p>
 
@@ -798,7 +1071,7 @@
 
             <p>La question que la mesure du développement doit désormais affronter n'est pas de savoir s'il faut classer les pays (le monde continuera de classer), mais s'il faut continuer à les classer sur des dimensions qui ont perdu leur valeur informationnelle. L'indice a fait ce pour quoi il avait été conçu : il a distingué les pays sur les besoins fondamentaux, encore et encore, jusqu'à ce que la distinction devienne triviale. Le moment est venu de lancer une autre pièce. Que la communauté de la mesure du développement soit disposée à le faire est, en soi, une question dont la réponse est loin d'être certaine. C'est-à-dire : c'est une question qui porte encore de l'information.</p>
 
-            <p>Un vieux professeur d'économétrie à Casablanca avait l'habitude de dire : « Pour mieux mesurer la pauvreté, il vaut mieux penser aux plus pauvres parmi les pauvres. »<sup>16</sup> La communauté de la mesure du développement ferait bien de considérer le corollaire : mesurer non pas simplement ce qui compte, mais ce qui compte <em>le plus</em>. La solution, dans sa forme la plus pratique, est d'une simplicité presque embarrassante : pondérer les dimensions par leur contenu informationnel, et laisser ces pondérations varier dans le temps. Quand une dimension se tait, baisser le volume. Quand une autre se met à parler, le monter. Cela pourrait aider à rééquilibrer la pièce. Mais bien sûr, cela supposerait d'admettre que la pièce était truquée depuis le début.</p>
+            <p>Un vieux professeur d'économétrie à Casablanca avait l'habitude de dire : « Pour mieux mesurer la pauvreté, il vaut mieux penser aux plus pauvres parmi les pauvres. »<sup><a href="#fn-fr-16" style="color: var(--accent); text-decoration: none;">16</a></sup> La communauté de la mesure du développement ferait bien de considérer le corollaire : mesurer non pas simplement ce qui compte, mais ce qui compte <em>le plus</em>. La solution, dans sa forme la plus pratique, est d'une simplicité presque embarrassante : pondérer les dimensions par leur contenu informationnel, et laisser ces pondérations varier dans le temps. Quand une dimension se tait, baisser le volume. Quand une autre se met à parler, le monter. Cela pourrait aider à rééquilibrer la pièce. Mais bien sûr, cela supposerait d'admettre que la pièce était truquée depuis le début.</p>
 
         </div>
 
@@ -806,22 +1079,22 @@
         <div class="article-notes">
             <h3>Notes</h3>
                         <ol>
-                <li>PNUD, <em>Rapport sur le développement humain 2024/2025</em>, Annexe statistique, Tableau 1. L'IDH est publié annuellement depuis 1990.</li>
-                <li>Shannon, C. E., « A Mathematical Theory of Communication », <em>The Bell System Technical Journal</em>, vol. 27, juillet 1948. Pour une introduction accessible à l'idée que l'information est surprise, voir Freiberger, M., « Information is surprise », <em>Plus Magazine</em>, Cambridge, 2016. Disponible sur : <a href="https://plus.maths.org/content/information-surprise" style="color: var(--accent);">plus.maths.org/content/information-surprise</a>.</li>
-                <li>L'appareil formel est exposé dans Cover, T. M. et Thomas, J. A., <em>Elements of Information Theory</em>, 2e éd., Wiley-Interscience, 2006. ISBN 978-0-471-24195-9. Disponible sur : <a href="https://onlinelibrary.wiley.com/doi/book/10.1002/047174882X" style="color: var(--accent);">doi.org/10.1002/047174882X</a>.</li>
-                <li>L'IDH est utilisé ici comme l'exemple le plus visible, mais pratiquement aucun indice composite ayant la même vocation n'est immunisé contre ce problème. Le mouvement « au-delà du PIB », malgré ses mérites intellectuels, est largement devenu un exercice consistant à ajouter les indicateurs non-PIB qui se trouvent disponibles, sans se demander si le composite résultant porte encore une valeur informationnelle. La prolifération des indices n'a pas résolu le problème de mesure sous-jacent. Elle l'a, si quoi que ce soit, aggravé : davantage d'indices mesurant des dimensions convergentes qui se chevauchent, chacun produisant les mêmes classements prévisibles, chacun générant les mêmes gros titres. Le problème qui en émerge est bien plus préoccupant que la simple redondance entre composantes. C'est la redondance de l'entreprise tout entière.</li>
-                <li>Au cours des cinq années passées à travailler sur les indices composites, une plaisanterie revenait systématiquement lors des présentations de classements : « How Scandinavian are you? », en référence au fait que les premières places étaient occupées, année après année, par les mêmes pays nordiques et nord-européens. Comme si l'indice s'était réduit à une sorte de baromètre qui, en termes binaires, triait simplement le monde en deux catégories : <em>Scandinave</em> et <em>Pas scandinave</em>.</li>
-                <li>PNUD, <em>Rapport sur le développement humain 2025</em>, Annexe statistique, Tableau 2 : « Tendances de l'indice de développement humain, 1990–2023 ». Valeurs recalculées selon une méthodologie cohérente pour toutes les années. Disponible sur : <a href="https://hdr.undp.org/data-center/documentation-and-downloads" style="color: var(--accent);">hdr.undp.org/data-center</a>.</li>
-                <li>McGillivray, M., « The Human Development Index: Yet Another Redundant Composite Development Indicator? », <em>World Development</em>, vol. 19, n° 10, pp. 1461–1468, 1991 ; Deb, S., « The Human Development Index and Its Methodological Refinements », <em>Social Change</em>, vol. 45, n° 1, pp. 131–136, 2015 ; Ravallion, M., « Mashup Indices of Development », <em>World Bank Research Observer</em>, vol. 27, n° 1, pp. 1–32, 2012. Sur la robustesse des classements, voir Cherchye, L., Ooghe, E., et Van Puyenbroeck, T., « Robust Human Development Rankings », <em>Journal of Economic Inequality</em>, vol. 6, pp. 287–321, 2008.</li>
-                <li>Htitich, M., Harmáček, J., et Krylova, P., « The Evolving "Importance" of Social and Governance Measures Over Time », <em>Global Policy</em>, vol. 16, pp. 1021–1038, 2025. Disponible sur : <a href="https://onlinelibrary.wiley.com/doi/full/10.1111/1758-5899.70066" style="color: var(--accent);">doi.org/10.1111/1758-5899.70066</a>.</li>
-                <li><em>La capacité étatique</em>, telle que définie par le Berggruen Governance Index (BGI), combine trois sous-dimensions : capacité fiscale, capacité de coordination et capacité de prestation. <em>La redevabilité démocratique</em> intègre la redevabilité institutionnelle, électorale et sociétale. Voir Anheier, H. K., Lang, M., et Knudsen, E. L., « Introducing the Berggruen Governance Index I », <em>Global Policy</em>, vol. 14, Suppl. 4, pp. 5–15, 2023.</li>
-                <li>Coppedge, M. et al., <em>Varieties of Democracy: Measuring Two Centuries of Political Change</em>, Cambridge University Press, 2020 ; Freedom House, <em>Freedom in the World 2021: Democracy Under Siege</em>, 2021.</li>
-                <li>Pour l'analyse régionale complète, voir Htitich, Harmáček et Krylova (2025), Section 4.3 et Figure 5.</li>
-                <li>La seule exception est l'Asie du Sud, où toutes les dimensions conservent un degré similaire d'imprévisibilité (ce qui reflète non pas un progrès équilibré, mais plutôt une stagnation équilibrée, où les pays peinent à converger sur quelque dimension que ce soit). Voir Section 4.3 et Figure 5 dans Htitich, Harmáček &amp; Krylova (2025).</li>
-                <li>Little, A. T. et Meng, A., « Measuring Democratic Backsliding », <em>PS: Political Science and Politics</em>, vol. 57, n° 2, pp. 149–161, 2024.</li>
-                <li>Knutsen, C. H. et al., « Conceptual and Measurement Issues in Assessing Democratic Backsliding », <em>PS: Political Science &amp; Politics</em>, vol. 57, n° 2, pp. 162–177, 2024.</li>
-                <li>Freedom House signale une 19<sup>e</sup> année consécutive de déclin de la liberté mondiale (<em>Freedom in the World 2025</em>) ; International IDEA enregistre une 9<sup>e</sup> année consécutive où davantage de pays se sont détériorés que n'ont progressé (la plus longue série depuis le début des relevés en 1975) (<em>Global State of Democracy 2025</em>). Sur 173 pays évalués, 94 ont connu des reculs démocratiques tandis que 55 seulement ont enregistré des améliorations. Pourtant, le tableau n'est pas celui d'un déclin uniforme, c'est une bifurcation : tandis que l'érosion démocratique s'approfondit dans des pays comme la Hongrie, le Salvador, le Nicaragua et la Géorgie, d'autres, dont la Pologne, le Brésil, la Zambie et le Sénégal, ont entamé des trajectoires de renouveau démocratique. Les États-Unis eux-mêmes sont entrés dans ce paysage bifurquant en 2025, le Democracy Meter de la Century Foundation enregistrant une chute de 28 % de son score démocratique en une seule année.</li>
-                <li>Le contexte était un cours de méthodologie d'enquête. En échantillonnage stratifié, la bonne pratique veut que l'on alloue davantage d'observations aux strates présentant la plus forte variance (c'est le principe d'allocation optimale de Neyman). Pour mesurer la pauvreté avec précision, on sur-échantillonne les ménages les plus pauvres, parce que c'est là que les résultats diffèrent le plus et où des échantillons de taille égale gaspilleraient de la précision. L'analogie avec les indices composites est directe : allouer l'attention analytique (le poids) là où le signal est le plus fort, non là où il s'est déjà tu.</li>
+                <li id="fn-fr-1">PNUD, <em>Rapport sur le développement humain 2024/2025</em>, Annexe statistique, Tableau 1. L'IDH est publié annuellement depuis 1990.</li>
+                <li id="fn-fr-2">Shannon, C. E., « A Mathematical Theory of Communication », <em>The Bell System Technical Journal</em>, vol. 27, juillet 1948. Pour une introduction accessible à l'idée que l'information est surprise, voir Freiberger, M., « Information is surprise », <em>Plus Magazine</em>, Cambridge, 2016. Disponible sur : <a href="https://plus.maths.org/content/information-surprise" style="color: var(--accent);">plus.maths.org/content/information-surprise</a>.</li>
+                <li id="fn-fr-3">L'appareil formel est exposé dans Cover, T. M. et Thomas, J. A., <em>Elements of Information Theory</em>, 2e éd., Wiley-Interscience, 2006. ISBN 978-0-471-24195-9. Disponible sur : <a href="https://onlinelibrary.wiley.com/doi/book/10.1002/047174882X" style="color: var(--accent);">doi.org/10.1002/047174882X</a>.</li>
+                <li id="fn-fr-4">L'IDH est utilisé ici comme l'exemple le plus visible, mais pratiquement aucun indice composite ayant la même vocation n'est immunisé contre ce problème. Le mouvement <em>Beyond GDP</em>, malgré ses mérites intellectuels, est largement devenu un exercice consistant à ajouter les indicateurs non économiques qui se trouvent disponibles, sans se demander si le composite résultant porte encore une valeur informationnelle. La prolifération des indices n'a pas résolu le problème de mesure sous-jacent. Elle l'a aggravé : davantage d'indices mesurant des dimensions dont la surprise s'est tarie, se chevauchant les uns les autres, produisant les mêmes classements prévisibles, générant les mêmes gros titres. Le problème qui en émerge est bien plus préoccupant que la simple redondance entre composantes. C'est la redondance de l'approche tout entière.</li>
+                <li id="fn-fr-5">Au cours des cinq années passées à travailler sur les indices composites, une plaisanterie revenait systématiquement lors des présentations de classements : « How Scandinavian are you? », en référence au fait que les premières places étaient occupées, année après année, par les mêmes pays nordiques et nord-européens. Comme si l'indice s'était réduit à une sorte de baromètre qui, en termes binaires, triait simplement le monde en deux catégories : <em>Scandinave</em> et <em>Pas scandinave</em>.</li>
+                <li id="fn-fr-6">PNUD, <em>Rapport sur le développement humain 2025</em>, Annexe statistique, Tableau 2 : « Tendances de l'indice de développement humain, 1990–2023 ». Valeurs recalculées selon une méthodologie cohérente pour toutes les années. Disponible sur : <a href="https://hdr.undp.org/data-center/documentation-and-downloads" style="color: var(--accent);">hdr.undp.org/data-center</a>.</li>
+                <li id="fn-fr-7">McGillivray, M., « The Human Development Index: Yet Another Redundant Composite Development Indicator? », <em>World Development</em>, vol. 19, n° 10, pp. 1461–1468, 1991 ; Ravallion, M., « Mashup Indices of Development », <em>World Bank Research Observer</em>, vol. 27, n° 1, pp. 1–32, 2012. Sur la robustesse des classements, voir Cherchye, L., Ooghe, E., et Van Puyenbroeck, T., « Robust Human Development Rankings », <em>Journal of Economic Inequality</em>, vol. 6, pp. 287–321, 2008.</li>
+                <li id="fn-fr-8">Htitich, M., Harmáček, J., et Krylova, P., « The Evolving "Importance" of Social and Governance Measures Over Time », <em>Global Policy</em>, vol. 16, pp. 1021–1038, 2025. Disponible sur : <a href="https://onlinelibrary.wiley.com/doi/full/10.1111/1758-5899.70066" style="color: var(--accent);">doi.org/10.1111/1758-5899.70066</a>.</li>
+                <li id="fn-fr-9"><em>La capacité étatique</em>, telle que définie par le Berggruen Governance Index (BGI), combine trois sous-dimensions : capacité fiscale, capacité de coordination et capacité de prestation. <em>La redevabilité démocratique</em> intègre la redevabilité institutionnelle, électorale et sociétale. Voir Anheier, H. K., Lang, M., et Knudsen, E. L., « Introducing the Berggruen Governance Index I », <em>Global Policy</em>, vol. 14, Suppl. 4, pp. 5–15, 2023.</li>
+                <li id="fn-fr-10">Coppedge, M. et al., <em>Varieties of Democracy: Measuring Two Centuries of Political Change</em>, Cambridge University Press, 2020 ; Freedom House, <em>Freedom in the World 2021: Democracy Under Siege</em>, 2021.</li>
+                <li id="fn-fr-11">Pour l'analyse régionale complète, voir Htitich, Harmáček et Krylova (2025), Section 4.3 et Figure 5.</li>
+                <li id="fn-fr-12">La seule exception est l'Asie du Sud, où toutes les dimensions conservent un degré similaire d'imprévisibilité (ce qui reflète non pas un progrès équilibré, mais plutôt une stagnation équilibrée, où les pays peinent à progresser sur quelque dimension que ce soit). Voir Section 4.3 et Figure 5 dans Htitich, Harmáček &amp; Krylova (2025).</li>
+                <li id="fn-fr-13">Little, A. T. et Meng, A., « Measuring Democratic Backsliding », <em>PS: Political Science and Politics</em>, vol. 57, n° 2, pp. 149–161, 2024.</li>
+                <li id="fn-fr-14">Knutsen, C. H. et al., « Conceptual and Measurement Issues in Assessing Democratic Backsliding », <em>PS: Political Science &amp; Politics</em>, vol. 57, n° 2, pp. 162–177, 2024.</li>
+                <li id="fn-fr-15">Freedom House signale une 19<sup>e</sup> année consécutive de déclin de la liberté mondiale (<em>Freedom in the World 2025</em>) ; International IDEA enregistre une 9<sup>e</sup> année consécutive où davantage de pays se sont détériorés que n'ont progressé (la plus longue série depuis le début des relevés en 1975) (<em>Global State of Democracy 2025</em>). Sur 173 pays évalués, 94 ont connu des reculs démocratiques tandis que 55 seulement ont enregistré des améliorations. Pourtant, le tableau n'est pas celui d'un déclin uniforme, c'est une bifurcation : tandis que l'érosion démocratique s'approfondit dans des pays comme la Hongrie, le Salvador, le Nicaragua et la Géorgie, d'autres, dont la Pologne, le Brésil, la Zambie et le Sénégal, ont entamé des trajectoires de renouveau démocratique. Les États-Unis eux-mêmes sont entrés dans ce paysage bifurquant en 2025, le Democracy Meter de la Century Foundation enregistrant une chute de 28 % de son score démocratique en une seule année.</li>
+                <li id="fn-fr-16">Le contexte était un cours de méthodologie d'enquête. En échantillonnage stratifié, la bonne pratique veut que l'on alloue davantage d'observations aux strates présentant la plus forte variance (c'est le principe d'allocation optimale de Neyman). Pour mesurer la pauvreté avec précision, on sur-échantillonne les ménages les plus pauvres, parce que c'est là que les résultats diffèrent le plus et où des échantillons de taille égale gaspilleraient de la précision. L'analogie avec les indices composites est directe : allouer l'attention analytique (le poids) là où le signal est le plus fort, non là où il s'est déjà tu.</li>
             </ol>
         </div>
 
@@ -834,8 +1107,13 @@
             <span class="tag">Méthodologie</span>
         </div>
 
+        <div class="article-cite">
+            <div class="cite-label">Citer comme</div>
+            Htitich, M. (2026). « Quand la mesure devient liturgie : le biais invisible des indices de développement. » <em>Opinion &amp; Analyse</em>, février 2026. Disponible sur : <a href="https://mhtitich.com/opinion" style="color: var(--accent);">mhtitich.com/opinion</a>.
+        </div>
+
         <div class="article-footer">
-            <a href="file:///C:/Users/mahti/Downloads/opinion_kimi.html#">← Retour au site principal</a>
+            <a href="https://mhtitich.com/">← Retour au site principal</a>
             <span class="reading-time">~14 MIN · 2 800 MOTS</span>
         </div>
         </div><!-- /lang-fr -->
@@ -861,6 +1139,7 @@
             document.getElementById('lang-fr-btn').style.background = lang === 'fr' ? 'var(--accent)' : 'transparent';
             document.getElementById('lang-fr-btn').style.color = lang === 'fr' ? 'var(--bg-primary)' : 'var(--text-muted)';
             if (lang === 'fr') setTimeout(() => drawEntropyChart('entropyCanvasFr'), 50);
+            if (lang === 'en') setTimeout(() => drawEntropyChart('entropyCanvas'), 50);
         }
 
         // Restore saved theme
@@ -945,7 +1224,7 @@
             // Y axis: Uninformative → ↑ → Informative
             const axisLabelLo = isFr ? 'Non informatif' : 'Uninformative';
             const axisLabelHi = isFr ? 'Informatif' : 'Informative';
-            ctx.font = '8.5px IBM Plex Sans, sans-serif';
+            ctx.font = '8.5px CMU Sans Serif, sans-serif';
             ctx.fillStyle = textColor;
             // Bottom label
             ctx.save();
@@ -978,7 +1257,7 @@
 
             // X axis
             ctx.textAlign = 'center'; ctx.textBaseline = 'top';
-            ctx.font = '11px IBM Plex Sans, sans-serif';
+            ctx.font = '11px CMU Sans Serif, sans-serif';
             [1990, 2000, 2010, 2020].forEach(yr => {
                 ctx.fillStyle = textColor;
                 ctx.fillText(yr, toX(yr - 1990), pad.top + pH + 8);
@@ -990,7 +1269,7 @@
             ctx.setLineDash([4, 4]);
             ctx.beginPath(); ctx.moveTo(crossX, pad.top); ctx.lineTo(crossX, pad.top + pH); ctx.stroke();
             ctx.setLineDash([]);
-            ctx.font = '9px IBM Plex Sans, sans-serif';
+            ctx.font = '9px CMU Sans Serif, sans-serif';
             ctx.fillStyle = textColor; ctx.textAlign = 'center';
             ctx.globalAlpha = 0.7;
             const crossLabel = isFr ? 'La gouvernance dépasse le social' : 'Governance overtakes social';
@@ -1071,7 +1350,7 @@
                 ctx.globalAlpha = 1;
 
                 // Label
-                ctx.font = '9.5px IBM Plex Sans, sans-serif';
+                ctx.font = '9.5px CMU Sans Serif, sans-serif';
                 ctx.fillStyle = colors[ep.name];
                 ctx.textAlign = 'left';
                 ctx.textBaseline = 'middle';
@@ -1079,7 +1358,7 @@
             });
 
             // Bottom-right source caption
-            ctx.font = '8.5px IBM Plex Sans, sans-serif';
+            ctx.font = '8.5px CMU Sans Serif, sans-serif';
             ctx.fillStyle = textColor;
             ctx.globalAlpha = 0.5;
             ctx.textAlign = 'right';
@@ -1094,7 +1373,229 @@
         }
 
         drawEntropyChart('entropyCanvas');
+        drawEntropyChart('entropyCanvasFr');
     </script>
 
+
+<!-- TTS Progress Bar -->
+<div id="tts-progress"></div>
+
+<script>
+/* ===== Text-to-Speech: Read Aloud ===== */
+(function() {
+    const synth = window.speechSynthesis;
+    let ttsActive = false;
+    let ttsParagraphs = [];
+    let ttsIndex = 0;
+    let ttsUtterance = null;
+    let voicesLoaded = false;
+    let femaleVoiceEN = null;
+    let femaleVoiceFR = null;
+
+    // Preload voices
+    function loadVoices() {
+        const voices = synth.getVoices();
+        if (!voices.length) return;
+        voicesLoaded = true;
+
+        // Prefer female voices, prioritize natural/premium voices
+        const enVoices = voices.filter(v => v.lang.startsWith('en'));
+        const frVoices = voices.filter(v => v.lang.startsWith('fr'));
+
+        // Scoring: prefer names containing female indicators + "Natural"/"Premium"/"Enhanced"
+        function scoreFemale(v) {
+            const name = v.name.toLowerCase();
+            let s = 0;
+            if (/samantha|karen|victoria|kate|moira|fiona|susan|zira|hazel|jenny|aria|sara|female|woman/.test(name)) s += 10;
+            if (/natural|premium|enhanced|neural|online/.test(name)) s += 5;
+            if (/male/.test(name) && !/female/.test(name)) s -= 20;
+            if (/google.*female|microsoft.*zira|microsoft.*jenny|microsoft.*aria/.test(name)) s += 8;
+            // French female names
+            if (/amélie|amelie|marie|thomas|léa|lea|audrey|céline|celine|virginie|female/.test(name)) s += 10;
+            if (/thomas|philippe|nicolas/.test(name)) s -= 20;
+            return s;
+        }
+
+        enVoices.sort((a, b) => scoreFemale(b) - scoreFemale(a));
+        frVoices.sort((a, b) => scoreFemale(b) - scoreFemale(a));
+
+        femaleVoiceEN = enVoices[0] || null;
+        femaleVoiceFR = frVoices[0] || null;
+    }
+
+    synth.onvoiceschanged = loadVoices;
+    loadVoices();
+
+    function getCurrentLang() {
+        const enDiv = document.getElementById('lang-en');
+        return (enDiv && enDiv.style.display === 'none') ? 'fr' : 'en';
+    }
+
+    function getArticleParagraphs() {
+        const lang = getCurrentLang();
+        const container = document.getElementById('lang-' + lang);
+        if (!container) return [];
+        // Collect all readable text elements in order
+        const els = container.querySelectorAll('.article-body p, .article-body h2, .pull-quote blockquote, .article-infobox p, .marginal-note');
+        return Array.from(els).filter(el => {
+            const text = el.textContent.trim();
+            return text.length > 10; // skip very short/empty
+        });
+    }
+
+    function highlightParagraph(el) {
+        // Remove previous highlight
+        document.querySelectorAll('.tts-reading').forEach(e => e.classList.remove('tts-reading'));
+        if (el) {
+            el.classList.add('tts-reading');
+            el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+    }
+
+    function updateProgress() {
+        const bar = document.getElementById('tts-progress');
+        if (ttsParagraphs.length > 0) {
+            const pct = ((ttsIndex) / ttsParagraphs.length) * 100;
+            bar.style.width = pct + '%';
+        }
+    }
+
+    function speakNext() {
+        if (!ttsActive || ttsIndex >= ttsParagraphs.length) {
+            stopTTS();
+            return;
+        }
+
+        const el = ttsParagraphs[ttsIndex];
+        const text = el.textContent.trim();
+        const lang = getCurrentLang();
+
+        ttsUtterance = new SpeechSynthesisUtterance(text);
+        ttsUtterance.lang = lang === 'fr' ? 'fr-FR' : 'en-US';
+        ttsUtterance.rate = 0.95;
+        ttsUtterance.pitch = 1.05;
+
+        // Set female voice
+        if (!voicesLoaded) loadVoices();
+        const voice = lang === 'fr' ? femaleVoiceFR : femaleVoiceEN;
+        if (voice) ttsUtterance.voice = voice;
+
+        highlightParagraph(el);
+        updateProgress();
+
+        ttsUtterance.onend = function() {
+            ttsIndex++;
+            updateProgress();
+            if (ttsActive) {
+                // Small pause between paragraphs
+                setTimeout(speakNext, 300);
+            }
+        };
+
+        ttsUtterance.onerror = function(e) {
+            if (e.error !== 'canceled') {
+                ttsIndex++;
+                if (ttsActive) setTimeout(speakNext, 100);
+            }
+        };
+
+        // Chrome bug workaround: synth pauses on long utterances
+        // Split very long text into chunks
+        if (text.length > 300) {
+            speakLongText(text, ttsUtterance, el, lang);
+        } else {
+            synth.speak(ttsUtterance);
+        }
+    }
+
+    function speakLongText(fullText, baseUtterance, el, lang) {
+        // Split on sentences
+        const sentences = fullText.match(/[^.!?]+[.!?]+/g) || [fullText];
+        let chunks = [];
+        let current = '';
+
+        sentences.forEach(s => {
+            if ((current + s).length > 250) {
+                if (current) chunks.push(current.trim());
+                current = s;
+            } else {
+                current += s;
+            }
+        });
+        if (current.trim()) chunks.push(current.trim());
+
+        let ci = 0;
+        function speakChunk() {
+            if (!ttsActive || ci >= chunks.length) {
+                ttsIndex++;
+                updateProgress();
+                if (ttsActive) setTimeout(speakNext, 300);
+                return;
+            }
+            const u = new SpeechSynthesisUtterance(chunks[ci]);
+            u.lang = baseUtterance.lang;
+            u.rate = baseUtterance.rate;
+            u.pitch = baseUtterance.pitch;
+            if (baseUtterance.voice) u.voice = baseUtterance.voice;
+            u.onend = function() { ci++; speakChunk(); };
+            u.onerror = function(e) {
+                if (e.error !== 'canceled') { ci++; speakChunk(); }
+            };
+            ttsUtterance = u;
+            synth.speak(u);
+        }
+        speakChunk();
+    }
+
+    function startTTS() {
+        synth.cancel();
+        ttsParagraphs = getArticleParagraphs();
+        if (!ttsParagraphs.length) return;
+        ttsIndex = 0;
+        ttsActive = true;
+
+        const btn = document.querySelector('.tts-toggle');
+        btn.classList.add('active');
+        btn.querySelector('.tts-play-icon').style.display = 'none';
+        btn.querySelector('.tts-stop-icon').style.display = 'block';
+        document.getElementById('tts-progress').classList.add('active');
+
+        speakNext();
+    }
+
+    function stopTTS() {
+        ttsActive = false;
+        synth.cancel();
+        document.querySelectorAll('.tts-reading').forEach(e => e.classList.remove('tts-reading'));
+
+        const btn = document.querySelector('.tts-toggle');
+        btn.classList.remove('active');
+        btn.querySelector('.tts-play-icon').style.display = 'block';
+        btn.querySelector('.tts-stop-icon').style.display = 'none';
+
+        const bar = document.getElementById('tts-progress');
+        bar.classList.remove('active');
+        bar.style.width = '0%';
+    }
+
+    window.toggleTTS = function() {
+        if (ttsActive) {
+            stopTTS();
+        } else {
+            startTTS();
+        }
+    };
+
+    // Stop TTS on language switch
+    document.querySelectorAll('[onclick*="setLang"]').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            if (ttsActive) stopTTS();
+        });
+    });
+
+    // Cleanup on page unload
+    window.addEventListener('beforeunload', function() { synth.cancel(); });
+})();
+</script>
 
 </body></html>
