@@ -651,6 +651,164 @@
             margin-bottom: 0.5rem;
         }
 
+        /* ===== EXPLORE MORE CTA ===== */
+        .explore-more {
+            margin-top: 3.5rem;
+            padding: 2.5rem 0;
+            border-top: 1px solid var(--rule-color);
+        }
+        .explore-more h3 {
+            font-family: var(--sans);
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+        .explore-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1rem;
+        }
+        .explore-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(24px) saturate(1.5);
+            -webkit-backdrop-filter: blur(24px) saturate(1.5);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 1.5rem 1.6rem;
+            text-decoration: none;
+            transition: all 0.35s ease;
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+            box-shadow:
+                0 4px 20px var(--shadow-color),
+                inset 0 1px 0 var(--glass-highlight);
+        }
+        .explore-card:hover {
+            border-color: var(--border-accent);
+            transform: translateY(-3px);
+            box-shadow:
+                0 8px 32px var(--shadow-color),
+                0 0 40px var(--shadow-glow),
+                inset 0 1px 0 var(--glass-highlight);
+        }
+        .explore-card-icon {
+            width: 36px; height: 36px;
+            display: flex; align-items: center; justify-content: center;
+            background: var(--tag-bg);
+            border-radius: 10px;
+            flex-shrink: 0;
+        }
+        .explore-card-icon svg {
+            width: 18px; height: 18px;
+            stroke: var(--accent);
+            fill: none;
+            stroke-width: 1.8;
+        }
+        .explore-card-title {
+            font-family: var(--sans);
+            font-size: 0.88rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            letter-spacing: 0.01em;
+        }
+        .explore-card-desc {
+            font-family: var(--sans);
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            line-height: 1.55;
+            font-weight: 300;
+        }
+        .explore-card-arrow {
+            font-family: var(--sans);
+            font-size: 0.72rem;
+            color: var(--accent);
+            font-weight: 500;
+            letter-spacing: 0.04em;
+            margin-top: auto;
+            transition: transform 0.3s ease;
+        }
+        .explore-card:hover .explore-card-arrow {
+            transform: translateX(4px);
+        }
+
+        /* ===== ABOUT THE AUTHOR ===== */
+        .about-author {
+            margin-top: 2.5rem;
+            padding: 2rem 2.2rem;
+            background: var(--bg-glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            display: flex;
+            gap: 1.5rem;
+            align-items: flex-start;
+        }
+        .about-author-avatar {
+            width: 56px; height: 56px;
+            border-radius: 50%;
+            background: var(--tag-bg);
+            border: 2px solid var(--border-accent);
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0;
+            font-family: var(--serif);
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--accent);
+            object-fit: cover;
+        }
+        img.about-author-avatar {
+            display: block;
+            background: none;
+        }
+        .about-author-text {
+            flex: 1;
+        }
+        .about-author-name {
+            font-family: var(--sans);
+            font-size: 0.92rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+        }
+        .about-author-role {
+            font-family: var(--sans);
+            font-size: 0.72rem;
+            color: var(--accent);
+            font-weight: 500;
+            letter-spacing: 0.04em;
+            margin-bottom: 0.6rem;
+        }
+        .about-author-bio {
+            font-family: var(--sans);
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            font-weight: 300;
+        }
+        .about-author-bio a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+        .about-author-bio a:hover { opacity: 0.7; }
+
+        @media (max-width: 480px) {
+            .explore-cards { grid-template-columns: 1fr; }
+            .explore-card { padding: 1.2rem; }
+            .explore-more { margin-top: 2.5rem; padding: 1.8rem 0; }
+            .about-author {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                padding: 1.5rem 1.2rem;
+                gap: 1rem;
+            }
+        }
+
         /* ===== SCROLL PROGRESS ===== */
         .scroll-progress {
             position: fixed;
@@ -1022,6 +1180,50 @@
             <a href="https://mhtitich.com/">← Return to main site</a>
             <span class="reading-time">~14 MIN · 2,600 WORDS</span>
         </div>
+        <!-- Explore More -->
+        <div class="explore-more">
+            <h3>Explore More</h3>
+            <div class="explore-cards">
+                <a href="https://mhtitich.com/#research" class="explore-card">
+                    <div class="explore-card-icon">
+                        <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                    </div>
+                    <div class="explore-card-title">Research</div>
+                    <div class="explore-card-desc">Three pillars of research on well-being measurement, environmental efficiency, and climate perceptions — with interactive data, live visualizations, and direct access to metrics across 170+ countries.</div>
+                    <div class="explore-card-arrow">Explore →</div>
+                </a>
+                <a href="https://mhtitich.com/subnational.html" class="explore-card">
+                    <div class="explore-card-icon">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                    </div>
+                    <div class="explore-card-title">Subnational Analytics</div>
+                    <div class="explore-card-desc">Mapping health inequalities and development gaps at the European regional level through NUTS-level data pipelines and subnational indicator frameworks.</div>
+                    <div class="explore-card-arrow">Explore →</div>
+                </a>
+                <a href="https://mhtitich.com/#techniques" class="explore-card">
+                    <div class="explore-card-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                    </div>
+                    <div class="explore-card-title">Models</div>
+                    <div class="explore-card-desc">Time-decay entropy, Just Transition forecasting, Bayesian recursive constructs, and CGE-wellbeing integration — methodological tools built to push measurement forward.</div>
+                    <div class="explore-card-arrow">Explore →</div>
+                </a>
+            </div>
+        </div>
+
+        <!-- About the Author -->
+        <div class="about-author">
+            <img src="https://mhtitich.com/profile.JPEG" alt="Mohamed Htitich" class="about-author-avatar" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="about-author-avatar" style="display: none;">MH</div>
+            <div class="about-author-text">
+                <div class="about-author-name">Mohamed Htitich, PhD</div>
+                <div class="about-author-role">Macroeconomist · Applied Econometrician</div>
+                <div class="about-author-bio">
+                    Specializing in sustainable development measurement, composite indicator design, and environmental efficiency metrics. Research spans beyond-GDP well-being frameworks, time-varying entropy weighting, convergence analysis, and Bayesian latent variable models — applied across 170+ countries over three decades of panel data. <a href="https://mhtitich.com/#about">Learn more&nbsp;→</a>
+                </div>
+            </div>
+        </div>
+
         </div><!-- /lang-en -->
 
         <!-- FRENCH VERSION -->
@@ -1148,6 +1350,50 @@
             <a href="https://mhtitich.com/">← Retour au site principal</a>
             <span class="reading-time">~14 MIN · 2 800 MOTS</span>
         </div>
+        <!-- Explorer d'autres recherches -->
+        <div class="explore-more">
+            <h3>Explorer</h3>
+            <div class="explore-cards">
+                <a href="https://mhtitich.com/#research" class="explore-card">
+                    <div class="explore-card-icon">
+                        <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                    </div>
+                    <div class="explore-card-title">Recherche</div>
+                    <div class="explore-card-desc">Trois piliers de recherche sur la mesure du bien-être, l'efficacité environnementale et les perceptions climatiques — avec données interactives, visualisations en direct et accès aux métriques pour 170+ pays.</div>
+                    <div class="explore-card-arrow">Explorer →</div>
+                </a>
+                <a href="https://mhtitich.com/subnational.html" class="explore-card">
+                    <div class="explore-card-icon">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                    </div>
+                    <div class="explore-card-title">Analytique infranationale</div>
+                    <div class="explore-card-desc">Cartographier les inégalités de santé et les écarts de développement au niveau régional européen à travers des pipelines de données NUTS et des cadres d'indicateurs infranationaux.</div>
+                    <div class="explore-card-arrow">Explorer →</div>
+                </a>
+                <a href="https://mhtitich.com/#techniques" class="explore-card">
+                    <div class="explore-card-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                    </div>
+                    <div class="explore-card-title">Modèles</div>
+                    <div class="explore-card-desc">Entropie à décroissance temporelle, prévision de transition juste, constructions bayésiennes récursives et intégration EGC-bien-être — des outils méthodologiques conçus pour faire avancer la mesure.</div>
+                    <div class="explore-card-arrow">Explorer →</div>
+                </a>
+            </div>
+        </div>
+
+        <!-- À propos de l'auteur -->
+        <div class="about-author">
+            <img src="https://mhtitich.com/profile.JPEG" alt="Mohamed Htitich" class="about-author-avatar" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="about-author-avatar" style="display: none;">MH</div>
+            <div class="about-author-text">
+                <div class="about-author-name">Mohamed Htitich, PhD</div>
+                <div class="about-author-role">Macroéconomiste · Économètre appliqué</div>
+                <div class="about-author-bio">
+                    Spécialisé dans la mesure du développement durable, la construction d'indicateurs composites et les métriques d'efficacité environnementale. Ses recherches couvrent les cadres de bien-être au-delà du PIB, la pondération entropique à variation temporelle, l'analyse de convergence et les modèles bayésiens à variables latentes — appliqués à 170+ pays sur trois décennies de données de panel. <a href="https://mhtitich.com/#about">En savoir plus&nbsp;→</a>
+                </div>
+            </div>
+        </div>
+
         </div><!-- /lang-fr -->
 
     </article>
