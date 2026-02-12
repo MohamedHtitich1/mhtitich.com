@@ -1194,10 +1194,6 @@
             <a href="https://mhtitich.com#tools">Tools</a>
             <span class="nav-separator">•</span>
             <a href="https://mhtitich.com#about">About</a>
-            <span class="nav-separator">•</span>
-            <a href="mailto:research@mhtitich.com" class="nav-contact">Get in Touch</a>
-            <span class="nav-separator">•</span>
-            <a href="https://mhtitich.com/subnational.html" class="nav-highlight">Regional Inequalities</a>
             <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light mode">
                 <svg class="moon-icon" viewBox="0 0 24 24">
                     <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
@@ -1946,6 +1942,7 @@
             emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
                 from_name: name,
                 from_email: email,
+                reply_to: email,
                 date: formattedDate,
                 time: time + ' CET',
                 topic: topic,
