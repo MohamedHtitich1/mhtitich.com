@@ -823,6 +823,36 @@
         .data-source-card a:hover {
             color: var(--accent);
         }
+        .data-source-card.coming-soon {
+            opacity: 0.6;
+            position: relative;
+        }
+        .data-source-card.coming-soon:hover {
+            opacity: 0.8;
+        }
+        .coming-soon-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            font-size: 0.62rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: var(--accent);
+            background: var(--accent-dim);
+            border: 1px solid var(--border-accent);
+            padding: 0.2rem 0.55rem;
+            border-radius: 20px;
+            margin-left: 0.5rem;
+            vertical-align: middle;
+        }
+        .cta-light-btn:hover {
+            background: var(--bg-glass-hover) !important;
+            border-color: var(--accent) !important;
+            color: var(--accent) !important;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px var(--shadow-glow);
+        }
 
         /* Methodology */
         .methodology-section { margin-top: 4rem; padding-top: 3rem; border-top: 1px solid var(--border); }
@@ -1272,9 +1302,9 @@
                     What the Data Reveals
                 </h3>
                 <div class="insights-content" id="insightsContent">
-                    Between 2010 and 2024, <strong>Infant Mortality Rate</strong> across Europe has improved by 0.1% on average — but the average conceals a stark gap.<br><br>
-                    In 2024, a person in <span class="highlight-best">Åland</span> (Finland) faced outcomes scored at <strong>148.6</strong>, while someone in <span class="highlight-worst">Východné Slovensko</span> (Slovakia) faced <strong>25.2</strong>.<br><br>
-                    Today, 95 regions still fall below the EU average — each one representing populations whose health outcomes lag behind their neighbours.
+                    In 2024, <strong>Infant Mortality Rate</strong> scores range from <span class="highlight-best">148.6</span> in Åland (Finland) to just <span class="highlight-worst">25.2</span> in Východné Slovensko (Slovakia) — a <strong>6× gap</strong> within the same political union.<br><br>
+                    The EU average improved by just 0.1% since 2010, but that figure masks a deepening divide: 95 regions still fall below the EU average, each one representing populations whose health outcomes lag behind their neighbours.<br><br>
+                    The headline isn't progress — it's divergence.
                 </div>
                 <div class="ai-insight-label">
                     AI-generated insight &middot; <span class="ai-dot"></span> live
@@ -1375,15 +1405,15 @@
                         About the NUTS classification →
                     </a>
                 </div>
-                <div class="data-source-card">
-                    <h4>Afrobarometer — Citizen Voice</h4>
+                <div class="data-source-card coming-soon">
+                    <h4>Afrobarometer — Citizen Voice <span class="coming-soon-badge">In Development</span></h4>
                     <p>Public opinion surveys across 40+ African countries — capturing what statistics miss: how people experience governance, democracy, and service delivery in their own communities.</p>
                     <a href="https://www.afrobarometer.org/" target="_blank">
                         Let the people have a say →
                     </a>
                 </div>
-                <div class="data-source-card">
-                    <h4>National Statistical Offices</h4>
+                <div class="data-source-card coming-soon">
+                    <h4>National Statistical Offices <span class="coming-soon-badge">In Development</span></h4>
                     <p>Administrative records and census microdata from country-level agencies — often the only source for the most local, most unequal, and most policy-relevant geographies.</p>
                     <a href="#contact-section">
                         Discuss your data →
@@ -1392,7 +1422,7 @@
             </div>
         </section>
 
-        <section class="methodology-section">
+        <section class="methodology-section" id="methodology-section">
             <h2>How the Evidence Is Built</h2>
             <p class="methodology-subtitle">Every number on this map is produced by <a href="https://github.com/MohamedHtitich1/localintel" target="_blank" style="color: var(--accent); text-decoration: none; font-weight: 500;">localintel</a>, an open-source R package designed for transparent, reproducible subnational analysis</p>
             <div class="methodology-grid">
@@ -1458,6 +1488,18 @@
                     </div>
                 </div>
                 <div class="booking-form">
+                    <!-- Lighter CTAs before the consultation form -->
+                    <div class="intermediate-cta" style="display: flex; gap: 0.75rem; margin-bottom: 1.5rem; flex-wrap: wrap;">
+                        <a href="https://github.com/MohamedHtitich1/localintel" target="_blank" class="cta-light-btn" style="flex: 1; min-width: 180px; display: flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 0.7rem 1rem; border: 1px solid var(--border-accent); border-radius: 10px; background: var(--bg-glass); backdrop-filter: blur(12px); color: var(--accent); text-decoration: none; font-size: 0.82rem; font-weight: 500; transition: all 0.3s ease; text-align: center;">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                            View the Methodology
+                        </a>
+                        <a href="#methodology-section" class="cta-light-btn" style="flex: 1; min-width: 180px; display: flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 0.7rem 1rem; border: 1px solid var(--border); border-radius: 10px; background: var(--bg-glass); backdrop-filter: blur(12px); color: var(--text-secondary); text-decoration: none; font-size: 0.82rem; font-weight: 400; transition: all 0.3s ease; text-align: center;">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+                            See How This Applies to Your Region
+                        </a>
+                    </div>
+                    <div style="text-align: center; font-size: 0.72rem; color: var(--text-muted); margin-bottom: 1.25rem; text-transform: uppercase; letter-spacing: 0.5px;">— or discuss a custom analysis —</div>
                     <h3>Schedule a Consultation</h3>
                     <form id="consultationForm">
                         <div class="form-row">
@@ -1912,11 +1954,11 @@
         });
 
         // ===== EMAILJS INIT =====
-        // TODO: Replace these with your actual EmailJS credentials
-        // 1. Sign up at https://www.emailjs.com (free: 200 emails/month)
-        // 2. Add an email service (e.g. Outlook) → copy the Service ID
-        // 3. Create a template with variables: {{from_name}}, {{from_email}}, {{date}}, {{time}}, {{topic}}, {{message}}
-        // 4. Copy your Public Key from Account > General
+        // SECURITY NOTE: These keys are intentionally client-side (EmailJS is designed for this).
+        // However, verify that your EmailJS template has a HARDCODED "To" address —
+        // the recipient should NOT be a dynamic {{to_email}} variable, otherwise anyone
+        // could modify the request to send emails to arbitrary addresses via your account.
+        // Also consider enabling reCAPTCHA in your EmailJS dashboard to prevent abuse.
         const EMAILJS_PUBLIC_KEY = 'baCUPkH6A_Iuhu9fN';
         const EMAILJS_SERVICE_ID = 'service_gz2qw8h';
         const EMAILJS_TEMPLATE_ID = 'template_ufjmea8';
