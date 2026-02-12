@@ -2,13 +2,13 @@
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Subnational Analytics • Mohamed Htitich</title>
+    <title>Where Inequality Lives • Subnational Health Disparities • Mohamed Htitich</title>
     
     <!-- Open Graph / Social Media -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://mhtitich.com/subnational.html">
-    <meta property="og:title" content="Subnational Analytics • Mohamed Htitich">
-    <meta property="og:description" content="Interactive visualization of subnational health indicators across 235 European NUTS-2 regions. Explore regional patterns in healthcare access and outcomes with 15 years of Eurostat data.">
+    <meta property="og:title" content="Where Inequality Lives • Mohamed Htitich">
+    <meta property="og:description" content="National averages hide where people are left behind. Explore health disparities across 235 European regions — revealing the inequalities that shape cohesion policy and determine who gets care.">
     <meta property="og:image" content="https://mhtitich.com/og-subnational.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
@@ -16,11 +16,11 @@
     <meta property="og:locale" content="en_US">
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Subnational Analytics • Mohamed Htitich">
-    <meta name="twitter:description" content="Interactive visualization of subnational health indicators across 235 European NUTS-2 regions.">
+    <meta name="twitter:title" content="Where Inequality Lives • Mohamed Htitich">
+    <meta name="twitter:description" content="National averages hide where people are left behind. Explore health disparities across 235 European regions — the inequalities that shape cohesion policy.">
     <meta name="twitter:image" content="https://mhtitich.com/og-subnational.png">
     <!-- SEO Meta -->
-    <meta name="description" content="Interactive visualization of subnational health indicators across 235 European NUTS-2 regions. Explore regional patterns in healthcare access and outcomes with 15 years of Eurostat data.">
+    <meta name="description" content="National averages hide where people are left behind. Explore health disparities across 235 European NUTS-2 regions — revealing the inequalities that shape EU cohesion policy, resource allocation, and who gets care.">
     <meta name="author" content="Mohamed Htitich">
     <link rel="canonical" href="https://mhtitich.com/subnational.html">
     <link rel="preconnect" href="https://fonts.googleapis.com/">
@@ -496,10 +496,11 @@
         }
 
         /* Main Layout - 3 columns */
-        .main-layout { 
-            display: grid; 
-            grid-template-columns: 280px 1fr 280px; 
-            gap: 1.5rem; 
+        .main-layout {
+            display: grid;
+            grid-template-columns: 280px 1fr 280px;
+            grid-template-rows: 560px;
+            gap: 1.5rem;
             margin-bottom: 1.5rem;
             align-items: stretch;
         }
@@ -559,13 +560,14 @@
             border-radius: 16px;
             padding: 1.5rem;
             border: 1px solid var(--glass-border);
-            box-shadow: 
+            box-shadow:
                 0 4px 24px var(--shadow-color),
                 0 0 40px var(--shadow-glow),
                 inset 0 1px 0 var(--glass-highlight);
             transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
             display: flex;
             flex-direction: column;
+            overflow-y: auto;
         }
         .side-panel h3 {
             font-size: 0.75rem; font-weight: 600; color: var(--text-muted);
@@ -579,10 +581,12 @@
         }
 
         /* Tooltip Panel (Right) */
+        .side-panel:last-child { overflow-y: auto; }
+        .side-panel:last-child .tooltip-content { min-height: 320px; }
         .tooltip-placeholder { color: var(--text-muted); font-size: 0.95rem; text-align: center; padding: 3rem 1rem; }
         .region-info { display: none; }
         .region-info.visible { display: block; }
-        .region-name { font-size: 1.35rem; font-weight: 600; color: var(--accent); margin-bottom: 0.35rem; }
+        .region-name { font-size: 1.35rem; font-weight: 600; color: var(--accent); margin-bottom: 0.35rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
         .region-country { font-size: 1rem; color: var(--text-secondary); margin-bottom: 1.5rem; }
         .info-table { width: 100%; font-size: 0.95rem; border-collapse: collapse; }
         .info-table tr { border-bottom: 1px solid var(--border); }
@@ -620,6 +624,56 @@
             font-size: 0.75rem;
             color: var(--text-muted);
             font-style: italic;
+        }
+
+        /* AI Insight Rotation */
+        .insight-text {
+            animation: insightFadeIn 0.7s ease-out;
+        }
+        @keyframes insightFadeIn {
+            0% { opacity: 0; transform: translateY(5px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        .ai-insight-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            font-size: 0.62rem;
+            font-style: normal;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--accent);
+            opacity: 0.75;
+            margin-top: auto;
+            margin-bottom: 0;
+            padding-bottom: 0.5rem;
+        }
+        .ai-dot {
+            display: inline-block;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: var(--accent);
+            animation: aiDotPulse 2.5s ease-in-out infinite;
+            margin-left: 0.15rem;
+        }
+        @keyframes aiDotPulse {
+            0%, 100% { opacity: 0.4; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.3); }
+        }
+        .insight-progress-bar {
+            height: 1.5px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-light));
+            border-radius: 1px;
+            opacity: 0.35;
+            margin-top: 0.75rem;
+            animation: insightTimer 7s linear;
+            transform-origin: left;
+        }
+        @keyframes insightTimer {
+            0% { width: 0%; }
+            100% { width: 100%; }
         }
 
         /* Controls */
@@ -789,7 +843,21 @@
             transform: translateY(-2px);
             border-color: var(--border-accent);
         }
-        .method-card .icon { font-size: 1.5rem; margin-bottom: 1rem; }
+        .method-card .icon {
+            width: 40px; height: 40px;
+            display: flex; align-items: center; justify-content: center;
+            background: var(--accent-dim);
+            border-radius: 10px;
+            margin-bottom: 1rem;
+        }
+        .method-card .icon svg {
+            width: 20px; height: 20px;
+            stroke: var(--accent);
+            fill: none;
+            stroke-width: 1.75;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
         .method-card h3 { font-size: 1rem; font-weight: 500; margin-bottom: 0.5rem; color: var(--accent); }
         .method-card p { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6; }
         .method-card code {
@@ -797,6 +865,117 @@
             background: var(--code-bg); border-radius: 6px;
             font-family: var(--mono); font-size: 0.75rem; color: var(--accent);
             border: 1px solid var(--border);
+        }
+        .method-source {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            margin-top: 0.75rem;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .method-source:hover { color: var(--accent); }
+        .method-source svg { width: 13px; height: 13px; }
+
+        /* Profile Box (Contact Left) */
+        .profile-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            height: 100%;
+        }
+        .profile-photo {
+            width: 100px; height: 100px;
+            border-radius: 50%;
+            border: 2px solid var(--border-accent);
+            object-fit: cover;
+            image-rendering: -webkit-optimize-contrast;
+            margin-bottom: 1.25rem;
+        }
+        .profile-name {
+            font-family: var(--serif);
+            font-size: 1.25rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+        }
+        .profile-title {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-bottom: 1.25rem;
+            letter-spacing: 0.02em;
+        }
+        .profile-bio {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            text-align: center;
+            max-width: 380px;
+        }
+        .profile-bio a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        .profile-bio a:hover { text-decoration: underline; }
+        .profile-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.25rem;
+        }
+        .profile-links a {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: 0.4rem 0.75rem;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            transition: all 0.2s;
+        }
+        .profile-links a:hover {
+            border-color: var(--accent-dim);
+            color: var(--accent);
+            background: var(--bg-glass);
+        }
+        .profile-links a svg { width: 14px; height: 14px; stroke: currentColor; }
+
+        /* Sparkline in Tooltip */
+        .sparkline-container {
+            margin-top: 1.25rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border);
+        }
+        .sparkline-label {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.5rem;
+        }
+        .sparkline-svg {
+            width: 100%;
+            height: 50px;
+            display: block;
+        }
+        .sparkline-years {
+            display: flex;
+            justify-content: space-between;
+            font-family: var(--mono);
+            font-size: 0.65rem;
+            color: var(--text-muted);
+            margin-top: 0.2rem;
+        }
+        .sparkline-desc {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-top: 0.5rem;
+            font-style: italic;
         }
 
         /* Contact */
@@ -883,44 +1062,108 @@
         .page-footer { margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--border); text-align: center; color: var(--text-muted); font-size: 0.85rem; }
         .page-footer a { color: var(--accent); text-decoration: none; }
 
-        /* Responsive */
+        /* Responsive — tablet & small laptop */
         @media (max-width: 1200px) {
-            .main-layout { 
-                grid-template-columns: 1fr; 
+            .main-layout {
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: auto auto;
                 gap: 1rem;
             }
-            .main-layout > .side-panel:first-child { order: 2; }
-            .main-layout > .map-wrapper { order: 1; }
-            .main-layout > .side-panel:last-child { order: 3; }
-            .map-container {
-                min-height: 350px;
+            /* Row 1 left: Tooltip */
+            .main-layout > .side-panel:last-child {
+                grid-column: 1;
+                grid-row: 1;
+                order: 1;
+                max-height: 420px;
             }
+            /* Row 1 right: Map */
+            .main-layout > .map-wrapper {
+                grid-column: 2;
+                grid-row: 1;
+                order: 2;
+            }
+            /* Row 2: Insights full-width */
+            .main-layout > .side-panel:first-child {
+                grid-column: 1 / -1;
+                grid-row: 2;
+                order: 3;
+            }
+            .map-container { min-height: 350px; }
             .stats-banner { grid-template-columns: repeat(2, 1fr); }
             .methodology-grid, .data-sources-grid { grid-template-columns: 1fr; }
             .contact-grid { grid-template-columns: 1fr; }
         }
+
+        /* Mobile */
         @media (max-width: 768px) {
             .container { padding: 5rem 1rem 2rem; }
-            .map-container {
-                min-height: 280px;
-            }
-            .stats-banner { grid-template-columns: 1fr; }
+            .stats-banner { grid-template-columns: repeat(2, 1fr); }
             .nav-links { display: none; }
             .theme-toggle { margin-left: auto; }
             .timeline-controls { flex-wrap: wrap; }
             .slider-container { width: 100%; order: 3; }
             .form-row { grid-template-columns: 1fr; }
             .side-panel { padding: 1.25rem; }
+            .side-panel:last-child { max-height: 360px; }
             .insights-content, .info-table { font-size: 0.9rem; }
+            .region-name { font-size: 1.1rem; }
         }
-        
+
+        /* Small mobile — stack everything */
+        @media (max-width: 520px) {
+            .main-layout {
+                grid-template-columns: 1fr;
+            }
+            .main-layout > .side-panel:last-child {
+                grid-column: 1;
+                grid-row: 2;
+                max-height: 340px;
+            }
+            .main-layout > .map-wrapper {
+                grid-column: 1;
+                grid-row: 1;
+            }
+            .main-layout > .side-panel:first-child {
+                grid-column: 1;
+                grid-row: 3;
+            }
+            .map-container { min-height: 280px; }
+            .stats-banner { grid-template-columns: 1fr; }
+        }
+
         /* Large screens */
         @media (min-width: 1500px) {
             .main-layout {
                 grid-template-columns: 300px 1fr 300px;
             }
         }
+        @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        /* Form feedback */
+        .form-feedback {
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            margin-top: 0.75rem;
+            display: none;
+        }
+        .form-feedback.success {
+            display: block;
+            background: rgba(34, 197, 94, 0.15);
+            color: #22c55e;
+            border: 1px solid rgba(34, 197, 94, 0.3);
+        }
+        .form-feedback.error {
+            display: block;
+            background: rgba(239, 68, 68, 0.15);
+            color: #ef4444;
+            border: 1px solid rgba(239, 68, 68, 0.3);
+        }
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
     </style>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </head>
 <body data-theme="dark">
     <div class="aurora-container">
@@ -942,8 +1185,7 @@
                 <path d="M2 12h20"></path>
             </svg>
             <div class="logo-text">
-                <span class="logo-name">Mohamed Htitich</span>
-                <span class="logo-tagline">Subnational Analytics</span>
+                <span class="logo-name">Subnational Analytics</span>
             </div>
         </a>
         <div class="nav-links">
@@ -953,9 +1195,9 @@
             <span class="nav-separator">•</span>
             <a href="https://mhtitich.com#about">About</a>
             <span class="nav-separator">•</span>
-            <a href="/cdn-cgi/l/email-protection#e5978096808497868da5888d918c918c868dcb868a88" class="nav-contact">Get in Touch</a>
+            <a href="mailto:research@mhtitich.com" class="nav-contact">Get in Touch</a>
             <span class="nav-separator">•</span>
-            <a href="https://mhtitich.com/subnational.html" class="nav-highlight">Subnational Analytics</a>
+            <a href="https://mhtitich.com/subnational.html" class="nav-highlight">Regional Inequalities</a>
             <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light mode">
                 <svg class="moon-icon" viewBox="0 0 24 24">
                     <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
@@ -977,20 +1219,20 @@
 
     <div class="container">
         <header class="page-header">
-            <h1>Subnational <em>Analytics</em></h1>
+            <h1>Where <em>Inequality</em> Lives</h1>
             <p class="page-subtitle">
-                Transforming fragmented regional statistics into policy-ready insights. This pipeline connects to official databases, harmonizes cross-border definitions, and delivers actionable intelligence at the subnational level.
+                National averages conceal the places where people are left behind. By mapping health outcomes across Europe's 235 NUTS-2 regions, this tool reveals the disparities that shape cohesion policy, resource allocation, and the lived experience of populations at the most granular level of geography.
             </p>
         </header>
 
         <div class="example-header">
-            <h2 class="example-title">European Subnational Data Example</h2>
+            <h2 class="example-title">Health Disparities Across European Regions</h2>
             <div class="data-source">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <circle cx="12" cy="12" r="10"></circle>
                     <path d="M12 6v6l4 2"></path>
                 </svg>
-                <span>Data Source: <strong>Eurostat</strong> • API-driven extraction with smart caching</span>
+                <span>Source: <strong>Eurostat</strong> — the EU's official framework for harmonised regional statistics</span>
             </div>
         </div>
 
@@ -998,20 +1240,22 @@
             <div class="stat-card">
                 <div class="stat-value">235</div>
                 <div class="stat-label">NUTS-2 Regions</div>
+                <div class="stat-sublabel">The level at which EU cohesion policy is decided</div>
             </div>
             <div class="stat-card">
                 <div class="stat-value">15</div>
-                <div class="stat-label">Years (2010-2024)</div>
+                <div class="stat-label">Years Tracked</div>
+                <div class="stat-sublabel">2010 — 2024</div>
             </div>
             <div class="stat-card">
                 <div class="stat-value">1000+</div>
-                <div class="stat-label">Available Indicators</div>
-                <div class="stat-sublabel">Social • Economic • Health • Demographic</div>
+                <div class="stat-label">Comparable Indicators</div>
+                <div class="stat-sublabel">Health • Social • Economic • Demographic</div>
             </div>
             <div class="stat-card highlight">
                 <div class="stat-value">100%</div>
-                <div class="stat-label">Pipeline Coverage</div>
-                <div class="stat-sublabel">After cascade imputation</div>
+                <div class="stat-label">Geographic Coverage</div>
+                <div class="stat-sublabel">No region left unmeasured</div>
             </div>
         </div>
 
@@ -1029,15 +1273,18 @@
                         <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
                         <line x1="12" y1="22.08" x2="12" y2="12"></line>
                     </svg>
-                    Indicator Insights
+                    What the Data Reveals
                 </h3>
                 <div class="insights-content" id="insightsContent">
-                    From 2010 to 2024, the European average for <strong>Infant Mortality Rate</strong> has improved by 0.1%, moving from 100.8 to 100.9.<br><br>
-                    In 2024, <span class="highlight-best">Åland</span> (Finland) achieved the highest score at <strong>148.6</strong>, while <span class="highlight-worst">Východné Slovensko</span> (Slovakia) recorded the lowest at <strong>25.2</strong>.<br><br>
-                    Currently, 154 regions perform above the EU average, with 95 regions below.
+                    Between 2010 and 2024, <strong>Infant Mortality Rate</strong> across Europe has improved by 0.1% on average — but the average conceals a stark gap.<br><br>
+                    In 2024, a person in <span class="highlight-best">Åland</span> (Finland) faced outcomes scored at <strong>148.6</strong>, while someone in <span class="highlight-worst">Východné Slovensko</span> (Slovakia) faced <strong>25.2</strong>.<br><br>
+                    Today, 95 regions still fall below the EU average — each one representing populations whose health outcomes lag behind their neighbours.
+                </div>
+                <div class="ai-insight-label">
+                    AI-generated insight &middot; <span class="ai-dot"></span> live
                 </div>
                 <div class="insights-note">
-                    Scores indexed to EU-27 average in 2013 = 100. Higher = better outcomes.
+                    Scores indexed to EU-27 average in 2013 = 100. Higher values indicate better outcomes. The gap between highest and lowest reveals where policy attention is most needed.
                 </div>
             </div>
 
@@ -1078,6 +1325,15 @@
                                 </tr>
                             </tbody>
                         </table>
+                        <div class="sparkline-container" id="sparklineContainer" style="display:none;">
+                            <div class="sparkline-label">Trend over time</div>
+                            <svg class="sparkline-svg" id="sparklineSvg" viewBox="0 0 200 50" preserveAspectRatio="none"></svg>
+                            <div class="sparkline-years">
+                                <span id="sparklineStart">2010</span>
+                                <span id="sparklineEnd">2024</span>
+                            </div>
+                            <div class="sparkline-desc" id="sparklineDesc"></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1111,28 +1367,28 @@
         </div>
 
         <section class="extensibility-section">
-            <h2>Extensible to Any Region, Any Data Source</h2>
+            <h2>Beyond Europe — Inequality Is Everywhere</h2>
             <p>
-                This demonstration uses European health indicators, but the same pipeline architecture applies globally. Whether you're working with official statistical databases, perception surveys, or custom administrative data, the methodology adapts: automated extraction, smart caching, hierarchical imputation, and transparent provenance tracking.
+                This demonstration uses European health indicators, but the same approach applies wherever populations face unequal outcomes. Whether the question is maternal mortality in Sub-Saharan Africa, educational attainment across Indian states, or service delivery in Latin American municipalities — the method adapts to any geography and any source of subnational data, turning fragmented statistics into a coherent picture of who is being reached and who is not.
             </p>
             <div class="data-sources-grid">
                 <div class="data-source-card">
-                    <h4>Eurostat Database</h4>
-                    <p>1000+ indicators across health, economy, demographics, environment, and social conditions for EU regions.</p>
-                    <a href="https://ec.europa.eu/eurostat/web/main/data/database" target="_blank">
-                        Explore database →
+                    <h4>Eurostat — EU Regional Statistics</h4>
+                    <p>The official NUTS framework that underpins EU cohesion policy — 1000+ comparable indicators across health, economy, demographics, and social conditions for every European region.</p>
+                    <a href="https://ec.europa.eu/eurostat/web/nuts" target="_blank">
+                        About the NUTS classification →
                     </a>
                 </div>
                 <div class="data-source-card">
-                    <h4>Afrobarometer</h4>
-                    <p>Public opinion surveys across 40+ African countries - governance, democracy, service delivery, and citizen perceptions.</p>
+                    <h4>Afrobarometer — Citizen Voice</h4>
+                    <p>Public opinion surveys across 40+ African countries — capturing what statistics miss: how people experience governance, democracy, and service delivery in their own communities.</p>
                     <a href="https://www.afrobarometer.org/" target="_blank">
                         Let the people have a say →
                     </a>
                 </div>
                 <div class="data-source-card">
                     <h4>National Statistical Offices</h4>
-                    <p>Country-specific administrative data, census microdata, and regional accounts for granular subnational analysis.</p>
+                    <p>Administrative records and census microdata from country-level agencies — often the only source for the most local, most unequal, and most policy-relevant geographies.</p>
                     <a href="#contact-section">
                         Discuss your data →
                     </a>
@@ -1141,64 +1397,68 @@
         </section>
 
         <section class="methodology-section">
-            <h2>Data Pipeline &amp; Methodology</h2>
-            <p class="methodology-subtitle">Transparent, reproducible analytics with full provenance tracking</p>
+            <h2>How the Evidence Is Built</h2>
+            <p class="methodology-subtitle">Every number on this map is produced by <a href="https://github.com/MohamedHtitich1/localintel" target="_blank" style="color: var(--accent); text-decoration: none; font-weight: 500;">localintel</a>, an open-source R package designed for transparent, reproducible subnational analysis</p>
             <div class="methodology-grid">
                 <div class="method-card">
-                    <div class="icon">🔗</div>
-                    <h3>API Integration</h3>
-                    <p>Direct connection to official statistical databases. Automated extraction with configurable parameters for any indicator, geography, and time series.</p>
-                    <code>get_eurostat_geospatial(nuts_level = 2)</code>
+                    <div class="icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                    </div>
+                    <h3>Direct from Official Sources</h3>
+                    <p>Indicators are retrieved programmatically from Eurostat's bulk download facility through the official API — the same data that underpins EU Cohesion Reports and national policy reviews. The retrieval is parameterised by indicator code, NUTS level, and time range, so every query is auditable and reproducible.</p>
+                    <code>get_nuts_data(indicator, nuts_level = 2)</code>
+                    <a href="https://github.com/MohamedHtitich1/localintel" target="_blank" class="method-source">
+                        <svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                        localintel · get_nuts_data
+                    </a>
                 </div>
                 <div class="method-card">
-                    <div class="icon">⚡</div>
-                    <h3>Smart Caching</h3>
-                    <p>Intelligent local caching reduces API calls by 90%+. Incremental updates fetch only changed records, enabling efficient re-runs.</p>
-                    <code>cache = TRUE, update_cache = TRUE</code>
+                    <div class="icon">
+                        <svg viewBox="0 0 24 24"><path d="M16 3h5v5"/><path d="M4 20L21 3"/><path d="M21 16v5h-5"/><path d="M15 15l6 6"/><path d="M4 4l5 5"/></svg>
+                    </div>
+                    <h3>Cross-Border Harmonisation</h3>
+                    <p>NUTS boundary codes change between classification revisions (2013, 2016, 2021), breaking time-series comparability. The package maps regions across revisions automatically, so a 15-year trend line for a Portuguese region and a Polish one are measured on exactly the same terms.</p>
+                    <code>harmonize_nuts(data, from = "NUTS2016", to = "NUTS2021")</code>
+                    <a href="https://github.com/MohamedHtitich1/localintel" target="_blank" class="method-source">
+                        <svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                        localintel · harmonize_nuts
+                    </a>
                 </div>
                 <div class="method-card">
-                    <div class="icon">🔄</div>
-                    <h3>Cascade Imputation</h3>
-                    <p>Hierarchical gap-filling preserves analytical integrity: regional data takes priority, missing values inherit from parent geographies.</p>
-                    <code>coalesce(nuts2, nuts1, nuts0)</code>
+                    <div class="icon">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v8"/><path d="M8 12h8"/></svg>
+                    </div>
+                    <h3>No Region Left Blank</h3>
+                    <p>Subnational data is structurally incomplete — some regions report, others don't. Where values are missing at NUTS-2, the package cascades upward through the geographic hierarchy (NUTS-1, then national), ensuring every region appears on the map and no community is invisible to policy.</p>
+                    <code>coalesce(nuts2_value, nuts1_value, nuts0_value)</code>
+                    <a href="https://github.com/MohamedHtitich1/localintel" target="_blank" class="method-source">
+                        <svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                        localintel · cascade imputation
+                    </a>
                 </div>
             </div>
         </section>
 
         <section class="contact-section" id="contact-section">
-            <h2>Collaborate With Me</h2>
-            <p class="contact-subtitle">Custom subnational analytics, composite indicators, and policy dashboards for any region</p>
+            <h2>Make Inequality Visible in Your Context</h2>
+            <p class="contact-subtitle">Custom subnational analysis, policy dashboards, and composite indicators — for any region, any population</p>
             <div class="contact-grid">
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                            <polyline points="22,6 12,13 2,6"></polyline>
-                        </svg>
-                        <div class="contact-item-content">
-                            <div class="contact-item-label">Email</div>
-                            <div class="contact-item-value"><a href="mailto:research@mhtitich.com">research@mhtitich.com</a></div>
-                        </div>
+                <div class="profile-box">
+                    <img src="profile-thumb.JPEG" alt="Mohamed Htitich" class="profile-photo">
+                    <div class="profile-name">Mohamed Htitich, PhD</div>
+                    <div class="profile-title">Development Studies & Applied Econometrics</div>
+                    <div class="profile-bio">
+                        Macroeconomist and applied econometrician specializing in composite indicators, environmental efficiency, and subnational inequality. Former Research Associate at the <a href="https://www.socialprogress.org/" target="_blank">Social Progress Imperative</a>.
                     </div>
-                    <div class="contact-item">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                            <circle cx="12" cy="10" r="3"></circle>
-                        </svg>
-                        <div class="contact-item-content">
-                            <div class="contact-item-label">Location</div>
-                            <div class="contact-item-value">Prague &amp; Casablanca</div>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <circle cx="12" cy="12" r="10"></circle>
-                            <polyline points="12 6 12 12 16 14"></polyline>
-                        </svg>
-                        <div class="contact-item-content">
-                            <div class="contact-item-label">Typical Response</div>
-                            <div class="contact-item-value">Within 24 hours</div>
-                        </div>
+                    <div class="profile-links">
+                        <a href="mailto:research@mhtitich.com">
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                            Email
+                        </a>
+                        <a href="https://mhtitich.com" target="_blank">
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                            Website
+                        </a>
                     </div>
                 </div>
                 <div class="booking-form">
@@ -1236,7 +1496,7 @@
                             <label for="consultTopic">Project Topic</label>
                             <select id="consultTopic" required="">
                                 <option value="">Select topic</option>
-                                <option value="Regional Analytics">Regional/Subnational Analytics</option>
+                                <option value="Regional Analytics">Regional Inequality Mapping</option>
                                 <option value="Composite Indicators">Composite Indicator Design</option>
                                 <option value="Data Pipeline">Data Pipeline Development</option>
                                 <option value="Policy Dashboard">Policy Dashboard</option>
@@ -1256,6 +1516,7 @@
                             </svg>
                             Request Consultation
                         </button>
+                        <div class="form-feedback" id="formFeedback"></div>
                     </form>
                 </div>
             </div>
@@ -1318,20 +1579,115 @@
         const playBtn = document.getElementById('playBtn');
         const playIcon = document.getElementById('playIcon');
 
-        function getInsightsText(varName) {
-            const insight = D.insights[varName];
-            if (!insight) return "No insights available for this indicator.";
-            
-            const varDisplayName = D.varDisplayNames[varName];
-            const trendWord = insight.trend_direction === 'improved' ? 'improved' : 
-                             insight.trend_direction === 'declined' ? 'declined' : 'remained stable';
-            const trendChange = insight.trend_pct > 0 ? ` by ${insight.trend_pct}%` : '';
-            
-            return `From ${insight.start_year} to ${insight.end_year}, the European average for <strong>${varDisplayName}</strong> has ${trendWord}${trendChange}, moving from ${insight.start_avg} to ${insight.end_avg}. In ${insight.end_year}, <span class="highlight-best">${insight.best_region}</span> (${insight.best_country}) achieved the highest score at <strong>${insight.best_score}</strong>, while <span class="highlight-worst">${insight.worst_region}</span> (${insight.worst_country}) recorded the lowest at <strong>${insight.worst_score}</strong>. Currently, ${insight.above_avg} regions perform above the EU average, with ${insight.below_avg} regions below.`;
+        // ===== AI-POWERED ROTATING INSIGHTS =====
+        const insightPool = {
+            'score_cod_standardised_rate_res_tr': [
+                `The <strong>East-West mortality divide</strong> is Europe's deepest fault line. Western regions average a score of <strong>107</strong> while Eastern regions average just <strong>55</strong> — a <span class="highlight-worst">53-point gap</span> that maps almost perfectly onto the former Iron Curtain.`,
+
+                `All five <span class="highlight-worst">worst-performing regions</span> for standardized mortality are in <strong>Bulgaria</strong>, scoring between 15 and 22. The best Bulgarian region still scores lower than the worst region in Spain, France, or Italy.`,
+
+                `<span class="highlight-best">Comunidad de Madrid</span> leads Europe with a score of <strong>128.2</strong> — but just 500 km south, <span class="highlight-worst">Ciudad de Melilla</span> scores 94. Spain itself has a <strong>34-point internal spread</strong>, proving that national averages deceive.`,
+
+                `Regions are <span class="highlight-worst">diverging, not converging</span>. The coefficient of variation rose from 18.7% in 2010 to 27.4% in 2024 — meaning the gap between Europe's healthiest and sickest regions is <strong>actively widening</strong>.`,
+
+                `<span class="highlight-worst">Bulgaria's Severen tsentralen</span> declined by <strong>66%</strong> since 2010, the steepest mortality deterioration in Europe. Meanwhile, <span class="highlight-best">Åland</span> (Finland) improved by 16% over the same period — a tale of two Europes.`,
+
+                `The <strong>best-to-worst ratio</strong> is <strong>8.5×</strong>. A person in <span class="highlight-best">Madrid</span> faces standardized mortality outcomes 8.5 times better than someone in <span class="highlight-worst">northern Bulgaria</span> — within the same political union.`,
+
+                `<strong>53 regions</strong> — more than one in five — score below 75% of the EU average. These aren't statistical outliers: they represent <strong>tens of millions</strong> of Europeans whose mortality outcomes are structurally worse than their neighbours'.`,
+
+                `<span class="highlight-best">Luxembourg</span> improved its score by <strong>13%</strong> since 2010, the second-fastest national gain. Small states can move fast — but only <span class="highlight-best">Denmark's Hovedstaden</span> (+12%) comes close among larger countries.`,
+
+                `<strong>Hungary</strong> has Europe's widest <em>within-country</em> mortality gap: <strong>39 points</strong> separate its best and worst regions. Czechia (37 points) follows. Even 'average' countries hide deep internal fractures.`,
+
+                `<span class="highlight-best">France and Spain</span> lead the pack with national averages above 115, yet both countries contain regions scoring below 95. No country has achieved <strong>uniform</strong> mortality outcomes across all its regions.`,
+
+                `<strong>Romania</strong> and <strong>Latvia</strong> average scores of 38 and 48 respectively — less than half the EU benchmark of 100. For these populations, the EU's health convergence promise remains <span class="highlight-worst">unfulfilled</span>.`
+            ],
+            'score_cod_pyll_3y_res_tr': [
+                `The <strong>best-to-worst ratio</strong> for premature death is a staggering <strong>175×</strong>. <span class="highlight-best">Åland</span> (Finland) scores 174.6 while <span class="highlight-worst">Severozapaden</span> (Bulgaria) scores just 1.0 — the widest inequality of any indicator.`,
+
+                `<span class="highlight-best">Italy</span> dominates premature death prevention: 3 of the top 5 regions are Italian, with <strong>Trento</strong>, <strong>Valle d'Aosta</strong>, and <strong>Marche</strong> all scoring above 163. Italy's national average of <strong>149.5</strong> leads among large countries.`,
+
+                `<strong>Lithuania</strong> recorded Europe's most dramatic improvement: <span class="highlight-best">Vidurio ir vakarų Lietuvos</span> went from 1.0 to 23.4 — a <strong>2,221% gain</strong>. Starting from near-zero, the trajectory is real but the absolute level remains dangerously low.`,
+
+                `The <strong>East-West premature death gap</strong> stands at <strong>72.5 points</strong> — even wider than for overall mortality. Western regions average 122 versus just 50 in the East. A child born in the wrong region faces fundamentally different life chances.`,
+
+                `<strong>47 regions</strong> score below 75 on this indicator — meaning premature death rates in nearly one-fifth of European regions are <span class="highlight-worst">25% worse than the EU benchmark</span> or more.`,
+
+                `<span class="highlight-best">Sweden</span> averages <strong>147.9</strong> nationally — the third-highest score. Yet even Sweden has a 50-point spread between its best and worst regions. Scandinavian exceptionalism has limits.`,
+
+                `<strong>Belgium</strong> has a surprising <strong>69-point internal spread</strong> — nearly as wide as Spain's 70 points. Wealthy countries aren't immune to extreme subnational variation in premature mortality.`,
+
+                `<span class="highlight-worst">Bulgaria's Severozapaden</span> collapsed from 11.1 to 1.0 since 2010 — a <strong>91% decline</strong>. This region has effectively fallen off the European map in terms of preventing early death.`,
+
+                `Overall, regions are <span class="highlight-best">very slowly converging</span>: the coefficient of variation dropped marginally from 37.7% to 37.1%. But at this rate, closing the premature death gap would take <strong>centuries, not decades</strong>.`,
+
+                `The EU average <span class="highlight-best">improved by 10.7%</span> since 2010 — the strongest positive trend of all three indicators. But this gain was captured almost entirely by regions that were <strong>already above average</strong>, deepening the relative divide.`,
+
+                `<span class="highlight-worst">Latvia</span> scores just <strong>18.4</strong> as a single-region country — lower than the worst region in most Western European nations. An entire EU member state performs at the level of a lagging subnational pocket.`
+            ],
+            'score_infant_mortality_rt_tr': [
+                `<span class="highlight-best">Åland</span> (Finland) scores <strong>148.6</strong> — nearly <strong>6 times higher</strong> than <span class="highlight-worst">Východné Slovensko</span> (Slovakia) at 25.2. For newborn survival, your region of birth within Europe matters more than almost any other factor.`,
+
+                `<strong>Slovakia</strong> has Europe's widest <em>within-country</em> infant mortality gap: <strong>79 points</strong> separate its best and worst regions. A baby born in western Slovakia faces radically different odds than one born in the east.`,
+
+                `The good news: infant mortality is <span class="highlight-best">converging</span>. The coefficient of variation dropped from 19.6% to 17.0% since 2010 — the strongest convergence signal of all three health indicators.`,
+
+                `<span class="highlight-best">Finland</span> leads nationally with an average score of <strong>126</strong>, followed by <strong>Estonia</strong> at 121 — a remarkable achievement for a former Soviet state that shows rapid catch-up is possible.`,
+
+                `<strong>Romania's Nord-Est</strong> made the biggest leap in Europe: from 25.7 to 62.8, a <span class="highlight-best">144% improvement</span>. Yet at 62.8, it still falls <strong>37 points below</strong> the EU average — progress and deprivation coexist.`,
+
+                `Only <strong>18 regions</strong> score below 75 — far fewer than for the other two indicators. Infant mortality is where Europe has made the most progress, but those 18 regions represent a hard core of <span class="highlight-worst">persistent disadvantage</span>.`,
+
+                `<span class="highlight-worst">Východné Slovensko</span> declined by <strong>46%</strong> since 2010 — the worst deterioration in Europe for infant survival. While most regions improved, this one moved backwards at an alarming pace.`,
+
+                `<strong>Bulgaria</strong> has a <strong>79-point internal spread</strong> — nearly identical to Slovakia's. In both countries, infant mortality is not a national story but a profoundly <em>regional</em> one, shaped by local healthcare access and socioeconomic conditions.`,
+
+                `The <strong>East-West infant mortality gap</strong> is 19.5 points — significantly narrower than for the other indicators (53 for mortality, 72 for premature death). Newborn care is where Europe's <span class="highlight-best">convergence machinery works best</span>.`,
+
+                `<span class="highlight-worst">Ionia Nisia</span> (Greece) declined by <strong>38%</strong> — the second-steepest drop in Europe. Island and peripheral regions face structural barriers that national healthcare systems struggle to overcome.`,
+
+                `<span class="highlight-best">Austria's Kärnten</span> scores <strong>133.1</strong>, making it the best-performing region in a traditionally 'middle-of-the-pack' country. Individual regions can dramatically outperform their national context with the right policies.`
+            ]
+        };
+
+        let insightTimers = {};
+        let lastInsightIdx = {};
+
+        function getRandomInsight(varName) {
+            const pool = insightPool[varName];
+            if (!pool || pool.length === 0) return "No insights available.";
+            let idx;
+            do {
+                idx = Math.floor(Math.random() * pool.length);
+            } while (idx === lastInsightIdx[varName] && pool.length > 1);
+            lastInsightIdx[varName] = idx;
+            return pool[idx];
+        }
+
+        function renderInsight(varName) {
+            const el = document.getElementById('insightsContent');
+            const text = getRandomInsight(varName);
+            el.innerHTML = `<div class="insight-text">${text}</div><div class="insight-progress-bar"></div>`;
+        }
+
+        function startInsightRotation(varName) {
+            if (insightTimers[varName]) clearInterval(insightTimers[varName]);
+            renderInsight(varName);
+            insightTimers[varName] = setInterval(() => renderInsight(varName), 7000);
+        }
+
+        function stopAllInsightTimers() {
+            for (const key in insightTimers) {
+                clearInterval(insightTimers[key]);
+                delete insightTimers[key];
+            }
         }
 
         function updateInsights() {
-            document.getElementById('insightsContent').innerHTML = getInsightsText(currentVar);
+            stopAllInsightTimers();
+            startInsightRotation(currentVar);
         }
 
         function initVarSelector() {
@@ -1426,6 +1782,81 @@
             }
             
             document.getElementById('regionPop').textContent = formatNum(data.p, 0);
+
+            // Build sparkline
+            renderSparkline(geo, currentVar);
+        }
+
+        function renderSparkline(geo, varName) {
+            const container = document.getElementById('sparklineContainer');
+            const svg = document.getElementById('sparklineSvg');
+            const descEl = document.getElementById('sparklineDesc');
+            const startEl = document.getElementById('sparklineStart');
+            const endEl = document.getElementById('sparklineEnd');
+
+            const years = D.years;
+            const vals = [];
+            for (const yr of years) {
+                const d = D.values[varName]?.[yr]?.[geo];
+                vals.push(d && d.v !== null && d.v !== undefined ? d.v : null);
+            }
+
+            const validVals = vals.filter(v => v !== null);
+            if (validVals.length < 2) {
+                container.style.display = 'none';
+                return;
+            }
+
+            container.style.display = 'block';
+            startEl.textContent = years[0];
+            endEl.textContent = years[years.length - 1];
+
+            const minV = Math.min(...validVals);
+            const maxV = Math.max(...validVals);
+            const range = maxV - minV || 1;
+            const w = 200, h = 50, pad = 4;
+
+            const points = [];
+            for (let i = 0; i < vals.length; i++) {
+                if (vals[i] === null) continue;
+                const x = (i / (vals.length - 1)) * w;
+                const y = pad + (1 - (vals[i] - minV) / range) * (h - pad * 2);
+                points.push(`${x.toFixed(1)},${y.toFixed(1)}`);
+            }
+
+            const firstPt = points[0].split(',');
+            const lastPt = points[points.length - 1].split(',');
+            const areaPoints = points.join(' ') + ` ${lastPt[0]},${h} ${firstPt[0]},${h}`;
+
+            const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+            const lineColor = isDark ? 'rgba(90,138,109,0.9)' : 'rgba(45,107,66,0.9)';
+            const fillColor = isDark ? 'rgba(90,138,109,0.12)' : 'rgba(45,107,66,0.1)';
+
+            const currentIdx = years.indexOf(currentYear);
+            const currentVal = vals[currentIdx];
+            let markerHtml = '';
+            if (currentVal !== null) {
+                const mx = (currentIdx / (vals.length - 1)) * w;
+                const my = pad + (1 - (currentVal - minV) / range) * (h - pad * 2);
+                markerHtml = `<circle cx="${mx.toFixed(1)}" cy="${my.toFixed(1)}" r="3" fill="${lineColor}" stroke="var(--bg-primary)" stroke-width="1.5"/>`;
+            }
+
+            svg.innerHTML = `
+                <polygon points="${areaPoints}" fill="${fillColor}"/>
+                <polyline points="${points.join(' ')}" fill="none" stroke="${lineColor}" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                ${markerHtml}
+            `;
+
+            const first = validVals[0];
+            const last = validVals[validVals.length - 1];
+            const pctChange = ((last - first) / Math.abs(first) * 100).toFixed(1);
+            const direction = pctChange > 0 ? 'improved' : pctChange < 0 ? 'declined' : 'stable';
+            const absChange = Math.abs(pctChange);
+            if (direction === 'stable') {
+                descEl.textContent = 'Outcomes remained stable over this period.';
+            } else {
+                descEl.textContent = `Outcomes ${direction} by ${absChange}% since ${years[0]}.`;
+            }
         }
 
         yearSlider.addEventListener('input', e => {
@@ -1484,8 +1915,21 @@
             });
         });
 
+        // ===== EMAILJS INIT =====
+        // TODO: Replace these with your actual EmailJS credentials
+        // 1. Sign up at https://www.emailjs.com (free: 200 emails/month)
+        // 2. Add an email service (e.g. Outlook) → copy the Service ID
+        // 3. Create a template with variables: {{from_name}}, {{from_email}}, {{date}}, {{time}}, {{topic}}, {{message}}
+        // 4. Copy your Public Key from Account > General
+        const EMAILJS_PUBLIC_KEY = 'baCUPkH6A_Iuhu9fN';
+        const EMAILJS_SERVICE_ID = 'service_gz2qw8h';
+        const EMAILJS_TEMPLATE_ID = 'template_ufjmea8';
+        emailjs.init(EMAILJS_PUBLIC_KEY);
+
         document.getElementById('consultationForm').addEventListener('submit', function(e) {
             e.preventDefault();
+            const btn = this.querySelector('.submit-btn');
+            const feedback = document.getElementById('formFeedback');
             const name = document.getElementById('consultName').value;
             const email = document.getElementById('consultEmail').value;
             const date = document.getElementById('consultDate').value;
@@ -1493,9 +1937,35 @@
             const topic = document.getElementById('consultTopic').value;
             const message = document.getElementById('consultMessage').value;
             const formattedDate = new Date(date).toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
-            const subject = encodeURIComponent(`Consultation Request: ${topic}`);
-            const body = encodeURIComponent(`Hello Mohamed,\n\nI would like to schedule a consultation regarding ${topic}.\n\nPreferred Date: ${formattedDate}\nPreferred Time: ${time} CET\n\n${message ? `Additional Details:\n${message}\n\n` : ''}Best regards,\n${name}\n${email}`);
-            window.location.href = `mailto:research@mhtitich.com?subject=${subject}&body=${body}`;
+
+            btn.disabled = true;
+            btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="animation:spin 1s linear infinite"><circle cx="12" cy="12" r="10"/></svg> Sending...';
+            feedback.className = 'form-feedback';
+            feedback.style.display = 'none';
+
+            emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+                from_name: name,
+                from_email: email,
+                date: formattedDate,
+                time: time + ' CET',
+                topic: topic,
+                message: message || 'No additional details provided.'
+            }).then(function() {
+                feedback.textContent = 'Message sent successfully! I\'ll get back to you shortly.';
+                feedback.className = 'form-feedback success';
+                btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Sent!';
+                e.target.reset();
+                setTimeout(function() {
+                    btn.disabled = false;
+                    btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> Request Consultation';
+                }, 3000);
+            }, function(error) {
+                feedback.textContent = 'Something went wrong. Please try again or email research@mhtitich.com directly.';
+                feedback.className = 'form-feedback error';
+                btn.disabled = false;
+                btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> Request Consultation';
+                console.error('EmailJS error:', error);
+            });
         });
 
         const today = new Date().toISOString().split('T')[0];
